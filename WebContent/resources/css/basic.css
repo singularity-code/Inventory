@@ -1,3 +1,19 @@
+a:link, a:visited {
+	width:auto;
+    background-color: #9dbee6;
+    color: white;
+    border: 1px solid #cacaca;
+    border-radius: 20px;
+    padding: 8px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: #0e98fe;;
+}
 
 .align_right {
 	text-align: right;
@@ -32,14 +48,11 @@
 	background-color: #4e9a06;
 	border: none;
 	color: white;
-	padding: 6px 8px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 13px;
-	margin: 2px 1px;
 	cursor: pointer;
-	float: right;
 }
 
 .button_back {

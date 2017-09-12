@@ -75,7 +75,7 @@
 	      		<tr>
 					<td>
 						<form action="./swap" methos="post">
-							<input id="stockId" type="text" class="input40" name="id" value={{c.id}}	readonly> 
+							<input id="stockId" type="text" class="input40" name="id" value={{c.id}} readonly> 
 							<input type="text" class="input40" name="nextId" placeholder="To..."> 
 							<input type="submit" class="button_small" value="Swap">
 						</form>
@@ -88,10 +88,10 @@
 					<td><b>Type: </b>{{c.type}}</td>
 					<td><b>Role: </b>{{c.role}}</td>
 					<td><b>Brand: </b>{{c.brand}}</td>
-					<td>
-					<a href="./update_view?id={{c.id}}" class="button_small_main" >Edit</a>
-					<a href="./delete?id={{c.id}}" class="button_small_main" onclick="return delConfirm();">Delete</a>
-					<a href="" class="button_small_main" onclick="">Broken</a>
+					<td align="center">
+						<a href="./update_view?id={{c.id}}">Edit</a>
+						<a href="./delete?id={{c.id}}" onclick="return delConfirm();">Delete</a>
+						<a href="" onclick="">Broken</a>
 					</td>
 		        </tr>
 		    </table>
