@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="<c:url value="/resources/angular/app.js" />"></script>
 <link href="<c:url value='/resources/css/basic.css?v=3'/>" rel="stylesheet">
@@ -29,6 +31,7 @@
     <img class="mid" src='resources/img/koi_logo.png' style="width:35px;height:35px;">OK Computer
     <div class="w3-right ">
       <a ng-click="setTab(2)" class="w3-bar-item w3-button">Create</a>
+      <a ng-click="setTab(3)" class="w3-bar-item w3-button">ListView</a>
 <!--       <td ng-class="{ active: isSet(2) }"> -->
 <!--           	<button class="button_mid" ng-click="setTab(2)">Search</button> -->
 <!--        	</td> -->
@@ -80,7 +83,7 @@
 						<form action="./swap" methos="post">
 							<input id="stockId" type="text" class="input40" name="id" value={{c.id}} readonly> 
 							<input type="text" class="input40" name="nextId" placeholder="To..."> 
-							<button type="submit" class="button_swap" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>							
+							<button type="submit" class="button" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
 						</form>
 					</td>
 			        <td><b>Previous: </b>{{c.previous}}</td>
@@ -221,8 +224,84 @@
 		<!--  <pre>computer_master = {{master | json}}</pre> -->
 		</div>
     </div>
+    <div ng-show="isSet(3)">
+    	 <!-- Each Computer Section -->
+	 <br/><br/><br/>
+	  <div class="w3-container w3-padding-32" id="projects">
+	    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Total : {{filtered.length}} Computers</h3>
+	  </div>
+
+	  <div class="">
+
+	      <div class="">
+     	<table align="center">
+      		<tr>
+				<th>ID</th>
+				<th>CAMPUS</th>
+				<th>LOCATION</th>
+				<th>NAME</th>
+				<th>IP</th>
+				<th>TYPE</th>
+				
+				<th>DOMAIN</th>
+				<th>ROLE</th>
+				<th>BRAND</th>
+				<th>MODEL</th>
+				<th>SERIAL NUMBER</th>
+				<th>PRODUCT NUMBER</th>
+				
+				<th>OS</th>
+				<th>LICENSE</th>
+				<th>MACHINE ONLY</th>
+				<th>STATUS</th>
+				<th>OFFICE ACTIVE</th>
+				<th>BITDEFENDER</th>
+				
+				<th>CPU</th>
+				<th>MEMORY</th>
+				<th>BIOS</th>
+				<th>PURCHASE DATE</th>
+				<th></th>
+				<th>Do!</th>
+      		</tr> 
+			<tr ng-repeat="c in pcs | filter:$ctrl.query as filtered " >
+				<td>{{c.id}}</td>
+				<td>{{c.campus}}</td>
+				<td>{{c.location}}</td>
+				<td>{{c.name}}</td>
+				<td>{{c.ip}}</td>
+				<td>{{c.type}}</td>
+				<td>{{c.domain}}</td>
+				<td>{{c.role}}</td>
+				<td>{{c.brand}}</td>
+				<td>{{c.model}}</td>
+				<td>{{c.serialNumber}}</td>
+				<td>{{c.productNumber}}</td>
+				<td>{{c.os}}</td>
+				<td>{{c.license}}</td>
+				<td>{{c.machineOnly}}</td>
+				<td>{{c.status}}</td>
+				<td>{{c.officeActive}}</td>
+				<td>{{c.bitDef}}</td>
+				<td>{{c.cpu}}</td>
+				<td>{{c.memory}}</td>
+				<td>{{c.bios}}</td>
+				<td>{{c.purchaseDate}}</td>
+				<td><a href="./update_view?id=${c.id}" class="button_small">Edit</a>
+				<td><button  class="button_broken" type="submit" ng-click="update(computer)">Broken</button></td>
+				<td><a href="./delete?id=${c.id}" class="button_delete">X</a></td>
+			</tr>
+		</table>
+	      </div>
+	    </div>
+	  </div>
+    </div>
 </div>
 <script>
+$(document).ready(function() {
+
+});
+
   var app = angular.module("myComputerList", []);
   app.controller("myCtrl", function($scope) {
 	  $scope.master = {};
@@ -348,7 +427,6 @@ function itMode() {
     parent.removeChild(it_7);
     
     console.log("Parent" + parent);
-
 }
 
 </script>
