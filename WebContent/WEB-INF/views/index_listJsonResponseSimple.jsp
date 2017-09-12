@@ -31,12 +31,13 @@
 <!--           	<button class="button_mid" ng-click="setTab(2)">Search</button> -->
 <!--        	</td> -->
 <!--       <td><button class="button_mid" onclick="myFunction()" >Clear</button></td> -->
-    </div>
-    <span><input id="search" placeholder="Say Anything..." width="60%" ng-model="$ctrl.query"/>
+    </div></br>
+    <div align="center">
+    <input type="search" id="search" placeholder="Say Anything..." width="60%" ng-model="$ctrl.query"/>
     <button class="button_small" ng-click="setTab(1)">Search</button>
     <button class="button_small" onclick="myFunction()" >Clear</button></span>
     <!-- Float links to the right. Hide them on small screens -->
-
+	</div>
   </div>
 </div>
 
@@ -62,7 +63,7 @@
 	<div ng-show="isSet(1)">
 	
 	 <!-- Each Computer Section -->
-	 <br><br>
+	 <br/><br/><br/>
 	  <div class="w3-container w3-padding-32" id="projects">
 	    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Total : {{filtered.length}} Computers</h3>
 	  </div>
