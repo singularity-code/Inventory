@@ -178,7 +178,7 @@ input[type=text]:focus {
 }
 
 input[type=search] {
-    width: 35
+    width: 70%;
     box-sizing: border-box;
     border: 3px solid #ccc;
     border-radius: 4px;
@@ -193,7 +193,7 @@ input[type=search] {
 }
 
 input[type=search]:focus {
-    width: 50%;
+    border: 3px solid #6ab5ff;
 }
 
 /* Data Validation */
