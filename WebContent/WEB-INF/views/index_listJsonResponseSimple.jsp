@@ -10,6 +10,8 @@
 <script src="<c:url value="/resources/angular/app.js" />"></script>
 <link href="<c:url value='/resources/css/basic.css?v=3'/>" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -78,7 +80,7 @@
 						<form action="./swap" methos="post">
 							<input id="stockId" type="text" class="input40" name="id" value={{c.id}} readonly> 
 							<input type="text" class="input40" name="nextId" placeholder="To..."> 
-							<input type="submit" class="button_small" value="Swap">
+							<button type="submit" class="button_swap" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>							
 						</form>
 					</td>
 			        <td><b>Previous: </b>{{c.previous}}</td>
@@ -90,9 +92,9 @@
 					<td><b>Role: </b>{{c.role}}</td>
 					<td><b>Brand: </b>{{c.brand}}</td>
 					<td align="center">
-						<a href="./update_view?id={{c.id}}">Edit</a>
-						<a href="./delete?id={{c.id}}" onclick="return delConfirm();">Delete</a>
-						<a href="" onclick="">Broken</a>
+						<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="" onclick="" ><i class="material-icons w3-xlarge">build</i></a>
+						<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right" style="background-color: #FE6969;"><i class="material-icons w3-xlarge">delete</i></a>
 					</td>
 		        </tr>
 		    </table>
