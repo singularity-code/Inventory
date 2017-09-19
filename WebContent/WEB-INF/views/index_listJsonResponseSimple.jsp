@@ -5,9 +5,7 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="<c:url value="/resources/angular/app.js" />"></script>
 <link href="<c:url value='/resources/css/basic.css?v=3'/>" rel="stylesheet">
@@ -78,12 +76,12 @@
 	      <div class="w3-display-container">
 	      	<table id="resultTable" align="center" >
 	      		<caption>Updated: <span id="updateDate">{{c.date}}</span></caption>
-	      		<tr>
+	      		<tr id="resultRow-{{$index}}">
 					<td>
 						<form action="./swap" methos="post">
 							<input id="stockId" type="text" class="input40" name="id" value={{c.id}} readonly> 
 							<input type="text" class="input40" name="nextId" placeholder="To..."> 
-							<button type="submit" class="button" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
+							<button type="submit" class="" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
 						</form>
 					</td>
 			        <td><b>Previous: </b>{{c.previous}}</td>
@@ -96,7 +94,7 @@
 					<td><b>Brand: </b>{{c.brand}}</td>
 					<td align="center">
 						<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
-						<a href="" onclick="" ><i class="material-icons w3-xlarge">build</i></a>
+						<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
 						<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right" style="background-color: #FE6969;"><i class="material-icons w3-xlarge">delete</i></a>
 					</td>
 		        </tr>
@@ -298,9 +296,14 @@
     </div>
 </div>
 <script>
-$(document).ready(function() {
-
-});
+// $(document).ready(function () {
+//     $(".brokenBtn").toggle(function() {
+//     	console.log(this);
+//     	console.log($(this).parents());
+//         console.log("BROKEN");
+//         $(this).parents("table").css("border", "#FFACAC solid 5px");
+//     });
+// });
 
   var app = angular.module("myComputerList", []);
   app.controller("myCtrl", function($scope) {

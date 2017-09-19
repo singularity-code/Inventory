@@ -14,6 +14,9 @@ a:link, a:visited {
 a:hover, a:active {
     background-color: #0e98fe;;
 }
+.broken {
+	border: 3px solid #FFACAC; 
+}
 
 .align_right {
 	text-align: right;
