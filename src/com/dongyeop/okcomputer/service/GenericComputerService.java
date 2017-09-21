@@ -9,6 +9,7 @@ import com.dongyeop.okcomputer.dto.Computer;
 public interface GenericComputerService {
 	public List<Computer> getWelcomeMessage(String name);
 	public Object getLists() throws ParseException;
+	public Object getGarageLists() throws ParseException;
 	public boolean create(Computer computer);
 	public boolean delete(String id) throws ParseException;
 	public Object getComputer(String id) throws ParseException;

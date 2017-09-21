@@ -41,6 +41,7 @@ public class StockManagementController {
 	@RequestMapping("/")
 	public String getLists(Model model) throws ParseException {
 		model.addAttribute("list", toJson(computerService.getLists()));
+		model.addAttribute("garage", toJson(computerService.getGarageLists()));
 		System.out.println("JSON LOADED");
 		return "index_listJsonResponseSimple";
 	}

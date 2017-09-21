@@ -24,7 +24,14 @@ public class ComputerService implements GenericComputerService {
 		System.out.println("SERVICE SIZE of Computers : " + computers.size());
 		return computers;
 	}
-
+	
+	@Override
+	public Object getGarageLists() throws ParseException {
+		List<Computer> garage = daoComputer.getAllGarage();
+		System.out.println("SERVICE SIZE of Rubish : " + garage.size());
+		return null;
+	}	
+	
 	@Override
 	public boolean create(Computer computer) {
 		return daoComputer.create(computer);

@@ -16,24 +16,28 @@ import com.google.gson.reflect.TypeToken;
 
 public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 	private static String DAO_COMPUTER_JSONFILE_PATH = null;
+	private static String DAO_GARAGE_JSONFILE_PATH = null;
 
 	private JSONParser parser = new JSONParser();
 	private List<Computer> comList = null;
+	private List<Computer> garageList = null;
 
 	public DaoComputerJsonImp() {
 		DAO_COMPUTER_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "computers_allDate.json";
+		DAO_GARAGE_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "computers_garage.json"; 
 
 		try {
-			comList = readJson();
+			comList = readJson(DAO_COMPUTER_JSONFILE_PATH);
+			garageList = readGarageJson(DAO_GARAGE_JSONFILE_PATH);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private List<Computer> readJson() throws ParseException {
+	private List<Computer> readJson(String path) throws ParseException {
 		try {
-			Object obj = parser.parse(new FileReader(DAO_COMPUTER_JSONFILE_PATH));
+			Object obj = parser.parse(new FileReader(path));
 			String arrStd = obj.toString();
 
 			comList = (new Gson()).fromJson(arrStd, new TypeToken<List<Computer>>() {
@@ -46,6 +50,23 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 			e.printStackTrace();
 		}
 		return comList;
+	}
+	
+	private List<Computer> readGarageJson(String path) throws ParseException {
+		try {
+			Object obj2 = parser.parse(new FileReader(path));
+			String arrStd2 = obj2.toString();
+
+			garageList = (new Gson()).fromJson(arrStd2, new TypeToken<List<Computer>>() {
+			}.getType());
+
+			System.out.println(comList.size());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return garageList;
 	}
 
 	private boolean writeJson() {
@@ -80,6 +101,10 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 	public List<Computer> getAllComputers() throws ParseException {
 		return comList;
 	}
+	
+	public List<Computer> getAllGarage() throws ParseException {
+		return garageList;
+	}
 
 	@Override
 	public boolean delete(String id) throws ParseException {
@@ -102,7 +127,7 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 	/* TODO: Add Sorting function to list using interface later */
 	@Override
 	public boolean update(Computer computer) throws ParseException {
-		comList = readJson();
+		comList = readJson(DAO_COMPUTER_JSONFILE_PATH);
 		boolean b = false;
 		for (int i = 0; i < comList.size(); i++) {
 			if (computer.getId().equals(comList.get(i).getId())) {
@@ -166,7 +191,7 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 
 	@Override
 	public boolean move(Computer computer) throws ParseException {
-		comList = readJson();
+		comList = readJson(DAO_COMPUTER_JSONFILE_PATH);
 		boolean b = false;
 		for (int i = 0; i < comList.size(); i++) {
 			if (computer.getId().equals(comList.get(i).getId())) {

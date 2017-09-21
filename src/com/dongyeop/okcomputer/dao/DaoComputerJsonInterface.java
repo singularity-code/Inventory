@@ -10,6 +10,7 @@ public interface DaoComputerJsonInterface {
 
 	public Computer getComputer(String id) throws ParseException;
 	public List<Computer> getAllComputers() throws ParseException;
+	public List<Computer> getAllGarage() throws ParseException;
 	public boolean delete(String id) throws ParseException;
 	public boolean create(Computer computer);
 	public boolean update(Computer computer) throws ParseException;

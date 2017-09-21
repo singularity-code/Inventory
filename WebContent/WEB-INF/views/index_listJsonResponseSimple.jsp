@@ -232,7 +232,7 @@
 	  </div>
 	  
 	  <div class="w3-row-padding">
-	    <div class="w3-col l3 m6 w3-margin-bottom" ng-repeat="c in pcs | filter: { status: 'Inactive' } ">
+	    <div class="w3-col l3 m6 w3-margin-bottom" ng-repeat="c in garage | filter:$ctrl.query as filtered ">
 	      <div class="w3-display-container">
 	      	<table id="resultTable" align="center" >
 	      		<caption>Updated: <span id="updateDate">{{c.date}}</span></caption>
@@ -278,6 +278,7 @@
   app.controller("myCtrl", function($scope) {
 	  $scope.master = {};
 	  $scope.pcs= ${list};
+	  $scope.garage= ${garage};
 
 	  $scope.campus = ["Market", "Kent"];
 	  $scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay", 
