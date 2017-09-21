@@ -232,7 +232,7 @@
 	  </div>
 	  
 	  <div class="w3-row-padding">
-	    <div class="w3-col l3 m6 w3-margin-bottom" ng-repeat="c in garage | filter:$ctrl.query as filtered ">
+	    <div class="w3-col l3 m6 w3-margin-bottom" ng-repeat="r in garage">
 	      <div class="w3-display-container">
 	      	<table id="resultTable" align="center" >
 	      		<caption>Updated: <span id="updateDate">{{c.date}}</span></caption>
@@ -244,14 +244,14 @@
 							<button type="submit" class="" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
 						</form>
 					</td>
-			        <td><b>Previous: </b>{{c.previous}}</td>
-			        <td><b>Location: </b>{{c.location}}</td>
-					<td><b>Campus: </b>{{c.campus}}</td>
-					<td><b>PC Name: </b>{{c.name}}</td>
-					<td><b>User: </b>{{c.user}}</td>
-					<td><b>Type: </b>{{c.type}}</td>
-					<td><b>Role: </b>{{c.role}}</td>
-					<td><b>Brand: </b>{{c.brand}}</td>
+			        <td><b>Previous: </b>{{r.previous}}</td>
+			        <td><b>Location: </b>{{r.location}}</td>
+					<td><b>Campus: </b>{{r.campus}}</td>
+					<td><b>PC Name: </b>{{r.name}}</td>
+					<td><b>User: </b>{{r.user}}</td>
+					<td><b>Type: </b>{{r.type}}</td>
+					<td><b>Role: </b>{{r.role}}</td>
+					<td><b>Brand: </b>{{r.brand}}</td>
 					<td align="center">
 						<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
 						<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
