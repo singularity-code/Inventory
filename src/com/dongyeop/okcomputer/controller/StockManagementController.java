@@ -152,6 +152,13 @@ public class StockManagementController {
 		return new ModelAndView(redirectUrl);
 	}
 	
+	@RequestMapping("/move")
+	public ModelAndView move(Model model, @RequestParam("id") String id) throws ParseException {
+		Computer computer = (Computer) computerService.getComputer(id);
+		computerService.move(computer);
+		return new ModelAndView(redirectUrl);
+	}
+	
     /**
      * Serializes a Java object to a Json string.
      *

@@ -163,4 +163,18 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 
 		return writeJson();
 	}
+
+	@Override
+	public boolean move(Computer computer) throws ParseException {
+		comList = readJson();
+		boolean b = false;
+		for (int i = 0; i < comList.size(); i++) {
+			if (computer.getId().equals(comList.get(i).getId())) {
+				computer.setStatus("Inactive");
+				System.out.println("Moved: " + comList.get(i).getName());
+				break;
+			}
+		}
+		return b ? writeJson() : false;
+	}
 }

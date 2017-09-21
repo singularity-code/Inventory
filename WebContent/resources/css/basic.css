@@ -84,8 +84,8 @@ a:hover, a:active {
 
 .button_swap {
 	width:auto;
-    background-color: #0080ff;
-    color: white;
+    background-color: #ffffff;
+    color: black;
     text-decoration: none;
     display: inline-block;
 }

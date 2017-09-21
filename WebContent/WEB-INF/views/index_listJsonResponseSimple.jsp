@@ -93,9 +93,11 @@
 					<td><b>Role: </b>{{c.role}}</td>
 					<td><b>Brand: </b>{{c.brand}}</td>
 					<td align="center">
+						<!-- Google Material Design Icons -->
 						<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
 						<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
-						<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right" style="background-color: #FE6969;"><i class="material-icons w3-xlarge">delete</i></a>
+						<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
+						<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right" style="background-color: #FE6969;"><i class="material-icons w3-xlarge">close</i></a>
 					</td>
 		        </tr>
 		    </table>

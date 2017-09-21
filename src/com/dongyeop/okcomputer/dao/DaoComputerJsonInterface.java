@@ -14,4 +14,5 @@ public interface DaoComputerJsonInterface {
 	public boolean create(Computer computer);
 	public boolean update(Computer computer) throws ParseException;
 	public boolean swap(Computer c1, Computer c2) throws ParseException;
+	public boolean move(Computer computer) throws ParseException;
 }

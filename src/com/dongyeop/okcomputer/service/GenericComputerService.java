@@ -14,4 +14,5 @@ public interface GenericComputerService {
 	public Object getComputer(String id) throws ParseException;
 	public boolean update(Computer computer) throws ParseException;
 	public boolean swap(Computer computer, Computer next) throws ParseException;
+	public boolean move(Computer computer) throws ParseException;
 }

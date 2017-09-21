@@ -49,4 +49,9 @@ public class ComputerService implements GenericComputerService {
 	public boolean swap(Computer computer, Computer next) throws ParseException {
 		return daoComputer.swap(computer, next);
 	}
+
+	@Override
+	public boolean move(Computer computer) throws ParseException {
+		return daoComputer.move(computer);
+	}
 }
