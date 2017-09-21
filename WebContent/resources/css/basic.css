@@ -1,7 +1,7 @@
 a:link, a:visited {
 	width:auto;
-    background-color: #9dbee6;
-    color: white;
+    background-color: #FFFFFF;
+    color: black;
     border: 1px solid #cacaca;
     border-radius: 20px;
     padding: 8px 15px;
@@ -215,8 +215,10 @@ table caption {
   font-size: 1.5em;
   margin: .5em 0 .75em;
 }
+
+/* Each item */
 table tr {
-  background: #f8f8f8;
+  background: #ffffff;
   border: 1px solid #ddd;
   padding: .35em;
 }

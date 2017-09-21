@@ -29,7 +29,7 @@
     <img class="mid" src='resources/img/koi_logo.png' style="width:35px;height:35px;">OK Computer
     <div class="w3-right ">
       <a ng-click="setTab(2)" class="w3-bar-item w3-button">Create</a>
-      <a ng-click="setTab(3)" class="w3-bar-item w3-button">ListView</a>
+      <a ng-click="setTab(3)" class="w3-bar-item w3-button">Garage</a>
 <!--       <td ng-class="{ active: isSet(2) }"> -->
 <!--           	<button class="button_mid" ng-click="setTab(2)">Search</button> -->
 <!--        	</td> -->
@@ -228,82 +228,49 @@
 	  <div class="w3-container w3-padding-32" id="projects">
 	    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Total : {{filtered.length}} Computers</h3>
 	  </div>
-
-	  <div class="">
-
-	      <div class="">
-     	<table align="center">
-      		<tr>
-				<th>ID</th>
-				<th>CAMPUS</th>
-				<th>LOCATION</th>
-				<th>NAME</th>
-				<th>IP</th>
-				<th>TYPE</th>
-				
-				<th>DOMAIN</th>
-				<th>ROLE</th>
-				<th>BRAND</th>
-				<th>MODEL</th>
-				<th>SERIAL NUMBER</th>
-				<th>PRODUCT NUMBER</th>
-				
-				<th>OS</th>
-				<th>LICENSE</th>
-				<th>MACHINE ONLY</th>
-				<th>STATUS</th>
-				<th>OFFICE ACTIVE</th>
-				<th>BITDEFENDER</th>
-				
-				<th>CPU</th>
-				<th>MEMORY</th>
-				<th>BIOS</th>
-				<th>PURCHASE DATE</th>
-				<th></th>
-				<th>Do!</th>
-      		</tr> 
-			<tr ng-repeat="c in pcs | filter:$ctrl.query as filtered " >
-				<td>{{c.id}}</td>
-				<td>{{c.campus}}</td>
-				<td>{{c.location}}</td>
-				<td>{{c.name}}</td>
-				<td>{{c.ip}}</td>
-				<td>{{c.type}}</td>
-				<td>{{c.domain}}</td>
-				<td>{{c.role}}</td>
-				<td>{{c.brand}}</td>
-				<td>{{c.model}}</td>
-				<td>{{c.serialNumber}}</td>
-				<td>{{c.productNumber}}</td>
-				<td>{{c.os}}</td>
-				<td>{{c.license}}</td>
-				<td>{{c.machineOnly}}</td>
-				<td>{{c.status}}</td>
-				<td>{{c.officeActive}}</td>
-				<td>{{c.bitDef}}</td>
-				<td>{{c.cpu}}</td>
-				<td>{{c.memory}}</td>
-				<td>{{c.bios}}</td>
-				<td>{{c.purchaseDate}}</td>
-				<td><a href="./update_view?id=${c.id}" class="button_small">Edit</a>
-				<td><button  class="button_broken" type="submit" ng-click="update(computer)">Broken</button></td>
-				<td><a href="./delete?id=${c.id}" class="button_delete">X</a></td>
-			</tr>
-		</table>
+	  
+	  <div class="w3-row-padding">
+	    <div class="w3-col l3 m6 w3-margin-bottom" ng-repeat="c in pcs | filter: { status: 'Inactive' } ">
+	      <div class="w3-display-container">
+	      	<table id="resultTable" align="center" >
+	      		<caption>Updated: <span id="updateDate">{{c.date}}</span></caption>
+	      		<tr id="resultRow-{{$index}}">
+					<td>
+						<form action="./swap" methos="post">
+							<input id="stockId" type="text" class="input40" name="id" value={{c.id}} readonly> 
+							<input type="text" class="input40" name="nextId" placeholder="To..."> 
+							<button type="submit" class="" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
+						</form>
+					</td>
+			        <td><b>Previous: </b>{{c.previous}}</td>
+			        <td><b>Location: </b>{{c.location}}</td>
+					<td><b>Campus: </b>{{c.campus}}</td>
+					<td><b>PC Name: </b>{{c.name}}</td>
+					<td><b>User: </b>{{c.user}}</td>
+					<td><b>Type: </b>{{c.type}}</td>
+					<td><b>Role: </b>{{c.role}}</td>
+					<td><b>Brand: </b>{{c.brand}}</td>
+					<td align="center">
+						<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
+						<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right" style="background-color: #FE6969;"><i class="material-icons w3-xlarge">delete</i></a>
+					</td>
+		        </tr>
+		    </table>
 	      </div>
 	    </div>
 	  </div>
     </div>
 </div>
 <script>
-// $(document).ready(function () {
-//     $(".brokenBtn").toggle(function() {
-//     	console.log(this);
-//     	console.log($(this).parents());
-//         console.log("BROKEN");
-//         $(this).parents("table").css("border", "#FFACAC solid 5px");
-//     });
-// });
+//  $(document).ready(function () {
+//      $(".brokenBtn").toggle(function() {
+//      	console.log(this);
+//      	console.log($(this).parents());
+//          console.log("BROKEN");
+//          $(this).parents("table").css("border", "#FFACAC solid 5px");
+//      });
+//  });
 
   var app = angular.module("myComputerList", []);
   app.controller("myCtrl", function($scope) {
