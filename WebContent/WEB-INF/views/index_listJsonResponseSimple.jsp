@@ -26,7 +26,7 @@
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
-    <img class="mid" src='resources/img/koi_logo.png' style="width:35px;height:35px;">OK Computer
+    <img class="mid" src='resources/img/koi_logo.png' style="width:35px;height:35px;"><span style="font-weight: 800;">OK Computer</span>
     <div class="w3-right ">
       <a ng-click="setTab(2)" class="w3-bar-item w3-button">Create</a>
       <a ng-click="setTab(3)" class="w3-bar-item w3-button">Garage</a>
@@ -79,9 +79,9 @@
 	      		<tr id="resultRow-{{$index}}">
 					<td>
 						<form action="./swap" methos="post">
-							<input id="stockId" type="text" class="input40" name="id" value={{c.id}} readonly> 
-							<input type="text" class="input40" name="nextId" placeholder="To..."> 
-							<button type="submit" class="" value="Swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
+							<input id="stockId" type="text" class="" name="id" value={{c.id}} readonly> 
+							<input type="text" class="" name="nextId" placeholder="To..."><br/>
+							<button type="submit" class="button_swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
 						</form>
 					</td>
 			        <td><b>Previous: </b>{{c.previous}}</td>

@@ -83,7 +83,7 @@ a:hover, a:active {
 }
 
 .button_swap {
-	width:auto;
+	width: 100%;
     background-color: #ffffff;
     color: black;
     text-decoration: none;
@@ -146,8 +146,8 @@ input[type=text] {
     outline: none;
 }
 
-.input40[type=text] {
-    width: 40%;
+.input50[type=text] {
+    width: 50%;
     font-size: 13px;
     padding: 8px 13px;
     margin: 8px 0;
