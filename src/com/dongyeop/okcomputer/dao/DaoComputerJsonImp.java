@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import com.dongyeop.okcomputer.dto.Tv;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -17,18 +18,22 @@ import com.google.gson.reflect.TypeToken;
 public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 	private static String DAO_COMPUTER_JSONFILE_PATH = null;
 	private static String DAO_GARAGE_JSONFILE_PATH = null;
+	private static String DAO_TV_JSONFILE_PATH = null;
 
 	private JSONParser parser = new JSONParser();
 	private List<Computer> comList = null;
 	private List<Computer> garageList = null;
+	private List<Tv> tvList = null;
 
 	public DaoComputerJsonImp() {
-		DAO_COMPUTER_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "computers_allDate.json";
+		DAO_COMPUTER_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "mother_computer.json";
+        DAO_TV_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "mother_tv.json";
 		DAO_GARAGE_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "computers_garage.json"; 
 
 		try {
 			comList = readJson(DAO_COMPUTER_JSONFILE_PATH);
 			garageList = readGarageJson(DAO_GARAGE_JSONFILE_PATH);
+			tvList = readTvJson(DAO_TV_JSONFILE_PATH);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +48,7 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 			comList = (new Gson()).fromJson(arrStd, new TypeToken<List<Computer>>() {
 			}.getType());
 
-			System.out.println(comList.size());
+			System.out.println("Computer List :" + comList.size());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -51,6 +56,22 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 		}
 		return comList;
 	}
+
+    private List<Tv> readTvJson(String path) throws ParseException {
+        try {
+            Object obj = parser.parse(new FileReader(path));
+            String arrStd = obj.toString();
+
+            tvList = (new Gson()).fromJson(arrStd, new TypeToken<List<Tv>>() {
+            }.getType());
+            System.out.println("Tv List :" + tvList.size());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return tvList;
+    }
 	
 	private List<Computer> readGarageJson(String path) throws ParseException {
 		try {
@@ -59,8 +80,7 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 
 			garageList = (new Gson()).fromJson(arrStd2, new TypeToken<List<Computer>>() {
 			}.getType());
-
-			System.out.println(comList.size());
+            System.out.println("Garage List :" + garageList.size());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -98,10 +118,16 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 	}
 
 	@Override
+    public List<Tv> getAllTv() throws ParseException {
+        return tvList;
+    }
+
+	@Override
 	public List<Computer> getAllComputers() throws ParseException {
 		return comList;
 	}
-	
+
+	@Override
 	public List<Computer> getAllGarage() throws ParseException {
 		return garageList;
 	}

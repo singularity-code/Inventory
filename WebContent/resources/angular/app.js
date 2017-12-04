@@ -1,7 +1,7 @@
   var app = angular.module("myComputerList", []);
   app.controller("myCtrl", function($scope) {
 	  $scope.master = {};
-	  $scope.pcs= ${list};
+	  $scope.pcs= $list;
 
 	  $scope.campus = ["Market", "Kent"];
 	  $scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay", 

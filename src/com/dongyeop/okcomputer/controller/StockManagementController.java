@@ -42,8 +42,9 @@ public class StockManagementController {
 	public String getLists(Model model) throws ParseException {
 		model.addAttribute("list", toJson(computerService.getLists()));
 		model.addAttribute("garage", toJson(computerService.getGarageLists()));
+		model.addAttribute("tv", toJson(computerService.getTvLists()));
 		System.out.println("JSON LOADED");
-		return "index_listJsonResponseSimple";
+		return "index_computer";
 	}
 	
 	@RequestMapping("/create_view")
@@ -160,21 +161,21 @@ public class StockManagementController {
 		return new ModelAndView(redirectUrl);
 	}
 	
-    /**
-     * Serializes a Java object to a Json string.
-     *
-     * @param object
-     * @return
-     */
-    public static String toJson(Object object) {
+	/**
+	 * Serializes a Java object to a Json string.
+	 *
+	 * @param object
+	 * @return
+	 */
+	public static String toJson(Object object) {
 
-        ObjectMapper mapper = new ObjectMapper();
-        String json = "{}";
-        try {
-            json = mapper.writeValueAsString(object);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return json;
-    }
+		ObjectMapper mapper = new ObjectMapper();
+		String json = "{}";
+		try {
+			json = mapper.writeValueAsString(object);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return json;
+	}
 }
