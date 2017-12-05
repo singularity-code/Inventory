@@ -66,8 +66,8 @@
   <div class="">
 	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;"><span style="font-weight: 800;">OK Computer</span>
 	<div class="" style="text-align: center">
-		<a ng-click="setTab(it.computer)" class="">Computer</a>
-		<a ng-click="setTab(3)" class="w3-bar-item w3-button">Tv</a>
+		<a ng-click="setTab('it-computer')" class="">Computer</a>
+		<a ng-click="setTab('class-tv')" class="w3-bar-item w3-button">Tv</a>
 		<a ng-click="setTab(garage)" class="w3-bar-item w3-button">IT Garage</a>
 	</div>
 	<p>
@@ -75,7 +75,7 @@
 	<input type="search" id="search" placeholder="Say Anything..." width="60%" ng-model="$ctrl.query"/>
 	<button class="button_small" ng-click="setTab(1)">Search</button>
 	<button class="button_small" onclick="myFunction()" >Clear</button></span>
-		<a ng-click="setTab(2)" class="w3-bar-item w3-button">Create</a>
+		<a ng-click="setTab('create-computer')" class="w3-bar-item w3-button">Create</a>
 		<a ng-click="setTab(garage)" class="w3-bar-item w3-button">Garage</a>
 	<!-- Float links to the right. Hide them on small screens -->
 	</div>
@@ -85,7 +85,7 @@
 <div class="col-md-8" style="margin:auto;width:95%">
 	<div class="jumbotron">
 		<!-- Set 1 -->
-		<div ng-show="isSet(it.computer)">
+		<div ng-show="isSet('it-computer')">
 		 <!-- Each Computer Section -->
 		  <div style="text-align: right;" id="projects">
 			<h3>Total : {{filtered.length}} Computers</h3>
@@ -102,40 +102,38 @@
 					<td style="width: 150px;"><b>Last Update</b></td>
 				</tr>
 			</table>
-			<div class="w3-col l3 m6 w3-margin-bottom" >
-				<table id="resultTable" align="center" ng-repeat="c in pcs | filter:$ctrl.query as filtered ">
-					<tr id="">
-						<td style="width: 100px;">{{c.type}}</td>
-						<td style="width: 100px;">{{c.brand}}</td>
-						<td style="width: 150px;">{{c.previous}}</td>
-						<td style="width: 150px;">{{c.location}}</td>
-						<td style="width: 150px;">{{c.campus}}</td>
-						<td style="width: 200px;">{{c.name}}</td>
+			<table id="resultTable" align="center" ng-repeat="c in pcs | filter:$ctrl.query as filtered ">
+				<tr id="">
+					<td style="width: 100px;">{{c.type}}</td>
+					<td style="width: 100px;">{{c.brand}}</td>
+					<td style="width: 150px;">{{c.previous}}</td>
+					<td style="width: 150px;">{{c.location}}</td>
+					<td style="width: 150px;">{{c.campus}}</td>
+					<td style="width: 200px;">{{c.name}}</td>
 
-						<td style="width: 150px;">{{c.user}}</td>
-						<td id="updateDate">{{c.date}}</td>
-						<td style="float: right">
-							<!-- Google Material Design Icons -->
-							<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
-							<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
-							<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
-							<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
-						</td>
-						<td style="float: right;">
-							<form action="./swap" methos="post">
-								<input id="stockId" type="text" style="width: 70px; height: 25px;" name="id" value={{c.id}} readonly>
-								<input type="text" style="width: 70px; height: 25px;" name="nextId" placeholder="To...">
-								<button type="submit" class="button_swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
-							</form>
-						</td>
-					</tr>
-				</table>
-			</div>
+					<td style="width: 150px;">{{c.user}}</td>
+					<td id="updateDate">{{c.date}}</td>
+					<td style="float: right">
+						<!-- Google Material Design Icons -->
+						<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
+						<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
+						<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					</td>
+					<td style="float: right;">
+						<form action="./swap" methos="post">
+							<input id="stockId" type="text" style="width: 70px; height: 25px;" name="id" value={{c.id}} readonly>
+							<input type="text" style="width: 70px; height: 25px;" name="nextId" placeholder="To...">
+							<button type="submit" class="button_swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
+						</form>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 
 	<!-- Tv Set -->
-	<div ng-show="isSet(3)">
+	<div ng-show="isSet('class-tv')">
 		<!-- Each Computer Section -->
 		<div style="text-align: right;" id="projects">
 			<h3>Total : {{filtered.length}} Tv</h3>
@@ -152,7 +150,7 @@
 				<td style="width: 150px;"><b>Last Update</b></td>
 			</tr>
 		</table>
-		<div class="w3-col l3 m6 w3-margin-bottom" >
+		<div class="" >
 			<table id="resultTable" align="center" ng-repeat="tv in tvs | filter:$ctrl.query as filtered ">
 				<tr id="">
 					<td style="width: 100px;">{{c.type}}</td>
@@ -170,12 +168,12 @@
 	</div>
 
 	<!-- Set 2 -->
-	<div ng-show="isSet(2)">
+	<div ng-show="isSet('create-computer')">
 
 		<!-- Hearder -->
 		<br><br><br>
-		<div class="w3-container w3-padding-32" id="projects">
-			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-15">Add New Computer</h3>
+		<div class="" id="projects">
+			<h3 class="">Add New Computer</h3>
 		</div>
 
 		<!-- Body -->
@@ -292,15 +290,6 @@
 	</div>
 </div>
 <script>
-//  $(document).ready(function () {
-//      $(".brokenBtn").toggle(function() {
-//      	console.log(this);
-//      	console.log($(this).parents());
-//          console.log("BROKEN");
-//          $(this).parents("table").css("border", "#FFACAC solid 5px");
-//      });
-//  });
-
   var app = angular.module("myComputerList", []);
   app.controller("myCtrl", function($scope) {
 	  $scope.master = {};
