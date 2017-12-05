@@ -33,13 +33,14 @@ public class ComputerService implements GenericComputerService {
 		return null;
 	}
 
-    @Override
-    public Object getTvLists() throws ParseException {
-        List<Tv> tv = daoComputer.getAllTv();
-        return tv;
-    }
+	@Override
+	public Object getTvLists() throws ParseException {
+		List<Tv> tv = daoComputer.getAllTv();
+		System.out.println("SERVICE SIZE of Tv : " + tv.size());
+		return tv;
+	}
 
-    @Override
+	@Override
 	public boolean create(Computer computer) {
 		return daoComputer.create(computer);
 	}
