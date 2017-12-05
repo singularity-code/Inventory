@@ -16,6 +16,9 @@
 	<bean id="daoComputer"
 		class="com.dongyeop.okcomputer.dao.DaoComputerJsonImp">
 	</bean>
+    <bean id="daoMaterialComputer"
+          class="com.dongyeop.okcomputer.dao.DaoMaterialComputerImple">
+    </bean>
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/WEB-INF/views/"></property>
@@ -24,5 +27,8 @@
 	<bean id="computerService"
 		class="com.dongyeop.okcomputer.service.ComputerService">
 	</bean>
+    <bean id="materialService"
+          class="com.dongyeop.okcomputer.service.GeneralMaterialServiceImple">
+    </bean>
 
 </beans>

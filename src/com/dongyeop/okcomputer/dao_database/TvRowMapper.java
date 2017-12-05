@@ -1,4 +1,4 @@
-package com.dongyeop.okcomputer.dao;
+package com.dongyeop.okcomputer.dao_database;
 
 import com.dongyeop.okcomputer.dto.Tv;
 import org.springframework.jdbc.core.RowMapper;

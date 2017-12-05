@@ -13,7 +13,7 @@ public class ComputerService implements GenericComputerService {
 
 	@Autowired
 	private DaoComputerJsonInterface daoComputer;
-	
+
 	@Override
 	public List<Computer> getWelcomeMessage(String name) {
 		return null;
@@ -68,5 +68,10 @@ public class ComputerService implements GenericComputerService {
 	@Override
 	public boolean move(Computer computer) throws ParseException {
 		return daoComputer.move(computer);
+	}
+
+	@Override
+	public boolean createTv(Tv tv) {
+		return false;
 	}
 }

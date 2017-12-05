@@ -82,62 +82,13 @@
   </div>
 </div>
 <!-- Menu Contents -->
-<div class="col-md-8" style="margin:auto;width:95%">
-	<div class="jumbotron">
-		<!-- Set 1 -->
-		<div ng-show="isSet('it-computer')">
-		 <!-- Each Computer Section -->
-		  <div style="text-align: right;" id="projects">
-			<h3>Total : {{filtered.length}} Computers</h3>
-		  </div>
-			<table>
-				<tr>
-					<td style="width: 100px;"><b>Type</b></td>
-					<td style="width: 100px;"><b>Brand</b></td>
-					<td style="width: 150px;"><b>Previous</b></td>
-					<td style="width: 150px;"><b>Location</b></td>
-					<td style="width: 150px;"><b>Campus</b></td>
-					<td style="width: 200px;"><b>PC Name</b></td>
-					<td style="width: 150px;"><b>User</b></td>
-					<td style="width: 150px;"><b>Last Update</b></td>
-				</tr>
-			</table>
-			<table id="resultTable" align="center" ng-repeat="c in pcs | filter:$ctrl.query as filtered ">
-				<tr id="">
-					<td style="width: 100px;">{{c.type}}</td>
-					<td style="width: 100px;">{{c.brand}}</td>
-					<td style="width: 150px;">{{c.previous}}</td>
-					<td style="width: 150px;">{{c.location}}</td>
-					<td style="width: 150px;">{{c.campus}}</td>
-					<td style="width: 200px;">{{c.name}}</td>
-
-					<td style="width: 150px;">{{c.user}}</td>
-					<td id="updateDate">{{c.date}}</td>
-					<td style="float: right">
-						<!-- Google Material Design Icons -->
-						<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
-						<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
-						<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
-						<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
-					</td>
-					<td style="float: right;">
-						<form action="./swap" methos="post">
-							<input id="stockId" type="text" style="width: 70px; height: 25px;" name="id" value={{c.id}} readonly>
-							<input type="text" style="width: 70px; height: 25px;" name="nextId" placeholder="To...">
-							<button type="submit" class="button_swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-
-	<!-- Tv Set -->
-	<div ng-show="isSet('class-tv')">
-		<!-- Each Computer Section -->
-		<div style="text-align: right;" id="projects">
-			<h3>Total : {{filtered.length}} Tv</h3>
-		</div>
+<div class="col-md-8" >
+	<!-- Set 1 -->
+	<div ng-show="isSet('it-computer')" style="margin:auto;width:95%">
+	 <!-- Each Computer Section -->
+	  <div style="text-align: right;" id="projects">
+		<h3>Total : {{filtered.length}} Computers</h3>
+	  </div>
 		<table>
 			<tr>
 				<td style="width: 100px;"><b>Type</b></td>
@@ -150,19 +101,72 @@
 				<td style="width: 150px;"><b>Last Update</b></td>
 			</tr>
 		</table>
-		<div class="" >
-			<table id="resultTable" align="center" ng-repeat="tv in tvs | filter:$ctrl.query as filtered ">
-				<tr id="">
-					<td style="width: 100px;">{{c.type}}</td>
-					<td style="width: 100px;">{{c.brand}}</td>
-					<td style="width: 150px;">{{c.previous}}</td>
-					<td style="width: 150px;">{{c.location}}</td>
-					<td style="width: 150px;">{{c.campus}}</td>
-					<td style="width: 200px;">{{c.name}}</td>
+		<table id="computerTable" align="center" ng-repeat="c in pcs | filter:$ctrl.query as filtered ">
+			<tr id="">
+				<td style="width: 100px;">{{c.type}}</td>
+				<td style="width: 100px;">{{c.brand}}</td>
+				<td style="width: 150px;">{{c.previous}}</td>
+				<td style="width: 150px;">{{c.location}}</td>
+				<td style="width: 150px;">{{c.campus}}</td>
+				<td style="width: 200px;">{{c.name}}</td>
 
+				<td style="width: 150px;">{{c.user}}</td>
+				<td id="updateDate">{{c.date}}</td>
+				<td style="float: right">
+					<!-- Google Material Design Icons -->
+					<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
+					<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
+					<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+				</td>
+				<td style="float: right;">
+					<form action="./swap" methos="post">
+						<input id="stockId" type="text" style="width: 70px; height: 25px;" name="id" value={{c.id}} readonly>
+						<input type="text" style="width: 70px; height: 25px;" name="nextId" placeholder="To...">
+						<button type="submit" class="button_swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- Tv Set -->
+	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
+		<!-- Each Computer Section -->
+		<div style="text-align: right;" id="projects">
+			<h3>Total : {{filtered.length}} Tv</h3>
+		</div>
+		<table>
+			<tr>
+				<td style="width: 100px;"><b>S/N</b></td>
+				<td style="width: 100px;"><b>Type</b></td>
+				<td style="width: 100px;"><b>Brand</b></td>
+				<td style="width: 150px;"><b>Previous</b></td>
+				<td style="width: 150px;"><b>Location</b></td>
+				<td style="width: 150px;"><b>Campus</b></td>
+				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Last Update</b></td>
+			</tr>
+		</table>
+		<div class="" >
+			<table id="tvTable" align="center" ng-repeat="tv in tvs | filter:$ctrl.query as filtered ">
+				<tr id="">
+					<td style="width: 100px;">{{tv.id}}</td>
+					<td style="width: 100px;">{{tv.type}}</td>
+					<td style="width: 100px;">{{tv.brand}}</td>
+					<td style="width: 150px;">{{tv.previous}}</td>
+					<td style="width: 150px;">{{tv.location}}</td>
+					<td style="width: 150px;">{{tv.campus}}</td>
 					<td style="width: 150px;">{{c.user}}</td>
-					<td id="updateDate">{{c.date}}</td>
+					<td id="updateDate">{{c.updatedate}}</td>
 				</tr>
+				<td style="float: right">
+					<!-- Google Material Design Icons -->
+					<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
+					<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
+					<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+				</td>
 			</table>
 		</div>
 	</div>
@@ -293,9 +297,9 @@
   var app = angular.module("myComputerList", []);
   app.controller("myCtrl", function($scope) {
 	  $scope.master = {};
-	  $scope.pcs= ${list};
-	  $scope.garage= ${garage};
-	  $scope.tvs = ${tv};
+	  $scope.pcs= ${computers};
+/*	  $scope.garage= ${garage};
+	  $scope.tvs = ${tv};*/
 
 	  $scope.campus = ["Market", "Kent"];
 	  $scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",

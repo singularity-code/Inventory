@@ -27,7 +27,7 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 
 	public DaoComputerJsonImp() {
 		DAO_COMPUTER_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "mother_computer.json";
-        DAO_TV_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "mother_tv.json";
+		DAO_TV_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "mother_tv.json";
 		DAO_GARAGE_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "computers_garage.json"; 
 
 		try {
@@ -57,21 +57,21 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 		return comList;
 	}
 
-    private List<Tv> readTvJson(String path) throws ParseException {
-        try {
-            Object obj = parser.parse(new FileReader(path));
-            String arrStd = obj.toString();
+	private List<Tv> readTvJson(String path) throws ParseException {
+		try {
+			Object obj = parser.parse(new FileReader(path));
+			String arrStd = obj.toString();
 
-            tvList = (new Gson()).fromJson(arrStd, new TypeToken<List<Tv>>() {
-            }.getType());
-            System.out.println("Tv List :" + tvList.size());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return tvList;
-    }
+			tvList = (new Gson()).fromJson(arrStd, new TypeToken<List<Tv>>() {
+			}.getType());
+			System.out.println("Tv List :" + tvList.size());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return tvList;
+	}
 	
 	private List<Computer> readGarageJson(String path) throws ParseException {
 		try {
@@ -80,7 +80,7 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 
 			garageList = (new Gson()).fromJson(arrStd2, new TypeToken<List<Computer>>() {
 			}.getType());
-            System.out.println("Garage List :" + garageList.size());
+			System.out.println("Garage List :" + garageList.size());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -118,9 +118,9 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 	}
 
 	@Override
-    public List<Tv> getAllTv() throws ParseException {
-        return tvList;
-    }
+	public List<Tv> getAllTv() throws ParseException {
+		return tvList;
+	}
 
 	@Override
 	public List<Computer> getAllComputers() throws ParseException {
@@ -147,7 +147,6 @@ public class DaoComputerJsonImp implements DaoComputerJsonInterface {
 	public boolean create(Computer computer) {
 		boolean b = comList.add(computer);
 		return b ? writeJson() : false;
-
 	}
 
 	/* TODO: Add Sorting function to list using interface later */

@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.dongyeop.okcomputer.dto.Tv;
+import com.dongyeop.okcomputer.service.GenericMaterialService;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +28,9 @@ public class StockManagementController {
 	// StockService is defined in Bean Config
 	@Autowired
 	private GenericComputerService computerService;
+	@Autowired
+	private GenericMaterialService materialService;
 
-	@RequestMapping("/welcome")
-	public String doWelcome(Model model) {
-		model.addAttribute("list", computerService.getWelcomeMessage("Dongyeop"));
-		return "angular";
-	}
-	
 	@RequestMapping("/auth")
 	public String auth(Model model) {
 		return "auth";
@@ -40,9 +38,9 @@ public class StockManagementController {
 	
 	@RequestMapping("/")
 	public String getLists(Model model) throws ParseException {
-		model.addAttribute("list", toJson(computerService.getLists()));
-		model.addAttribute("garage", toJson(computerService.getGarageLists()));
-		model.addAttribute("tv", toJson(computerService.getTvLists()));
+		model.addAttribute("computers", toJson(materialService.getLists()));
+		//model.addAttribute("garage", toJson(computerService.getGarageLists()));
+		//model.addAttribute("tv", toJson(computerService.getTvLists()));
 		System.out.println("JSON LOADED");
 		return "index_computer";
 	}
@@ -52,8 +50,8 @@ public class StockManagementController {
 		return "create_view";
 	}
 	
-	@RequestMapping("/create")
-	public ModelAndView create(Model model,
+	@RequestMapping("/create_computer")
+	public ModelAndView createComputer(Model model,
 						@RequestParam("id") String id,
 						@RequestParam("campus") String campus,
 						@RequestParam("location") String location,
@@ -86,6 +84,25 @@ public class StockManagementController {
 		Computer computer = new Computer(id, date, campus, location, name, ip, type,  domain, role, brand, comModel, serialNumber, productNumber, os,
 				 license, machineOnly, status, officeActive, bitDef,  cpu, memory, bios,  purchaseDate, user, previous);
 		computerService.create(computer);
+		return new ModelAndView(redirectUrl);
+	}
+	@RequestMapping("/create_tv")
+	public ModelAndView createTv(Model model,
+							@RequestParam("id") String id,
+							@RequestParam("campus") String campus,
+							@RequestParam("location") String location,
+							@RequestParam("type") String type,
+							@RequestParam("brand") String brand,
+							@RequestParam("brand") String user,
+							@RequestParam("brand") String previous,
+							@RequestParam("previous") String comment) {
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date now = Calendar.getInstance().getTime();
+		String date = dateFormat.format(now);
+
+		Tv tv = new Tv(id, type, brand, user, previous, campus, location, comment, date);
+		//materialService.createTv(tv);
 		return new ModelAndView(redirectUrl);
 	}
 	

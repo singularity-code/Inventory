@@ -1,4 +1,4 @@
-package com.dongyeop.okcomputer.dao;
+package com.dongyeop.okcomputer.dao_database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
