@@ -298,8 +298,8 @@
   app.controller("myCtrl", function($scope) {
 	  $scope.master = {};
 	  $scope.pcs= ${computers};
-/*	  $scope.garage= ${garage};
-	  $scope.tvs = ${tv};*/
+	  $scope.garage= ${garage};
+	  $scope.tvs = ${tvs};
 
 	  $scope.campus = ["Market", "Kent"];
 	  $scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",

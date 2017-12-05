@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.dongyeop.okcomputer.dto.Tv;
-import com.dongyeop.okcomputer.service.GenericMaterialService;
+import com.dongyeop.okcomputer.service.MaterialServiceInterface;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class StockManagementController {
 	@Autowired
 	private GenericComputerService computerService;
 	@Autowired
-	private GenericMaterialService materialService;
+	private MaterialServiceInterface materialService;
 
 	@RequestMapping("/auth")
 	public String auth(Model model) {
@@ -38,9 +38,9 @@ public class StockManagementController {
 	
 	@RequestMapping("/")
 	public String getLists(Model model) throws ParseException {
-		model.addAttribute("computers", toJson(materialService.getLists()));
-		//model.addAttribute("garage", toJson(computerService.getGarageLists()));
-		//model.addAttribute("tv", toJson(computerService.getTvLists()));
+		model.addAttribute("computers", toJson(materialService.getComputerList()));
+		model.addAttribute("garage", toJson(computerService.getGarageLists()));
+		model.addAttribute("tvs", toJson(materialService.getTvList()));
 		System.out.println("JSON LOADED");
 		return "index_computer";
 	}

@@ -3,22 +3,42 @@ package com.dongyeop.okcomputer.service;
 import com.dongyeop.okcomputer.dao.DaoComputerJsonInterface;
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
 import com.dongyeop.okcomputer.dto.Computer;
+import com.dongyeop.okcomputer.dto.Tv;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class GeneralMaterialServiceImple implements GenericMaterialService<Object, String> {
+public class GeneralMaterialServiceImple implements MaterialServiceInterface<Object, String> {
 	@Autowired
 	private DaoComputerJsonInterface daoComputer;
 	@Autowired
 	private DaoMaterialInterface daoMaterialComputer;
+	@Autowired
+	private DaoMaterialInterface daoMaterialTv;
+	@Autowired
+	private DaoMaterialInterface daoMaterialGarage;
+
 
 	@Override
-	public Object getLists() throws ParseException {
+	public Object getComputerList() throws ParseException {
 		List<Computer> computers = daoMaterialComputer.getAllMaterials();
 		System.out.println("SERVICE SIZE of Computers : " + computers.size());
 		return computers;
+	}
+
+	@Override
+	public Object getTvList() throws ParseException {
+		List<Tv> tvs = daoMaterialTv.getAllMaterials();
+		System.out.println("SERVICE SIZE of Computers : " + tvs.size());
+		return tvs;
+	}
+
+	@Override
+	public Object getGarageList() throws ParseException {
+		List<Tv> tvs = daoMaterialGarage.getAllMaterials();
+		System.out.println("SERVICE SIZE of Computers : " + tvs.size());
+		return tvs;
 	}
 
 	@Override
