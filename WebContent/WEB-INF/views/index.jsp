@@ -15,15 +15,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KOI Mothership v0.1</title>
 <style>
+	body {
+		font-family: "Lato", sans-serif;
+	}
 	table {
-		border: 0;
+		border: none;
 		width: 100%;
 	}
 	table caption {
 		font-size: 1.3em;
 	}
 	table thead {
-		border: none;
 		clip: rect(0 0 0 0);
 		height: 1px;
 		margin: -1px;
@@ -33,7 +35,7 @@
 		width: 1px;
 	}
 	table tr {
-		border-bottom: 3px solid #ddd;
+		border-bottom: 1px solid slategrey;
 		display: block;
 		margin-bottom: .325em;
 	}
@@ -56,6 +58,12 @@
 	table td:last-child {
 		border-bottom: 0;
 	}
+	.center {
+		margin: auto;
+		width: 95%;
+/*		border: 0.5px solid lightgrey;*/
+		padding: 10px;
+	}
 </style>
 </head>
 
@@ -71,21 +79,23 @@
 		<a ng-click="setTab(garage)" class="w3-bar-item w3-button">IT Garage</a>
 	</div>
 	<p>
-	<div align="center">
-	<input type="search" id="search" placeholder="Say Anything..." width="60%" ng-model="$ctrl.query"/>
-	<button class="button_small" ng-click="setTab(1)">Search</button>
-	<button class="button_small" onclick="myFunction()" >Clear</button></span>
-		<a ng-click="setTab('create-computer')" class="w3-bar-item w3-button">Create</a>
-		<a ng-click="setTab(garage)" class="w3-bar-item w3-button">Garage</a>
+	<div align="center" style="margin-bottom: 15px;">
+	<input type="search" id="search" placeholder="Say Anything..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
+	<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
+	<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button></span>
+		<a ng-click="setTab('create-computer')">Create</a>
+		<a ng-click="setTab(garage)">Garage</a>
 	<!-- Float links to the right. Hide them on small screens -->
 	</div>
   </div>
 </div>
 <!-- Menu Contents -->
-<div class="col-md-8" >
-	<!-- Set 1 -->
+<div class="center" >
+	<!-- Set Computer -->
 	<div ng-show="isSet('it-computer')" style="margin:auto;width:95%">
-	 <!-- Each Computer Section -->
+		<div style="text-align: right;" id="projects">
+			<h3>Total : {{pcs.length}} Computers Result : {{filtered.length}} Computers</h3>
+		</div>
 		<table>
 			<tr>
 				<td style="width: 100px;"><b>Type</b></td>
@@ -96,34 +106,33 @@
 				<td style="width: 200px;"><b>PC Name</b></td>
 				<td style="width: 150px;"><b>User</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
+				<td></td>
 			</tr>
 		</table>
-		<div style="text-align: right;" id="projects">
-			<h3>Total : {{pcs.length}} Computers Result : {{filtered.length}} Computers</h3>
-		</div>
-		<table id="computerTable" align="center" ng-repeat="c in pcs | filter:$ctrl.query as filtered ">
-			<tr id="">
+		<table id="computerTable" align="center" ng-repeat="c in pcs | filter:$ctrl.query as filtered">
+			<tr>
 				<td style="width: 100px;">{{c.type}}</td>
 				<td style="width: 100px;">{{c.brand}}</td>
 				<td style="width: 150px;">{{c.previous}}</td>
 				<td style="width: 150px;">{{c.location}}</td>
 				<td style="width: 150px;">{{c.campus}}</td>
 				<td style="width: 200px;">{{c.name}}</td>
-
-				<td style="width: 150px;">{{c.user}}</td>
-				<td id="updateDate">{{c.date}}</td>
-				<td style="float: right">
+				<td style="width: 100px;">{{c.user}}</td>
+				<td id="updateDate" style="width: 300px;">{{c.date}}</td>
+				<td style="width: 150px;">
 					<!-- Google Material Design Icons -->
 					<a href="./update_view_KoiMaterial?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+<%--
 					<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
 					<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
+--%>
 					<a href="./delete_computer?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
-				<td style="float: right;">
+				<td style="width: 250px;">
 					<form action="./swap" methos="post">
 						<input id="stockId" type="text" style="width: 70px; height: 25px;" name="id" value={{c.id}} readonly>
 						<input type="text" style="width: 70px; height: 25px;" name="nextId" placeholder="To...">
-						<button type="submit" class="button_swap"><i class="material-icons w3-xxlarge">swap_horiz</i></button>
+						<button type="submit" class="button_swap">SWITCH</button>
 					</form>
 				</td>
 			</tr>
