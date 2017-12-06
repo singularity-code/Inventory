@@ -13,22 +13,31 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<mvc:resources mapping="/resources/**" location="/resources/"/>
 
-    <bean id="daoMaterialComputer"
-          class="com.dongyeop.okcomputer.dao.DaoMaterialComputerImple">
-    </bean>
-    <bean id="daoMaterialTv"
-          class="com.dongyeop.okcomputer.dao.DaoMaterialTvImple">
-    </bean>
-    <bean id="daoMaterialGarage"
-          class="com.dongyeop.okcomputer.dao.DaoMaterialGarageImple">
-    </bean>
+	<bean id="daoMaterialComputer"
+		  class="com.dongyeop.okcomputer.dao.DaoMaterialComputerImple">
+	</bean>
+	<bean id="daoMaterialTv"
+		  class="com.dongyeop.okcomputer.dao.DaoMaterialTvImple">
+	</bean>
+	<bean id="daoMaterialTelephone"
+		  class="com.dongyeop.okcomputer.dao.DaoMaterialTelephoneImple">
+	</bean>
+	<bean id="daoMaterialFridge"
+		  class="com.dongyeop.okcomputer.dao.DaoMaterialFridgeImple">
+	</bean>
+	<bean id="daoMaterialSwitch"
+		  class="com.dongyeop.okcomputer.dao.DaoMaterialSwitchImple">
+	</bean>
+	<bean id="daoMaterialGarage"
+		  class="com.dongyeop.okcomputer.dao.DaoMaterialGarageImple">
+	</bean>
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/WEB-INF/views/"></property>
 	<property name="suffix" value=".jsp"></property>
 	</bean>
-    <bean id="materialService"
-          class="com.dongyeop.okcomputer.service.GeneralMaterialServiceImple">
-    </bean>
+	<bean id="materialService"
+		  class="com.dongyeop.okcomputer.service.GeneralMaterialServiceImple">
+	</bean>
 
 </beans>

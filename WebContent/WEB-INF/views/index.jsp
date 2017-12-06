@@ -178,6 +178,45 @@
 			</table>
 		</div>
 	</div>
+	<!-- Telephone Set -->
+	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
+		<div style="text-align: right;">
+			<h3>Total : {{filtered.length}} Tv</h3>
+		</div>
+		<table>
+			<tr>
+				<td style="width: 100px;"><b>S/N</b></td>
+				<td style="width: 100px;"><b>Type</b></td>
+				<td style="width: 100px;"><b>Brand</b></td>
+				<td style="width: 150px;"><b>Previous</b></td>
+				<td style="width: 150px;"><b>Location</b></td>
+				<td style="width: 150px;"><b>Campus</b></td>
+				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Last Update</b></td>
+				<td></td>
+			</tr>
+		</table>
+		<div class="" >
+			<table id="tvTable" align="center" ng-repeat="phone in telephones | filter:$ctrl.query as filtered ">
+				<tr id="">
+					<td style="width: 100px;">{{phone.id}}</td>
+					<td style="width: 100px;">{{phone.type}}</td>
+					<td style="width: 100px;">{{phone.brand}}</td>
+					<td style="width: 150px;">{{phone.previous}}</td>
+					<td style="width: 150px;">{{phone.location}}</td>
+					<td style="width: 150px;">{{phone.campus}}</td>
+					<td style="width: 150px;">{{phone.user}}</td>
+					<td id="updateDate" style="width: 250px;">{{phone.updatedate}}</td>
+					<td style="width: 150px;">
+						<!-- Google Material Design Icons -->
+						<a href="./update_view_KoiMaterial?id={{phone.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="./delete_phone?id={{phone.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
 	<!-- Set 2 -->
 	<div ng-show="isSet('create-computer')">
 		<!-- Hearder -->

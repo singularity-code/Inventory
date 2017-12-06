@@ -1,20 +1,19 @@
 package com.dongyeop.okcomputer.service;
 
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
-import com.dongyeop.okcomputer.dto.Computer;
-import com.dongyeop.okcomputer.dto.Tv;
+import com.dongyeop.okcomputer.dto.*;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class GeneralMaterialServiceImple implements MaterialServiceInterface<Object, String> {
-	@Autowired
-	private DaoMaterialInterface daoMaterialComputer;
-	@Autowired
-	private DaoMaterialInterface daoMaterialTv;
-	@Autowired
-	private DaoMaterialInterface daoMaterialGarage;
+	@Autowired private DaoMaterialInterface daoMaterialComputer;
+	@Autowired private DaoMaterialInterface daoMaterialTv;
+	@Autowired private DaoMaterialInterface daoMaterialGarage;
+	@Autowired private DaoMaterialInterface daoMaterialFridge;
+	@Autowired private DaoMaterialInterface daoMaterialSwitch;
+	@Autowired private DaoMaterialInterface daoMaterialTelephone;
 
 
 	@Override
@@ -39,8 +38,61 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	}
 
 	@Override
+	public Object getTelephoneList() throws ParseException {
+		List<Telephone> telephones = daoMaterialTelephone.getAllMaterials();
+		System.out.println("SERVICE SIZE of Garage : " + telephones.size());
+		return telephones;
+	}
+
+	@Override
+	public Object getSwitchList() throws ParseException {
+		List<Switch> switches = daoMaterialSwitch.getAllMaterials();
+		System.out.println("SERVICE SIZE of Garage : " + switches.size());
+		return switches;
+	}
+
+	@Override
+	public Object getFridgeList() throws ParseException {
+		List<Fridge> fridges = daoMaterialFridge.getAllMaterials();
+		System.out.println("SERVICE SIZE of Garage : " + fridges.size());
+		return fridges;
+	}
+
+	@Override
 	public boolean createComputer(Object object)  {
 		if(object instanceof Computer) {
+			daoMaterialComputer.create(object);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createTv(Object object) {
+		if(object instanceof Tv) {
+			daoMaterialComputer.create(object);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createTelephone(Object object) {
+		if(object instanceof Telephone) {
+			daoMaterialComputer.create(object);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createSwitch(Object object) {
+		if(object instanceof Switch) {
+			daoMaterialComputer.create(object);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createFridge(Object object) {
+		if(object instanceof Fridge) {
 			daoMaterialComputer.create(object);
 		}
 		return false;
@@ -52,6 +104,21 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 
 	public boolean deleteTv(String id) throws ParseException {
 		return daoMaterialTv.delete(id);
+	}
+
+	@Override
+	public boolean deleteTelephone(String id) throws ParseException  {
+		return daoMaterialTelephone.delete(id);
+	}
+
+	@Override
+	public boolean deleteSwitch(String id) throws ParseException  {
+		return daoMaterialSwitch.delete(id);
+	}
+
+	@Override
+	public boolean deleteFridge(String id) throws ParseException  {
+		return daoMaterialFridge.delete(id);
 	}
 
 	@Override
@@ -70,8 +137,43 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	}
 
 	@Override
+	public Object getTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.getMaterial(id);
+	}
+
+	@Override
+	public Object getSwitch(String id) throws ParseException {
+		return daoMaterialSwitch.getMaterial(id);
+	}
+
+	@Override
+	public Object getFridge(String id) throws ParseException {
+		return daoMaterialFridge.getMaterial(id);
+	}
+
+	@Override
 	public boolean updateComputer(Object object) throws ParseException {
 		return daoMaterialComputer.update(object);
+	}
+
+	@Override
+	public boolean updateTv(Object object)throws ParseException  {
+		return daoMaterialTv.update(object);
+	}
+
+	@Override
+	public boolean updateTelephone(Object object) throws ParseException {
+		return daoMaterialTelephone.update(object);
+	}
+
+	@Override
+	public boolean updateSwitch(Object object) throws ParseException {
+		return daoMaterialSwitch.update(object);
+	}
+
+	@Override
+	public boolean updateFridge(Object object) throws ParseException {
+		return daoMaterialFridge.update(object);
 	}
 
 	@Override
