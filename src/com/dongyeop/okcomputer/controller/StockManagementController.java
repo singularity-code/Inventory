@@ -32,6 +32,9 @@ public class StockManagementController {
 		model.addAttribute("computers", toJson(materialService.getComputerList()));
 		model.addAttribute("garage", toJson(materialService.getGarageList()));
 		model.addAttribute("tvs", toJson(materialService.getTvList()));
+		model.addAttribute("telephones", toJson(materialService.getTelephoneList()));
+		model.addAttribute("switches", toJson(materialService.getSwitchList()));
+		model.addAttribute("fridges", toJson(materialService.getFridgeList()));
 		System.out.println("JSON LOADED");
 		return "index";
 	}

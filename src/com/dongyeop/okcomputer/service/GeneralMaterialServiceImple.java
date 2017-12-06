@@ -40,21 +40,21 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public Object getTelephoneList() throws ParseException {
 		List<Telephone> telephones = daoMaterialTelephone.getAllMaterials();
-		System.out.println("SERVICE SIZE of Garage : " + telephones.size());
+		System.out.println("SERVICE SIZE of Telephone : " + telephones.size());
 		return telephones;
 	}
 
 	@Override
 	public Object getSwitchList() throws ParseException {
 		List<Switch> switches = daoMaterialSwitch.getAllMaterials();
-		System.out.println("SERVICE SIZE of Garage : " + switches.size());
+		System.out.println("SERVICE SIZE of Switch : " + switches.size());
 		return switches;
 	}
 
 	@Override
 	public Object getFridgeList() throws ParseException {
 		List<Fridge> fridges = daoMaterialFridge.getAllMaterials();
-		System.out.println("SERVICE SIZE of Garage : " + fridges.size());
+		System.out.println("SERVICE SIZE of Fridge : " + fridges.size());
 		return fridges;
 	}
 
