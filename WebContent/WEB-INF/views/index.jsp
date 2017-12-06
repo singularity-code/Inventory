@@ -65,6 +65,10 @@
 		padding: 10px;
 		text-align:center;
 	}
+	button {
+		width: 80px;
+		height: 30px;
+	}
 </style>
 </head>
 
@@ -76,12 +80,12 @@
 	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
 	  <span style="text-align: center">Mothership</span>
 	<div class="" style="text-align: center">
-		<a ng-click="setTab('it-computer')">Computer</a>
-		<a ng-click="setTab('class-tv')">Tv</a>
-		<a ng-click="setTab('it-telephone')">Telephone</a>
-		<a ng-click="setTab('it-switch')">Switch</a>
-		<a ng-click="setTab('staff-fridge')">Fridge</a>
-		<a ng-click="setTab(garage)">IT Garage</a>
+		<button ng-click="setTab('it-computer')">Computer</button>
+		<button ng-click="setTab('class-tv')">Tv</button>
+		<button ng-click="setTab('it-telephone')">Telephone</button>
+		<button ng-click="setTab('it-switch')">Switch</button>
+		<button ng-click="setTab('staff-fridge')">Fridge</button>
+		<button ng-click="setTab(garage)">Garage</button>
 	</div>
 	<p>
 	<div align="center" style="margin-bottom: 15px;">
@@ -265,8 +269,8 @@
 		<table>
 			<tr>
 				<td style="width: 100px;"><b>S/N</b></td>
-				<td style="width: 100px;"><b>Type</b></td>
-				<td style="width: 100px;"><b>Brand</b></td>
+				<td style="width: 150px;"><b>Type</b></td>
+				<td style="width: 200px;"><b>Brand</b></td>
 				<td style="width: 150px;"><b>Previous</b></td>
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
@@ -279,8 +283,8 @@
 			<table id="fridgeTable" align="center" ng-repeat="fridge in fridges | filter:$ctrl.query as filtered ">
 				<tr id="">
 					<td style="width: 100px;">{{fridge.id}}</td>
-					<td style="width: 100px;">{{fridge.type}}</td>
-					<td style="width: 100px;">{{fridge.brand}}</td>
+					<td style="width: 150px;">{{fridge.type}}</td>
+					<td style="width: 200px;">{{fridge.brand}}</td>
 					<td style="width: 150px;">{{fridge.previous}}</td>
 					<td style="width: 150px;">{{fridge.location}}</td>
 					<td style="width: 150px;">{{fridge.campus}}</td>
