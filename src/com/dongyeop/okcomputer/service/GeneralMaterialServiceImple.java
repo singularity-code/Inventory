@@ -30,30 +30,46 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public Object getTvList() throws ParseException {
 		List<Tv> tvs = daoMaterialTv.getAllMaterials();
-		System.out.println("SERVICE SIZE of Computers : " + tvs.size());
+		System.out.println("SERVICE SIZE of Tv : " + tvs.size());
 		return tvs;
 	}
 
 	@Override
 	public Object getGarageList() throws ParseException {
-		List<Tv> tvs = daoMaterialGarage.getAllMaterials();
-		System.out.println("SERVICE SIZE of Computers : " + tvs.size());
-		return tvs;
+		List<Computer> garage = daoMaterialGarage.getAllMaterials();
+		System.out.println("SERVICE SIZE of Garage : " + garage.size());
+		return garage;
 	}
 
 	@Override
-	public boolean create(Object o)  {
+	public boolean createComputer(Object object)  {
+		if(object instanceof Computer) {
+			daoMaterialComputer.create(object);
+		}
 		return false;
 	}
 
-	@Override
-	public boolean delete(Object o) throws ParseException {
-		return false;
+	public boolean deleteComputer(String id) throws ParseException {
+		return daoMaterialComputer.delete(id);
+	}
+
+	public boolean deleteTv(String id) throws ParseException {
+		return daoMaterialTv.delete(id);
 	}
 
 	@Override
-	public Object getMaterial(String s) throws ParseException {
+	public Object getMaterial(String id) throws ParseException {
 		return null;
+	}
+
+	@Override
+	public Object getComputer(String id) throws ParseException {
+		return daoMaterialComputer.getMaterial(id);
+	}
+
+	@Override
+	public Object getTv(String id) throws ParseException {
+		return daoMaterialTv.getMaterial(id);
 	}
 
 	@Override

@@ -2,10 +2,7 @@ package com.dongyeop.okcomputer.dao;
 
 import com.dongyeop.okcomputer.dto.Computer;
 import com.dongyeop.profile.ApplicationType;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import java.util.List;
 
 public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 
@@ -21,7 +18,7 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 		}
 	}
 	public boolean swap(Computer cc1, Computer cc2) throws ParseException {
-		Computer c1 = null;
+/*		Computer c1 = null;
 		Computer c2 = null;
 
 		for (Computer c : (List<Computer>)objectList) {
@@ -65,7 +62,8 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 		c2.setRole(role);
 		c2.setUpdatedate(c2.generateDate());
 
-		return writeJson();
+		return writeJson();*/
+		return false;
 	}
 	public boolean move(Computer computer) throws ParseException {
 		objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

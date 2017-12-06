@@ -16,41 +16,41 @@
 <h2 align="center">Editor</h2>
 	<div style="margin:auto;width:80%">
 	  <form novalidate class="simple-form" action="./update" method="post" name="form">
-	  	<input type="text" name="id" readonly="readonly" value="${computer.id}">
-		<input type="text" name="date" readonly="readonly" value="${computer.date}">
+	  	<input type="text" name="id" readonly="readonly" value="${koiMaterial.id}">
+		<input type="text" name="date" readonly="readonly" value="${koiMaterial.date}">
 		
 		Campus
-		<select selected="${computer.campus}" name="campus">
+		<select selected="${koiMaterial.campus}" name="campus">
 		<option ng-repeat="x in campus">{{x}}</option></select>  
 		
 		Previous
-		<select selected="${computer.previous}" name="previous" required>
+		<select selected="${koiMaterial.previous}" name="previous" required>
 		<option ng-repeat="x in location">{{x}}</option></select>
 		
 		Location
-		<select selected="${computer.location}" name="location" required>
+		<select selected="${koiMaterial.location}" name="location" required>
 		<option ng-repeat="x in location">{{x}}</option></select>
 				
 				Type	  	
-	  			<select selected="${computer.type}" name="type">
+	  			<select selected="${koiMaterial.type}" name="type">
 			    <option value="Desktop">Desktop</option>
 			    <option value="Laptop">Laptop</option>
 			    </select>
 			    
 			    Domain
-			    <select selected="${computer.domain}" name="domain">
+			    <select selected="${koiMaterial.domain}" name="domain">
 			    <option value="KOI">KOI</option>
 			    <option value="STDKOI">STDKOI</option>
 			    </select>	  	
 				
 				Role
-			    <select  selected="${computer.role}" name="role">
+			    <select  selected="${koiMaterial.role}" name="role">
 			    <option value="Staff">Staff</option>
 			    <option value="Student">Student</option>
 			    </select>
 				
 				OS
-			    <select selected="${computer.os}" name="os">
+			    <select selected="${koiMaterial.os}" name="os">
 			    <option value="Win7">Win7</option>
 			    <option value="Win10 Home">Win10 Home</option>
 			    <option value="Win10 Pro">Win10 Pro</option>
@@ -58,62 +58,62 @@
 			    </select>		  
 	    
 	    		License
-			    <select selected="${computer.license}" name="license">
+			    <select selected="${koiMaterial.license}" name="license">
 			    <option value="Active">Active</option>
 			    <option value="Inactive">Inactive</option>
 			    </select>
 			    
 			    Machine Only
-			    <select selected="${computer.machineOnly}" name="machineOnly">
+			    <select selected="${koiMaterial.machineOnly}" name="machineOnly">
 			    <option value="Yes">Yes</option>
 			    <option value="No">No</option>
 			    </select>
 			    
 			    Status
-			    <select selected="${computer.status}" name="status">
+			    <select selected="${koiMaterial.status}" name="status">
 			    <option value="Active">Active</option>
 			    <option value="Inactive">Inactive</option>
 			    </select>
 			    
 			    Office Activation 
-			    <select selected="${computer.officeActive}" name="officeActive">
+			    <select selected="${koiMaterial.officeActive}" name="officeActive">
 			    <option value="Active">Active</option>
 			    <option value="Inactive">Inactive</option>
 			    </select>
 			    
 			    Bit Defender
-			    <select selected="${computer.bitDef}" name="bitDef">
+			    <select selected="${koiMaterial.bitDef}" name="bitDef">
 			    <option value="Active">Active</option>
 			    <option value="Inactive">Inactive</option>
 			    </select>
 			    
 			    Brand
-			    <select selected="${computer.brand}" name="brand">
+			    <select selected="${koiMaterial.brand}" name="brand">
 			    <option ng-repeat="x in brand">{{x}}</option></select>
 
 				CPU
-		   		<select selected="${computer.cpu}" name="cpu">
+		   		<select selected="${koiMaterial.cpu}" name="cpu">
 		   		<option ng-repeat="x in cpu">{{x}}</option></select>
 		   		
 		   		Memory
-		   		<select selected="${computer.memory}" name="memory">
+		   		<select selected="${koiMaterial.memory}" name="memory">
 		   		<option ng-repeat="x in memory">{{x}}</option></select>
 
-				Computer Name<input type="text" value="${computer.name}" name="name" required/>
-				User<input type="text" value="${computer.user}" name="user" required/>
-			    IP<input type="text" value="${computer.ip}" name="ip" required/>    
-			    Model<input type="text" value="${computer.model}"name="comModel" required/>
-			    Serial No.<input type="text" value="${computer.serialNumber}"name="serialNumber" required/>
-			    Product No.<input type="text" value="${computer.productNumber}" name="productNumber" required/>
-			    Bios<input type="text" value="${computer.bios}" name="bios" required/>		       
-				Purchase Date<input type="text" value="${computer.purchaseDate}" name="purchaseDate" required/> 	 
+				koiMaterial Name<input type="text" value="${koiMaterial.name}" name="name" required/>
+				User<input type="text" value="${koiMaterial.user}" name="user" required/>
+			    IP<input type="text" value="${koiMaterial.ip}" name="ip" required/>
+			    Model<input type="text" value="${koiMaterial.model}"name="comModel" required/>
+			    Serial No.<input type="text" value="${koiMaterial.serialNumber}"name="serialNumber" required/>
+			    Product No.<input type="text" value="${koiMaterial.productNumber}" name="productNumber" required/>
+			    Bios<input type="text" value="${koiMaterial.bios}" name="bios" required/>
+				Purchase Date<input type="text" value="${koiMaterial.purchaseDate}" name="purchaseDate" required/>
 		   		<span style="color:red" ng-show="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid || 
 		   										form.serialNumber.$invalid || form.productNumber.$invalid || form.bios.$invalid || 
 		   										form.purchaseDate.$invalid">!!! All details are required !!!</span>	 
 				<p align="center">
 				<a href="./" class="button_back">Back</a>
 			    <input class="button_mid" type="button" ng-click="reset()" value="Reset" />
-			    <input class="button_mid" type="submit" ng-click="update(computer)" 
+			    <input class="button_mid" type="submit" ng-click="update(koiMaterial)"
 			    	   ng-disabled="form.name.$invalid || fomr.user.$invalid || form.ip.$invalid || form.comModel.$invalid || form.serialNumber.$invalid || 
 			    	   form.productNumber.$invalid || form.bios.$invalid || form.purchaseDate.$invalid" value="Apply"></input>
 			  	</p>
@@ -154,13 +154,13 @@
 		  			   "8GB",
 		  			   "16GB",
 		  			   "8GB DDR4 2400Mhz"];
-	  $scope.update = function(computer) {
-	  	$scope.master = angular.copy(computer);
+	  $scope.update = function(koiMaterial) {
+	  	$scope.master = angular.copy(koiMaterial);
 	  	lastEdit();
 	  };
 	  
       $scope.reset = function() {
-    	  $scope.computer = angular.copy($scope.master);
+    	  $scope.koiMaterial = angular.copy($scope.master);
       };
        
       $scope.getRandomSpan = function(){

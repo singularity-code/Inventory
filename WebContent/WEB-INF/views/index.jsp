@@ -86,9 +86,6 @@
 	<!-- Set 1 -->
 	<div ng-show="isSet('it-computer')" style="margin:auto;width:95%">
 	 <!-- Each Computer Section -->
-	  <div style="text-align: right;" id="projects">
-		<h3>Total : {{filtered.length}} Computers</h3>
-	  </div>
 		<table>
 			<tr>
 				<td style="width: 100px;"><b>Type</b></td>
@@ -101,6 +98,9 @@
 				<td style="width: 150px;"><b>Last Update</b></td>
 			</tr>
 		</table>
+		<div style="text-align: right;" id="projects">
+			<h3>Total : {{pcs.length}} Computers Result : {{filtered.length}} Computers</h3>
+		</div>
 		<table id="computerTable" align="center" ng-repeat="c in pcs | filter:$ctrl.query as filtered ">
 			<tr id="">
 				<td style="width: 100px;">{{c.type}}</td>
@@ -114,10 +114,10 @@
 				<td id="updateDate">{{c.date}}</td>
 				<td style="float: right">
 					<!-- Google Material Design Icons -->
-					<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./update_view_KoiMaterial?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
 					<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
 					<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
-					<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./delete_computer?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 				<td style="float: right;">
 					<form action="./swap" methos="post">
@@ -133,9 +133,6 @@
 	<!-- Tv Set -->
 	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
 		<!-- Each Computer Section -->
-		<div style="text-align: right;" id="projects">
-			<h3>Total : {{filtered.length}} Tv</h3>
-		</div>
 		<table>
 			<tr>
 				<td style="width: 100px;"><b>S/N</b></td>
@@ -150,6 +147,9 @@
 		</table>
 		<div class="" >
 			<table id="tvTable" align="center" ng-repeat="tv in tvs | filter:$ctrl.query as filtered ">
+				<div style="text-align: right;" id="projects">
+					<h3>Total : {{filtered.length}} Tv</h3>
+				</div>
 				<tr id="">
 					<td style="width: 100px;">{{tv.id}}</td>
 					<td style="width: 100px;">{{tv.type}}</td>
@@ -162,10 +162,10 @@
 				</tr>
 				<td style="float: right">
 					<!-- Google Material Design Icons -->
-					<a href="./update_view?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./update_view_KoiMaterial?id={{tv.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
 					<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
-					<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
-					<a href="./delete?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./move?id={{tv.id}}"><i class="material-icons w3-xlarge">delete</i></a>
+					<a href="./delete_tv?id={{tv.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</table>
 		</div>
@@ -182,7 +182,7 @@
 
 		<!-- Body -->
 		<div>
-			<form novalidate class="simple-form" action="./create" method="post" name="form">
+			<form novalidate class="simple-form" action="./create_computer" method="post" name="form">
 				<input type="text" name="id" readonly="readonly" value={{nextId()}}>
 
 				<select ng-model="computer.campus" name="campus">
@@ -369,7 +369,7 @@
 	  $scope.showConfirm = function(ev) {
 			// Appending dialog to document.body to cover sidenav in docs app
 			var confirm = $mdDialog.confirm()
-				  .title('Would you like to delete your debt?')
+				  .title('Would you like to deleteComputer your debt?')
 				  .textContent('All of the banks have agreed to forgive you your debts.')
 				  .ariaLabel('Lucky day')
 				  .targetEvent(ev)
@@ -388,7 +388,7 @@ function myFunction() {
 	document.getElementById("search").value = "";
 }
 function delConfirm() {
-	console.log(confirm("Are you sure to delete?"));
+	console.log(confirm("Are you sure to deleteComputer?"));
 	return $.confirm("Are you sure?");
 }
 

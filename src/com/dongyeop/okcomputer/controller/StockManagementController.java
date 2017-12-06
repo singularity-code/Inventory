@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.okcomputer.dto.Tv;
 import com.dongyeop.okcomputer.service.MaterialServiceInterface;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -31,18 +32,13 @@ public class StockManagementController {
 	@Autowired
 	private MaterialServiceInterface materialService;
 
-	@RequestMapping("/auth")
-	public String auth(Model model) {
-		return "auth";
-	}
-	
 	@RequestMapping("/")
 	public String getLists(Model model) throws ParseException {
 		model.addAttribute("computers", toJson(materialService.getComputerList()));
 		model.addAttribute("garage", toJson(computerService.getGarageLists()));
 		model.addAttribute("tvs", toJson(materialService.getTvList()));
 		System.out.println("JSON LOADED");
-		return "index_computer";
+		return "index";
 	}
 	
 	@RequestMapping("/create_view")
@@ -84,6 +80,7 @@ public class StockManagementController {
 		Computer computer = new Computer(id, date, campus, location, name, ip, type,  domain, role, brand, comModel, serialNumber, productNumber, os,
 				 license, machineOnly, status, officeActive, bitDef,  cpu, memory, bios,  purchaseDate, user, previous);
 		computerService.create(computer);
+		materialService.createComputer(computer);
 		return new ModelAndView(redirectUrl);
 	}
 	@RequestMapping("/create_tv")
@@ -93,15 +90,14 @@ public class StockManagementController {
 							@RequestParam("location") String location,
 							@RequestParam("type") String type,
 							@RequestParam("brand") String brand,
-							@RequestParam("brand") String user,
-							@RequestParam("brand") String previous,
-							@RequestParam("previous") String comment) {
+							@RequestParam("user") String user,
+							@RequestParam("previous") String previous) {
 
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date now = Calendar.getInstance().getTime();
 		String date = dateFormat.format(now);
 
-		Tv tv = new Tv(id, type, brand, user, previous, campus, location, comment, date);
+		Tv tv = new Tv(id, type, brand, user, previous, campus, location, date);
 		//materialService.createTv(tv);
 		return new ModelAndView(redirectUrl);
 	}
@@ -110,6 +106,23 @@ public class StockManagementController {
 	public String view(Model model, @RequestParam("id") String id) throws ParseException {
 		Object computer = computerService.getComputer(id);
 		model.addAttribute("computer", computer);
+		return "update_view";
+	}
+
+	@RequestMapping("/update_view_KoiMaterial")
+	public String viewKoiMaterial(Model model, @RequestParam("id") String id) throws ParseException {
+		System.out.println("ID : " + id);
+		System.out.println(id.substring(0, 1));
+		Object koiMaterial;
+		if(id.substring(0, 1).equals("H")) {
+			System.out.println("UPDATE TARGET : " + materialService.getComputer(id));
+			koiMaterial = materialService.getComputer(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+		} else if (id.substring(0, 1).equals("E")) {
+			System.out.println("UPDATE TARGET : " + materialService.getTv(id));
+			koiMaterial = materialService.getTv(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+		}
 		return "update_view";
 	}
 	
@@ -155,9 +168,15 @@ public class StockManagementController {
 		return new ModelAndView(redirectUrl);
 	}
 	
-	@RequestMapping("/delete")
-	public ModelAndView delete(Model model, @RequestParam("id") String id) throws ParseException {
-		computerService.delete(id);
+	@RequestMapping("/delete_computer")
+	public ModelAndView deleteComputer(Model model, @RequestParam("id") String id) throws ParseException {
+		materialService.deleteComputer(id);
+		return new ModelAndView(redirectUrl);
+	}
+
+	@RequestMapping("/delete_tv")
+	public ModelAndView deleteTv(Model model, @RequestParam("id") String id) throws ParseException {
+		materialService.deleteTv(id);
 		return new ModelAndView(redirectUrl);
 	}
 	

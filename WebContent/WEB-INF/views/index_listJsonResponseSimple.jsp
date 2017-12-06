@@ -313,7 +313,7 @@
 	  $scope.showConfirm = function(ev) {
 			// Appending dialog to document.body to cover sidenav in docs app
 			var confirm = $mdDialog.confirm()
-				  .title('Would you like to delete your debt?')
+				  .title('Would you like to deleteComputer your debt?')
 				  .textContent('All of the banks have agreed to forgive you your debts.')
 				  .ariaLabel('Lucky day')
 				  .targetEvent(ev)
@@ -332,7 +332,7 @@ function myFunction() {
 	document.getElementById("search").value = "";
 }
 function delConfirm() {
-	console.log(confirm("Are you sure to delete?"));
+	console.log(confirm("Are you sure to deleteComputer?"));
 	return $.confirm("Are you sure?");
 }
 
