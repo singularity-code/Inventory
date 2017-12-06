@@ -63,6 +63,7 @@
 		width: 95%;
 /*		border: 0.5px solid lightgrey;*/
 		padding: 10px;
+		text-align:center;
 	}
 </style>
 </head>
@@ -71,8 +72,9 @@
 <!-- Tab Menu -->
 <!-- Navbar (sit on top) -->
 <div class="">
-  <div class="">
-	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;"><span style="text-align: center">Mothership</span>
+  <div class="center">
+	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
+	  <span style="text-align: center">Mothership</span>
 	<div class="" style="text-align: center">
 		<a ng-click="setTab('it-computer')" class="">Computer</a>
 		<a ng-click="setTab('class-tv')" class="w3-bar-item w3-button">Tv</a>
@@ -138,10 +140,11 @@
 			</tr>
 		</table>
 	</div>
-
 	<!-- Tv Set -->
 	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
-		<!-- Each Computer Section -->
+		<div style="text-align: right;" id="projects">
+			<h3>Total : {{filtered.length}} Tv</h3>
+		</div>
 		<table>
 			<tr>
 				<td style="width: 100px;"><b>S/N</b></td>
@@ -152,13 +155,11 @@
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
+				<td></td>
 			</tr>
 		</table>
 		<div class="" >
 			<table id="tvTable" align="center" ng-repeat="tv in tvs | filter:$ctrl.query as filtered ">
-				<div style="text-align: right;" id="projects">
-					<h3>Total : {{filtered.length}} Tv</h3>
-				</div>
 				<tr id="">
 					<td style="width: 100px;">{{tv.id}}</td>
 					<td style="width: 100px;">{{tv.type}}</td>
@@ -166,27 +167,24 @@
 					<td style="width: 150px;">{{tv.previous}}</td>
 					<td style="width: 150px;">{{tv.location}}</td>
 					<td style="width: 150px;">{{tv.campus}}</td>
-					<td style="width: 150px;">{{c.user}}</td>
-					<td id="updateDate">{{c.updatedate}}</td>
+					<td style="width: 150px;">{{tv.user}}</td>
+					<td id="updateDate" style="width: 250px;">{{tv.updatedate}}</td>
+					<td style="width: 150px;">
+						<!-- Google Material Design Icons -->
+						<a href="./update_view_KoiMaterial?id={{tv.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="./delete_tv?id={{tv.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					</td>
 				</tr>
-				<td style="float: right">
-					<!-- Google Material Design Icons -->
-					<a href="./update_view_KoiMaterial?id={{tv.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="./delete_tv?id={{tv.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
-				</td>
 			</table>
 		</div>
 	</div>
-
 	<!-- Set 2 -->
 	<div ng-show="isSet('create-computer')">
-
 		<!-- Hearder -->
 		<br><br><br>
 		<div class="" id="projects">
 			<h3 class="">Add New Computer</h3>
 		</div>
-
 		<!-- Body -->
 		<div>
 			<form novalidate class="simple-form" action="./create_computer" method="post" name="form">
