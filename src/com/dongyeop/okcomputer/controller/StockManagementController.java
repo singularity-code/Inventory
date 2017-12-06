@@ -184,9 +184,9 @@ public class StockManagementController {
 	public ModelAndView swap(Model model, 
 							@RequestParam("id") String id,
 							@RequestParam("nextId") String nextId) throws ParseException {
-		Computer computer = (Computer) computerService.getComputer(id);
-		Computer nextCom = (Computer) computerService.getComputer(nextId);
-		computerService.swap(computer, nextCom);
+		Computer prev = (Computer) materialService.getComputer(id);
+		Computer next = (Computer) materialService.getComputer(nextId);
+		materialService.swap(prev, next);
 		return new ModelAndView(redirectUrl);
 	}
 	

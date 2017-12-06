@@ -1,8 +1,11 @@
 package com.dongyeop.okcomputer.dao;
 
 import com.dongyeop.okcomputer.dto.Computer;
+import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.profile.ApplicationType;
 import org.json.simple.parser.ParseException;
+
+import java.util.List;
 
 public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 
@@ -17,26 +20,29 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 			e.printStackTrace();
 		}
 	}
-	public boolean swap(Computer cc1, Computer cc2) throws ParseException {
-/*		Computer c1 = null;
-		Computer c2 = null;
 
-		for (Computer c : (List<Computer>)objectList) {
-			if (cc1.getId().equals(c.getId())) {
+/*	public boolean swap(KoiMaterial prev, KoiMaterial next) throws ParseException {
+		KoiMaterial c1 = null;
+		KoiMaterial c2 = null;
+
+		for (KoiMaterial c : objectList) {
+			if (prev.getId().equals(c.getId())) {
+				System.out.println("FOUND : " + c.getId());
 				c1 = c;
 				break;
 			}
 		}
 
-		for (Computer c : (List<Computer>)objectList) {
-			if (cc2.getId().equals(c.getId())) {
+		for (KoiMaterial c : objectList) {
+			if (next.getId().equals(c.getId())) {
+				System.out.println("FOUND : " + c.getId());
 				c2 = c;
 				break;
 			}
 		}
 
 		if (c1 == null || c2 == null) {
-			// logger.info("no computer in computerList");
+			System.out.println("Null");
 			return false;
 		}
 
@@ -44,14 +50,14 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 		String campus = c1.getCampus();
 		String pcName = c1.getName();
 		String user = c1.getUser();
-		String role = c1.getRole();
+		//String role = c1.getRole();
 
 		c1.setPrevious(l + " " + c1.getName());
 		c1.setLocation(c2.getLocation());
 		c1.setCampus(c2.getCampus());
 		c1.setName(c2.getName());
 		c1.setUser(c2.getUser());
-		c1.setRole(c2.getRole());
+		//c1.setRole(c2.getRole());
 		c1.setUpdatedate(c1.generateDate());
 
 		c2.setPrevious(c2.getLocation() + "- " + c2.getName());
@@ -59,12 +65,11 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 		c2.setCampus(campus);
 		c2.setName(pcName);
 		c2.setUser(user);
-		c2.setRole(role);
+		//c2.setRole(role);
 		c2.setUpdatedate(c2.generateDate());
-
-		return writeJson();*/
-		return false;
-	}
+		System.out.println("SWAP SUCCESS");
+		return writeJson();
+	}*/
 	public boolean move(Computer computer) throws ParseException {
 		objectList = readJson(DAO_OBJECT_JSONFILE_PATH);
 		boolean b = false;

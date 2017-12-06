@@ -15,4 +15,5 @@ public interface MaterialServiceInterface<T1, T2> {
 	T1 getComputer(T2 s) throws ParseException;
 	T1 getTv(T2 s) throws ParseException;
 	boolean update(T2 s) throws ParseException;
+	boolean swap(T1 prev, T1 next) throws ParseException;
 }

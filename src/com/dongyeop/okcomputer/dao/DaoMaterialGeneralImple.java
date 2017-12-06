@@ -109,4 +109,59 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		}
 		return b ? writeJson() : false;
 	}
+
+	@Override
+	public boolean swap(KoiMaterial prev, KoiMaterial next) {
+		KoiMaterial c1 = null;
+		KoiMaterial c2 = null;
+
+		for (KoiMaterial c : objectList) {
+			if (prev.getId().equals(c.getId())) {
+				System.out.println("FOUND : " + c.getId());
+				c1 = c;
+				break;
+			}
+		}
+
+		for (KoiMaterial c : objectList) {
+			if (next.getId().equals(c.getId())) {
+				System.out.println("FOUND : " + c.getId());
+				c2 = c;
+				break;
+			}
+		}
+
+		if (c1 == null || c2 == null) {
+			System.out.println("Null");
+			return false;
+		}
+
+		String location = c1.getLocation();
+		String campus = c1.getCampus();
+		String pcName = c1.getName();
+		String user = c1.getUser();
+		//String role = c1.getRole();
+
+		c1.setPrevious(location + " " + c1.getName());
+		c1.setLocation(c2.getLocation());
+		c1.setCampus(c2.getCampus());
+		System.out.println("C1 NAME: " + c1.getName());
+		System.out.println("C2 NAME: " + c2.getName());
+		c1.setName(c2.getName());
+		c1.setUser(c2.getUser());
+		//c1.setRole(c2.getRole());
+		c1.setUpdatedate(c1.generateDate());
+
+		c2.setPrevious(c2.getLocation() + "- " + c2.getName());
+		c2.setLocation(location);
+		c2.setCampus(campus);
+		c2.setName(pcName);
+		c2.setUser(user);
+		//c2.setRole(role);
+		c2.setUpdatedate(c2.generateDate());
+		System.out.println("C1 NAME: " + c1.getName());
+		System.out.println("C2 NAME: " + c2.getName());
+		System.out.println("SWAP SUCCESS");
+		return writeJson();
+	}
 }

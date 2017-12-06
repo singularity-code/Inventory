@@ -11,8 +11,6 @@ import java.util.List;
 
 public class GeneralMaterialServiceImple implements MaterialServiceInterface<Object, String> {
 	@Autowired
-	private DaoComputerJsonInterface daoComputer;
-	@Autowired
 	private DaoMaterialInterface daoMaterialComputer;
 	@Autowired
 	private DaoMaterialInterface daoMaterialTv;
@@ -75,5 +73,10 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean update(String s) throws ParseException {
 		return false;
+	}
+
+	@Override
+	public boolean swap(Object prev, Object next) throws ParseException {
+		return daoMaterialComputer.swap(prev, next);
 	}
 }

@@ -10,4 +10,5 @@ public interface DaoMaterialInterface<T1, T2> {
 	boolean delete(T2 s) throws ParseException;
 	boolean create(T1 o);
 	boolean update(T1 o) throws ParseException;
+	boolean swap(T1 prev, T1 next);
 }

@@ -13,7 +13,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OK COMPUTER</title>
+<title>KOI Mothership v0.1</title>
 <style>
 	table {
 		border: 0;
@@ -64,7 +64,7 @@
 <!-- Navbar (sit on top) -->
 <div class="">
   <div class="">
-	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;"><span style="font-weight: 800;">OK Computer</span>
+	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;"><span style="text-align: center">Mothership</span>
 	<div class="" style="text-align: center">
 		<a ng-click="setTab('it-computer')" class="">Computer</a>
 		<a ng-click="setTab('class-tv')" class="w3-bar-item w3-button">Tv</a>
@@ -163,8 +163,6 @@
 				<td style="float: right">
 					<!-- Google Material Design Icons -->
 					<a href="./update_view_KoiMaterial?id={{tv.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
-					<a href="./move?id={{tv.id}}"><i class="material-icons w3-xlarge">delete</i></a>
 					<a href="./delete_tv?id={{tv.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</table>
