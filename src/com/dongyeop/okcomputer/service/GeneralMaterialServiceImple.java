@@ -1,6 +1,5 @@
 package com.dongyeop.okcomputer.service;
 
-import com.dongyeop.okcomputer.dao.DaoComputerJsonInterface;
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
 import com.dongyeop.okcomputer.dto.Computer;
 import com.dongyeop.okcomputer.dto.Tv;
@@ -71,8 +70,8 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	}
 
 	@Override
-	public boolean update(String s) throws ParseException {
-		return false;
+	public boolean updateComputer(Object object) throws ParseException {
+		return daoMaterialComputer.update(object);
 	}
 
 	@Override

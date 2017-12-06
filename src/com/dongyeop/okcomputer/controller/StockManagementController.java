@@ -1,12 +1,6 @@
 package com.dongyeop.okcomputer.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-import com.dongyeop.okcomputer.dto.KoiMaterial;
+import com.dongyeop.okcomputer.dto.Computer;
 import com.dongyeop.okcomputer.dto.Tv;
 import com.dongyeop.okcomputer.service.MaterialServiceInterface;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -18,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dongyeop.okcomputer.dto.Computer;
-import com.dongyeop.okcomputer.service.GenericComputerService;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Controller
 public class StockManagementController {
@@ -28,14 +25,12 @@ public class StockManagementController {
 	
 	// StockService is defined in Bean Config
 	@Autowired
-	private GenericComputerService computerService;
-	@Autowired
 	private MaterialServiceInterface materialService;
 
 	@RequestMapping("/")
 	public String getLists(Model model) throws ParseException {
 		model.addAttribute("computers", toJson(materialService.getComputerList()));
-		model.addAttribute("garage", toJson(computerService.getGarageLists()));
+		model.addAttribute("garage", toJson(materialService.getGarageList()));
 		model.addAttribute("tvs", toJson(materialService.getTvList()));
 		System.out.println("JSON LOADED");
 		return "index";
@@ -79,7 +74,6 @@ public class StockManagementController {
 		
 		Computer computer = new Computer(id, date, campus, location, name, ip, type,  domain, role, brand, comModel, serialNumber, productNumber, os,
 				 license, machineOnly, status, officeActive, bitDef,  cpu, memory, bios,  purchaseDate, user, previous);
-		computerService.create(computer);
 		materialService.createComputer(computer);
 		return new ModelAndView(redirectUrl);
 	}
@@ -101,13 +95,6 @@ public class StockManagementController {
 		//materialService.createTv(tv);
 		return new ModelAndView(redirectUrl);
 	}
-	
-	@RequestMapping("/update_view")
-	public String view(Model model, @RequestParam("id") String id) throws ParseException {
-		Object computer = computerService.getComputer(id);
-		model.addAttribute("computer", computer);
-		return "update_view";
-	}
 
 	@RequestMapping("/update_view_KoiMaterial")
 	public String viewKoiMaterial(Model model, @RequestParam("id") String id) throws ParseException {
@@ -128,7 +115,7 @@ public class StockManagementController {
 	
 	@RequestMapping("/update_broken")
 	public ModelAndView update_broken(Model model, @RequestParam("id") String id) throws ParseException {
-		Object computer = computerService.getComputer(id);
+		Object computer = materialService.getComputer(id);
 		model.addAttribute("computer", computer);
 		return new ModelAndView(redirectUrl);
 	}
@@ -163,8 +150,8 @@ public class StockManagementController {
 
 		Computer computer = new Computer(id, date, campus, location, name, ip, type,  domain, role, brand, comModel, serialNumber, productNumber, os,
 				 license, machineOnly, status, officeActive, bitDef,  cpu, memory, bios,  purchaseDate, user, previous);		
-		System.out.println(computer);
-		computerService.update(computer);
+		System.out.println("Update Cont" + computer);
+		materialService.updateComputer(computer);
 		return new ModelAndView(redirectUrl);
 	}
 	
@@ -192,8 +179,8 @@ public class StockManagementController {
 	
 	@RequestMapping("/move")
 	public ModelAndView move(Model model, @RequestParam("id") String id) throws ParseException {
-		Computer computer = (Computer) computerService.getComputer(id);
-		computerService.move(computer);
+		Computer computer = (Computer) materialService.getComputer(id);
+		//materialService.move(computer);
 		return new ModelAndView(redirectUrl);
 	}
 	
