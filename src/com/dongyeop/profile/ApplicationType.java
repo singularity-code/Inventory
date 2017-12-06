@@ -6,7 +6,7 @@ public class ApplicationType {
 	
 	public static String getJsonFilePath() {
 		if(applicationProfile == ApplicationProfile.LOCAL)
-			return "C:\\testdata\\";
+			return "C:\\testdata\\materials\\";
 		else return "/XXX";
 	}
 }

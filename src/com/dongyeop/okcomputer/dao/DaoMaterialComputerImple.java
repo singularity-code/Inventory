@@ -11,7 +11,7 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 
 	public DaoMaterialComputerImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "mother_computer.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "computers.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);
