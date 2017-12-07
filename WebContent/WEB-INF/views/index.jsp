@@ -81,6 +81,20 @@
 		width: 100px;
 		text-align: center;
 	}
+	select {
+		width: 50%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+	input[type=text] {
+		width: 50%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: none;
+		border-bottom: 2px solid darkslategrey;
+	}
 </style>
 </head>
 
@@ -90,7 +104,7 @@
 <div class="">
   <div class="center">
 	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
-	  <span style="text-align: center">Mothership</span>
+	  <h3 style="text-align: center">INVENTORY</h3>
 	<div class="" style="text-align: center">
 		<button ng-click="setTab('it-computer')">Computer</button>
 		<button ng-click="setTab('class-tv')">Tv</button>
@@ -98,8 +112,6 @@
 		<button ng-click="setTab('it-switch')">Switch</button>
 		<button ng-click="setTab('staff-fridge')">Fridge</button>
 		<button ng-click="setTab(garage)">Garage</button>
-		<button ng-click="setTab('create-koiMaterial')">Create</button>
-		<button ng-click="setTab('create-computer')">CC</button>
 		<button ng-click="setTab('report')">Report</button>
 	</div>
 	<p>
@@ -115,6 +127,7 @@
 	<!-- Computer Set -->
 	<div ng-show="isSet('it-computer')" style="margin:auto;width:95%">
 		<div style="text-align: right;" id="projects">
+			<button ng-click="setTab('create-computer')">Create</button>
 			<h3>Total : {{pcs.length}} Computers Result : {{filtered.length}} Computers</h3>
 		</div>
 		<table>
@@ -151,8 +164,8 @@
 				</td>
 				<td style="width: 250px;">
 					<form action="./swap" methos="post">
-						<input id="stockId" type="text" style="width: 70px; height: 25px;" name="id" value={{c.id}} readonly>
-						<input type="text" style="width: 70px; height: 25px;" name="nextId" placeholder="To...">
+						<input id="stockId" type="text" style="width: 80px; height: 25px;" name="id" value={{c.id}} readonly>
+						<input type="text" style="width: 80px; height: 25px;" name="nextId" placeholder="To...">
 						<button type="submit" class="button_swap">SWITCH</button>
 					</form>
 				</td>
@@ -161,7 +174,8 @@
 	</div>
 	<!-- Tv Set -->
 	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
-		<div style="text-align: right;" id="projects">
+		<div style="text-align: right;">
+			<button ng-click="setTab('create-koiMaterial')">Create</button>
 			<h3>Total : {{tvs.length}} Tv</h3>
 		</div>
 		<table>
@@ -293,7 +307,7 @@
 		</table>
 		<div class="" >
 			<table id="fridgeTable" align="center" ng-repeat="fridge in fridges | filter:$ctrl.query as filtered ">
-				<tr id="">
+				<tr>
 					<td style="width: 100px;">{{fridge.id}}</td>
 					<td style="width: 150px;">{{fridge.type}}</td>
 					<td style="width: 200px;">{{fridge.brand}}</td>
@@ -311,14 +325,11 @@
 			</table>
 		</div>
 	</div>
-	<!-- Set 2 -->
+	<!-- Create Computer -->
 	<div ng-show="isSet('create-computer')">
-		<!-- Hearder -->
-		<br><br><br>
-		<div class="" id="projects">
-			<h3 class="">Add New Computer</h3>
+		<div>
+			<h3>Create New Computer</h3>
 		</div>
-		<!-- Body -->
 		<div>
 			<form novalidate class="simple-form" action="./create_computer" method="post" name="form">
 				<input type="text" name="id" readonly="readonly" value={{nextId('Computer')}}>
@@ -411,14 +422,14 @@
 				<input type="text" placeholder="Product No." ng-model="computer.productNo" name="productNumber" required/>
 				<input type="text" placeholder="Bios" ng-model="computer.bios" name="bios" required/>
 				<input type="text" placeholder="Purchase Date" ng-model="computer.purchaseDate" name="purchaseDate" required/>
-				<span style="color:red" ng-show="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid ||
+				<p style="color:red" ng-show="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid ||
 												form.serialNumber.$invalid || form.productNumber.$invalid || form.bios.$invalid ||
-												form.purchaseDate.$invalid">모두 입력해주세요. (Please enter all fields)</span>
+												form.purchaseDate.$invalid">Please enter all fields</p>
 				<p align="center">
 				<input type="button" ng-click="reset()" value="Reset" />
 				<input type="submit" ng-click="update(computer)"
 					   ng-disabled="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid || form.serialNumber.$invalid ||
-					   form.productNumber.$invalid || form.bios.$invalid || form.purchaseDate.$invalid" value="Create"></input>
+					   form.productNumber.$invalid || form.bios.$invalid || form.purchaseDate.$invalid" value="Create"/>
 				</p>
 			  </form>
 			  <pre>computer_draft = {{computer | json}}</pre>
@@ -432,12 +443,14 @@
 		<div>
 			<form novalidate class="simple-form" action="./create_koiMaterial" method="post" name="form">
 				<input type="text" name="id" readonly="readonly" value={{nextId('Tv')}}>
+				<input type="text" placeholder="Name" ng-model="koiMaterial.name" name="name" required/>
+				<input type="text" placeholder="User" ng-model="koiMaterial.user" name="user" required/>
+				<input type="text" placeholder="Status" ng-model="koiMaterial.status" name="status" required/>
 				<select ng-model="koiMaterial.type" name="type">
 					<option value="" disabled selected>Type</option>
 					<option value="LED TV">LED TV</option>
 					<option value="Smart TV">Smart TV</option>
 				</select>
-				<input type="text" placeholder="Name" ng-model="koiMaterial.name" name="name" required/>
 				<select ng-model="koiMaterial.campus" name="campus">
 					<option value="" disabled selected >Campus</option>
 					<option ng-repeat="x in campus">{{x}}</option>
@@ -446,7 +459,6 @@
 					<option value="" disabled selected>Location</option>
 					<option ng-repeat="x in location">{{x}}</option>
 				</select>
-				<input type="text" placeholder="User" ng-model="koiMaterial.user" name="user" required/>
 				<select ng-model="computer.type" name="type">
 					<option value="" disabled selected>Type</option>
 					<option value="Desktop">Desktop</option>
@@ -456,17 +468,15 @@
 					<option value="" disabled selected>Brand</option>
 					<option ng-repeat="x in brand">{{x}}</option>
 				</select>
-				<input type="text" placeholder="Status" ng-model="koiMaterial.status" name="status" required/>
-
 				<p align="center">
 					<input type="button" ng-click="reset()" value="Reset" />
 					<input type="submit" ng-click="createGeneral(koiMaterial)" value="Create"/>
 				</p>
 			</form>
 			<pre>koiMaterial_draft = {{koiMaterial | json}}</pre>
-			<!--  <pre>computer_master = {{master | json}}</pre> -->
 		</div>
 	</div>
+	<!-- Garage Set -->
 	<div ng-show="isSet(garage)">
 	  <div class="">
 		<h3 class="">Total : {{garage.length}} Garages</h3>
