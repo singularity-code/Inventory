@@ -69,6 +69,18 @@
 		width: 80px;
 		height: 30px;
 	}
+	.reportRowH1 {
+		width: 500px;
+		text-align: center;
+	}
+	.reportRowH2 {
+		width: 300px;
+		text-align: center;
+	}
+	.reportRowSection {
+		width: 100px;
+		text-align: center;
+	}
 </style>
 </head>
 
@@ -86,15 +98,14 @@
 		<button ng-click="setTab('it-switch')">Switch</button>
 		<button ng-click="setTab('staff-fridge')">Fridge</button>
 		<button ng-click="setTab(garage)">Garage</button>
+		<button ng-click="setTab('create-computer')">Create</button>
+		<button ng-click="setTab('report')">Report</button>
 	</div>
 	<p>
 	<div align="center" style="margin-bottom: 15px;">
 	<input type="search" id="search" placeholder="Say Anything..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
 	<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 	<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button></span>
-		<a ng-click="setTab('create-computer')">Create</a>
-		<a ng-click="setTab(garage)">Garage</a>
-	<!-- Float links to the right. Hide them on small screens -->
 	</div>
   </div>
 </div>
@@ -127,7 +138,7 @@
 				<td style="width: 150px;">{{c.campus}}</td>
 				<td style="width: 200px;">{{c.name}}</td>
 				<td style="width: 100px;">{{c.user}}</td>
-				<td id="updateDate" style="width: 300px;">{{c.date}}</td>
+				<td id="updateDate" class="reportRow">{{c.date}}</td>
 				<td style="width: 150px;">
 					<!-- Google Material Design Icons -->
 					<a href="./update_view_KoiMaterial?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
@@ -150,7 +161,7 @@
 	<!-- Tv Set -->
 	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
 		<div style="text-align: right;" id="projects">
-			<h3>Total : {{filtered.length}} Tv</h3>
+			<h3>Total : {{tvs.length}} Tv</h3>
 		</div>
 		<table>
 			<tr>
@@ -188,7 +199,7 @@
 	<!-- Telephone Set -->
 	<div ng-show="isSet('it-telephone')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{filtered.length}} Telephone</h3>
+			<h3>Total : {{telephones.length}} Telephone</h3>
 		</div>
 		<table>
 			<tr>
@@ -226,7 +237,7 @@
 	<!-- Switch Set -->
 	<div ng-show="isSet('it-switch')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{filtered.length}} Switch</h3>
+			<h3>Total : {{switches.length}} Switch</h3>
 		</div>
 		<table>
 			<tr>
@@ -264,7 +275,7 @@
 	<!-- Fridge Set -->
 	<div ng-show="isSet('staff-fridge')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{filtered.length}} Fridge</h3>
+			<h3>Total : {{fridges.length}} Fridge</h3>
 		</div>
 		<table>
 			<tr>
@@ -415,8 +426,82 @@
 	</div>
 	<div ng-show="isSet(garage)">
 	  <div class="">
-		<h3 class="">Total : {{filtered.length}} Garages</h3>
+		<h3 class="">Total : {{garage.length}} Garages</h3>
 	  </div>
+	</div>
+	<!-- Report Set -->
+	<div ng-show="isSet('report')" style="margin:auto;width:65%">
+		<div style="text-align: right;">
+			<h3>Date</h3>
+		</div>
+		<table style="border: 0.5px solid grey">
+			<tr>
+				<th rowspan="2" class="reportRowH1">Computers</th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td class="reportRowSection">T0216</td>
+				<td class="reportRowSection">T0316</td>
+				<td class="reportRowSection">T0216</td>
+				<td class="reportRowSection">T0316</td>
+				<td class="reportRowSection">T0216</td>
+				<td class="reportRowSection">T0316</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Desktop</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Laptop</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Apple iMac</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Tablet</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Total</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
 	</div>
 </div>
 <script>

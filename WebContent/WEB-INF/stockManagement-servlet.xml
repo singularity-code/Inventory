@@ -12,7 +12,6 @@
 	
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<mvc:resources mapping="/resources/**" location="/resources/"/>
-
 	<bean id="daoMaterialComputer"
 		  class="com.dongyeop.okcomputer.dao.DaoMaterialComputerImple">
 	</bean>
