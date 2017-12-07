@@ -169,6 +169,17 @@ public class StockManagementController {
 		materialService.deleteTv(id);
 		return new ModelAndView(redirectUrl);
 	}
+
+	@RequestMapping("/delete_switch")
+	public ModelAndView deleteSwitch(Model model, @RequestParam("id") String id) throws ParseException {
+		materialService.deleteSwitch(id);
+		return new ModelAndView(redirectUrl);
+	}
+	@RequestMapping("/delete_fridge")
+	public ModelAndView deleteFridge(Model model, @RequestParam("id") String id) throws ParseException {
+		materialService.deleteFridge(id);
+		return new ModelAndView(redirectUrl);
+	}
 	
 	@RequestMapping("/swap")
 	public ModelAndView swap(Model model, 
