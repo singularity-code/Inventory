@@ -176,6 +176,46 @@ public class StockManagementController {
 		materialService.updateComputer(computer);
 		return new ModelAndView(redirectUrl);
 	}
+	@RequestMapping("/updateGeneral")
+	public ModelAndView updateGeneral(Model model,
+							   @RequestParam("id") String id,
+							          @RequestParam("name") String name,
+							   @RequestParam("updatedate") String updatedate,
+							   @RequestParam("campus") String campus,
+							          @RequestParam("previous") String previous,
+							   @RequestParam("location") String location,
+							          @RequestParam("user") String user,
+							   @RequestParam("type") String type,
+							   @RequestParam("brand") String brand,
+							   @RequestParam("status") String status) throws ParseException {
+		String subID = id.substring(0, 3);
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date now = Calendar.getInstance().getTime();
+		String today = dateFormat.format(now);
+		if(subID.equals("IC-")) {
+			KoiMaterial koiMaterial = new KoiMaterial(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.updateComputer(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (subID.equals("CTV")) {
+			KoiMaterial koiMaterial = new KoiMaterial(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.updateTv(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (subID.equals("OT-")){
+			KoiMaterial koiMaterial = new KoiMaterial(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.updateTelephone(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (subID.equals("ISW")) {
+			KoiMaterial koiMaterial = new KoiMaterial(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.updateSwitch(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (subID.equals("CR-")) {
+			KoiMaterial koiMaterial = new KoiMaterial(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.updateFridge(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		}
+		return new ModelAndView(redirectUrl);
+	}
+
 	
 	@RequestMapping("/delete_computer")
 	public ModelAndView deleteComputer(Model model, @RequestParam("id") String id) throws ParseException {

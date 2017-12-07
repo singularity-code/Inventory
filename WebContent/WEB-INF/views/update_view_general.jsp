@@ -16,35 +16,31 @@
 <body ng-app="koiMaterialList" ng-controller="myCtrl">
 <h2 align="center">Editor</h2>
 <div style="margin:auto;width:40%">
-	<form novalidate class="simple-form" action="./update" method="post" name="form">
+	<form novalidate class="simple-form" action="./updateGeneral" method="post" name="form">
 		ID <input type="text" name="id" readonly="readonly" value="${koiMaterial.id}">
 		Name<input type="text" name="name" value="${koiMaterial.name}">
-		Update Date<input type="text" name="date" readonly="readonly" value="${koiMaterial.updatedate}">
+		Update Date<input type="text" name="updatedate" readonly="readonly" value="${koiMaterial.updatedate}">
 		Campus
-		<select id="campus">
+		<select id="campus" name="campus">
 			<option ng-repeat="x in campus">{{x}}</option>
 		</select>
 		Previous <input type="text" name="previous" value="${koiMaterial.previous}">
 		Location
-		<select id="location" required>
+		<select id="location" name="location" required>
 			<option ng-repeat="x in location">{{x}}</option>
 		</select>
 		User<input type="text" name="user" value="${koiMaterial.user}">
-		Type <input type="text" id="type" value="${koiMaterial.type}">
-		Status  <input type="text" id="status" value="${koiMaterial.status}">
+		Type <input type="text" id="type" name="type" value="${koiMaterial.type}">
 		Brand
-		<select id="brand">
+		<select id="brand" name="brand">
 			<option ng-repeat="x in brand">{{x}}</option>
 		</select>
-		<span style="color:red" ng-show="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid ||
-										form.serialNumber.$invalid || form.productNumber.$invalid || form.bios.$invalid ||
-										form.purchaseDate.$invalid">!!! All details are required !!!</span>
+		Status  <input type="text" id="status" name="status" value="${koiMaterial.status}">
+
 		<p align="center">
 			<a href="./" class="button_back">Back</a>
 			<input class="button_mid" type="button" ng-click="reset()" value="Reset"/>
-			<input class="button_mid" type="submit" ng-click="update(koiMaterial)"
-				   ng-disabled="form.name.$invalid || fomr.user.$invalid || form.ip.$invalid || form.comModel.$invalid || form.serialNumber.$invalid ||
-			   form.productNumber.$invalid || form.bios.$invalid || form.purchaseDate.$invalid" value="Apply"></input>
+			<input class="button_mid" type="submit" ng-click="update(koiMaterial)" value="Apply"/>
 		</p>
 	</form>
 </div>
@@ -54,9 +50,10 @@
 	app.controller("myCtrl", function ($scope) {
 		$scope.master = {};
 		$scope.campus = ["Market", "Kent", "Kent L1", "Kent L5"];
-		$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
-			"Student Canteen", "Lecture Office", "IT Office", "CR101", "CR102", "CR103", "CR104", "CR105", "CR106", "CR107", "CR108", "CR501", "CR502", "CR503", "CR504", "CR505"];
-		$scope.brand = ["Apple", "Acer", "Dell", "Hp", "Lenovo", "Samsung", "Sony", "LG", "Toshiba", "Panasonic", "TEAC"];
+		$scope.location = ["Office", "Office(Accounting)", "Office(Admission)", "Office(Academic)", "Reception", "Office(Marketing)", "Board Room", "Ricard Office", "Print Bay",
+			"Student Canteen", "Student Lounge", "Staff Kitchen","Lecture Office", "IT Office", "CR101", "CR102", "CR103", "CR104", "CR105", "CR106", "CR107", "CR108", "CR501", "CR502", "CR503", "CR504", "CR505"];
+		$scope.brand = ["Apple", "Acer", "Dell", "Hp", "Lenovo", "Samsung", "Sony", "LG", "Toshiba", "Panasonic", "TEAC", "Mitel",
+			"TP-Link","Netgear","CISCO", "Smeg","Omga","Royal Severeign","Westing"];
 
 		$scope.update = function (koiMaterial) {
 			$scope.master = angular.copy(koiMaterial);

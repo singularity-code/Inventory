@@ -62,7 +62,7 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		// memory.
 		for (int i = 0; i < objectList.size(); i++) {
 			if (s.equalsIgnoreCase(objectList.get(i).getId())) {
-				System.out.println("GET : " + objectList.get(i).getId());
+				System.out.println("DAO GENERAL GET : " + objectList.get(i).getId());
 				return objectList.get(i);
 			}
 		}
@@ -97,6 +97,7 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 	/* TODO: Use map instead of an object */
 	@Override
 	public boolean update(KoiMaterial object) throws ParseException {
+		System.out.println("DAO to change ID: " + object.getId());
 		objectList = readJson(DAO_OBJECT_JSONFILE_PATH);
 		boolean b = false;
 		for (int i = 0; i < objectList.size(); i++) {

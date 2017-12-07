@@ -14,7 +14,7 @@
 </head>
 <body ng-app="myComputerList" ng-controller="myCtrl">
 <h2 align="center">Editor</h2>
-	<div style="margin:auto;width:80%">
+	<div style="margin:auto;width:40%">
 	  <form novalidate class="simple-form" action="./update" method="post" name="form">
 	  	<input type="text" name="id" readonly="readonly" value="${koiMaterial.id}">
 		<input type="text" name="date" readonly="readonly" value="${koiMaterial.date}">
