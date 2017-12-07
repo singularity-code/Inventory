@@ -1,8 +1,6 @@
 package com.dongyeop.okcomputer.controller;
 
-import com.dongyeop.okcomputer.dto.Computer;
-import com.dongyeop.okcomputer.dto.KoiMaterial;
-import com.dongyeop.okcomputer.dto.Tv;
+import com.dongyeop.okcomputer.dto.*;
 import com.dongyeop.okcomputer.service.MaterialServiceInterface;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.parser.ParseException;
@@ -99,6 +97,40 @@ public class StockManagementController {
 		//materialService.createTv(tv);
 		return new ModelAndView(redirectUrl);
 	}
+	@RequestMapping("/create_koiMaterial")
+	public ModelAndView createKoiMaterial(Model model,
+								 @RequestParam("id") String id,
+								 @RequestParam("name") String name,
+								 @RequestParam("campus") String campus,
+								 @RequestParam("location") String location,
+								 @RequestParam("type") String type,
+								 @RequestParam("brand") String brand,
+								 @RequestParam("status") String status,
+								 @RequestParam("user") String user) {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date now = Calendar.getInstance().getTime();
+		String today = dateFormat.format(now);
+		String previous = "Brand New";
+		String subID = id.substring(0, 3);
+		if (subID.equals("CTV")) {
+			Tv tv = new Tv(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.createTv(tv);
+			return new ModelAndView(redirectUrl);
+		} else if (subID.equals("OT-")){
+			Telephone telephone = new Telephone(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.createTelephone(telephone);
+			return new ModelAndView(redirectUrl);
+		} else if (subID.equals("ISW")) {
+			Switch newSwitch = new Switch(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.createSwitch(newSwitch);
+			return new ModelAndView(redirectUrl);
+		} else if (subID.equals("CR-")) {
+			Fridge fridge = new Fridge(id, name, type, brand, user, previous, campus, location, today, status);
+			materialService.createFridge(fridge);
+			return new ModelAndView(redirectUrl);
+		}
+		return new ModelAndView(redirectUrl);
+	}
 
 	@RequestMapping("/update_view_KoiMaterial")
 	public String viewKoiMaterial(Model model, @RequestParam("id") String id) throws ParseException {
@@ -179,12 +211,12 @@ public class StockManagementController {
 	@RequestMapping("/updateGeneral")
 	public ModelAndView updateGeneral(Model model,
 							   @RequestParam("id") String id,
-							          @RequestParam("name") String name,
+									  @RequestParam("name") String name,
 							   @RequestParam("updatedate") String updatedate,
 							   @RequestParam("campus") String campus,
-							          @RequestParam("previous") String previous,
+									  @RequestParam("previous") String previous,
 							   @RequestParam("location") String location,
-							          @RequestParam("user") String user,
+									  @RequestParam("user") String user,
 							   @RequestParam("type") String type,
 							   @RequestParam("brand") String brand,
 							   @RequestParam("status") String status) throws ParseException {

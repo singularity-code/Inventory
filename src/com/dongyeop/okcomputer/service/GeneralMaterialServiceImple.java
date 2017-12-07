@@ -69,7 +69,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createTv(Object object) {
 		if(object instanceof Tv) {
-			daoMaterialComputer.create(object);
+			daoMaterialTv.create(object);
 		}
 		return false;
 	}
@@ -77,7 +77,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createTelephone(Object object) {
 		if(object instanceof Telephone) {
-			daoMaterialComputer.create(object);
+			daoMaterialTelephone.create(object);
 		}
 		return false;
 	}
@@ -85,7 +85,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createSwitch(Object object) {
 		if(object instanceof Switch) {
-			daoMaterialComputer.create(object);
+			daoMaterialSwitch.create(object);
 		}
 		return false;
 	}
@@ -93,7 +93,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createFridge(Object object) {
 		if(object instanceof Fridge) {
-			daoMaterialComputer.create(object);
+			daoMaterialFridge.create(object);
 		}
 		return false;
 	}

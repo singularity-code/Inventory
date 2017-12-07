@@ -98,7 +98,8 @@
 		<button ng-click="setTab('it-switch')">Switch</button>
 		<button ng-click="setTab('staff-fridge')">Fridge</button>
 		<button ng-click="setTab(garage)">Garage</button>
-		<button ng-click="setTab('create-computer')">Create</button>
+		<button ng-click="setTab('create-koiMaterial')">Create</button>
+		<button ng-click="setTab('create-computer')">CC</button>
 		<button ng-click="setTab('report')">Report</button>
 	</div>
 	<p>
@@ -111,7 +112,7 @@
 </div>
 <!-- Menu Contents -->
 <div class="center" >
-	<!-- Set Computer -->
+	<!-- Computer Set -->
 	<div ng-show="isSet('it-computer')" style="margin:auto;width:95%">
 		<div style="text-align: right;" id="projects">
 			<h3>Total : {{pcs.length}} Computers Result : {{filtered.length}} Computers</h3>
@@ -320,7 +321,7 @@
 		<!-- Body -->
 		<div>
 			<form novalidate class="simple-form" action="./create_computer" method="post" name="form">
-				<input type="text" name="id" readonly="readonly" value={{nextId()}}>
+				<input type="text" name="id" readonly="readonly" value={{nextId('Computer')}}>
 
 				<select ng-model="computer.campus" name="campus">
 				<option value="" disabled selected >Campus</option>
@@ -421,117 +422,48 @@
 				</p>
 			  </form>
 			  <pre>computer_draft = {{computer | json}}</pre>
-		<!--  <pre>computer_master = {{master | json}}</pre> -->
 		</div>
 	</div>
 	<!-- General Edit Page -->
-	<div ng-show="isSet('update-general')">
+	<div ng-show="isSet('create-koiMaterial')">
 		<div>
-			<h3 class="">Update Information</h3>
+			<h3 class="">Create New</h3>
 		</div>
 		<div>
-			<form novalidate class="simple-form" action="./create_computer" method="post" name="form">
-				<input type="text" name="id" readonly="readonly" value={{nextId()}}>
-
-				<select ng-model="computer.campus" name="campus">
+			<form novalidate class="simple-form" action="./create_koiMaterial" method="post" name="form">
+				<input type="text" name="id" readonly="readonly" value={{nextId('Tv')}}>
+				<select ng-model="koiMaterial.type" name="type">
+					<option value="" disabled selected>Type</option>
+					<option value="LED TV">LED TV</option>
+					<option value="Smart TV">Smart TV</option>
+				</select>
+				<input type="text" placeholder="Name" ng-model="koiMaterial.name" name="name" required/>
+				<select ng-model="koiMaterial.campus" name="campus">
 					<option value="" disabled selected >Campus</option>
-					<option ng-repeat="x in campus">{{x}}</option></select>
-
-				<select ng-model="computer.previous" name="previous">
-					<option value="" disabled selected>Previous</option>
-					<option ng-repeat="x in location">{{x}}</option></select>
-
-				<select ng-model="computer.location" name="location" required>
+					<option ng-repeat="x in campus">{{x}}</option>
+				</select>
+				<select ng-model="koiMaterial.location" name="location" required>
 					<option value="" disabled selected>Location</option>
-					<option ng-repeat="x in location">{{x}}</option></select>
-
+					<option ng-repeat="x in location">{{x}}</option>
+				</select>
+				<input type="text" placeholder="User" ng-model="koiMaterial.user" name="user" required/>
 				<select ng-model="computer.type" name="type">
 					<option value="" disabled selected>Type</option>
 					<option value="Desktop">Desktop</option>
 					<option value="Laptop">Laptop</option>
 				</select>
-
-				<select ng-model="computer.domain" name="domain">
-					<option value="" disabled selected>Domain</option>
-					<option value="KOI">KOI</option>
-					<option value="STDKOI">STDKOI</option>
-				</select>
-
-				<select  ng-model="computer.role" name="role">
-					<option value="" disabled selected>Role</option>
-					<option value="Staff">Staff</option>
-					<option value="Student">Student</option>
-				</select>
-
-				<select ng-model="computer.os" name="os">
-					<option value="" disabled selected>OS</option>
-					<option value="Win7">Win7</option>
-					<option value="Win10 Home">Win10 Home</option>
-					<option value="Win10 Pro">Win10 Pro</option>
-					<option value="Linux">Linux</option>
-				</select>
-
-				<select ng-model="computer.license" name="license">
-					<option value="" disabled selected>License</option>
-					<option value="Active">Active</option>
-					<option value="Inactive">Inactive</option>
-				</select>
-
-				<select ng-model="computer.machineOnly" name="machineOnly">
-					<option value="" disabled selected>Machine Only</option>
-					<option value="Yes">Yes</option>
-					<option value="No">No</option>
-				</select>
-
-				<select ng-model="computer.status" name="status">
-					<option value="" disabled selected>Status</option>
-					<option value="Active">Active</option>
-					<option value="Inactive">Inactive</option>
-				</select>
-
-				<select ng-model="computer.officeActive" name="officeActive">
-					<option value="" disabled selected>Office Activation</option>
-					<option value="Active">Active</option>
-					<option value="Inactive">Inactive</option>
-				</select>
-
-				<select ng-model="computer.bitDef" name="bitDef">
-					<option value="" disabled selected>BitDefender</option>
-					<option value="Active">Active</option>
-					<option value="Inactive">Inactive</option>
-				</select>
-
 				<select ng-model="computer.brand" name="brand">
 					<option value="" disabled selected>Brand</option>
-					<option ng-repeat="x in brand">{{x}}</option></select>
+					<option ng-repeat="x in brand">{{x}}</option>
+				</select>
+				<input type="text" placeholder="Status" ng-model="koiMaterial.status" name="status" required/>
 
-				<select ng-model="computer.cpu" name="cpu">
-					<option value="" disabled selected>CPU</option>
-					<option ng-repeat="x in cpu">{{x}}</option></select>
-
-				<select ng-model="computer.memory" name="memory">
-					<option value="" disabled selected>Memory</option>
-					<option ng-repeat="x in memory">{{x}}</option></select>
-
-				<input type="text" placeholder="Computer Name" ng-model="computer.name"  name="name" required/>
-				<input type="text" placeholder="User" ng-model="computer.user" name="user" required/>
-				<input type="text" placeholder="IP Address" ng-model="computer.ip" name="ip" required/>
-				<input type="text" placeholder="Model" ng-model="computer.model" name="comModel" required/>
-				<input type="text" placeholder="Serial No." ng-model="computer.serialNo" name="serialNumber" required/>
-				<input type="text" placeholder="Product No." ng-model="computer.productNo" name="productNumber" required/>
-				<input type="text" placeholder="Bios" ng-model="computer.bios" name="bios" required/>
-				<input type="text" placeholder="Purchase Date" ng-model="computer.purchaseDate" name="purchaseDate" required/>
-				<span style="color:red" ng-show="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid ||
-												form.serialNumber.$invalid || form.productNumber.$invalid || form.bios.$invalid ||
-												form.purchaseDate.$invalid">모두 입력해주세요. (Please enter all fields)</span>
 				<p align="center">
 					<input type="button" ng-click="reset()" value="Reset" />
-					<input type="submit" ng-click="update(computer)"
-					       ng-disabled="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid || form.serialNumber.$invalid ||
-					   form.productNumber.$invalid || form.bios.$invalid || form.purchaseDate.$invalid" value="Create"></input>
+					<input type="submit" ng-click="createGeneral(koiMaterial)" value="Create"/>
 				</p>
 			</form>
-			<pre>computer_draft = {{computer | json}}</pre>
+			<pre>koiMaterial_draft = {{koiMaterial | json}}</pre>
 			<!--  <pre>computer_master = {{master | json}}</pre> -->
 		</div>
 	</div>
@@ -668,9 +600,23 @@
 
 	  $scope.reset();
 
-	  $scope.nextId = function() {
-		  i = $scope.pcs.length + 1;
-		  return "H-" + i;
+	  $scope.nextId = function(type) {
+	  	if(type === 'Computer') {
+		    i = $scope.pcs.length + 1;
+		    return "IC-" + i;
+	    } else if (type === 'Tv') {
+		    i = $scope.tvs.length + 1;
+		    return "CTV-" + i;
+	    } else if (type === 'Telephone') {
+		    i = $scope.telephones.length + 1;
+		    return "OT-" + i;
+	    } else if (type === 'Switch') {
+		    i = $scope.switches.length + 1;
+		    return "ISW-" + i;
+	    } else if (type === 'Fridge') {
+		    i = $scope.fridges.length + 1;
+		    return "CR-" + i;
+	    }
 	  }
 	  $scope.getRandomSpan = function(){
 		  return Math.floor((Math.random()*6)+230);
