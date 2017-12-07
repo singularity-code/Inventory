@@ -1,6 +1,7 @@
 package com.dongyeop.okcomputer.controller;
 
 import com.dongyeop.okcomputer.dto.Computer;
+import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.okcomputer.dto.Tv;
 import com.dongyeop.okcomputer.service.MaterialServiceInterface;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -102,18 +103,36 @@ public class StockManagementController {
 	@RequestMapping("/update_view_KoiMaterial")
 	public String viewKoiMaterial(Model model, @RequestParam("id") String id) throws ParseException {
 		System.out.println("ID : " + id);
-		System.out.println(id.substring(0, 1));
+		String subID = id.substring(0, 3);
 		Object koiMaterial;
-		if(id.substring(0, 1).equals("H")) {
+		if(subID.equals("IC-")) {
 			System.out.println("UPDATE TARGET : " + materialService.getComputer(id));
 			koiMaterial = materialService.getComputer(id);
 			model.addAttribute("koiMaterial", koiMaterial);
-		} else if (id.substring(0, 1).equals("E")) {
+			return "update_view";
+		} else if (subID.equals("CTV")) {
 			System.out.println("UPDATE TARGET : " + materialService.getTv(id));
 			koiMaterial = materialService.getTv(id);
 			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (subID.equals("OT-")){
+			System.out.println("UPDATE TARGET : " + materialService.getTelephone(id));
+			koiMaterial = materialService.getTelephone(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (subID.equals("ISW")) {
+			System.out.println("UPDATE TARGET : " + materialService.getSwitch(id));
+			koiMaterial = materialService.getSwitch(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (subID.equals("CR-")) {
+			System.out.println("UPDATE TARGET : " + materialService.getFridge(id));
+			koiMaterial = materialService.getFridge(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
 		}
-		return "update_view";
+
+		return "update_view_general";
 	}
 	
 	@RequestMapping("/update_broken")
