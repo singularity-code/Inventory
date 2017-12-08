@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.dongyeop.okcomputer.dto.Computer;
+import com.dongyeop.okcomputer.dto.Zabbix;
 
 @Repository("daoComputer")
 public class DaoComputerImple implements DaoComputerInterface {
@@ -18,8 +19,8 @@ public class DaoComputerImple implements DaoComputerInterface {
 
 	@Autowired
 	@Override
-	public void setDataSource(Object o) {
-		jdbcTemplate = new JdbcTemplate((DataSource) o);
+	public void setDataSource(DataSource dataSource) {
+		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
 	@Override
@@ -73,5 +74,13 @@ public class DaoComputerImple implements DaoComputerInterface {
 		String sqlQuery = "UPDATE COMPUTERS_IMPORT SET STATUS = ? WHERE ID = ?";
 		Object[] args = new Object[] {"Broken", computer.getId()};
 		return jdbcTemplate.update(sqlQuery, args) == 1;
+	}
+
+	@Override
+	public List<Zabbix> getAllzabbix() {
+		String sqlQuery = "SELECT * FROM host_inventory";
+		List<Zabbix> zabbixList = jdbcTemplate.query(sqlQuery, new ZabbixRowMapper());
+		System.out.println("Zabbix: " + zabbixList.size());
+		return zabbixList;
 	}
 }

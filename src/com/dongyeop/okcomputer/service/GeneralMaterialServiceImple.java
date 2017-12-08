@@ -1,6 +1,7 @@
 package com.dongyeop.okcomputer.service;
 
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
+import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
 import com.dongyeop.okcomputer.dto.*;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,12 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Autowired private DaoMaterialInterface daoMaterialFridge;
 	@Autowired private DaoMaterialInterface daoMaterialSwitch;
 	@Autowired private DaoMaterialInterface daoMaterialTelephone;
-
-
+	@Autowired private DaoComputerInterface daoComputer;
+	
+	public Object getZabbixList() {
+		return daoComputer.getAllzabbix();
+	}
+	
 	@Override
 	public Object getComputerList() throws ParseException {
 		List<Computer> computers = daoMaterialComputer.getAllMaterials();

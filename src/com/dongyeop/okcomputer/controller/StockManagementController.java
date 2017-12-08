@@ -34,6 +34,7 @@ public class StockManagementController {
 		model.addAttribute("telephones", toJson(materialService.getTelephoneList()));
 		model.addAttribute("switches", toJson(materialService.getSwitchList()));
 		model.addAttribute("fridges", toJson(materialService.getFridgeList()));
+		model.addAttribute("zabbix", materialService.getZabbixList());
 		System.out.println("JSON LOADED");
 		return "index";
 	}
