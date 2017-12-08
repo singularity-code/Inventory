@@ -78,9 +78,15 @@ public class DaoComputerImple implements DaoComputerInterface {
 
 	@Override
 	public List<Zabbix> getAllzabbix() {
-		String sqlQuery = "SELECT * FROM host_inventory";
+		String sqlQuery = "SELECT * FROM host_inventory WHERE name != '' AND name like '%koi%'";
 		List<Zabbix> zabbixList = jdbcTemplate.query(sqlQuery, new ZabbixRowMapper());
-		System.out.println("Zabbix: " + zabbixList.size());
+		System.out.println("Zabbix Total : " + zabbixList.size());
+		for(Zabbix item : zabbixList) {
+			String name = item.getName();
+			int idx = name.indexOf(".");
+			String realName = name.substring(0, idx);
+			System.out.println("Zabbix: " + realName);
+		}
 		return zabbixList;
 	}
 }
