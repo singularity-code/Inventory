@@ -15,6 +15,8 @@ public class MaterialReportImple implements MaterialReport {
 	@Autowired private DaoMaterialInterface daoMaterialFridge;
 	@Autowired private DaoMaterialInterface daoMaterialSwitch;
 	@Autowired private DaoMaterialInterface daoMaterialTelephone;
+	@Autowired private DaoMaterialInterface daoMaterialBarcodeReader;
+	
 	@Autowired private DaoComputerInterface daoComputer;
 	
 	public HashMap<String, Integer> selectTotalTvReport() {
@@ -26,6 +28,18 @@ public class MaterialReportImple implements MaterialReport {
 		tvReportMap.put("kentL5Staff",  daoMaterialTv.selectTotalKentL5Staff());
 		tvReportMap.put("kentL5Student", daoMaterialTv.selectTotalKentL5Student());
 		return tvReportMap;
+	}
+
+	@Override
+	public HashMap<String, Integer> selectTotalBarcodeReaderReport() {
+		HashMap<String, Integer> barcodeReaderMap = new HashMap<String, Integer>();
+		barcodeReaderMap.put("marketStaff", daoMaterialBarcodeReader.selectTotalMarketStaff());
+		barcodeReaderMap.put("marketStudent", daoMaterialBarcodeReader.selectTotalMarketStudent());
+		barcodeReaderMap.put("kentL1Staff", daoMaterialBarcodeReader.selectTotalKentL1Staff());
+		barcodeReaderMap.put("kentL1Student", daoMaterialBarcodeReader.selectTotalKentL1Student());
+		barcodeReaderMap.put("kentL5Staff",  daoMaterialBarcodeReader.selectTotalKentL5Staff());
+		barcodeReaderMap.put("kentL5Student", daoMaterialBarcodeReader.selectTotalKentL5Student());
+		return barcodeReaderMap;
 	}
 
 }

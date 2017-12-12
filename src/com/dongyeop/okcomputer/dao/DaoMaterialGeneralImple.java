@@ -165,4 +165,70 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		System.out.println("SWAP SUCCESS");
 		return writeJson();
 	}
+	@Override
+	public int selectTotalMarketStaff() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			String index = obj.getId().substring(0, 1);
+			if(obj.getCampus().equalsIgnoreCase("market") && index.equals("C")) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalMarketStudent() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			String index = obj.getId().substring(0, 1);
+			if(obj.getCampus().equalsIgnoreCase("market") && index.equals("S")) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL1Staff() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			String index = obj.getId().substring(0, 1);
+			if(obj.getCampus().equalsIgnoreCase("kent l1") && index.equals("C")) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL1Student() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			String index = obj.getId().substring(0, 1);
+			if(obj.getCampus().equalsIgnoreCase("kent l1") && index.equals("S"))  {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL5Staff() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			String index = obj.getId().substring(0, 1);
+			if(obj.getCampus().equalsIgnoreCase("kent l5") && index.equals("C"))  {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL5Student() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			String index = obj.getId().substring(0, 1);
+			if(obj.getCampus().equalsIgnoreCase("kent l5") && index.equals("S"))  {
+				total += 1;
+			}
+		}
+		return total;
+	}
 }

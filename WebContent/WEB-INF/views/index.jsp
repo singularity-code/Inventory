@@ -635,12 +635,12 @@
 			</tr>
 			<tr>
 				<td class="reportRowH1">Bar Code Reader</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td class="reportRowSection">{{totalBarcodeReMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalBarcodeReMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalBarcodeReMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalBarcodeReMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalBarcodeReMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalBarcodeReMap.kentL5Student}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Data Projector</td>
@@ -684,6 +684,7 @@
 	  $scope.fridges = ${fridges};
 	  $scope.all = ${all};
 	  $scope.totalTvMap = ${totalTvMap};
+	  $scope.totalBarcodeReMap = ${totalBarcodeReMap};
 	  
 	/*   $scope.zabbix = ${zabbix};
  */

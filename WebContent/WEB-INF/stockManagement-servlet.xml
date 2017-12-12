@@ -51,4 +51,7 @@
 	<bean id="reportService"
 		class="com.dongyeop.okcomputer.service.MaterialReportImple">
 	</bean>
+	<bean id="daoMaterialBarcodeReader"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialBarcodeReaderImple">
+	</bean>
 </beans>

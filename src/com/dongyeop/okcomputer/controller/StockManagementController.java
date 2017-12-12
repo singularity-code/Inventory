@@ -40,6 +40,7 @@ public class StockManagementController {
 		model.addAttribute("zabbix", toJson(materialService.getZabbixList()));
 		model.addAttribute("all", toJson(materialService.getAllList()));
 		model.addAttribute("totalTvMap", toJson(reportService.selectTotalTvReport()));
+		model.addAttribute("totalBarcodeReMap", toJson(reportService.selectTotalBarcodeReaderReport()));
 		System.out.println("JSON LOADED");
 		return "index";
 	}

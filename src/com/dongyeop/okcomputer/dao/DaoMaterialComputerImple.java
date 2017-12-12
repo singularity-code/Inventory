@@ -81,4 +81,40 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 		}
 		return b ? writeJson() : false;
 	}
+
+	@Override
+	public int selectTotalMarketStaff() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int selectTotalMarketStudent() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int selectTotalKentL1Staff() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int selectTotalKentL1Student() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int selectTotalKentL5Staff() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int selectTotalKentL5Student() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
