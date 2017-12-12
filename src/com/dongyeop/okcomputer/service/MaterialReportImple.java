@@ -1,0 +1,31 @@
+package com.dongyeop.okcomputer.service;
+
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
+import com.dongyeop.okcomputer.dao.DaoMaterialTvImple;
+import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
+
+public class MaterialReportImple implements MaterialReport {
+	@Autowired private DaoMaterialInterface daoMaterialComputer;
+	@Autowired private DaoMaterialInterface daoMaterialTv;
+	@Autowired private DaoMaterialInterface daoMaterialGarage;
+	@Autowired private DaoMaterialInterface daoMaterialFridge;
+	@Autowired private DaoMaterialInterface daoMaterialSwitch;
+	@Autowired private DaoMaterialInterface daoMaterialTelephone;
+	@Autowired private DaoComputerInterface daoComputer;
+	
+	public HashMap<String, Integer> selectTotalTvReport() {
+		HashMap<String, Integer> tvReportMap = new HashMap<String, Integer>();
+		tvReportMap.put("marketStaff", daoMaterialTv.selectTotalMarketStaff());
+		tvReportMap.put("marketStudent", daoMaterialTv.selectTotalMarketStudent());
+		tvReportMap.put("kentL1Staff", daoMaterialTv.selectTotalKentL1Staff());
+		tvReportMap.put("kentL1Student", daoMaterialTv.selectTotalKentL1Student());
+		tvReportMap.put("kentL5Staff",  daoMaterialTv.selectTotalKentL5Staff());
+		tvReportMap.put("kentL5Student", daoMaterialTv.selectTotalKentL5Student());
+		return tvReportMap;
+	}
+
+}

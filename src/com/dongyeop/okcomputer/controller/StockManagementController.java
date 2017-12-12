@@ -1,6 +1,7 @@
 package com.dongyeop.okcomputer.controller;
 
 import com.dongyeop.okcomputer.dto.*;
+import com.dongyeop.okcomputer.service.MaterialReport;
 import com.dongyeop.okcomputer.service.MaterialServiceInterface;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.parser.ParseException;
@@ -25,6 +26,8 @@ public class StockManagementController {
 	// StockService is defined in Bean Config
 	@Autowired
 	private MaterialServiceInterface materialService;
+	@Autowired
+	private MaterialReport reportService;
 
 	@RequestMapping("/")
 	public String getLists(Model model) throws ParseException {
@@ -34,7 +37,9 @@ public class StockManagementController {
 		model.addAttribute("telephones", toJson(materialService.getTelephoneList()));
 		model.addAttribute("switches", toJson(materialService.getSwitchList()));
 		model.addAttribute("fridges", toJson(materialService.getFridgeList()));
-		model.addAttribute("zabbix", materialService.getZabbixList());
+		model.addAttribute("zabbix", toJson(materialService.getZabbixList()));
+		model.addAttribute("all", toJson(materialService.getAllList()));
+		model.addAttribute("totalTvMap", toJson(reportService.selectTotalTvReport()));
 		System.out.println("JSON LOADED");
 		return "index";
 	}
@@ -164,7 +169,6 @@ public class StockManagementController {
 			model.addAttribute("koiMaterial", koiMaterial);
 			return "update_view_general";
 		}
-
 		return "update_view_general";
 	}
 	

@@ -62,6 +62,17 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		System.out.println("SERVICE SIZE of Fridge : " + fridges.size());
 		return fridges;
 	}
+	
+	@Override
+	public Object getAllList() throws ParseException {
+		List<Object> masterList = daoMaterialComputer.getAllMaterials();
+		masterList.addAll(daoMaterialFridge.getAllMaterials());
+		masterList.addAll(daoMaterialSwitch.getAllMaterials());
+		masterList.addAll(daoMaterialTelephone.getAllMaterials());
+		masterList.addAll(daoMaterialTv.getAllMaterials());
+		System.out.println("SERVICE SIZE of All : " + masterList.size());
+		return masterList; 
+	}
 
 	@Override
 	public boolean createComputer(Object object)  {

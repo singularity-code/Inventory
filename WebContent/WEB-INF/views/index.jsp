@@ -106,12 +106,13 @@
 	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
 	  <h3 style="text-align: center">INVENTORY</h3>
 	<div class="" style="text-align: center">
+		<button ng-click="setTab('all')">All</button>
 		<button ng-click="setTab('it-computer')">Computer</button>
 		<button ng-click="setTab('class-tv')">Tv</button>
 		<button ng-click="setTab('it-telephone')">Telephone</button>
 		<button ng-click="setTab('it-switch')">Switch</button>
 		<button ng-click="setTab('staff-fridge')">Fridge</button>
-		<button ng-click="setTab(garage)">Garage</button>
+		<button ng-click="setTab('garage')">Garage</button>
 		<button ng-click="setTab('report')">Report</button>
 	</div>
 	<p>
@@ -171,6 +172,52 @@
 				</td>
 			</tr>
 		</table>
+	</div>
+	<!-- All Set -->
+	<div ng-show="isSet('all')" style="margin:auto;width:75%">
+		<div style="text-align: right;">
+			<button ng-click="setTab('create-koiMaterial')">Create</button>
+			<h3>Total : {{all.length}} Things</h3>
+			<p>
+			Sort by:
+			<select ng-model="$ctrl.orderProp">
+			<option value="Switch">Switch</option>
+			<option value="Tv">Tv</option>
+			</select>
+		</p>
+		</div>
+		<table>
+			<tr>
+				<td style="width: 100px;"><b>S/N</b></td>
+				<td style="width: 100px;"><b>Type</b></td>
+				<td style="width: 100px;"><b>Brand</b></td>
+				<td style="width: 150px;"><b>Previous</b></td>
+				<td style="width: 150px;"><b>Location</b></td>
+				<td style="width: 150px;"><b>Campus</b></td>
+				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Last Update</b></td>
+				<td></td>
+			</tr>
+		</table>
+		<div class="" >
+			<table id="tvTable" align="center" ng-repeat="obj in all | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+				<tr id="">
+					<td style="width: 100px;">{{obj.id}}</td>
+					<td style="width: 100px;">{{obj.type}}</td>
+					<td style="width: 100px;">{{obj.brand}}</td>
+					<td style="width: 150px;">{{obj.previous}}</td>
+					<td style="width: 150px;">{{obj.location}}</td>
+					<td style="width: 150px;">{{obj.campus}}</td>
+					<td style="width: 150px;">{{obj.user}}</td>
+					<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
+					<td style="width: 150px;">
+						<!-- Google Material Design Icons -->
+						<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="./delete_tv?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<!-- Tv Set -->
 	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
@@ -511,7 +558,7 @@
 			</tr>
 			<tr>
 				<td class="reportRowH1">Desktop</td>
-				<td></td>
+				<td>{{totalMarketTv}}</td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -555,19 +602,91 @@
 				<td></td>
 			</tr>
 		</table>
+				<table style="border: 0.5px solid grey">
+			<tr>
+				<th rowspan="2" class="reportRowH1">Classroom, Library & Student Lounge</th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Tv</td>
+				<td class="reportRowSection">{{totalTvMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalTvMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalTvMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalTvMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalTvMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalTvMap.kentL5Student}}</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Bar Code Reader</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Data Projector</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Microwave</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Total</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
 	</div>
 </div>
 <script>
   var app = angular.module("myComputerList", []);
   app.controller("myCtrl", function($scope) {
-	  $scope.master = {};
+	 
 	  $scope.pcs= ${computers};
 	  $scope.garage= ${garage};
 	  $scope.tvs = ${tvs};
 	  $scope.switches = ${switches};
 	  $scope.telephones = ${telephones};
 	  $scope.fridges = ${fridges};
-
+	  $scope.all = ${all};
+	  $scope.totalTvMap = ${totalTvMap};
+	  
+	/*   $scope.zabbix = ${zabbix};
+ */
 	  $scope.campus = ["Market", "Kent"];
 	  $scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
 						 "Student Canteen", "Lecture Office", "IT Office", "101", "102","103", "104", "105", "106", "107", "108"];

@@ -13,6 +13,7 @@ public interface MaterialServiceInterface<T1, T2> {
 	T1 getTelephoneList() throws ParseException;
 	T1 getSwitchList() throws ParseException;
 	T1 getFridgeList() throws ParseException;
+	T1 getAllList() throws ParseException;
 	boolean createComputer(T1 o);
 	boolean createTv(T1 o);
 	boolean createTelephone(T1 o);

@@ -12,4 +12,10 @@ public interface DaoMaterialInterface<T1, T2> {
 	boolean create(T1 o);
 	boolean update(T1 o) throws ParseException;
 	boolean swap(T1 prev, T1 next);
+	int selectTotalMarketStaff();
+	int selectTotalMarketStudent();
+	int selectTotalKentL1Staff();
+	int selectTotalKentL1Student();
+	int selectTotalKentL5Staff();
+	int selectTotalKentL5Student();
 }

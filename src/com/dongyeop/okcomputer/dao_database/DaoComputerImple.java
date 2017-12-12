@@ -85,7 +85,8 @@ public class DaoComputerImple implements DaoComputerInterface {
 			String name = item.getName();
 			int idx = name.indexOf(".");
 			String realName = name.substring(0, idx);
-			System.out.println("Zabbix: " + realName);
+			//System.out.println("Zabbix: " + realName);
+			item.setName(realName);
 		}
 		return zabbixList;
 	}
