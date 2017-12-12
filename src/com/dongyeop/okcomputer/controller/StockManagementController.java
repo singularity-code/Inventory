@@ -42,6 +42,7 @@ public class StockManagementController {
 		model.addAttribute("totalTvMap", toJson(reportService.selectTotalTvReport()));
 		model.addAttribute("totalBarcodeReMap", toJson(reportService.selectTotalBarcodeReaderReport()));
 		model.addAttribute("totlaProjectorMap", toJson(reportService.selectTotalProjectorReport()));
+		model.addAttribute("totalMicrowaveMap", toJson(reportService.selectTotalMicrowaveReport()));
 		System.out.println("JSON LOADED");
 		return "index";
 	}

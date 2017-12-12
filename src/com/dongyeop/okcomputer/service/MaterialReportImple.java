@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
-import com.dongyeop.okcomputer.dao.DaoMaterialTvImple;
 import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
 
 public class MaterialReportImple implements MaterialReport {
@@ -17,6 +16,7 @@ public class MaterialReportImple implements MaterialReport {
 	@Autowired private DaoMaterialInterface daoMaterialTelephone;
 	@Autowired private DaoMaterialInterface daoMaterialBarcodeReader;
 	@Autowired private DaoMaterialInterface daoMaterialProjector;
+	@Autowired private DaoMaterialInterface daoMaterialMicrowave;
 	
 	@Autowired private DaoComputerInterface daoComputer;
 	
@@ -53,6 +53,18 @@ public class MaterialReportImple implements MaterialReport {
 		projectorMap.put("kentL5Staff",  daoMaterialProjector.selectTotalKentL5Staff());
 		projectorMap.put("kentL5Student", daoMaterialProjector.selectTotalKentL5Student());
 		return projectorMap;
+	}
+
+	@Override
+	public HashMap<String, Integer> selectTotalMicrowaveReport() {
+		HashMap<String, Integer> microwaveMap = new HashMap<String, Integer>();
+		microwaveMap.put("marketStaff", daoMaterialMicrowave.selectTotalMarketStaff());
+		microwaveMap.put("marketStudent", daoMaterialMicrowave.selectTotalMarketStudent());
+		microwaveMap.put("kentL1Staff", daoMaterialMicrowave.selectTotalKentL1Staff());
+		microwaveMap.put("kentL1Student", daoMaterialMicrowave.selectTotalKentL1Student());
+		microwaveMap.put("kentL5Staff",  daoMaterialMicrowave.selectTotalKentL5Staff());
+		microwaveMap.put("kentL5Student", daoMaterialMicrowave.selectTotalKentL5Student());
+		return microwaveMap;
 	}
 
 }

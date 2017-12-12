@@ -6,4 +6,5 @@ public interface MaterialReport {
 	HashMap<String, Integer> selectTotalTvReport();
 	HashMap<String, Integer> selectTotalBarcodeReaderReport();
 	HashMap<String, Integer> selectTotalProjectorReport();
+	HashMap<String, Integer> selectTotalMicrowaveReport();
 }

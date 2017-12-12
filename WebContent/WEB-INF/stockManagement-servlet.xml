@@ -57,4 +57,7 @@
 	<bean id="daoMaterialProjector"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialProjectorImple">
 	</bean>
+	<bean id="daoMaterialMicrowave"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialMicrowaveImple">
+	</bean>
 </beans>

@@ -653,12 +653,12 @@
 			</tr>
 			<tr>
 				<td class="reportRowH1">Microwave</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td class="reportRowSection">{{totalMicrowaveMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalMicrowaveMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalMicrowaveMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalMicrowaveMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalMicrowaveMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalMicrowaveMap.kentL5Student}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Total</td>
@@ -686,6 +686,7 @@
 	  $scope.totalTvMap = ${totalTvMap};
 	  $scope.totalBarcodeReMap = ${totalBarcodeReMap};
 	  $scope.totalProjectorMap = ${totlaProjectorMap};
+	  $scope.totalMicrowaveMap = ${totalMicrowaveMap};
 	  
 	/*   $scope.zabbix = ${zabbix};
  */
