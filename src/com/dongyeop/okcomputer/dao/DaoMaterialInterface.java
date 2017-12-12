@@ -1,6 +1,5 @@
 package com.dongyeop.okcomputer.dao;
 
-import com.dongyeop.okcomputer.dto.KoiMaterial;
 import org.json.simple.parser.ParseException;
 
 import java.util.List;

@@ -54,4 +54,7 @@
 	<bean id="daoMaterialBarcodeReader"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialBarcodeReaderImple">
 	</bean>
+	<bean id="daoMaterialProjector"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialProjectorImple">
+	</bean>
 </beans>
