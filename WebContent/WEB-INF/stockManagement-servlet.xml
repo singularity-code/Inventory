@@ -60,4 +60,25 @@
 	<bean id="daoMaterialMicrowave"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialMicrowaveImple">
 	</bean>
+	<bean id="daoMaterialEFTPOS"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialEFTPOSMachineImple">
+	</bean>
+	<bean id="daoMaterialFax"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialFaxImple">
+	</bean>
+	<bean id="daoMaterialLaminator"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialLaminatorImple">
+	</bean>
+	<bean id="daoMaterialPrinter"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialPrinterImple">
+	</bean>
+	<bean id="daoMaterialRouter"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialRouterImple">
+	</bean>
+	<bean id="daoMaterialShredder"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialShredderImple">
+	</bean>
+	<bean id="daoMaterialSpeaker"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialSpeakerImple">
+	</bean>
 </beans>
