@@ -11,4 +11,14 @@ public interface MaterialReport {
 	HashMap<String, Integer> selectTotalBarcodeReaderReport();
 	HashMap<String, Integer> selectTotalProjectorReport();
 	HashMap<String, Integer> selectTotalMicrowaveReport();
+	HashMap<String, Integer> selectTotalAirConditionerReport();
+	HashMap<String, Integer> selectTotalCashMachineReport();
+	HashMap<String, Integer> selectTotalDSLRReport();
+	HashMap<String, Integer> selectTotalEFTPOSMachineReport();
+	HashMap<String, Integer> selectTotalFaxReport();
+	HashMap<String, Integer> selectTotalLaminatorReport();
+	HashMap<String, Integer> selectTotalPrinterReport();
+	HashMap<String, Integer> selectTotalRouterReport();
+	HashMap<String, Integer> selectTotalShredderReport();
+	HashMap<String, Integer> selectTotalSpeakerReport();
 }

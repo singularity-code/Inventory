@@ -81,4 +81,7 @@
 	<bean id="daoMaterialSpeaker"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialSpeakerImple">
 	</bean>
+	<bean id="daoMaterialAirCondition"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialAirConditionerImple">
+	</bean>
 </beans>
