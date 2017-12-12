@@ -602,7 +602,8 @@
 				<td></td>
 			</tr>
 		</table>
-				<table style="border: 0.5px solid grey">
+		<br/>
+		<table style="border: 0.5px solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Classroom, Library & Student Lounge</th>
 				<th colspan="2" class="reportRowH2">Market</th>
@@ -660,14 +661,100 @@
 				<td class="reportRowSection">{{totalMicrowaveMap.kentL5Staff}}</td>
 				<td class="reportRowSection">{{totalMicrowaveMap.kentL5Student}}</td>
 			</tr>
+		</table>
+		<table style="border: 0.5px solid grey">
 			<tr>
-				<td class="reportRowH1">Total</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<th rowspan="2" class="reportRowH1">Office</th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Telephone</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Printer</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Shreder</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Laminator</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Fax</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">EFTPOS Machine</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+						<tr>
+				<td class="reportRowH1">DSLR Camera</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+						<tr>
+				<td class="reportRowH1">EFTPOS Machine</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
 			</tr>
 		</table>
 	</div>
@@ -682,7 +769,7 @@
 	  $scope.switches = ${switches};
 	  $scope.telephones = ${telephones};
 	  $scope.fridges = ${fridges};
-	  $scope.all = ${all};
+	  $scope.all = ${tvs};
 	  $scope.totalTvMap = ${totalTvMap};
 	  $scope.totalBarcodeReMap = ${totalBarcodeReMap};
 	  $scope.totalProjectorMap = ${totlaProjectorMap};

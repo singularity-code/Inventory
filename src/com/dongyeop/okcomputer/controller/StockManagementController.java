@@ -38,7 +38,7 @@ public class StockManagementController {
 		model.addAttribute("switches", toJson(materialService.getSwitchList()));
 		model.addAttribute("fridges", toJson(materialService.getFridgeList()));
 		model.addAttribute("zabbix", toJson(materialService.getZabbixList()));
-		model.addAttribute("all", toJson(materialService.getAllList()));
+		//model.addAttribute("all", toJson(materialService.getAllList()));
 		model.addAttribute("totalTvMap", toJson(reportService.selectTotalTvReport()));
 		model.addAttribute("totalBarcodeReMap", toJson(reportService.selectTotalBarcodeReaderReport()));
 		model.addAttribute("totlaProjectorMap", toJson(reportService.selectTotalProjectorReport()));
