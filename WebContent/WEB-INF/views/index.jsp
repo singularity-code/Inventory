@@ -624,6 +624,7 @@
 				<td class="reportRowSection">Student</td>
 				<td class="reportRowSection">Lecture/Staff</td>
 				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Total</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Tv</td>
@@ -633,6 +634,7 @@
 				<td class="reportRowSection">{{totalTvMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalTvMap.kentL5Staff}}</td>
 				<td class="reportRowSection">{{totalTvMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalTvMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Bar Code Reader</td>
@@ -642,6 +644,7 @@
 				<td class="reportRowSection">{{totalBarcodeReMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalBarcodeReMap.kentL5Staff}}</td>
 				<td class="reportRowSection">{{totalBarcodeReMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalBarcodeReMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Data Projector</td>
@@ -651,6 +654,7 @@
 				<td class="reportRowSection">{{totalProjectorMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalProjectorMap.kentL5Staff}}</td>
 				<td class="reportRowSection">{{totalProjectorMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalProjectorMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Microwave</td>
@@ -660,6 +664,7 @@
 				<td class="reportRowSection">{{totalMicrowaveMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalMicrowaveMap.kentL5Staff}}</td>
 				<td class="reportRowSection">{{totalMicrowaveMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalMicrowaveMap.total}}</td>
 			</tr>
 		</table>
 		<table style="border: 0.5px solid grey">
@@ -683,9 +688,11 @@
 				<td class="reportRowSection">Student</td>
 				<td class="reportRowSection">Lecture/Staff</td>
 				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Total</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Telephone</td>
+				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
@@ -701,9 +708,11 @@
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Shreder</td>
+				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
@@ -719,6 +728,7 @@
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Fax</td>
@@ -728,9 +738,11 @@
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">EFTPOS Machine</td>
+				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
@@ -746,9 +758,11 @@
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
 			</tr>
 						<tr>
 				<td class="reportRowH1">EFTPOS Machine</td>
+				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>

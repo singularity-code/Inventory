@@ -231,4 +231,8 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		}
 		return total;
 	}
+	@Override
+	public int getListTotal() {
+		return objectList.size();
+	}
 }

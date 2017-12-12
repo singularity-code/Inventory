@@ -17,4 +17,5 @@ public interface DaoMaterialInterface<T1, T2> {
 	int selectTotalKentL1Student();
 	int selectTotalKentL5Staff();
 	int selectTotalKentL5Student();
+	int getListTotal();
 }

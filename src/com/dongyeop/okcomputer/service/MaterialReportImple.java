@@ -28,6 +28,7 @@ public class MaterialReportImple implements MaterialReport {
 		tvReportMap.put("kentL1Student", daoMaterialTv.selectTotalKentL1Student());
 		tvReportMap.put("kentL5Staff",  daoMaterialTv.selectTotalKentL5Staff());
 		tvReportMap.put("kentL5Student", daoMaterialTv.selectTotalKentL5Student());
+		tvReportMap.put("total", daoMaterialTv.getListTotal());
 		return tvReportMap;
 	}
 
@@ -40,6 +41,7 @@ public class MaterialReportImple implements MaterialReport {
 		barcodeReaderMap.put("kentL1Student", daoMaterialBarcodeReader.selectTotalKentL1Student());
 		barcodeReaderMap.put("kentL5Staff",  daoMaterialBarcodeReader.selectTotalKentL5Staff());
 		barcodeReaderMap.put("kentL5Student", daoMaterialBarcodeReader.selectTotalKentL5Student());
+		barcodeReaderMap.put("total", daoMaterialBarcodeReader.getListTotal());
 		return barcodeReaderMap;
 	}
 
@@ -52,6 +54,7 @@ public class MaterialReportImple implements MaterialReport {
 		projectorMap.put("kentL1Student", daoMaterialProjector.selectTotalKentL1Student());
 		projectorMap.put("kentL5Staff",  daoMaterialProjector.selectTotalKentL5Staff());
 		projectorMap.put("kentL5Student", daoMaterialProjector.selectTotalKentL5Student());
+		projectorMap.put("total", daoMaterialProjector.getListTotal());
 		return projectorMap;
 	}
 
@@ -64,7 +67,7 @@ public class MaterialReportImple implements MaterialReport {
 		microwaveMap.put("kentL1Student", daoMaterialMicrowave.selectTotalKentL1Student());
 		microwaveMap.put("kentL5Staff",  daoMaterialMicrowave.selectTotalKentL5Staff());
 		microwaveMap.put("kentL5Student", daoMaterialMicrowave.selectTotalKentL5Student());
+		microwaveMap.put("total", daoMaterialMicrowave.getListTotal());
 		return microwaveMap;
 	}
-
 }
