@@ -1,20 +1,36 @@
 package com.dongyeop.okcomputer.service;
 
-import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
-import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
-import com.dongyeop.okcomputer.dto.*;
+import java.util.List;
+
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
+import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
+import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
+import com.dongyeop.okcomputer.dto.Computer;
+import com.dongyeop.okcomputer.dto.KoiComputer;
+import com.dongyeop.okcomputer.dto.KoiMaterial;
+import com.dongyeop.okcomputer.dto.Monitor;
+import com.dongyeop.okcomputer.dto.Printer;
+import com.dongyeop.okcomputer.dto.Telephone;
+import com.dongyeop.okcomputer.dto.Tv;
 
 public class GeneralMaterialServiceImple implements MaterialServiceInterface<Object, String> {
+	//NEW
+	@Autowired private DaoMaterialInterface daoMaterialDesktop;
+	@Autowired private DaoMaterialInterface daoMaterialLaptop;
+	@Autowired private DaoMaterialInterface daoMaterialMac;
+	@Autowired private DaoMaterialInterface daoMaterialMonitor;
+	@Autowired private DaoMaterialInterface daoMaterialEtc;
+	@Autowired private DaoMaterialInterface daoMaterialEtcIt;
+	@Autowired private DaoMaterialInterface daoMaterialPrinter;
+	@Autowired private DaoMaterialInterface daoMaterialTelephone;
+	
+	//OLD
 	@Autowired private DaoMaterialInterface daoMaterialComputer;
 	@Autowired private DaoMaterialInterface daoMaterialTv;
 	@Autowired private DaoMaterialInterface daoMaterialGarage;
-	@Autowired private DaoMaterialInterface daoMaterialFridge;
-	@Autowired private DaoMaterialInterface daoMaterialSwitch;
-	@Autowired private DaoMaterialInterface daoMaterialTelephone;
+	
 	@Autowired private DaoComputerInterface daoComputer;
 	
 	public Object getZabbixList() {
@@ -23,7 +39,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	
 	@Override
 	public Object getComputerList() throws ParseException {
-		List<Computer> computers = daoMaterialComputer.getAllMaterials();
+		List<KoiComputer> computers = daoMaterialComputer.getAllMaterials();
 		System.out.println("SERVICE SIZE of Computers : " + computers.size());
 		return computers;
 	}
@@ -48,26 +64,10 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		System.out.println("SERVICE SIZE of Telephone : " + telephones.size());
 		return telephones;
 	}
-
-	@Override
-	public Object getSwitchList() throws ParseException {
-		List<Switch> switches = daoMaterialSwitch.getAllMaterials();
-		System.out.println("SERVICE SIZE of Switch : " + switches.size());
-		return switches;
-	}
-
-	@Override
-	public Object getFridgeList() throws ParseException {
-		List<Fridge> fridges = daoMaterialFridge.getAllMaterials();
-		System.out.println("SERVICE SIZE of Fridge : " + fridges.size());
-		return fridges;
-	}
 	
 	@Override
 	public Object getAllList() throws ParseException {
 		List<Object> masterList = daoMaterialComputer.getAllMaterials();
-		masterList.addAll(daoMaterialFridge.getAllMaterials());
-		masterList.addAll(daoMaterialSwitch.getAllMaterials());
 		masterList.addAll(daoMaterialTelephone.getAllMaterials());
 		masterList.addAll(daoMaterialTv.getAllMaterials());
 		System.out.println("SERVICE SIZE of All : " + masterList.size());
@@ -98,43 +98,12 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		return false;
 	}
 
-	@Override
-	public boolean createSwitch(Object object) {
-		if(object instanceof Switch) {
-			daoMaterialSwitch.create(object);
-		}
-		return false;
-	}
-
-	@Override
-	public boolean createFridge(Object object) {
-		if(object instanceof Fridge) {
-			daoMaterialFridge.create(object);
-		}
-		return false;
-	}
-
 	public boolean deleteComputer(String id) throws ParseException {
 		return daoMaterialComputer.delete(id);
 	}
 
 	public boolean deleteTv(String id) throws ParseException {
 		return daoMaterialTv.delete(id);
-	}
-
-	@Override
-	public boolean deleteTelephone(String id) throws ParseException  {
-		return daoMaterialTelephone.delete(id);
-	}
-
-	@Override
-	public boolean deleteSwitch(String id) throws ParseException  {
-		return daoMaterialSwitch.delete(id);
-	}
-
-	@Override
-	public boolean deleteFridge(String id) throws ParseException  {
-		return daoMaterialFridge.delete(id);
 	}
 
 	@Override
@@ -153,21 +122,6 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	}
 
 	@Override
-	public Object getTelephone(String id) throws ParseException {
-		return daoMaterialTelephone.getMaterial(id);
-	}
-
-	@Override
-	public Object getSwitch(String id) throws ParseException {
-		return daoMaterialSwitch.getMaterial(id);
-	}
-
-	@Override
-	public Object getFridge(String id) throws ParseException {
-		return daoMaterialFridge.getMaterial(id);
-	}
-
-	@Override
 	public boolean updateComputer(Object object) throws ParseException {
 		return daoMaterialComputer.update(object);
 	}
@@ -183,17 +137,181 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	}
 
 	@Override
-	public boolean updateSwitch(Object object) throws ParseException {
-		return daoMaterialSwitch.update(object);
-	}
-
-	@Override
-	public boolean updateFridge(Object object) throws ParseException {
-		return daoMaterialFridge.update(object);
-	}
-
-	@Override
 	public boolean swap(Object prev, Object next) throws ParseException {
 		return daoMaterialComputer.swap(prev, next);
+	}
+
+	@Override
+	public Object getDesktopList() throws ParseException {
+		List<KoiComputer> desktops = daoMaterialDesktop.getAllMaterials();
+		System.out.println("SERVICE SIZE of Computers : " + desktops.size());
+		return desktops;
+	}
+
+	@Override
+	public Object getLaptopList() throws ParseException {
+		List<KoiComputer> laptops = daoMaterialLaptop.getAllMaterials();
+		System.out.println("SERVICE SIZE of Laptopss : " + laptops.size());
+		return laptops;
+	}
+
+	@Override
+	public Object getMonitorList() throws ParseException {
+		List<Monitor> monitors = daoMaterialMonitor.getAllMaterials();
+		System.out.println("SERVICE SIZE of monitors : " + monitors.size());
+		return monitors;
+	}
+
+	@Override
+	public Object getMacList() throws ParseException {
+		List<KoiComputer> macs = daoMaterialMac.getAllMaterials();
+		System.out.println("SERVICE SIZE of macs : " + macs.size());
+		return macs;
+	}
+
+	@Override
+	public Object getPrinterList() throws ParseException {
+		List<Printer> printers = daoMaterialPrinter.getAllMaterials();
+		System.out.println("SERVICE SIZE of printers : " + printers.size());
+		return printers;
+	}
+
+	@Override
+	public Object getEtcList() throws ParseException {
+		List<KoiMaterial> koiMaterials = daoMaterialEtc.getAllMaterials();
+		System.out.println("SERVICE SIZE of ETC : " + koiMaterials.size());
+		return koiMaterials;
+	}
+
+	@Override
+	public Object getEtcItList() throws ParseException {
+		List<KoiMaterial> koiMaterials = daoMaterialEtcIt.getAllMaterials();
+		System.out.println("SERVICE SIZE of ETC IT : " + koiMaterials.size());
+		return koiMaterials;
+	}
+
+	@Override
+	public boolean createDesktop(Object o) {
+		if(o instanceof Computer) {
+			daoMaterialDesktop.create(o);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createLaptop(Object o) {
+		if(o instanceof Computer) {
+			daoMaterialDesktop.create(o);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createMonitor(Object o) {
+		if(o instanceof Monitor) {
+			daoMaterialDesktop.create(o);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createMac(Object o) {
+		if(o instanceof Computer) {
+			daoMaterialDesktop.create(o);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean createPrinter(Object o) {
+		if(o instanceof Printer) {
+			daoMaterialDesktop.create(o);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteDesktop(String id) throws ParseException {
+		return daoMaterialDesktop.delete(id);
+	}
+
+	@Override
+	public boolean deleteLaptop(String id) throws ParseException {
+		return daoMaterialLaptop.delete(id);
+	}
+
+	@Override
+	public boolean deleteMonitor(String id) throws ParseException {
+		return daoMaterialMonitor.delete(id);
+	}
+
+	@Override
+	public boolean deleteMac(String id) throws ParseException {
+		return daoMaterialMac.delete(id);
+	}
+
+	@Override
+	public boolean deletePrinter(String id) throws ParseException {
+		return daoMaterialPrinter.delete(id);
+	}
+
+	@Override
+	public boolean deleteTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.delete(id);
+	}
+
+	@Override
+	public Object getDesktop(String id) throws ParseException {
+		return daoMaterialDesktop.getMaterial(id);
+	}
+
+	@Override
+	public Object getLaptop(String id) throws ParseException {
+		return daoMaterialLaptop.getMaterial(id);
+	}
+
+	@Override
+	public Object getMonitor(String id) throws ParseException {
+		return daoMaterialLaptop.getMaterial(id);
+	}
+
+	@Override
+	public Object getMac(String id) throws ParseException {
+		return daoMaterialMac.getMaterial(id);
+	}
+
+	@Override
+	public Object getPrinter(String id) throws ParseException {
+		return daoMaterialPrinter.getMaterial(id);
+	}
+
+	@Override
+	public Object getTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.getMaterial(id);
+	}
+
+	@Override
+	public boolean updateDesktop(Object o) throws ParseException {
+		return daoMaterialDesktop.update(o);
+	}
+
+	@Override
+	public boolean updateLaptop(Object o) throws ParseException {
+		return daoMaterialLaptop.update(o);
+	}
+
+	@Override
+	public boolean updateMonitor(Object o) throws ParseException {
+		return daoMaterialMonitor.update(o);
+	}
+
+	@Override
+	public boolean updateMac(Object o) throws ParseException {
+		return daoMaterialMac.update(o);
+	}
+
+	@Override
+	public boolean updatePrinter(Object o) throws ParseException {
+		return daoMaterialPrinter.update(o);
 	}
 }

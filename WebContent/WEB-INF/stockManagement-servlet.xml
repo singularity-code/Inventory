@@ -21,12 +21,8 @@
 	<bean id="daoMaterialTelephone"
 		  class="com.dongyeop.okcomputer.dao.DaoMaterialTelephoneImple">
 	</bean>
-	<bean id="daoMaterialFridge"
-		  class="com.dongyeop.okcomputer.dao.DaoMaterialFridgeImple">
-	</bean>
-	<bean id="daoMaterialSwitch"
-		  class="com.dongyeop.okcomputer.dao.DaoMaterialSwitchImple">
-	</bean>
+	
+	
 	<bean id="daoMaterialGarage"
 		  class="com.dongyeop.okcomputer.dao.DaoMaterialGarageImple">
 	</bean>
@@ -51,44 +47,27 @@
 	<bean id="reportService"
 		class="com.dongyeop.okcomputer.service.MaterialReportImple">
 	</bean>
-	<bean id="daoMaterialBarcodeReader"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialBarcodeReaderImple">
-	</bean>
-	<bean id="daoMaterialProjector"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialProjectorImple">
-	</bean>
-	<bean id="daoMaterialMicrowave"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialMicrowaveImple">
-	</bean>
 	
-	<bean id="daoMaterialFax"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialFaxImple">
-	</bean>
-	<bean id="daoMaterialLaminator"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialLaminatorImple">
-	</bean>
 	<bean id="daoMaterialPrinter"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialPrinterImple">
 	</bean>
-	<bean id="daoMaterialRouter"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialRouterImple">
+	
+	<bean id="daoMaterialDesktop"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialDesktopImple">
 	</bean>
-	<bean id="daoMaterialShredder"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialShredderImple">
+	<bean id="daoMaterialLaptop"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialLaptopImple">
 	</bean>
-	<bean id="daoMaterialSpeaker"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialSpeakerImple">
+	<bean id="daoMaterialMac"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialMacImple">
 	</bean>
-	<bean id="daoMaterialAirCondition"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialAirConditionerImple">
+	<bean id="daoMaterialMonitor"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialMonitorImple">
 	</bean>
-	<bean id="daoMaterialCashMachine"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialCashMachineImple">
+	<bean id="daoMaterialEtc"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialEtcImple">
 	</bean>
-	<bean id="daoMaterialDSLR"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialDSLRImple">
-	</bean>
-	<bean id="daoMaterialEFTPOSMachine"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialEFTPOSMachineImple">
+	<bean id="daoMaterialEtcIt"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialEtcItImple">
 	</bean>
 </beans>

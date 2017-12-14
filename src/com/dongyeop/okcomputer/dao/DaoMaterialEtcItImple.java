@@ -1,14 +1,13 @@
 package com.dongyeop.okcomputer.dao;
 
 import org.json.simple.parser.ParseException;
-
 import com.dongyeop.profile.ApplicationType;
 
-public class DaoMaterialEFTPOSMachineImple extends DaoMaterialGeneralImple{
+public class DaoMaterialEtcItImple extends DaoMaterialGeneralImple {
 
-	public DaoMaterialEFTPOSMachineImple() {
+	public DaoMaterialEtcItImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "it_etc.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

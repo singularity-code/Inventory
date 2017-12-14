@@ -4,11 +4,11 @@ import org.json.simple.parser.ParseException;
 
 import com.dongyeop.profile.ApplicationType;
 
-public class DaoMaterialShredderImple extends DaoMaterialGeneralImple {
+public class DaoMaterialMacImple extends DaoMaterialGeneralImple{
 
-	public DaoMaterialShredderImple() {
+	public DaoMaterialMacImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "macs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

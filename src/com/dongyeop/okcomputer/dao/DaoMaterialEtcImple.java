@@ -4,11 +4,11 @@ import org.json.simple.parser.ParseException;
 
 import com.dongyeop.profile.ApplicationType;
 
-public class DaoMaterialAirConditionerImple extends DaoMaterialGeneralImple {
+public class DaoMaterialEtcImple extends DaoMaterialGeneralImple{
 
-	public DaoMaterialAirConditionerImple() {
+	public DaoMaterialEtcImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "etc.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);
