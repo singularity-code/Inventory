@@ -8,7 +8,7 @@ public class DaoMaterialEFTPOSMachineImple extends DaoMaterialGeneralImple{
 
 	public DaoMaterialEFTPOSMachineImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "eftposMachines.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

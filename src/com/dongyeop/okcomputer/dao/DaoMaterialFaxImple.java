@@ -8,7 +8,7 @@ public class DaoMaterialFaxImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialFaxImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "faxes.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

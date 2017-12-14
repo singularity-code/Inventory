@@ -8,7 +8,7 @@ public class DaoMaterialRouterImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialRouterImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "routers.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

@@ -60,9 +60,7 @@
 	<bean id="daoMaterialMicrowave"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialMicrowaveImple">
 	</bean>
-	<bean id="daoMaterialEFTPOS"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialEFTPOSMachineImple">
-	</bean>
+	
 	<bean id="daoMaterialFax"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialFaxImple">
 	</bean>
@@ -83,5 +81,14 @@
 	</bean>
 	<bean id="daoMaterialAirCondition"
 		class="com.dongyeop.okcomputer.dao.DaoMaterialAirConditionerImple">
+	</bean>
+	<bean id="daoMaterialCashMachine"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialCashMachineImple">
+	</bean>
+	<bean id="daoMaterialDSLR"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialDSLRImple">
+	</bean>
+	<bean id="daoMaterialEFTPOSMachine"
+		class="com.dongyeop.okcomputer.dao.DaoMaterialEFTPOSMachineImple">
 	</bean>
 </beans>

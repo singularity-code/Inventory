@@ -8,7 +8,7 @@ public class DaoMaterialAirConditionerImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialAirConditionerImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "airconditioners.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

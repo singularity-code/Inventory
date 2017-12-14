@@ -8,7 +8,7 @@ public class DaoMaterialDSLRImple extends DaoMaterialGeneralImple{
 
 	public DaoMaterialDSLRImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "dslrs.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

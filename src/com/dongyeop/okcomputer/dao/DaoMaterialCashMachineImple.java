@@ -8,7 +8,7 @@ public class DaoMaterialCashMachineImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialCashMachineImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "cashMachines.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

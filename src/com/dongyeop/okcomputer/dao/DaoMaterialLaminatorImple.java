@@ -8,7 +8,7 @@ public class DaoMaterialLaminatorImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialLaminatorImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "laminators.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

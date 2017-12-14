@@ -13,7 +13,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KOI Mothership v0.1</title>
+<title>KOI Inventory v0.2</title>
 <style>
 	body {
 		font-family: "Lato", sans-serif;
@@ -107,7 +107,7 @@
 	  <h3 style="text-align: center">INVENTORY</h3>
 	<div class="" style="text-align: center">
 		<button ng-click="setTab('all')">All</button>
-		<button ng-click="setTab('it-computer')">Computer</button>
+		<button ng-click="setTab('it-computer')"></button>
 		<button ng-click="setTab('class-tv')">Tv</button>
 		<button ng-click="setTab('it-telephone')">Telephone</button>
 		<button ng-click="setTab('it-switch')">Switch</button>
