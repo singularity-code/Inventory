@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class KoiMaterial implements Material{
+	String index;
 	String id;
 	String name;
 	String type;
@@ -16,11 +17,15 @@ public class KoiMaterial implements Material{
 	String location;
 	String updatedate;
 	String status;
+	String comment;
 
 	public KoiMaterial() {
 	}
 
-	public KoiMaterial(String id, String name, String type, String brand, String user, String previous, String campus, String location, String updatedate, String status) {
+	public KoiMaterial(String index, String id, String name, String type, String brand, String user, String previous,
+			String campus, String location, String updatedate, String status, String comment) {
+		super();
+		this.index = index;
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -31,6 +36,23 @@ public class KoiMaterial implements Material{
 		this.location = location;
 		this.updatedate = updatedate;
 		this.status = status;
+		this.comment = comment;
+	}
+
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	@Override

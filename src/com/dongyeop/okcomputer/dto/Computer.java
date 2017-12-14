@@ -26,24 +26,10 @@ public class Computer extends KoiMaterial {
 		
 	}
 
-	public Computer(String id, String date, String campus, String location, String name, String ip, String type, String domain, String role, String brand, String comModel, String serialNumber, String productNumber, String os, String license, String machineOnly, String status, String officeActive, String bitDef, String cpu, String memory, String bios, String purchaseDate, String user, String previous) {
-		super(id, name, type, brand, user, previous, campus, location, date, status);
-		this.ip = ip;
-		this.domain = domain;
-		this.role = role;
-		this.model = model;
-		this.serialNumber = serialNumber;
-		this.productNumber = productNumber;
-		this.os = os;
-		this.license = license;
-		this.machineOnly = machineOnly;
-		this.officeActive = officeActive;
-		this.bitDef = bitDef;
-		this.cpu = cpu;
-		this.memory = memory;
-		this.bios = bios;
-		this.purchaseDate = purchaseDate;
-		this.model = comModel;
+	public Computer(String index, String id, String name, String type, String brand, String user, String previous,
+			String campus, String location, String updatedate, String status, String comment) {
+		super(index, id, name, type, brand, user, previous, campus, location, updatedate, status, comment);
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getDate() {

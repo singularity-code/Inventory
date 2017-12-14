@@ -107,12 +107,14 @@
 	  <h3 style="text-align: center">INVENTORY</h3>
 	<div class="" style="text-align: center">
 		<button ng-click="setTab('all')">All</button>
-		<button ng-click="setTab('it-computer')"></button>
-		<button ng-click="setTab('class-tv')">Tv</button>
-		<button ng-click="setTab('it-telephone')">Telephone</button>
-		<button ng-click="setTab('it-switch')">Switch</button>
-		<button ng-click="setTab('staff-fridge')">Fridge</button>
-		<button ng-click="setTab('garage')">Garage</button>
+		<button ng-click="setTab('it-desktop')">Desktop</button>
+		<button ng-click="setTab('it-laptop')">Laptop</button>
+		<button ng-click="setTab('it-mac')">iMac</button>
+		<button ng-click="setTab('it-monitor')">Monitor</button>
+		<button ng-click="setTab('telephone')">Telephone</button>
+		<button ng-click="setTab('printer')">Printer</button>
+		<button ng-click="setTab('it-etc')">IT ETC</button>
+		<button ng-click="setTab('etc')">ETC</button>
 		<button ng-click="setTab('report')">Report</button>
 	</div>
 	<p>
@@ -126,7 +128,7 @@
 <!-- Menu Contents -->
 <div class="center" >
 	<!-- Computer Set -->
-	<div ng-show="isSet('it-computer')" style="margin:auto;width:95%">
+	<div ng-show="isSet('it-desktop')" style="margin:auto;width:75%">
 		<div style="text-align: right;" id="projects">
 			<button ng-click="setTab('create-computer')">Create</button>
 			<h3>Total : {{pcs.length}} Computers Result : {{filtered.length}} Computers</h3>
@@ -157,18 +159,7 @@
 				<td style="width: 150px;">
 					<!-- Google Material Design Icons -->
 					<a href="./update_view_KoiMaterial?id={{c.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
-<%--
-					<a href="" id="brokenBtn-{{$index}}" class="brokenBtn"><i class="material-icons w3-xlarge">build</i></a>
-					<a href="./move?id={{c.id}}"><i class="material-icons w3-xlarge">delete</i></a>
---%>
 					<a href="./delete_computer?id={{c.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
-				</td>
-				<td style="width: 250px;">
-					<form action="./swap" methos="post">
-						<input id="stockId" type="text" style="width: 80px; height: 25px;" name="id" value={{c.id}} readonly>
-						<input type="text" style="width: 80px; height: 25px;" name="nextId" placeholder="To...">
-						<button type="submit" class="button_swap">SWITCH</button>
-					</form>
 				</td>
 			</tr>
 		</table>
@@ -220,7 +211,7 @@
 		</div>
 	</div>
 	<!-- Tv Set -->
-	<div ng-show="isSet('class-tv')" style="margin:auto;width:75%">
+	<div ng-show="isSet('it-laptop')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
 			<button ng-click="setTab('create-koiMaterial')">Create</button>
 			<h3>Total : {{tvs.length}} Tv</h3>
@@ -259,7 +250,7 @@
 		</div>
 	</div>
 	<!-- Telephone Set -->
-	<div ng-show="isSet('it-telephone')" style="margin:auto;width:75%">
+	<div ng-show="isSet('it-mac')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
 			<h3>Total : {{telephones.length}} Telephone</h3>
 		</div>
@@ -297,7 +288,7 @@
 		</div>
 	</div>
 	<!-- Switch Set -->
-	<div ng-show="isSet('it-switch')" style="margin:auto;width:75%">
+	<div ng-show="isSet('it-monitor')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
 			<h3>Total : {{switches.length}} Switch</h3>
 		</div>
@@ -335,7 +326,7 @@
 		</div>
 	</div>
 	<!-- Fridge Set -->
-	<div ng-show="isSet('staff-fridge')" style="margin:auto;width:75%">
+	<div ng-show="isSet('telephone')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
 			<h3>Total : {{fridges.length}} Fridge</h3>
 		</div>
@@ -524,7 +515,7 @@
 		</div>
 	</div>
 	<!-- Garage Set -->
-	<div ng-show="isSet(garage)">
+	<div ng-show="isSet('printer')">
 	  <div class="">
 		<h3 class="">Total : {{garage.length}} Garages</h3>
 	  </div>
