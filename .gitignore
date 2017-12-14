@@ -5,3 +5,5 @@
 /.classpath
 /.idea
 /*.iml
+/WebContent/WEB-INF/classes
+/WebContent/WEB-INF/lib
