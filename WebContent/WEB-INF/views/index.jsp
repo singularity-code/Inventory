@@ -201,7 +201,7 @@
 				<td style="width: 150px;">{{obj.user}}</td>
 				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 				<td style="width: 150px;">
-					<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 					<a href="./delete_phone?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
@@ -236,7 +236,7 @@
 				<td style="width: 150px;">{{obj.user}}</td>
 				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 				<td style="width: 150px;">
-					<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 					<a href="./delete_tv?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
@@ -271,7 +271,7 @@
 				<td style="width: 150px;">{{obj.user}}</td>
 				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 				<td style="width: 150px;">
-					<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 					<a href="./delete_phone?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
@@ -306,7 +306,7 @@
 				<td style="width: 150px;">{{obj.user}}</td>
 				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
 				<td style="width: 150px;">
-					<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 					<a href="./delete_switch?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
@@ -341,7 +341,7 @@
 				<td style="width: 150px;">{{obj.user}}</td>
 				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 				<td style="width: 150px;">
-					<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 					<a href="./delete_fridge?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
@@ -527,7 +527,7 @@
 					<td style="width: 150px;">{{obj.user}}</td>
 					<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 					<td style="width: 150px;">
-						<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 						<a href="./delete_phone?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 					</td>
 				</tr>
@@ -564,7 +564,7 @@
 					<td style="width: 150px;">{{obj.user}}</td>
 					<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 					<td style="width: 150px;">
-						<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 						<a href="./delete_fridge?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 					</td>
 				</tr>
@@ -601,7 +601,7 @@
 					<td style="width: 150px;">{{obj.user}}</td>
 					<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 					<td style="width: 150px;">
-						<a href="./update_view_KoiMaterial?id={{obj.id}}"><i class="material-icons w3-xlarge">border_color</i></a>
+						<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
 						<a href="./delete_fridge?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 					</td>
 				</tr>

@@ -7,7 +7,7 @@ public class DaoMaterialEtcItImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialEtcItImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "it_etc.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "etc_it.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

@@ -272,7 +272,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 
 	@Override
 	public Object getMonitor(String id) throws ParseException {
-		return daoMaterialLaptop.getMaterial(id);
+		return daoMaterialMonitor.getMaterial(id);
 	}
 
 	@Override

@@ -1,9 +1,7 @@
 package com.dongyeop.okcomputer.dao;
 
 import org.json.simple.parser.ParseException;
-
 import com.dongyeop.profile.ApplicationType;
-
 public class DaoMaterialLaptopImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialLaptopImple() {

@@ -151,23 +151,38 @@ public class StockManagementController {
 	}
 
 	@RequestMapping("/update_view_KoiMaterial")
-	public String viewKoiMaterial(Model model, @RequestParam("id") String id) throws ParseException {
-		System.out.println("ID : " + id);
-		String subID = id.substring(0, 3);
-		Object koiMaterial;
-		if (subID.equals("IC-")) {
-			System.out.println("UPDATE TARGET : " + materialService.getComputer(id));
-			koiMaterial = materialService.getComputer(id);
+	public String viewKoiMaterial(Model model, @RequestParam("id") String id, @RequestParam("type") String type) throws ParseException {
+		System.out.println("Id : " + id);
+		System.out.println("Type : " + type);
+		Object koiMaterial = null;
+		if (type.equals("Desktop")) {
+			System.out.println("UPDATE TARGET : " + materialService.getDesktop(id));
+			koiMaterial = materialService.getDesktop(id);
 			model.addAttribute("koiMaterial", koiMaterial);
 			return "update_view";
-		} else if (subID.equals("CTV")) {
-			System.out.println("UPDATE TARGET : " + materialService.getTv(id));
-			koiMaterial = materialService.getTv(id);
+		} else if (type.equals("Laptop")) {
+			System.out.println("UPDATE TARGET : " + materialService.getLaptop(id));
+			koiMaterial = materialService.getLaptop(id);
 			model.addAttribute("koiMaterial", koiMaterial);
 			return "update_view_general";
-		} else if (subID.equals("OT-")) {
+		} else if (type.equals("Monitor")) {
+			System.out.println("UPDATE TARGET : " + materialService.getMonitor(id));
+			koiMaterial = materialService.getMonitor(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("iMac")) {
+			System.out.println("UPDATE TARGET : " + materialService.getMac(id));
+			koiMaterial = materialService.getMac(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("Telephone")) {
 			System.out.println("UPDATE TARGET : " + materialService.getTelephone(id));
 			koiMaterial = materialService.getTelephone(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("Printer")) {
+			System.out.println("UPDATE TARGET : " + materialService.getPrinter(id));
+			koiMaterial = materialService.getPrinter(id);
 			model.addAttribute("koiMaterial", koiMaterial);
 			return "update_view_general";
 		} 
