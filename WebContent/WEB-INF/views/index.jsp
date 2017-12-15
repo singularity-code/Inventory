@@ -103,6 +103,11 @@
 <div class="center">
 	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
 	<h3 style="text-align: center">INVENTORY</h3>
+	<div align="center" style="margin-bottom: 15px;">
+		<input type="search" id="search" placeholder="Say Anything..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
+		<button ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
+		<button ng-click="setTab('report')" style="width: 100px; height: 40px;">Report</button>
+	</div>
 	<div class="" style="text-align: center">
 		<a href="./list_desktop">Desktop</a>
 		<a href="./list_laptop">Laptop</a>
@@ -112,12 +117,6 @@
 		<a href="./list_printer">Printer</a>
 		<a href="./list_itEtc">IT ETC</a>
 		<a href="./list_etc">ETC</a>
-		<button ng-click="setTab('report')">Report</button>
-	</div>
-	<p>
-	<div align="center" style="margin-bottom: 15px;">
-	<input type="search" id="search" placeholder="Say Anything..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
-	<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 	</div>
 </div>
 <div class="center" >

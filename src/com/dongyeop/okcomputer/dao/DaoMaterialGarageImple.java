@@ -6,7 +6,7 @@ import org.json.simple.parser.ParseException;
 public class DaoMaterialGarageImple extends DaoMaterialGeneralImple {
 	public DaoMaterialGarageImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "garage.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "printers.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

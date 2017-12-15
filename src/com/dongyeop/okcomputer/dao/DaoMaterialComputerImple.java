@@ -9,7 +9,7 @@ public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 
 	public DaoMaterialComputerImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "computers.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "printers.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);

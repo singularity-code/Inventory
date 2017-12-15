@@ -8,7 +8,7 @@ public class DaoMaterialTvImple extends DaoMaterialGeneralImple {
 
 	public DaoMaterialTvImple() {
 		super();
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "tvs.json";
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "printers.json";
 
 		try {
 			objectList = readJson(DAO_OBJECT_JSONFILE_PATH);
