@@ -117,7 +117,7 @@
 		<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 		<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button>
 		<a href="./" class="button_back">Back</a>
-		<h3>Total : {{filtered.length}} Desktop</h3>
+		<h3>Total : {{filtered.length}} Printer</h3>
 		<button ng-click="setTab('create-koiMaterial')">Create</button>
 	</div>
 </div>
@@ -131,11 +131,11 @@
 		<div>
 			<form novalidate class="simple-form" action="./create_koiMaterial" method="post" name="form">
 				<input type="text" name="index" readonly="readonly" value={{nextIndex()}}>
-				<input type="text" name="id" readonly="readonly" value={{nextId('staffDesktop')}}>
+				<input type="text" name="id" readonly="readonly" value={{nextId('staff')}}>
 				<input type="text" placeholder="Name" ng-model="koiMaterial.name" name="name" required/>
 				<input type="text" placeholder="User" ng-model="koiMaterial.user" name="user" required/>
 				<input type="text" placeholder="Status" ng-model="koiMaterial.status" name="status" required/>
-				<input type="text" name="type" readonly="readonly" value="Desktop">
+				<input type="text" name="type" readonly="readonly" value="Printer">
 				<select ng-model="koiMaterial.campus" name="campus">
 					<option value="" disabled selected >Campus</option>
 					<option ng-repeat="x in campus">{{x}}</option>
@@ -175,7 +175,7 @@
 				<td></td>
 			</tr>
 		</table>
-		<table id="switchTable" align="center" ng-repeat="obj in desktops | filter:$ctrl.query as filtered ">
+		<table id="switchTable" align="center" ng-repeat="obj in objects | filter:$ctrl.query as filtered ">
 			<tr id="">
 				<td style="width: 50px;">{{obj.index}}</td>
 				<td style="width: 100px;">{{obj.sn}}</td>
@@ -195,149 +195,16 @@
 			</tr>
 		</table>
 	</div>
-	<div ng-show="isSet('create-computer')">
-		<div>
-			<h3>Create New Computer</h3>
-		</div>
-		<div>
-			<form novalidate class="simple-form" action="./create_computer" method="post" name="form">
-				<input type="text" name="id" readonly="readonly" value={{nextId('Computer')}}>
-
-				<select ng-model="computer.campus" name="campus">
-				<option value="" disabled selected >Campus</option>
-				<option ng-repeat="x in campus">{{x}}</option></select>
-
-				<select ng-model="computer.previous" name="previous">
-				<option value="" disabled selected>Previous</option>
-				<option ng-repeat="x in location">{{x}}</option></select>
-
-				<select ng-model="computer.location" name="location" required>
-				<option value="" disabled selected>Location</option>
-				<option ng-repeat="x in location">{{x}}</option></select>
-
-				<select ng-model="computer.type" name="type">
-				<option value="" disabled selected>Type</option>
-				<option value="Desktop">Desktop</option>
-				<option value="Laptop">Laptop</option>
-				</select>
-
-				<select ng-model="computer.domain" name="domain">
-				<option value="" disabled selected>Domain</option>
-				<option value="KOI">KOI</option>
-				<option value="STDKOI">STDKOI</option>
-				</select>
-
-				<selectng-model="computer.role" name="role">
-				<option value="" disabled selected>Role</option>
-				<option value="Staff">Staff</option>
-				<option value="Student">Student</option>
-				</select>
-
-				<select ng-model="computer.os" name="os">
-				<option value="" disabled selected>OS</option>
-				<option value="Win7">Win7</option>
-				<option value="Win10 Home">Win10 Home</option>
-				<option value="Win10 Pro">Win10 Pro</option>
-				<option value="Linux">Linux</option>
-				</select>
-
-				<select ng-model="computer.license" name="license">
-				<option value="" disabled selected>License</option>
-				<option value="Active">Active</option>
-				<option value="Inactive">Inactive</option>
-				</select>
-
-				<select ng-model="computer.machineOnly" name="machineOnly">
-				<option value="" disabled selected>Machine Only</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-				</select>
-
-				<select ng-model="computer.status" name="status">
-				<option value="" disabled selected>Status</option>
-				<option value="Active">Active</option>
-				<option value="Inactive">Inactive</option>
-				</select>
-
-				<select ng-model="computer.officeActive" name="officeActive">
-				<option value="" disabled selected>Office Activation</option>
-				<option value="Active">Active</option>
-				<option value="Inactive">Inactive</option>
-				</select>
-
-				<select ng-model="computer.bitDef" name="bitDef">
-				<option value="" disabled selected>BitDefender</option>
-				<option value="Active">Active</option>
-				<option value="Inactive">Inactive</option>
-				</select>
-
-				<select ng-model="computer.brand" name="brand">
-				<option value="" disabled selected>Brand</option>
-				<option ng-repeat="x in brand">{{x}}</option></select>
-
-				<select ng-model="computer.cpu" name="cpu">
-				<option value="" disabled selected>CPU</option>
-				<option ng-repeat="x in cpu">{{x}}</option></select>
-
-				<select ng-model="computer.memory" name="memory">
-				<option value="" disabled selected>Memory</option>
-				<option ng-repeat="x in memory">{{x}}</option></select>
-
-				<input type="text" placeholder="Computer Name" ng-model="computer.name"name="name" required/>
-				<input type="text" placeholder="User" ng-model="computer.user" name="user" required/>
-				<input type="text" placeholder="IP Address" ng-model="computer.ip" name="ip" required/>
-				<input type="text" placeholder="Model" ng-model="computer.model" name="comModel" required/>
-				<input type="text" placeholder="Serial No." ng-model="computer.serialNo" name="serialNumber" required/>
-				<input type="text" placeholder="Product No." ng-model="computer.productNo" name="productNumber" required/>
-				<input type="text" placeholder="Bios" ng-model="computer.bios" name="bios" required/>
-				<input type="text" placeholder="Purchase Date" ng-model="computer.purchaseDate" name="purchaseDate" required/>
-				<p style="color:red" ng-show="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid ||
-												form.serialNumber.$invalid || form.productNumber.$invalid || form.bios.$invalid ||
-												form.purchaseDate.$invalid">Please enter all fields</p>
-				<p align="center">
-				<input type="button" ng-click="reset()" value="Reset" />
-				<input type="submit" ng-click="update(computer)"
-					 ng-disabled="form.name.$invalid || form.user.$invalid || form.ip.$invalid || form.comModel.$invalid || form.serialNumber.$invalid ||
-					 form.productNumber.$invalid || form.bios.$invalid || form.purchaseDate.$invalid" value="Create"/>
-				</p>
-			</form>
-			<pre>computer_draft = {{computer | json}}</pre>
-		</div>
-	</div>
 </div>
 <script>
 var app = angular.module("myComputerList", []);
 app.controller("myCtrl", function($scope) {
-	$scope.desktops = ${objects};
+	$scope.objects = ${objects};
 
 	$scope.campus = ["Market", "Kent"];
 	$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
 						 "Student Canteen", "Lecture Office", "IT Office", "101", "102","103", "104", "105", "106", "107", "108"];
 	$scope.brand = ["APPLE", "ACER", "DELL", "HP", "LENOVO", "SAMSUNG", "SONY","LG", "TOSHIBA"];
-	$scope.cpu = ["Intel Core™ 2 Duo E7500 2.93GHz",
-					"Intel Core™ Duo T9550",
-					"Intel Core™ i3",
-					"Intel Core™ i3-4005U 1.7GHz",
-					"Intel Core™ i5",
-					"Intel Core™ i5-2400s",
-					"Intel Core™ i5 650 3.2GHz, 3.3GHz",
-					"Intel Core™ i5 760 2.80GHz",
-					"Intel Core™ i5 M520 2.4GHz",
-					"Intel Core™ i5 M560 2.67GHz",
-					"Intel Core™ i5 M580 2.67GHz",
-					"Intel Core™ i5-2400S 2.5GHz",
-					"Intel Core™ i5-2450M 2.5GHz",
-					"Intel Core™ i5-4200m 2.5GHz",
-					"Intel Core™ i5-4300M 2.5GHz",
-					"Intel Core™ i5-6400 2.7GHz",
-					"Intel Core™ i5-7400 3.00 GHz",
-					"Intel Core™ i7",
-					"Intel Core™ i7 870 2.93GHz",
-					"Intel Core™ i7 M640 2.8GHz",
-					"Intel Core™ i7-3630QM 2.40GHz",
-					"Intel Core™ i7-4510U 2.00GHz",
-					"Intel Core™ i7-4770 3.5GHz"];
-	$scope.memory = ["4GB","8GB","16GB","8GB DDR4 2400Mhz"];
 
 	$scope.update = function(computer) {
 		$scope.master = angular.copy(computer);
@@ -350,17 +217,17 @@ app.controller("myCtrl", function($scope) {
 	$scope.reset();
 
 	$scope.nextId = function(type, user) {
-		if(type === 'staffDesktop') {
-			i = $scope.desktops.length + 1;
-			return "HD-10" + i;
-		} else if (type == 'studentDesktop') {
-			i = $scope.desktops.length + 1;
-			return "HD-20" + i;
+		if(type === 'staff') {
+			i = $scope.objects.length + 1;
+			return "HP-10" + i;
+		} else if (type == 'student') {
+			i = $scope.objects.length + 1;
+			return "HP-20" + i;
 		}
 	}
 	
 	$scope.nextIndex = function() {
-		return $scope.desktops.length + 1;
+		return $scope.objects.length + 1;
 	}
 	$scope.getRandomSpan = function(){
 		return Math.floor((Math.random()*6)+230);

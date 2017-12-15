@@ -375,20 +375,46 @@ public class StockManagementController {
 	
 	@RequestMapping("/list_desktop")
 	public String listDesktop(Model model) throws ParseException {
-		model.addAttribute("desktops", toJson(materialService.getDesktopList()));
+		model.addAttribute("objects", toJson(materialService.getDesktopList()));
 		return "list_desktop";
 	}
 	
 	@RequestMapping("/list_laptop")
 	public String listLaptop(Model model) throws ParseException {
-		model.addAttribute("laptops", toJson(materialService.getLaptopList()));
+		model.addAttribute("objects", toJson(materialService.getLaptopList()));
 		return "list_laptop";
 	}
 	
 	@RequestMapping("/list_monitor")
 	public String listMonitor(Model model) throws ParseException {
-		model.addAttribute("monitors", toJson(materialService.getMonitorList()));
+		model.addAttribute("objects", toJson(materialService.getMonitorList()));
 		return "list_monitor";
+	}
+	
+	@RequestMapping("/list_mac")
+	public String listMac(Model model) throws ParseException {
+		model.addAttribute("objects", toJson(materialService.getMacList()));
+		return "list_mac";
+	}
+	@RequestMapping("/list_telephone")
+	public String listTelephone(Model model) throws ParseException {
+		model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+		return "list_telephone";
+	}
+	@RequestMapping("/list_printer")
+	public String listPrinter(Model model) throws ParseException {
+		model.addAttribute("objects", toJson(materialService.getPrinterList()));
+		return "list_printer";
+	}
+	@RequestMapping("/list_itEtc")
+	public String listItEtc(Model model) throws ParseException {
+		model.addAttribute("objects", toJson(materialService.getEtcItList()));
+		return "list_itEtc";
+	}
+	@RequestMapping("/list_etc")
+	public String listEtc(Model model) throws ParseException {
+		model.addAttribute("objects", toJson(materialService.getEtcList()));
+		return "list_etc";
 	}
 
 	/**

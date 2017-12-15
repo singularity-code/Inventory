@@ -199,7 +199,7 @@
 <script>
 var app = angular.module("myComputerList", []);
 app.controller("myCtrl", function($scope) {
-	$scope.objects = ${laptops};
+	$scope.objects = ${objects};
 
 	$scope.campus = ["Market", "Kent"];
 	$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",

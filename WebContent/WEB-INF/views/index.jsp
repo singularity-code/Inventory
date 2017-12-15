@@ -108,6 +108,11 @@
 		<a href="./list_desktop">Desktop</a>
 		<a href="./list_laptop">Laptop</a>
 		<a href="./list_monitor">Monitor</a>
+		<a href="./list_mac">Mac</a>
+		<a href="./list_telephone">Telephone</a>
+		<a href="./list_printer">Printer</a>
+		<a href="./list_itEtc">IT ETC</a>
+		<a href="./list_etc">ETC</a>
 		<button ng-click="setTab('it-desktop')">Desktop</button>
 		<button ng-click="setTab('it-laptop')">Laptop</button>
 		<button ng-click="setTab('it-mac')">iMac</button>
