@@ -202,7 +202,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createLaptop(Object o) {
 		if(o instanceof Computer) {
-			daoMaterialDesktop.create(o);
+			daoMaterialLaptop.create(o);
 		}
 		return false;
 	}
@@ -210,7 +210,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createMonitor(Object o) {
 		if(o instanceof Monitor) {
-			daoMaterialDesktop.create(o);
+			daoMaterialMonitor.create(o);
 		}
 		return false;
 	}
@@ -218,7 +218,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createMac(Object o) {
 		if(o instanceof Computer) {
-			daoMaterialDesktop.create(o);
+			daoMaterialMac.create(o);
 		}
 		return false;
 	}
@@ -226,7 +226,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createPrinter(Object o) {
 		if(o instanceof Printer) {
-			daoMaterialDesktop.create(o);
+			daoMaterialPrinter.create(o);
 		}
 		return false;
 	}

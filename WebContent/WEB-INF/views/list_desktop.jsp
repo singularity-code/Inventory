@@ -187,10 +187,10 @@
 				<td style="width: 150px;">{{obj.campus}}</td>
 				<td style="width: 150px;">{{obj.user}}</td>
 				<td style="width: 150px;">{{obj.comment}}</td>
-				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
+				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 				<td style="width: 150px;">
-					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a>
 				</td>
 			</tr>
 		</table>

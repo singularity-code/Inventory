@@ -279,9 +279,9 @@ public class StockManagementController {
 			materialService.updateDesktop(koiMaterial);
 			return new ModelAndView(redirectUrl);
 		} else if (type.equals("Laptop")) {
-			System.out.println("UPDATE TARGET : " + materialService.getLaptop(id));
-			koiMaterial = materialService.getLaptop(id);
-			model.addAttribute("koiMaterial", koiMaterial);
+			System.out.println("Controller UPDATE TARGET : " + materialService.getLaptop(id));
+			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateLaptop(koiMaterial);
 			return new ModelAndView(redirectUrl);
 		} else if (type.equals("Monitor")) {
 			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, today, campus, location, today, status, comment);

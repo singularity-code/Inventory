@@ -130,10 +130,10 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 			if (object.getId().equals(objectList.get(i).getId())) {
 				objectList.remove(i);
 				b = objectList.add(object);
-				System.out.println("Replaced: " + objectList.get(i).getName());
 				break;
 			}
 		}
+		System.out.println("UPDATE SUCCESS");
 		return b ? writeJson() : false;
 	}
 
