@@ -11,6 +11,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -134,7 +135,7 @@ public class StockManagementController {
 			@RequestParam("user") String user,
 			@RequestParam("index") String index,
 			@RequestParam("comment") String comment,
-			@RequestParam("status") String status) {
+			@RequestParam("status") String status) throws ParseException {
 		
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date now = Calendar.getInstance().getTime();
@@ -147,27 +148,33 @@ public class StockManagementController {
 		if (type.equals("Desktop")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createDesktop(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getDesktopList()));
+			return new ModelAndView("list_desktop");
 		} else if (type.equals("Laptop")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createLaptop(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getLaptopList()));
+			return new ModelAndView("list_laptop");
 		} else if (type.equals("Monitor")) {
 			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createMonitor(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getMonitorList()));
+			return new ModelAndView("list_monitor");
 		} else if (type.equals("iMac")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
-			materialService.createMac(koiMaterial);
+			materialService.createMac("list_mac");
+			model.addAttribute("objects", toJson(materialService.getMacList()));
 			return new ModelAndView(redirectUrl);
 		} else if (type.equals("Telephone")) {
 			koiMaterial = new Telephone(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createTelephone(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+			return new ModelAndView("list_telephone");
 		} else if (type.equals("Printer")) {
 			koiMaterial = new Printer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createPrinter(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getPrinterList()));
+			return new ModelAndView("list_printer");
 		} 
 		return new ModelAndView(redirectUrl);
 	}
@@ -277,70 +284,67 @@ public class StockManagementController {
 		if (type.equals("Desktop")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateDesktop(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getDesktopList()));
+			return new ModelAndView("list_desktop");
 		} else if (type.equals("Laptop")) {
-			System.out.println("Controller UPDATE TARGET : " + materialService.getLaptop(id));
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateLaptop(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getLaptopList()));
+			return new ModelAndView("list_laptop");
 		} else if (type.equals("Monitor")) {
-			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, today, campus, location, today, status, comment);
+			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateMonitor(koiMaterial);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getMonitorList()));
+			return new ModelAndView("list_monitor");
 		} else if (type.equals("iMac")) {
-			System.out.println("UPDATE TARGET : " + materialService.getMac(id));
-			koiMaterial = materialService.getMac(id);
-			model.addAttribute("koiMaterial", koiMaterial);
+			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateMac(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getMacList()));
 			return new ModelAndView(redirectUrl);
 		} else if (type.equals("Telephone")) {
-			System.out.println("UPDATE TARGET : " + materialService.getTelephone(id));
-			koiMaterial = materialService.getTelephone(id);
-			model.addAttribute("koiMaterial", koiMaterial);
-			return new ModelAndView(redirectUrl);
-		} else if (type.equals("Printer")) {
-			System.out.println("UPDATE TARGET : " + materialService.getPrinter(id));
-			koiMaterial = materialService.getPrinter(id);
-			model.addAttribute("koiMaterial", koiMaterial);
-			return new ModelAndView(redirectUrl);
-		} 
-
-/*		
-		if (subID.equals("IC-")) {
-			KoiMaterial koiMaterial = new KoiMaterial(index, id, "", type, brand, user, today, campus, location, today, status, comment);
-			materialService.updateComputer(koiMaterial);
-			return new ModelAndView(redirectUrl);
-		} else if (subID.equals("CTV")) {
-			KoiMaterial koiMaterial = new KoiMaterial(index, id, "", type, brand, user, today, campus, location, today, status, comment);
-			materialService.updateTv(koiMaterial);
-			return new ModelAndView(redirectUrl);
-		} else if (subID.equals("OT-")) {
-			KoiMaterial koiMaterial = new KoiMaterial(index, id, "", type, brand, user, today, campus, location, today, status, comment);
+			koiMaterial = new Telephone(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateTelephone(koiMaterial);
-			return new ModelAndView(redirectUrl);
-		}*/
+			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+			return new ModelAndView("list_telephone");
+		} else if (type.equals("Printer")) {
+			koiMaterial = new Printer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updatePrinter(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getPrinterList()));
+			return new ModelAndView("list_printer");
+		} 
 		return new ModelAndView(redirectUrl);
 	}
 	@RequestMapping("/deleteKoiMaterial")
-	public ModelAndView deleteKoiMaterial(Model model, @RequestParam("type") String type, @RequestParam("id") String id) throws ParseException {
-		Object koiMaterial = null;
+	public ModelAndView deleteKoiMaterial(Model model, 
+			@RequestHeader(value = "referer", required = false) final String referer, 
+			@RequestParam("type") String type, 
+			@RequestParam("id") String id) throws ParseException {
+		String url = referer.replace("http://localhost:8080/OK_COMPUTER/", "");
+		System.out.println("Re: " + url);
 		if (type.equals("Desktop")) {
 			materialService.deleteDesktop(id);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getDesktopList()));
+			return new ModelAndView("list_desktop");
 		} else if (type.equals("Laptop")) {
 			materialService.deleteLaptop(id);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getLaptopList()));
+			return new ModelAndView("list_laptop");
 		} else if (type.equals("Monitor")) {
 			materialService.deleteMonitor(id);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getMonitorList()));
+			return new ModelAndView("list_monitor");
 		} else if (type.equals("iMac")) {
 			materialService.deleteMac(id);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getMacList()));
+			return new ModelAndView("list_mac");
 		} else if (type.equals("Telephone")) {
 			materialService.deleteTelephone(id);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+			return new ModelAndView("list_telephone");
 		} else if (type.equals("Printer")) {
 			materialService.deletePrinter(id);
-			return new ModelAndView(redirectUrl);
+			model.addAttribute("objects", toJson(materialService.getPrinterList()));
+			return new ModelAndView("list_printer");
 		}
 		return new ModelAndView(redirectUrl);
 	}
