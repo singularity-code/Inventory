@@ -1,11 +1,9 @@
 package com.dongyeop.okcomputer.dao;
 
-import com.dongyeop.okcomputer.dto.Computer;
-import com.dongyeop.okcomputer.dto.KoiMaterial;
-import com.dongyeop.profile.ApplicationType;
 import org.json.simple.parser.ParseException;
 
-import java.util.List;
+import com.dongyeop.okcomputer.dto.Computer;
+import com.dongyeop.profile.ApplicationType;
 
 public class DaoMaterialComputerImple extends DaoMaterialGeneralImple{
 

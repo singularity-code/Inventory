@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class KoiMaterial implements Material{
 	String index;
+	String sn;
 	String id;
 	String name;
 	String type;
@@ -22,10 +23,15 @@ public class KoiMaterial implements Material{
 	public KoiMaterial() {
 	}
 
-	public KoiMaterial(String index, String id, String name, String type, String brand, String user, String previous,
-			String campus, String location, String updatedate, String status, String comment) {
+	public String getSn() {
+		return sn;
+	}
+
+	public KoiMaterial(String index, String sn, String id, String name, String type, String brand, String user,
+			String previous, String campus, String location, String updatedate, String status, String comment) {
 		super();
 		this.index = index;
+		this.sn = sn;
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -37,6 +43,10 @@ public class KoiMaterial implements Material{
 		this.updatedate = updatedate;
 		this.status = status;
 		this.comment = comment;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
 	}
 
 	public String getIndex() {

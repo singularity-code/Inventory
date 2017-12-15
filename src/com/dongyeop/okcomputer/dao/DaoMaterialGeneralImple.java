@@ -2,6 +2,7 @@ package com.dongyeop.okcomputer.dao;
 
 import com.dongyeop.okcomputer.dto.Computer;
 import com.dongyeop.okcomputer.dto.KoiMaterial;
+import com.dongyeop.profile.ApplicationType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.json.simple.parser.JSONParser;
@@ -11,12 +12,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial, String>{
 	protected String DAO_OBJECT_JSONFILE_PATH = null;
 	protected JSONParser parser = new JSONParser();
 	protected List<KoiMaterial> objectList = null;
+	protected List<KoiMaterial> storeRoomList = new ArrayList<>();
 
 	public DaoMaterialGeneralImple() {
 
@@ -55,6 +58,24 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		System.out.print("Json OBJ : " + json);
 		return true;
 	}
+	
+	protected boolean writeJsonStoreRoom() {
+		// Convert List to Json format
+		String json_storeRoom = new Gson().toJson(storeRoomList);
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "storeRoom.json";
+		
+		try (FileWriter file = new FileWriter(DAO_OBJECT_JSONFILE_PATH)) {
+			System.out.println("ACTUAL STORE WRITING : " + DAO_OBJECT_JSONFILE_PATH);
+			file.write(json_storeRoom);
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		System.out.print("Store OBJ : " + json_storeRoom);
+		System.out.println("WRITE SUCCESS");
+		return true;
+	}
 
 	@Override
 	public KoiMaterial getMaterial(String s) throws ParseException {
@@ -76,14 +97,19 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 
 	@Override
 	public boolean delete(String s) throws ParseException {
-		System.out.println("S : " + s);
+		System.out.println("DAO ID : " + s);
+		KoiMaterial foundObj = null;
 		for (int i = 0; i < objectList.size(); i++) {
 			if (s.equalsIgnoreCase(objectList.get(i).getId())) {
-				System.out.println("DELETE : " + objectList.get(i).getId().toString());
+				foundObj = objectList.get(i);
+				storeRoomList.add(foundObj);
+				System.out.println("Store : " + storeRoomList.size());
 				objectList.remove(i);
+				System.out.println("DELETE : " + foundObj.getId().toString());
 			}
 		}
 		System.out.println("JSON PATH ON DELETE : " + DAO_OBJECT_JSONFILE_PATH);
+		writeJsonStoreRoom();
 		return writeJson();
 	}
 

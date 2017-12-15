@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dongyeop.okcomputer.dto.Computer;
-import com.dongyeop.okcomputer.dto.KoiMaterial;
+import com.dongyeop.okcomputer.dto.Monitor;
+import com.dongyeop.okcomputer.dto.Printer;
 import com.dongyeop.okcomputer.dto.Telephone;
 import com.dongyeop.okcomputer.dto.Tv;
 import com.dongyeop.okcomputer.service.MaterialReport;
@@ -29,7 +30,7 @@ public class StockManagementController {
 
 	// StockService is defined in Bean Config
 	@Autowired
-	private MaterialServiceInterface materialService;
+	private MaterialServiceInterface<Object, String> materialService;
 	@Autowired
 	private MaterialReport reportService;
 
@@ -63,6 +64,7 @@ public class StockManagementController {
 	@RequestMapping("/create_computer")
 	public ModelAndView createComputer(Model model, 
 			@RequestParam("id") String id,
+			@RequestParam("sn") String sn,
 			@RequestParam("campus") String campus, 
 			@RequestParam("location") String location,
 			@RequestParam("name") String name, 
@@ -93,7 +95,7 @@ public class StockManagementController {
 		Date now = Calendar.getInstance().getTime();
 		String date = dateFormat.format(now);
 
-		Computer computer = new Computer(id, date, campus, location, name, ip, type, domain, role, brand, comModel,
+		Computer computer = new Computer(id, sn, date, campus, location, name, ip, type, domain, role, brand, comModel,
 				serialNumber);
 		materialService.createComputer(computer);
 		return new ModelAndView(redirectUrl);
@@ -102,6 +104,7 @@ public class StockManagementController {
 	@RequestMapping("/create_tv")
 	public ModelAndView createTv(Model model, 
 			@RequestParam("id") String id, 
+			@RequestParam("id") String sn,
 			@RequestParam("campus") String campus,
 			@RequestParam("location") String location, 
 			@RequestParam("type") String type,
@@ -115,14 +118,15 @@ public class StockManagementController {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date now = Calendar.getInstance().getTime();
 		String date = dateFormat.format(now);
-		Tv tv = new Tv(index, id, "", type, brand, user, previous, campus, location, date, status, comment);
+		Tv tv = new Tv(index, sn, id, "", type, brand, user, previous, campus, location, date, status, comment);
 		// materialService.createTv(tv);
 		return new ModelAndView(redirectUrl);
 	}
 
 	@RequestMapping("/create_koiMaterial")
 	public ModelAndView createKoiMaterial(Model model, 
-			@RequestParam("id") String id, 
+			@RequestParam("id") String id,
+			@RequestParam("name") String name,
 			@RequestParam("campus") String campus,
 			@RequestParam("location") String location, 
 			@RequestParam("type") String type,
@@ -130,21 +134,39 @@ public class StockManagementController {
 			@RequestParam("user") String user,
 			@RequestParam("index") String index,
 			@RequestParam("comment") String comment,
-			@RequestParam("status") String status,
-			@RequestParam("previous") String previous) {
+			@RequestParam("status") String status) {
 		
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date now = Calendar.getInstance().getTime();
 		String today = dateFormat.format(now);
 		String previous_new = "Brand New";
 		String subID = id.substring(0, 3);
-		if (subID.equals("CTV")) {
-			Tv tv = new Tv(index, id, "", type, brand, user, previous_new, campus, location, today, status, comment);
-			materialService.createTv(tv);
+		Object koiMaterial = null;
+		String sn = "New";
+		
+		if (type.equals("Desktop")) {
+			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createDesktop(koiMaterial);
 			return new ModelAndView(redirectUrl);
-		} else if (subID.equals("OT-")) {
-			Telephone telephone = new Telephone(index, id, "", type, brand, user, previous_new, campus, location, today, status, comment);
-			materialService.createTelephone(telephone);
+		} else if (type.equals("Laptop")) {
+			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createLaptop(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Monitor")) {
+			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createMonitor(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("iMac")) {
+			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createMac(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Telephone")) {
+			koiMaterial = new Telephone(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createTelephone(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Printer")) {
+			koiMaterial = new Printer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createPrinter(koiMaterial);
 			return new ModelAndView(redirectUrl);
 		} 
 		return new ModelAndView(redirectUrl);
@@ -197,20 +219,35 @@ public class StockManagementController {
 	}
 
 	@RequestMapping("/update")
-	public ModelAndView update(Model model, @RequestParam("id") String id, @RequestParam("date") String date,
-			@RequestParam("campus") String campus, @RequestParam("location") String location,
-			@RequestParam("name") String name, @RequestParam("ip") String ip, @RequestParam("type") String type,
-			@RequestParam("domain") String domain, @RequestParam("role") String role,
-			@RequestParam("brand") String brand, @RequestParam("comModel") String comModel,
-			@RequestParam("serialNumber") String serialNumber, @RequestParam("productNumber") String productNumber,
-			@RequestParam("os") String os, @RequestParam("license") String license,
-			@RequestParam("machineOnly") String machineOnly, @RequestParam("status") String status,
-			@RequestParam("officeActive") String officeActive, @RequestParam("bitDef") String bitDef,
-			@RequestParam("cpu") String cpu, @RequestParam("memory") String memory, @RequestParam("bios") String bios,
-			@RequestParam("purchaseDate") String purchaseDate, @RequestParam("user") String user,
+	public ModelAndView update(Model model, 
+			@RequestParam("id") String id, 
+			@RequestParam("id") String sn,
+			@RequestParam("date") String date,
+			@RequestParam("campus") String campus, 
+			@RequestParam("location") String location,
+			@RequestParam("name") String name, 
+			@RequestParam("ip") String ip, 
+			@RequestParam("type") String type,
+			@RequestParam("domain") String domain, 
+			@RequestParam("role") String role,
+			@RequestParam("brand") String brand, 
+			@RequestParam("comModel") String comModel,
+			@RequestParam("serialNumber") String serialNumber, 
+			@RequestParam("productNumber") String productNumber,
+			@RequestParam("os") String os, 
+			@RequestParam("license") String license,
+			@RequestParam("machineOnly") String machineOnly, 
+			@RequestParam("status") String status,
+			@RequestParam("officeActive") String officeActive, 
+			@RequestParam("bitDef") String bitDef,
+			@RequestParam("cpu") String cpu, 
+			@RequestParam("memory") String memory, 
+			@RequestParam("bios") String bios,
+			@RequestParam("purchaseDate") String purchaseDate, 
+			@RequestParam("user") String user,
 			@RequestParam("previous") String previous) throws ParseException {
 
-		Computer computer = new Computer(id, date, campus, location, name, ip, type, domain, role, brand, comModel,
+		Computer computer = new Computer(id, sn, date, campus, location, name, ip, type, domain, role, brand, comModel,
 				serialNumber);
 		System.out.println("Update Cont" + computer);
 		materialService.updateComputer(computer);
@@ -220,7 +257,9 @@ public class StockManagementController {
 	@RequestMapping("/updateGeneral")
 	public ModelAndView updateGeneral(Model model, 
 			@RequestParam("id") String id, 
+			@RequestParam("id") String sn,
 			@RequestParam("campus") String campus,
+			@RequestParam("campus") String name,
 			@RequestParam("location") String location, 
 			@RequestParam("type") String type,
 			@RequestParam("brand") String brand, 
@@ -233,6 +272,39 @@ public class StockManagementController {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date now = Calendar.getInstance().getTime();
 		String today = dateFormat.format(now);
+		Object koiMaterial = null;
+		System.out.println("UPDATE HIT!!!!");
+		if (type.equals("Desktop")) {
+			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateDesktop(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Laptop")) {
+			System.out.println("UPDATE TARGET : " + materialService.getLaptop(id));
+			koiMaterial = materialService.getLaptop(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Monitor")) {
+			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, today, campus, location, today, status, comment);
+			materialService.updateMonitor(koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("iMac")) {
+			System.out.println("UPDATE TARGET : " + materialService.getMac(id));
+			koiMaterial = materialService.getMac(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Telephone")) {
+			System.out.println("UPDATE TARGET : " + materialService.getTelephone(id));
+			koiMaterial = materialService.getTelephone(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Printer")) {
+			System.out.println("UPDATE TARGET : " + materialService.getPrinter(id));
+			koiMaterial = materialService.getPrinter(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return new ModelAndView(redirectUrl);
+		} 
+
+/*		
 		if (subID.equals("IC-")) {
 			KoiMaterial koiMaterial = new KoiMaterial(index, id, "", type, brand, user, today, campus, location, today, status, comment);
 			materialService.updateComputer(koiMaterial);
@@ -245,10 +317,34 @@ public class StockManagementController {
 			KoiMaterial koiMaterial = new KoiMaterial(index, id, "", type, brand, user, today, campus, location, today, status, comment);
 			materialService.updateTelephone(koiMaterial);
 			return new ModelAndView(redirectUrl);
+		}*/
+		return new ModelAndView(redirectUrl);
+	}
+	@RequestMapping("/deleteKoiMaterial")
+	public ModelAndView deleteKoiMaterial(Model model, @RequestParam("type") String type, @RequestParam("id") String id) throws ParseException {
+		Object koiMaterial = null;
+		if (type.equals("Desktop")) {
+			materialService.deleteDesktop(id);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Laptop")) {
+			materialService.deleteLaptop(id);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Monitor")) {
+			materialService.deleteMonitor(id);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("iMac")) {
+			materialService.deleteMac(id);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Telephone")) {
+			materialService.deleteTelephone(id);
+			return new ModelAndView(redirectUrl);
+		} else if (type.equals("Printer")) {
+			materialService.deletePrinter(id);
+			return new ModelAndView(redirectUrl);
 		}
 		return new ModelAndView(redirectUrl);
 	}
-
+	
 	@RequestMapping("/delete_computer")
 	public ModelAndView deleteComputer(Model model, @RequestParam("id") String id) throws ParseException {
 		materialService.deleteComputer(id);
@@ -275,6 +371,24 @@ public class StockManagementController {
 		Computer computer = (Computer) materialService.getComputer(id);
 		// materialService.move(computer);
 		return new ModelAndView(redirectUrl);
+	}
+	
+	@RequestMapping("/list_desktop")
+	public String listDesktop(Model model) throws ParseException {
+		model.addAttribute("desktops", toJson(materialService.getDesktopList()));
+		return "list_desktop";
+	}
+	
+	@RequestMapping("/list_laptop")
+	public String listLaptop(Model model) throws ParseException {
+		model.addAttribute("laptops", toJson(materialService.getLaptopList()));
+		return "list_laptop";
+	}
+	
+	@RequestMapping("/list_monitor")
+	public String listMonitor(Model model) throws ParseException {
+		model.addAttribute("monitors", toJson(materialService.getMonitorList()));
+		return "list_monitor";
 	}
 
 	/**

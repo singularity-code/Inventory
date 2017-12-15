@@ -97,7 +97,6 @@
 	}
 </style>
 </head>
-
 <body  ng-app="myComputerList" ng-controller="myCtrl">
 <!-- Tab Menu -->
 <!-- Navbar (sit on top) -->
@@ -106,6 +105,9 @@
 	<h3 style="text-align: center">INVENTORY</h3>
 	<div class="" style="text-align: center">
 		<button ng-click="setTab('all')">All</button>
+		<a href="./list_desktop">Desktop</a>
+		<a href="./list_laptop">Laptop</a>
+		<a href="./list_monitor">Monitor</a>
 		<button ng-click="setTab('it-desktop')">Desktop</button>
 		<button ng-click="setTab('it-laptop')">Laptop</button>
 		<button ng-click="setTab('it-mac')">iMac</button>
@@ -123,7 +125,6 @@
 	<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button></span>
 	</div>
 </div>
-
 <!-- Menu Contents -->
 <div class="center" >
 	<!-- All Set -->
@@ -175,10 +176,11 @@
 	<!-- Desktop Set -->
 	<div ng-show="isSet('it-desktop')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{desktops.length}} Telephone</h3>
+			<h3>Total : {{desktops.length}} Desktop</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
 				<td style="width: 100px;"><b>Type</b></td>
 				<td style="width: 100px;"><b>Brand</b></td>
@@ -186,12 +188,14 @@
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
-		<table id="telephoneTable" align="center" ng-repeat="obj in desktops | filter:$ctrl.query as filtered ">
+		<table id="switchTable" align="center" ng-repeat="obj in desktops | filter:$ctrl.query as filtered ">
 			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
 				<td style="width: 100px;">{{obj.id}}</td>
 				<td style="width: 100px;">{{obj.type}}</td>
 				<td style="width: 100px;">{{obj.brand}}</td>
@@ -199,21 +203,22 @@
 				<td style="width: 150px;">{{obj.location}}</td>
 				<td style="width: 150px;">{{obj.campus}}</td>
 				<td style="width: 150px;">{{obj.user}}</td>
-				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
+				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
 				<td style="width: 150px;">
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="./delete_phone?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
 		</table>
-	</div>
-	<div ng-show="isSet('it-laptop')" style="margin:auto;width:75%">
+	</div>	<div ng-show="isSet('it-laptop')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
 			<button ng-click="setTab('create-koiMaterial')">Create</button>
-			<h3>Total : {{laptops.length}} Tv</h3>
+			<h3>Total : {{laptops.length}} Laptop</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
 				<td style="width: 100px;"><b>Type</b></td>
 				<td style="width: 100px;"><b>Brand</b></td>
@@ -221,12 +226,14 @@
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
-		<table id="tvTable" align="center" ng-repeat="obj in laptops | filter:$ctrl.query as filtered ">
+		<table id="switchTable" align="center" ng-repeat="obj in laptops | filter:$ctrl.query as filtered ">
 			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
 				<td style="width: 100px;">{{obj.id}}</td>
 				<td style="width: 100px;">{{obj.type}}</td>
 				<td style="width: 100px;">{{obj.brand}}</td>
@@ -234,21 +241,24 @@
 				<td style="width: 150px;">{{obj.location}}</td>
 				<td style="width: 150px;">{{obj.campus}}</td>
 				<td style="width: 150px;">{{obj.user}}</td>
-				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
+				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
 				<td style="width: 150px;">
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="./delete_tv?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
 		</table>
 	</div>
+
 <!-- 	iMac Set -->
 	<div ng-show="isSet('it-mac')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{macs.length}} Telephone</h3>
+			<h3>Total : {{macs.length}} iMac</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
 				<td style="width: 100px;"><b>Type</b></td>
 				<td style="width: 100px;"><b>Brand</b></td>
@@ -256,12 +266,14 @@
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
-		<table id="telephoneTable" align="center" ng-repeat="obj in macs | filter:$ctrl.query as filtered ">
+		<table id="switchTable" align="center" ng-repeat="obj in macs | filter:$ctrl.query as filtered ">
 			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
 				<td style="width: 100px;">{{obj.id}}</td>
 				<td style="width: 100px;">{{obj.type}}</td>
 				<td style="width: 100px;">{{obj.brand}}</td>
@@ -269,10 +281,11 @@
 				<td style="width: 150px;">{{obj.location}}</td>
 				<td style="width: 150px;">{{obj.campus}}</td>
 				<td style="width: 150px;">{{obj.user}}</td>
-				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
+				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
 				<td style="width: 150px;">
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="./delete_phone?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
 		</table>
@@ -280,10 +293,11 @@
 <!-- 	Monitor Set -->
 	<div ng-show="isSet('it-monitor')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{monitors.length}} Switch</h3>
+			<h3>Total : {{monitors.length}} Monitor</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
 				<td style="width: 100px;"><b>Type</b></td>
 				<td style="width: 100px;"><b>Brand</b></td>
@@ -291,12 +305,14 @@
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
 		<table id="switchTable" align="center" ng-repeat="obj in monitors | filter:$ctrl.query as filtered ">
 			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
 				<td style="width: 100px;">{{obj.id}}</td>
 				<td style="width: 100px;">{{obj.type}}</td>
 				<td style="width: 100px;">{{obj.brand}}</td>
@@ -304,10 +320,11 @@
 				<td style="width: 150px;">{{obj.location}}</td>
 				<td style="width: 150px;">{{obj.campus}}</td>
 				<td style="width: 150px;">{{obj.user}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
 				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
 				<td style="width: 150px;">
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="./delete_switch?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
 		</table>
@@ -315,34 +332,38 @@
 <!-- 	Telephone Set -->
 	<div ng-show="isSet('telephone')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{telephones.length}} Fridge</h3>
+			<h3>Total : {{telephones.length}} Telephone</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
-				<td style="width: 150px;"><b>Type</b></td>
-				<td style="width: 200px;"><b>Brand</b></td>
+				<td style="width: 100px;"><b>Type</b></td>
+				<td style="width: 100px;"><b>Brand</b></td>
 				<td style="width: 150px;"><b>Previous</b></td>
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
-		<table id="fridgeTable" align="center" ng-repeat="obj in telephones | filter:$ctrl.query as filtered ">
-			<tr>
+		<table id="switchTable" align="center" ng-repeat="obj in telephones | filter:$ctrl.query as filtered ">
+			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
 				<td style="width: 100px;">{{obj.id}}</td>
-				<td style="width: 150px;">{{obj.type}}</td>
-				<td style="width: 200px;">{{obj.brand}}</td>
+				<td style="width: 100px;">{{obj.type}}</td>
+				<td style="width: 100px;">{{obj.brand}}</td>
 				<td style="width: 150px;">{{obj.previous}}</td>
 				<td style="width: 150px;">{{obj.location}}</td>
 				<td style="width: 150px;">{{obj.campus}}</td>
 				<td style="width: 150px;">{{obj.user}}</td>
-				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
+				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
 				<td style="width: 150px;">
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-					<a href="./delete_fridge?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
 				</td>
 			</tr>
 		</table>
@@ -500,10 +521,11 @@
 	<!-- Printer Set -->
 	<div ng-show="isSet('printer')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{printers.length}} Telephone</h3>
+			<h3>Total : {{printers.length}} Printer</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
 				<td style="width: 100px;"><b>Type</b></td>
 				<td style="width: 100px;"><b>Brand</b></td>
@@ -511,101 +533,109 @@
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
-		<div class="" >
-			<table id="telephoneTable" align="center" ng-repeat="obj in printers | filter:$ctrl.query as filtered ">
-				<tr id="">
-					<td style="width: 100px;">{{obj.id}}</td>
-					<td style="width: 100px;">{{obj.type}}</td>
-					<td style="width: 100px;">{{obj.brand}}</td>
-					<td style="width: 150px;">{{obj.previous}}</td>
-					<td style="width: 150px;">{{obj.location}}</td>
-					<td style="width: 150px;">{{obj.campus}}</td>
-					<td style="width: 150px;">{{obj.user}}</td>
-					<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
-					<td style="width: 150px;">
-						<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-						<a href="./delete_phone?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
-					</td>
-				</tr>
-			</table>
+		<table id="switchTable" align="center" ng-repeat="obj in printers | filter:$ctrl.query as filtered ">
+			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
+				<td style="width: 100px;">{{obj.id}}</td>
+				<td style="width: 100px;">{{obj.type}}</td>
+				<td style="width: 100px;">{{obj.brand}}</td>
+				<td style="width: 150px;">{{obj.previous}}</td>
+				<td style="width: 150px;">{{obj.location}}</td>
+				<td style="width: 150px;">{{obj.campus}}</td>
+				<td style="width: 150px;">{{obj.user}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
+				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
+				<td style="width: 150px;">
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+				</td>
+			</tr>
+		</table>
 		</div>
 	</div>
 	<!-- ETC IT Set -->
 	<div ng-show="isSet('etc_it')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{etc_it.length}} Fridge</h3>
+			<h3>Total : {{etc_it.length}} Items</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
-				<td style="width: 150px;"><b>Type</b></td>
-				<td style="width: 200px;"><b>Brand</b></td>
+				<td style="width: 100px;"><b>Type</b></td>
+				<td style="width: 100px;"><b>Brand</b></td>
 				<td style="width: 150px;"><b>Previous</b></td>
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
-		<div class="" >
-			<table id="fridgeTable" align="center" ng-repeat="obj in etc_it | filter:$ctrl.query as filtered ">
-				<tr>
-					<td style="width: 100px;">{{obj.id}}</td>
-					<td style="width: 150px;">{{obj.type}}</td>
-					<td style="width: 200px;">{{obj.brand}}</td>
-					<td style="width: 150px;">{{obj.previous}}</td>
-					<td style="width: 150px;">{{obj.location}}</td>
-					<td style="width: 150px;">{{obj.campus}}</td>
-					<td style="width: 150px;">{{obj.user}}</td>
-					<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
-					<td style="width: 150px;">
-						<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-						<a href="./delete_fridge?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
-					</td>
-				</tr>
-			</table>
+		<table id="switchTable" align="center" ng-repeat="obj in etc_it | filter:$ctrl.query as filtered ">
+			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
+				<td style="width: 100px;">{{obj.id}}</td>
+				<td style="width: 100px;">{{obj.type}}</td>
+				<td style="width: 100px;">{{obj.brand}}</td>
+				<td style="width: 150px;">{{obj.previous}}</td>
+				<td style="width: 150px;">{{obj.location}}</td>
+				<td style="width: 150px;">{{obj.campus}}</td>
+				<td style="width: 150px;">{{obj.user}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
+				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
+				<td style="width: 150px;">
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+				</td>
+			</tr>
+		</table>
 		</div>
 	</div>
 	<!-- ETC Set -->
 	<div ng-show="isSet('etc')" style="margin:auto;width:75%">
 		<div style="text-align: right;">
-			<h3>Total : {{etc.length}} Fridge</h3>
+			<h3>Total : {{etc.length}} Items</h3>
 		</div>
 		<table>
 			<tr>
+				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
-				<td style="width: 150px;"><b>Type</b></td>
-				<td style="width: 200px;"><b>Brand</b></td>
+				<td style="width: 100px;"><b>Type</b></td>
+				<td style="width: 100px;"><b>Brand</b></td>
 				<td style="width: 150px;"><b>Previous</b></td>
 				<td style="width: 150px;"><b>Location</b></td>
 				<td style="width: 150px;"><b>Campus</b></td>
 				<td style="width: 150px;"><b>User</b></td>
+				<td style="width: 150px;"><b>Comment</b></td>
 				<td style="width: 150px;"><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
-		<div class="" >
-			<table id="fridgeTable" align="center" ng-repeat="obj in etc | filter:$ctrl.query as filtered ">
-				<tr>
-					<td style="width: 100px;">{{obj.id}}</td>
-					<td style="width: 150px;">{{obj.type}}</td>
-					<td style="width: 200px;">{{obj.brand}}</td>
-					<td style="width: 150px;">{{obj.previous}}</td>
-					<td style="width: 150px;">{{obj.location}}</td>
-					<td style="width: 150px;">{{obj.campus}}</td>
-					<td style="width: 150px;">{{obj.user}}</td>
-					<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
-					<td style="width: 150px;">
-						<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
-						<a href="./delete_fridge?id={{obj.id}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
-					</td>
-				</tr>
-			</table>
+		<table id="switchTable" align="center" ng-repeat="obj in etc | filter:$ctrl.query as filtered ">
+			<tr id="">
+				<td style="width: 50px;">{{obj.index}}</td>
+				<td style="width: 100px;">{{obj.id}}</td>
+				<td style="width: 100px;">{{obj.type}}</td>
+				<td style="width: 100px;">{{obj.brand}}</td>
+				<td style="width: 150px;">{{obj.previous}}</td>
+				<td style="width: 150px;">{{obj.location}}</td>
+				<td style="width: 150px;">{{obj.campus}}</td>
+				<td style="width: 150px;">{{obj.user}}</td>
+				<td style="width: 150px;">{{obj.comment}}</td>
+				<td id="updateDate" style="width: 250px;">{{switch.updatedate}}</td>
+				<td style="width: 150px;">
+					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}"><i class="material-icons w3-xlarge">border_color</i></a>
+					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right"><i class="material-icons w3-xlarge">close</i></a>
+				</td>
+			</tr>
+		</table>
 		</div>
 	</div> 
 	<div ng-show="isSet('report')" style="margin:auto;width:65%">

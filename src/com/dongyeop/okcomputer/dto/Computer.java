@@ -1,10 +1,5 @@
 package com.dongyeop.okcomputer.dto;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class Computer extends KoiMaterial {
 	String ip;
 	String domain;
@@ -26,9 +21,9 @@ public class Computer extends KoiMaterial {
 		
 	}
 
-	public Computer(String index, String id, String name, String type, String brand, String user, String previous,
-			String campus, String location, String updatedate, String status, String comment) {
-		super(index, id, name, type, brand, user, previous, campus, location, updatedate, status, comment);
+	public Computer(String index, String sn, String id, String name, String type, String brand, String user,
+			String previous, String campus, String location, String updatedate, String status, String comment) {
+		super(index, sn, id, name, type, brand, user, previous, campus, location, updatedate, status, comment);
 		// TODO Auto-generated constructor stub
 	}
 

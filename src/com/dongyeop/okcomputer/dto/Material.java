@@ -1,6 +1,8 @@
 package com.dongyeop.okcomputer.dto;
 
 interface Material {
+	String index = null;
+	String sn = null;
 	String id = null;
 	String name = null;
 	String type = null;
@@ -11,6 +13,15 @@ interface Material {
 	String location = null;
 	String updatedate = null;
 	String status = null;
+	String comment = null;
+
+	String getIndex();
+
+	void setIndex(String id);
+
+	String getSn();
+
+	void setSn(String id);
 
 	String getId();
 
@@ -51,4 +62,8 @@ interface Material {
 	String getStatus();
 
 	void setStatus(String status);
+
+	String getComment();
+
+	void setComment(String status);
 }

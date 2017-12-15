@@ -17,6 +17,7 @@
 <h2 align="center">Editor</h2>
 <div style="margin:auto;width:40%">
 	<form novalidate class="simple-form" action="./updateGeneral" method="post" name="form">
+		INDEX <input type="text" name="index" readonly="readonly" value="${koiMaterial.index}">
 		ID <input type="text" name="id" readonly="readonly" value="${koiMaterial.id}">
 		Name<input type="text" name="name" value="${koiMaterial.name}">
 		Update Date<input type="text" name="updatedate" readonly="readonly" value="${koiMaterial.updatedate}">
@@ -36,7 +37,7 @@
 			<option ng-repeat="x in brand">{{x}}</option>
 		</select>
 		Status  <input type="text" id="status" name="status" value="${koiMaterial.status}">
-
+		Comment <input type="text" id="comment" name="comment" value="${koiMaterial.comment}">
 		<p align="center">
 			<a href="./" class="button_back">Back</a>
 			<input class="button_mid" type="button" ng-click="reset()" value="Reset"/>

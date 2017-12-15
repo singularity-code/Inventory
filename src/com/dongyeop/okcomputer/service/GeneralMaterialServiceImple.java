@@ -195,6 +195,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		if(o instanceof Computer) {
 			daoMaterialDesktop.create(o);
 		}
+		System.out.println("false");
 		return false;
 	}
 
