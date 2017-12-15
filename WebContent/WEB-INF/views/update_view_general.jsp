@@ -18,6 +18,7 @@
 <div style="margin:auto;width:40%">
 	<form novalidate class="simple-form" action="./updateGeneral" method="post" name="form">
 		INDEX <input type="text" name="index" readonly="readonly" value="${koiMaterial.index}">
+		SN<input type="text" name="sn" readonly="readonly" value="${koiMaterial.sn}">
 		ID <input type="text" name="id" readonly="readonly" value="${koiMaterial.id}">
 		Name<input type="text" name="name" value="${koiMaterial.name}">
 		Update Date<input type="text" name="updatedate" readonly="readonly" value="${koiMaterial.updatedate}">
@@ -41,7 +42,7 @@
 		<p align="center">
 			<a href="./" class="button_back">Back</a>
 			<input class="button_mid" type="button" ng-click="reset()" value="Reset"/>
-			<input class="button_mid" type="submit" ng-click="update(koiMaterial)" value="Apply"/>
+			<input class="button_mid" type="submit" ng-click="updateGeneral(koiMaterial)" value="Apply"/>
 		</p>
 	</form>
 </div>

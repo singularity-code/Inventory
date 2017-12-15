@@ -181,7 +181,7 @@ public class StockManagementController {
 			System.out.println("UPDATE TARGET : " + materialService.getDesktop(id));
 			koiMaterial = materialService.getDesktop(id);
 			model.addAttribute("koiMaterial", koiMaterial);
-			return "update_view";
+			return "update_view_general";
 		} else if (type.equals("Laptop")) {
 			System.out.println("UPDATE TARGET : " + materialService.getLaptop(id));
 			koiMaterial = materialService.getLaptop(id);
@@ -257,9 +257,9 @@ public class StockManagementController {
 	@RequestMapping("/updateGeneral")
 	public ModelAndView updateGeneral(Model model, 
 			@RequestParam("id") String id, 
-			@RequestParam("id") String sn,
+			@RequestParam("sn") String sn,
 			@RequestParam("campus") String campus,
-			@RequestParam("campus") String name,
+			@RequestParam("name") String name,
 			@RequestParam("location") String location, 
 			@RequestParam("type") String type,
 			@RequestParam("brand") String brand, 
