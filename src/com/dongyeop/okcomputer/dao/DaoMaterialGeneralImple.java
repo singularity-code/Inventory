@@ -196,7 +196,7 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("market") && index.equals("C")) {
+			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
 				total += 1;
 			}
 		}
