@@ -119,10 +119,13 @@
 		<a href="./list_etc">ETC</a>
 	</div>
 </div>
-<div class="center" >
-	<div style="margin:auto;width:65%">
-		<div style="text-align: right;">
-			<h3>Date</h3>
+<div style="width: 80%;" class="center" >
+	<div style="float:right; width:20%">History
+	
+	</div>
+	<div style="float:left; margin:auto; width:70%">
+		<div style="text-align: left;">
+			<h3>Date: {{today}}</h3>
 		</div>
 		<table style="border: 0.5px solid grey">
 			<tr>
@@ -367,7 +370,7 @@
 var app = angular.module("myComputerList", []);
 app.controller("myCtrl", function($scope) {
 	$scope.desktops = ${desktops};
-
+	$scope.today = new Date().toDateString();
 	//$scope.zabbix = ${zabbix};
 
 	$scope.update = function(computer) {
