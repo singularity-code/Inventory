@@ -161,6 +161,7 @@
 	<div style="margin:auto;width:85%">
 		<table>
 			<tr>
+				<td style="width: 170px;"><b>Barcode</b></td>
 				<td style="width: 50px;"><b>Idx</b></td>
 				<td style="width: 100px;"><b>S/N</b></td>
 				<td style="width: 100px;"><b>ID</b></td>
@@ -177,6 +178,7 @@
 		</table>
 		<table id="switchTable" align="center" ng-repeat="obj in objects | filter:$ctrl.query as filtered ">
 			<tr id="">
+				<td style="width: 170px;"><a href="https://www.barcodesinc.com/generator/"><img src="https://www.barcodesinc.com/generator/image.php?code={{obj.id}}&style=197&type=C128B&width=154&height=50&xres=1&font=3" alt="the barcode printer: free barcode generator" border="0"></a></td>
 				<td style="width: 50px;">{{obj.index}}</td>
 				<td style="width: 100px;">{{obj.sn}}</td>
 				<td style="width: 100px;">{{obj.id}}</td>
