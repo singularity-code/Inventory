@@ -51,15 +51,8 @@ public class StockManagementController {
 		
 		//model.addAttribute("zabbix", toJson(materialService.getZabbixList()));
 		// model.addAttribute("all", toJson(materialService.getAllList()));
-		
-		model.addAttribute("totalDesktopMap", toJson(reportService.selectTotalDesktopReport()));
-		model.addAttribute("totalEtcMap", toJson(reportService.selectTotalEtcReport()));
-		model.addAttribute("totalItEtcMap", toJson(reportService.selectTotalItEtcReport()));
-		model.addAttribute("totalLaptopMap", toJson(reportService.selectTotalLatptopReport()));
-		model.addAttribute("totalMacMap", toJson(reportService.selectTotalMacReport()));
-		model.addAttribute("totalMonitorMap", toJson(reportService.selectTotalMonitorReport()));
-		model.addAttribute("totalPrinterMap", toJson(reportService.selectTotalPrinterReport()));
-		model.addAttribute("totalTelephoneMap", toJson(reportService.selectTotalTelephoneReport()));
+		//model.addAttribute("totalTvMap", toJson(reportService.selectTotalTvReport()));
+		//model.addAttribute("totalPrinterMap", toJson(reportService.selectTotalPrinterReport()));
 		System.out.println("JSON Loading Complete");
 		return "index";
 	}
@@ -426,6 +419,11 @@ public class StockManagementController {
 	public String listEtc(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getEtcList()));
 		return "list_etc";
+	}
+	@RequestMapping("/makeBackupJsonFile")
+	public String makeBackupJsonFile(Model model) throws ParseException {
+		reportService.makeBackupJsonFile();
+		return "index";
 	}
 
 	/**

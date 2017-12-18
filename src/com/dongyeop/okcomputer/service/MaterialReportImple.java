@@ -9,19 +9,15 @@ import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
 import com.dongyeop.okcomputer.dto.KoiMaterial;
 
 public class MaterialReportImple implements MaterialReport {
-	@Autowired private DaoMaterialInterface daoMaterialDesktop;
-	@Autowired private DaoMaterialInterface daoMaterialLaptop;
-	@Autowired private DaoMaterialInterface daoMaterialMac;
-	@Autowired private DaoMaterialInterface daoMaterialMonitor;
-	@Autowired private DaoMaterialInterface daoMaterialEtc;
-	@Autowired private DaoMaterialInterface daoMaterialEtcIt;
-	@Autowired private DaoMaterialInterface daoMaterialPrinter;
+	@Autowired private DaoMaterialInterface daoMaterialComputer;
+	@Autowired private DaoMaterialInterface daoMaterialTv;
+	@Autowired private DaoMaterialInterface daoMaterialGarage;
 	@Autowired private DaoMaterialInterface daoMaterialTelephone;
+	@Autowired private DaoMaterialInterface daoMaterialPrinter;
 
+	
 	@Autowired private DaoComputerInterface daoComputer;
 
-	HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
-	
 	@Override
 	public HashMap<String, Integer> generateStandardReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao) {
 		map.put("marketStaff", dao.selectTotalMarketStaff());
@@ -33,52 +29,36 @@ public class MaterialReportImple implements MaterialReport {
 		map.put("total", dao.getListTotal());
 		return map;
 	}
-
+	
 	@Override
-	public HashMap<String, Integer> selectTotalDesktopReport() {
-		generateStandardReportMap(resultMap, daoMaterialDesktop);
-		return resultMap;
-	}
-
-	@Override
-	public HashMap<String, Integer> selectTotalLatptopReport() {
-		generateStandardReportMap(resultMap, daoMaterialLaptop);
-		return resultMap;
-	}
-
-	@Override
-	public HashMap<String, Integer> selectTotalMonitorReport() {
-		generateStandardReportMap(resultMap, daoMaterialMonitor);
-		return resultMap;
-	}
-
-	@Override
-	public HashMap<String, Integer> selectTotalMacReport() {
-		generateStandardReportMap(resultMap, daoMaterialMac);
-		return resultMap;
-	}
-
-	@Override
-	public HashMap<String, Integer> selectTotalTelephoneReport() {
-		generateStandardReportMap(resultMap, daoMaterialTelephone);
-		return resultMap;
-	}
-
-	@Override
-	public HashMap<String, Integer> selectTotalItEtcReport() {
-		generateStandardReportMap(resultMap, daoMaterialEtcIt);
-		return resultMap;
-	}
-
-	@Override
-	public HashMap<String, Integer> selectTotalEtcReport() {
-		generateStandardReportMap(resultMap, daoMaterialEtc);
-		return resultMap;
+	public HashMap<String, Integer> selectTotalTvReport() {
+		HashMap<String, Integer> tvReportMap = new HashMap<String, Integer>();
+		generateStandardReportMap(tvReportMap, daoMaterialTv);
+		return tvReportMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalPrinterReport() {
-		generateStandardReportMap(resultMap, daoMaterialPrinter);
-		return resultMap;
+		HashMap<String, Integer> printerMap = new HashMap<String, Integer>();
+		generateStandardReportMap(printerMap, daoMaterialPrinter);
+		return printerMap;
 	}
+
+	@Override
+	public boolean makeBackupJsonFile() {
+		daoMaterialComputer.makeBackupJsonFile();
+		daoMaterialTv.makeBackupJsonFile();
+		daoMaterialGarage.makeBackupJsonFile();
+		daoMaterialTelephone.makeBackupJsonFile();
+		daoMaterialPrinter.makeBackupJsonFile();
+		return false;
+	}
+
+	@Override
+	public HashMap<String, Integer> generateSnapshotReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao) {
+		map.put("marketStaffSnapshot", dao.selectTotalMarketStaffByDate("18122017"));
+		return map;
+	}
+
+
 }

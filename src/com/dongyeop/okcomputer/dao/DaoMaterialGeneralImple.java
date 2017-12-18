@@ -1,13 +1,5 @@
 package com.dongyeop.okcomputer.dao;
 
-import com.dongyeop.okcomputer.dto.Computer;
-import com.dongyeop.okcomputer.dto.KoiMaterial;
-import com.dongyeop.profile.ApplicationType;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -15,10 +7,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial, String>{
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.dongyeop.okcomputer.dto.KoiMaterial;
+import com.dongyeop.profile.ApplicationType;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1, T2>{
 	protected String DAO_OBJECT_JSONFILE_PATH = null;
+	protected String DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = null;
 	protected JSONParser parser = new JSONParser();
 	protected List<KoiMaterial> objectList = null;
+	protected List<KoiMaterial> snapshotList = null;
 	protected List<KoiMaterial> storeRoomList = new ArrayList<>();
 
 	public DaoMaterialGeneralImple() {
@@ -29,7 +31,7 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 			Object obj = parser.parse(new FileReader(path));
 			String arrStd = obj.toString();
 
-			objectList = (new Gson()).fromJson(arrStd, new TypeToken<List<Computer>>() {
+			objectList = (new Gson()).fromJson(arrStd, new TypeToken<List<KoiMaterial>>() {
 			}.getType());
 
 			System.out.println("Computer List :" + objectList.size());
@@ -62,10 +64,10 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 	protected boolean writeJsonStoreRoom() {
 		// Convert List to Json format
 		String json_storeRoom = new Gson().toJson(storeRoomList);
-		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonFilePath() + "storeRoom.json";
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonFilePath() + "storeRoom.json";
 		
-		try (FileWriter file = new FileWriter(DAO_OBJECT_JSONFILE_PATH)) {
-			System.out.println("ACTUAL STORE WRITING : " + DAO_OBJECT_JSONFILE_PATH);
+		try (FileWriter file = new FileWriter(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH)) {
+			System.out.println("ACTUAL STORE WRITING : " + DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
 			file.write(json_storeRoom);
 			file.flush();
 		} catch (IOException e) {
@@ -76,15 +78,50 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		System.out.println("WRITE SUCCESS");
 		return true;
 	}
+	
+	public boolean makeBackupJsonFile() {
+		DAO_OBJECT_JSONFILE_PATH = null;
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonBackupPath() + this.getClass().getSimpleName().substring(11) + ".json";
+		String json = new Gson().toJson(objectList);
+		try (FileWriter file = new FileWriter(DAO_OBJECT_JSONFILE_PATH)) {
+			System.out.println("Backup Process : " + DAO_OBJECT_JSONFILE_PATH);
+			file.write(json);
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		System.out.println(this.getClass().getSimpleName() + " Backup SUCCESS");
+		System.out.print("Json OBJ : " + json);
+		return true;
+	}
+	protected List<KoiMaterial> readSnapshot(String path) throws ParseException {
+		try {
+			Object obj = parser.parse(new FileReader(path));
+			String arrStd = obj.toString();
+
+			snapshotList = (new Gson()).fromJson(arrStd, new TypeToken<List<KoiMaterial>>() {
+			}.getType());
+
+			System.out.println("Snapshot List :" + snapshotList.size());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Snapshot Read");
+		return objectList;
+	}
 
 	@Override
-	public KoiMaterial getMaterial(String s) throws ParseException {
+	public T1 getMaterial(T2 s) throws ParseException {
 		// If do, Computer pc = new Computer is not good code as takes heap
 		// memory.
 		for (int i = 0; i < objectList.size(); i++) {
-			if (s.equalsIgnoreCase(objectList.get(i).getId())) {
+			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
 				System.out.println("DAO GENERAL GET : " + objectList.get(i).getId());
-				return objectList.get(i);
+				T1 t1 = (T1) objectList.get(i);
+				return t1;
 			}
 		}
 		return null;
@@ -96,11 +133,11 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 	}
 
 	@Override
-	public boolean delete(String s) throws ParseException {
+	public boolean delete(T2 s) throws ParseException {
 		System.out.println("DAO ID : " + s);
 		KoiMaterial foundObj = null;
 		for (int i = 0; i < objectList.size(); i++) {
-			if (s.equalsIgnoreCase(objectList.get(i).getId())) {
+			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
 				foundObj = objectList.get(i);
 				storeRoomList.add(foundObj);
 				System.out.println("Store : " + storeRoomList.size());
@@ -114,22 +151,21 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 	}
 
 	@Override
-	public boolean create(KoiMaterial object) {
-		boolean b = objectList.add(object);
+	public boolean create(T1 object) {
+		boolean b = objectList.add((KoiMaterial) object);
 		return b ? writeJson() : false;
 	}
 
 	/* TODO: Add Sorting function to list using interface later */
 	/* TODO: Use map instead of an object */
 	@Override
-	public boolean update(KoiMaterial object) throws ParseException {
-		System.out.println("DAO to change ID: " + object.getId());
+	public boolean update(T1 object) throws ParseException {
 		objectList = readJson(DAO_OBJECT_JSONFILE_PATH);
 		boolean b = false;
 		for (int i = 0; i < objectList.size(); i++) {
-			if (object.getId().equals(objectList.get(i).getId())) {
+			if (((KoiMaterial) object).getId().equals(objectList.get(i).getId())) {
 				objectList.remove(i);
-				b = objectList.add(object);
+				b = objectList.add((KoiMaterial) object);
 				break;
 			}
 		}
@@ -138,12 +174,12 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 	}
 
 	@Override
-	public boolean swap(KoiMaterial prev, KoiMaterial next) {
+	public boolean swap(T1 prev, T1 next) {
 		KoiMaterial c1 = null;
 		KoiMaterial c2 = null;
 
 		for (KoiMaterial c : objectList) {
-			if (prev.getId().equals(c.getId())) {
+			if (((KoiMaterial) prev).getId().equals(c.getId())) {
 				System.out.println("FOUND : " + c.getId());
 				c1 = c;
 				break;
@@ -151,7 +187,7 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		}
 
 		for (KoiMaterial c : objectList) {
-			if (next.getId().equals(c.getId())) {
+			if (((KoiMaterial) next).getId().equals(c.getId())) {
 				System.out.println("FOUND : " + c.getId());
 				c2 = c;
 				break;
@@ -196,7 +232,7 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
+			if(obj.getCampus().equalsIgnoreCase("market") && index.equals("C")) {
 				total += 1;
 			}
 		}
@@ -260,5 +296,23 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 	@Override
 	public int getListTotal() {
 		return objectList.size();
+	}
+	@Override
+	public int selectTotalMarketStaffByDate(String date) {
+		int total = 0;
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonBackupPathWithoutDate() + date + "\\" + this.getClass().getSimpleName() + ".json";
+		try {
+			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(KoiMaterial obj : snapshotList) {
+			String index = obj.getId().substring(0, 1);
+			if(obj.getCampus().equalsIgnoreCase("market") && index.equals("C")) {
+				total += 1;
+			}
+		}
+		return total;
 	}
 }
