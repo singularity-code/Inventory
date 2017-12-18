@@ -29,4 +29,10 @@ public class ApplicationType {
 		}
 		return "home/pi/Desktop/testdata/";
 	}
+	
+	public static String getJsonBackupPathWithoutDate() {
+		if(applicationProfile == ApplicationProfile.LOCAL)
+			 return "C:\\testdata\\materials\\snapshot\\"; 
+		else return "/home/pi/Desktop/testdata/snapshot/";
+	}
 }

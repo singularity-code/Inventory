@@ -103,12 +103,6 @@
 <div class="center">
 	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
 	<h3 style="text-align: center">INVENTORY</h3>
-	<div align="center" style="margin-bottom: 15px;">
-		<input type="search" id="search" placeholder="Say Anything..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
-		<button ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
-		<button ng-click="setTab('report')" style="width: 100px; height: 40px;">Report</button>
-		<a href="./makeBackupJsonFile">Backup</a>
-	</div>
 	<div class="" style="text-align: center">
 		<a href="./list_desktop">Desktop</a>
 		<a href="./list_laptop">Laptop</a>
@@ -121,9 +115,11 @@
 	</div>
 </div>
 <div style="width: 95%;" class="center" >
-	<div style="float:left; margin:auto; width:50%">
-		<h3>Previous</h3>
-		<table style="border: 0.5px solid grey">
+	<div style="float:left; margin:auto; width:48%">
+		<div style="text-align: left;">
+			<h3>Previous</h3>
+		</div>
+		<table style="border: none solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Computers</th>
 				<th colspan="2" class="reportRowH2">Market</th>
@@ -192,7 +188,7 @@
 			</tr>
 		</table>
 		<br/>
-		<table style="border: 0.5px solid grey">
+		<table style="border: none solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Classroom, Library & Student Lounge</th>
 				<th colspan="2" class="reportRowH2">Market</th>
@@ -256,7 +252,7 @@
 				<td class="reportRowSection">{{totalMicrowaveMap.total}}</td>
 			</tr>
 		</table>
-		<table style="border: 0.5px solid grey">
+		<table style="border: none solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Office</th>
 				<th colspan="2" class="reportRowH2">Market</th>
@@ -361,11 +357,11 @@
 			</tr>
 		</table>
 	</div>
-	<div style="float:right; margin:auto; width:50%">
+	<div style="float:right; margin:auto; width:48%">
 		<div style="text-align: left;">
-			<h3>{{today}}</h3>
+			<h3>{{today}} <a href="./makeBackupJsonFile">Backup</a></h3>
 		</div>
-		<table style="border: 0.5px solid grey">
+		<table style="border: none solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Computers</th>
 				<th colspan="2" class="reportRowH2">Market</th>
@@ -434,7 +430,7 @@
 			</tr>
 		</table>
 		<br/>
-		<table style="border: 0.5px solid grey">
+		<table style="border: none solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Classroom, Library & Student Lounge</th>
 				<th colspan="2" class="reportRowH2">Market</th>
@@ -498,7 +494,7 @@
 				<td class="reportRowSection">{{totalMicrowaveMap.total}}</td>
 			</tr>
 		</table>
-		<table style="border: 0.5px solid grey">
+		<table style="border: none solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Office</th>
 				<th colspan="2" class="reportRowH2">Market</th>

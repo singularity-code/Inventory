@@ -54,5 +54,11 @@ public class MaterialReportImple implements MaterialReport {
 		return false;
 	}
 
+	@Override
+	public HashMap<String, Integer> generateSnapshotReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao) {
+		map.put("marketStaffSnapshot", dao.selectTotalMarketStaffByDate("18122017"));
+		return map;
+	}
+
 
 }

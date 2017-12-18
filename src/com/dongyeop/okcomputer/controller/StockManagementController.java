@@ -425,7 +425,6 @@ public class StockManagementController {
 		reportService.makeBackupJsonFile();
 		return "index";
 	}
-	
 
 	/**
 	 * Serializes a Java object to a Json string.

@@ -16,9 +16,6 @@ public interface MaterialServiceInterface<T1, T2> {
 	
 	//Old
 	T1 getComputerList() throws ParseException;
-	T1 getTvList() throws ParseException;
-	T1 getGarageList() throws ParseException;
-	T1 getAllList() throws ParseException;
 	
 	//CREATE
 	boolean createDesktop(T1 o);
