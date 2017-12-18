@@ -49,10 +49,14 @@ public class StockManagementController {
 		//model.addAttribute("garage", toJson(materialService.getGarageList()));
 		//model.addAttribute("tvs", toJson(materialService.getTvList()));
 		
-		//model.addAttribute("zabbix", toJson(materialService.getZabbixList()));
-		// model.addAttribute("all", toJson(materialService.getAllList()));
-		//model.addAttribute("totalTvMap", toJson(reportService.selectTotalTvReport()));
-		//model.addAttribute("totalPrinterMap", toJson(reportService.selectTotalPrinterReport()));
+		model.addAttribute("totalDesktopMap", toJson(reportService.selectTotalDesktopReport()));
+		model.addAttribute("totalEtcMap", toJson(reportService.selectTotalEtcReport()));
+		model.addAttribute("totalItEtcMap", toJson(reportService.selectTotalItEtcReport()));
+		model.addAttribute("totalLaptopMap", toJson(reportService.selectTotalLatptopReport()));
+		model.addAttribute("totalMacMap", toJson(reportService.selectTotalMacReport()));
+		model.addAttribute("totalMonitorMap", toJson(reportService.selectTotalMonitorReport()));
+		model.addAttribute("totalPrinterMap", toJson(reportService.selectTotalPrinterReport()));
+		model.addAttribute("totalTelephoneMap", toJson(reportService.selectTotalTelephoneReport()));
 		System.out.println("JSON Loading Complete");
 		return "index";
 	}

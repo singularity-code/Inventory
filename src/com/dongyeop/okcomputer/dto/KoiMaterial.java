@@ -170,4 +170,15 @@ public class KoiMaterial implements Material{
 		Date now = Calendar.getInstance().getTime();
 		return dateFormat.format(now);
 	}
+	
+	public boolean isStaffUser() {
+		if (getUserType().equals("1")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String getUserType() {
+		return this.getId().substring(3, 4);
+	}
 }

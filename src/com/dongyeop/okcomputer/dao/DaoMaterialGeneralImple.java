@@ -231,8 +231,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalMarketStaff() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("market") && index.equals("C")) {
+			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
 				total += 1;
 			}
 		}
@@ -243,7 +242,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("market") && index.equals("S")) {
+			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
 				total += 1;
 			}
 		}
@@ -254,7 +253,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("kent l1") && index.equals("C")) {
+			if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStaffUser()) {
 				total += 1;
 			}
 		}
@@ -265,7 +264,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("kent l1") && index.equals("S"))  {
+			if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStaffUser())  {
 				total += 1;
 			}
 		}
@@ -276,7 +275,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("kent l5") && index.equals("C"))  {
+			if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStaffUser())  {
 				total += 1;
 			}
 		}
@@ -287,7 +286,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			String index = obj.getId().substring(0, 1);
-			if(obj.getCampus().equalsIgnoreCase("kent l5") && index.equals("S"))  {
+			if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStaffUser())  {
 				total += 1;
 			}
 		}

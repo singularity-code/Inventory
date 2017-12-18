@@ -385,30 +385,33 @@
 			</tr>
 			<tr>
 				<td class="reportRowH1">Desktop</td>
-				<td>{{totalMarketTv}}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td id="marketStudent1" class="reportRowSection">{{totalDesktopMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Laptop</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td id="marketStudent2" class="reportRowSection">{{totalLaptopMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Apple iMac</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td id="marketStudent3" class="reportRowSection">{{totalMacMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalMacMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalMacMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalMacMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalMacMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalMacMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalMacMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Tablet</td>
@@ -421,7 +424,7 @@
 			</tr>
 			<tr>
 				<td class="reportRowH1">Total</td>
-				<td></td>
+				<td>{{marketStudentTotal}}</td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -519,23 +522,23 @@
 			</tr>
 			<tr>
 				<td class="reportRowH1">Telephone</td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
+				<td class="reportRowSection">{{totalTelephoneMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalTelephoneMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalTelephoneMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalTelephoneMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalTelephoneMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalTelephoneMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalTelephoneMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Printer</td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
-				<td class="reportRowSection"></td>
+				<td class="reportRowSection">{{totalPrinterMap.marketStudent}}</td>
+				<td class="reportRowSection">{{totalPrinterMap.marketStaff}}</td>
+				<td class="reportRowSection">{{totalPrinterMap.kentL1Staff}}</td>
+				<td class="reportRowSection">{{totalPrinterMap.kentL1Student}}</td>
+				<td class="reportRowSection">{{totalPrinterMap.kentL5Staff}}</td>
+				<td class="reportRowSection">{{totalPrinterMap.kentL5Student}}</td>
+				<td class="reportRowSection">{{totalPrinterMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Shreder</td>
@@ -605,6 +608,16 @@ var app = angular.module("myComputerList", []);
 app.controller("myCtrl", function($scope) {
 	$scope.desktops = ${desktops};
 	$scope.today = new Date().toDateString();
+	
+	$scope.totalDesktopMap = ${totalDesktopMap};
+	$scope.totalEtcMap = ${totalEtcMap};
+	$scope.totalItEtcMap = ${totalItEtcMap};
+	$scope.totalLaptopMap = ${totalLaptopMap};
+	$scope.totalMacMap = ${totalMacMap};
+	$scope.totalMonitorMap = ${totalMonitorMap};
+	$scope.totalPrinterMap = ${totalPrinterMap};
+	$scope.totalTelephoneMap = ${totalTelephoneMap};
+	
 	//$scope.zabbix = ${zabbix};
 
 	$scope.update = function(computer) {
