@@ -241,7 +241,6 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalMarketStudent() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			String index = obj.getId().substring(0, 1);
 			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
 				total += 1;
 			}
@@ -252,7 +251,6 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalKentL1Staff() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			String index = obj.getId().substring(0, 1);
 			if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStaffUser()) {
 				total += 1;
 			}
@@ -263,7 +261,6 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalKentL1Student() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			String index = obj.getId().substring(0, 1);
 			if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStaffUser())  {
 				total += 1;
 			}
@@ -274,7 +271,6 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalKentL5Staff() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			String index = obj.getId().substring(0, 1);
 			if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStaffUser())  {
 				total += 1;
 			}
@@ -285,7 +281,6 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalKentL5Student() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			String index = obj.getId().substring(0, 1);
 			if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStaffUser())  {
 				total += 1;
 			}

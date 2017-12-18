@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
 import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
 import com.dongyeop.okcomputer.dto.Computer;
-import com.dongyeop.okcomputer.dto.KoiComputer;
 import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.okcomputer.dto.Monitor;
 import com.dongyeop.okcomputer.dto.Printer;

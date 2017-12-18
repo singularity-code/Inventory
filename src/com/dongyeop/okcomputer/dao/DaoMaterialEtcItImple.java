@@ -3,7 +3,7 @@ package com.dongyeop.okcomputer.dao;
 import org.json.simple.parser.ParseException;
 import com.dongyeop.profile.ApplicationType;
 
-public class DaoMaterialEtcItImple extends DaoMaterialGeneralImple {
+public class DaoMaterialEtcItImple<T1, T2> extends DaoMaterialGeneralImple<T1, T2> {
 
 	public DaoMaterialEtcItImple() {
 		super();

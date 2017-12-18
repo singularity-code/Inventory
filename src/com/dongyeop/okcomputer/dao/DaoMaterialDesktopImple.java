@@ -4,7 +4,7 @@ import org.json.simple.parser.ParseException;
 
 import com.dongyeop.profile.ApplicationType;
 
-public class DaoMaterialDesktopImple extends DaoMaterialGeneralImple{
+public class DaoMaterialDesktopImple<T1, T2> extends DaoMaterialGeneralImple<T1, T2>{
 
 	public DaoMaterialDesktopImple() {
 		super();

@@ -106,28 +106,6 @@ public class StockManagementController {
 		return new ModelAndView(redirectUrl);
 	}
 
-	@RequestMapping("/create_tv")
-	public ModelAndView createTv(Model model, 
-			@RequestParam("id") String id, 
-			@RequestParam("id") String sn,
-			@RequestParam("campus") String campus,
-			@RequestParam("location") String location, 
-			@RequestParam("type") String type,
-			@RequestParam("brand") String brand, 
-			@RequestParam("user") String user,
-			@RequestParam("index") String index,
-			@RequestParam("comment") String comment,
-			@RequestParam("status") String status,
-			@RequestParam("previous") String previous) {
-
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date now = Calendar.getInstance().getTime();
-		String date = dateFormat.format(now);
-		Tv tv = new Tv(index, sn, id, "", type, brand, user, previous, campus, location, date, status, comment);
-		// materialService.createTv(tv);
-		return new ModelAndView(redirectUrl);
-	}
-
 	@RequestMapping("/create_koiMaterial")
 	public ModelAndView createKoiMaterial(Model model, 
 			@RequestParam("id") String id,
@@ -145,7 +123,6 @@ public class StockManagementController {
 		Date now = Calendar.getInstance().getTime();
 		String today = dateFormat.format(now);
 		String previous_new = "Brand New";
-		String subID = id.substring(0, 3);
 		Object koiMaterial = null;
 		String sn = "New";
 		
@@ -279,7 +256,6 @@ public class StockManagementController {
 			@RequestParam("comment") String comment,
 			@RequestParam("status") String status,
 			@RequestParam("previous") String previous) throws ParseException {
-		String subID = id.substring(0, 3);
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date now = Calendar.getInstance().getTime();
 		String today = dateFormat.format(now);
@@ -376,7 +352,6 @@ public class StockManagementController {
 
 	@RequestMapping("/move")
 	public ModelAndView move(Model model, @RequestParam("id") String id) throws ParseException {
-		Computer computer = (Computer) materialService.getComputer(id);
 		// materialService.move(computer);
 		return new ModelAndView(redirectUrl);
 	}

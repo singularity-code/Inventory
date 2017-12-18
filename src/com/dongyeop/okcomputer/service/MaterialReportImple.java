@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
-import com.dongyeop.okcomputer.dao_database.DaoComputerInterface;
 import com.dongyeop.okcomputer.dto.KoiMaterial;
 
 public class MaterialReportImple implements MaterialReport {
@@ -17,8 +16,6 @@ public class MaterialReportImple implements MaterialReport {
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialEtcIt;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialPrinter;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialTelephone;
-	
-	@Autowired private DaoComputerInterface daoComputer;
 	
 	HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 
