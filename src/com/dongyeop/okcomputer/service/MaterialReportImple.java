@@ -44,5 +44,15 @@ public class MaterialReportImple implements MaterialReport {
 		return printerMap;
 	}
 
+	@Override
+	public boolean makeBackupJsonFile() {
+		daoMaterialComputer.makeBackupJsonFile();
+		daoMaterialTv.makeBackupJsonFile();
+		daoMaterialGarage.makeBackupJsonFile();
+		daoMaterialTelephone.makeBackupJsonFile();
+		daoMaterialPrinter.makeBackupJsonFile();
+		return false;
+	}
+
 
 }

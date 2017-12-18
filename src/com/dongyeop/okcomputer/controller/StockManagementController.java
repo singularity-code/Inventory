@@ -420,6 +420,12 @@ public class StockManagementController {
 		model.addAttribute("objects", toJson(materialService.getEtcList()));
 		return "list_etc";
 	}
+	@RequestMapping("/makeBackupJsonFile")
+	public String makeBackupJsonFile(Model model) throws ParseException {
+		reportService.makeBackupJsonFile();
+		return "index";
+	}
+	
 
 	/**
 	 * Serializes a Java object to a Json string.

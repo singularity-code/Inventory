@@ -9,4 +9,5 @@ public interface MaterialReport {
 	HashMap<String, Integer> generateStandardReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao);
 	HashMap<String, Integer> selectTotalTvReport();
 	HashMap<String, Integer> selectTotalPrinterReport();
+	boolean makeBackupJsonFile();
 }

@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -74,6 +75,23 @@ public class DaoMaterialGeneralImple implements DaoMaterialInterface<KoiMaterial
 		}
 		System.out.print("Store OBJ : " + json_storeRoom);
 		System.out.println("WRITE SUCCESS");
+		return true;
+	}
+	
+	public boolean makeBackupJsonFile() {
+		DAO_OBJECT_JSONFILE_PATH = null;
+		DAO_OBJECT_JSONFILE_PATH = ApplicationType.getJsonBackupPath() + this.getClass().getSimpleName().substring(11) + ".json";
+		String json = new Gson().toJson(objectList);
+		try (FileWriter file = new FileWriter(DAO_OBJECT_JSONFILE_PATH)) {
+			System.out.println("Backup Process : " + DAO_OBJECT_JSONFILE_PATH);
+			file.write(json);
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		System.out.println(this.getClass().getSimpleName() + " Backup SUCCESS");
+		System.out.print("Json OBJ : " + json);
 		return true;
 	}
 
