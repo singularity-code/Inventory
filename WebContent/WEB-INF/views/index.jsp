@@ -34,7 +34,7 @@
 	
 	th {
 		text-align: center;
-		background-color: #555;
+		background-color: #333;
  		color: white;
 	}
 	.reportRowSection {

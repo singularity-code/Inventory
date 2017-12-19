@@ -30,7 +30,7 @@ public interface MaterialReport {
 	int selectComputerTotalKentL1Student();
 	int selectComputerTotalKentL5Student();
 	
-	HashMap<String, Integer> calcurateAllStudentCompuersSummary(); 
+	HashMap<String, Object> calcurateAllStudentCompuersSummary(); 
 	boolean makeBackupJsonFile();
 	HashMap<String, Integer> generateComputerTotalMap();
 	HashMap<String, Object> getAllsnapshots() throws ParseException, IOException;

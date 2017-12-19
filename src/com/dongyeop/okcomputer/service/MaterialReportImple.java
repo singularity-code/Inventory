@@ -198,17 +198,18 @@ public class MaterialReportImple implements MaterialReport {
 	
 	
 	@Override
-	public HashMap<String, Integer> calcurateAllStudentCompuersSummary() {
-		HashMap<String, Integer> studentSummaryMap = new HashMap<String, Integer>();
-		int total = 0;
-		int ratio = 0;
-		int noOfStd = 1703;
+	public HashMap<String, Object> calcurateAllStudentCompuersSummary() {
+		HashMap<String, Object> studentSummaryMap = new HashMap<String, Object>();
+		float total = 0;
+		float result = 0;
+		float noOfStd = 1703;
 		
 		total += daoMaterialDesktop.getListTotalByStudent();
 		total += daoMaterialLaptop.getListTotalByStudent();
 		total += daoMaterialMac.getListTotalByStudent();
 		
-		ratio = noOfStd / total;
+		result = noOfStd / total;
+		String ratio = String.format("%.2f", result);
 		studentSummaryMap.put("total", total);
 		studentSummaryMap.put("ratio", ratio);
 		studentSummaryMap.put("noOfStd", noOfStd);
