@@ -17,20 +17,46 @@
 <style>
 	body {
 		font-family: "Lato", sans-serif;
-		border-collapse: collapse;
 	}
-	tr:hover {background-color:#f5f5f5;}
-	table, td, th {
-	    border: 1px solid black;
-	}
-	
 	table {
-	    border-collapse: collapse;
-	    width: 100%;
+		border: none;
+		width: 100%;
 	}
-	
-	th {
-	    text-align: left;
+	table caption {
+		font-size: 1.3em;
+	}
+	table thead {
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+	table tr {
+		border-bottom: 1px solid slategrey;
+		display: block;
+		margin-bottom: .325em;
+	}
+	table td {
+		/*     border-bottom: 1px solid #ddd; */
+		font-size: 1.0em;
+		cellpadding: 10;
+		text-align: left;
+	}
+	table td:before {
+		/*
+		* aria-label has no advantage, it won't be read inside a table
+		content: attr(aria-label);
+		*/
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	table td:last-child {
+		border-bottom: 0;
 	}
 	.center {
 		margin: auto;
@@ -38,6 +64,36 @@
 /*		border: 0.5px solid lightgrey;*/
 		padding: 10px;
 		text-align:center;
+	}
+	button {
+		width: 80px;
+		height: 30px;
+	}
+	.reportRowH1 {
+		width: 500px;
+		text-align: left;
+	}
+	.reportRowH2 {
+		width: 300px;
+		text-align: left;
+	}
+	.reportRowSection {
+		width: 100px;
+		text-align: left;
+	}
+	select {
+		width: 50%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+	input[type=text] {
+		width: 50%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: none;
+		border-bottom: 2px solid darkslategrey;
 	}
 </style>
 </head>
@@ -59,19 +115,261 @@
 	</div>
 </div>
 <div style="width: 95%;" class="center" >
-	<div style="float:center; margin:auto; width:45%">
+	<div style="float:left; margin:auto; width:48%">
+		<div style="text-align: left;">
+			<h3>Previous</h3>
+		</div>
+		<table style="border: none solid grey">
+			<tr>
+				<th rowspan="2" class="reportRowH1">Computers</th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td class="reportRowSection">T0216</td>
+				<td class="reportRowSection">T0316</td>
+				<td class="reportRowSection">T0216</td>
+				<td class="reportRowSection">T0316</td>
+				<td class="reportRowSection">T0216</td>
+				<td class="reportRowSection">T0316</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Desktop</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Laptop</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Apple iMac</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Tablet</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Total</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<br/>
+		<table style="border: none solid grey">
+			<tr>
+				<th rowspan="2" class="reportRowH1">Classroom, Library & Student Lounge</th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Total</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Tv</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Bar Code Reader</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Data Projector</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Microwave</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+		</table>
+		<table style="border: none solid grey">
+			<tr>
+				<th rowspan="2" class="reportRowH1">Office</th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Lecture/Staff</td>
+				<td class="reportRowSection">Student</td>
+				<td class="reportRowSection">Total</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Telephone</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Printer</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Shreder</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Laminator</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">Fax</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+			<tr>
+				<td class="reportRowH1">EFTPOS Machine</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+						<tr>
+				<td class="reportRowH1">DSLR Camera</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+						<tr>
+				<td class="reportRowH1">EFTPOS Machine</td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+				<td class="reportRowSection"></td>
+			</tr>
+		</table>
+	</div>
+	<div style="float:right; margin:auto; width:48%">
 		<div style="text-align: left;">
 			<h3>{{today}} <a href="./makeBackupJsonFile">Backup</a></h3>
 		</div>
 		<table style="border: none solid grey">
 			<tr>
-				<th  rowspan="2" class="reportRowH1">Computers (Lecture/Staff)</th>
-				<th  class="reportRowSection">Market</th>
-				<th  class="reportRowSection">Kent Lv1</th>
-				<th  class="reportRowSection">Kent Lv5</th>
-				<th></th>
+				<th rowspan="2" class="reportRowH1">Computers (Lecture/Staff)</th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
 			</tr>
 			<tr>
+				<td class="reportRowH1"></td>
 				<td class="reportRowSection">T0316</td>
 				<td class="reportRowSection">T0316</td>
 				<td class="reportRowSection">T0316</td>
@@ -104,9 +402,12 @@
 				<td></td>
 				<td></td>
 				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Total</td>
+				<td>{{marketStudentTotal}}</td>
 				<td class="reportRowSection">{{totalComputerMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL1Staff}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL5Staff}}</td>
@@ -117,12 +418,12 @@
 		<table style="border: none solid grey">
 			<tr>
 				<th rowspan="2" class="reportRowH1">Computers (Students)</th>
-				<th class="reportRowSection">Market</th>
-				<th class="reportRowSection">Kent Lv1</th>
-				<th class="reportRowSection">Kent Lv5</th>
-				<th></th>
+				<th colspan="2" class="reportRowH2">Market</th>
+				<th colspan="2" class="reportRowH2">Kent Lv1</th>
+				<th colspan="2" class="reportRowH2">Kent Lv5</th>
 			</tr>
 			<tr>
+				<td class="reportRowH1"></td>
 				<td class="reportRowSection">T0316</td>
 				<td class="reportRowSection">T0316</td>
 				<td class="reportRowSection">T0316</td>
@@ -155,9 +456,12 @@
 				<td></td>
 				<td></td>
 				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td class="reportRowH1">Total</td>
+				<td>{{marketStudentTotal}}</td>
 				<td class="reportRowSection">{{totalComputerMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL5Student}}</td>
@@ -171,9 +475,15 @@
 				<th colspan="2" class="reportRowH2">Market</th>
 				<th colspan="2" class="reportRowH2">Kent Lv1</th>
 				<th colspan="2" class="reportRowH2">Kent Lv5</th>
-				<th></th>
 			</tr>
 			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
 				<td class="reportRowSection">Lecture/Staff</td>
 				<td class="reportRowSection">Student</td>
 				<td class="reportRowSection">Lecture/Staff</td>
@@ -230,9 +540,15 @@
 				<th colspan="2" class="reportRowH2">Market</th>
 				<th colspan="2" class="reportRowH2">Kent Lv1</th>
 				<th colspan="2" class="reportRowH2">Kent Lv5</th>
-				<th></th>
 			</tr>
 			<tr>
+				<td class="reportRowH1"></td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+				<td colspan="2" class="reportRowH2">Lecturer/Staff</td>
+			</tr>
+			<tr>
+				<td class="reportRowH1"></td>
 				<td class="reportRowSection">Lecture/Staff</td>
 				<td class="reportRowSection">Student</td>
 				<td class="reportRowSection">Lecture/Staff</td>
