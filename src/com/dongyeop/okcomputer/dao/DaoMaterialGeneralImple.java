@@ -373,6 +373,29 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int getListTotal() {
 		return objectList.size();
 	}
+	
+	@Override
+	public int getListTotalByStudent() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(!obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	
+	@Override
+	public int getListTotalByStaff() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	
 	@Override
 	public int selectTotalMarketStaffByDate(String date) {
 		int total = 0;

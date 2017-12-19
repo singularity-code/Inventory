@@ -18,6 +18,8 @@ public interface DaoMaterialInterface<T1, T2> {
 	int selectTotalKentL5Staff();
 	int selectTotalKentL5Student();
 	int getListTotal();
+	int getListTotalByStudent();
+	 int getListTotalByStaff();
 	boolean makeBackupJsonFile();
 	int selectTotalMarketStaffByDate(String date);
 	int selectTotalMarketStaffByType(String type);

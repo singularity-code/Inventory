@@ -20,17 +20,25 @@
 		border-collapse: collapse;
 	}
 	tr:hover {background-color:#f5f5f5;}
+	tr:nth-child(even){background-color: #f2f2f2}
+	
 	table, td, th {
-	    border: 1px solid black;
+		border: 1px solid black;
+		padding: 8px;
 	}
 	
 	table {
-	    border-collapse: collapse;
-	    width: 100%;
+		border-collapse: collapse;
+		width: 100%;
 	}
 	
 	th {
-	    text-align: left;
+		text-align: left;
+		background-color: #20B2AA;
+ 		color: white;
+	}
+	.reportRowSection {
+		text-align: center;
 	}
 	.center {
 		margin: auto;
@@ -58,55 +66,80 @@
 		<a href="./list_etc">ETC</a>
 	</div>
 </div>
-<div style="width: 95%;" class="center" >
-	<div style="float:center; margin:auto; width:45%">
+<div style="width: 85%;" class="center" >
+	<div style="float: left; margin: auto; width:40%">
 		<div style="text-align: left;">
-			<h3>{{today}} <a href="./makeBackupJsonFile">Backup</a></h3>
+			<h3>Computer Usage Ratio</h3>
+		</div>
+		<table>
+			<tr>
+				<th>Trimester</th>
+				<td>Enrolled Students</td>
+				<td>Students Computers</td>
+				<td>Ratio</td>
+			</tr>
+			<tr>
+				<td>0217</td>
+				<td>1905</td>
+				<td>{{totalStudentComSummary.total}}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>0317</td>
+				<td>{{totalStudentComSummary.noOfStd}}</td>
+				<td>{{totalStudentComSummary.total}}</td>
+				<td style="width: 80px;">{{totalStudentComSummary.ratio}} %</td>
+			</tr>
+		</table>
+	</div>
+	<div style="float: right; margin: auto; width:60%">
+		<div style="text-align: right;">
+			<h3>{{today}}</h3><a href="./makeBackupJsonFile">Backup</a>
 		</div>
 		<table style="border: none solid grey">
 			<tr>
-				<th  rowspan="2" class="reportRowH1">Computers (Lecture/Staff)</th>
+				<th  rowspan="2" class="">Computers (Lecture/Staff)</th>
 				<th  class="reportRowSection">Market</th>
 				<th  class="reportRowSection">Kent Lv1</th>
 				<th  class="reportRowSection">Kent Lv5</th>
 				<th></th>
 			</tr>
 			<tr>
-				<td class="reportRowSection">T0316</td>
-				<td class="reportRowSection">T0316</td>
-				<td class="reportRowSection">T0316</td>
-				<td class="reportRowSection">Total</td>
+				<th class="reportRowSection">T0316</th>
+				<th class="reportRowSection">T0316</th>
+				<th class="reportRowSection">T0316</th>
+				<th class="reportRowSection">Total</th>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Desktop</td>
+				<td class="">Desktop</td>
 				<td id="marketStudent1" class="reportRowSection">{{totalDesktopMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalDesktopMap.kentL1Staff}}</td>
 				<td class="reportRowSection">{{totalDesktopMap.kentL5Staff}}</td>
-				<td class="reportRowSection">{{totalDesktopMap.total}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.totalByStaff}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Laptop</td>
+				<td class="">Laptop</td>
 				<td id="marketStudent2" class="reportRowSection">{{totalLaptopMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalLaptopMap.kentL1Staff}}</td>
 				<td class="reportRowSection">{{totalLaptopMap.kentL5Staff}}</td>
-				<td class="reportRowSection">{{totalLaptopMap.total}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.totalByStaff}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Apple iMac</td>
+				<td class="">Apple iMac</td>
 				<td id="marketStudent3" class="reportRowSection">{{totalMacMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalMacMap.kentL1Staff}}</td>
 				<td class="reportRowSection">{{totalMacMap.kentL5Staff}}</td>
-				<td class="reportRowSection">{{totalMacMap.total}}</td>
+				<td class="reportRowSection">{{totalMacMap.totalByStaff}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Tablet</td>
+				<td class="">Tablet</td>
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Total</td>
+				<td class="">Total</td>
 				<td class="reportRowSection">{{totalComputerMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL1Staff}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL5Staff}}</td>
@@ -116,48 +149,48 @@
 		<br/>
 		<table style="border: none solid grey">
 			<tr>
-				<th rowspan="2" class="reportRowH1">Computers (Students)</th>
+				<th rowspan="2" class="">Computers (Students)</th>
 				<th class="reportRowSection">Market</th>
 				<th class="reportRowSection">Kent Lv1</th>
 				<th class="reportRowSection">Kent Lv5</th>
 				<th></th>
 			</tr>
 			<tr>
-				<td class="reportRowSection">T0316</td>
-				<td class="reportRowSection">T0316</td>
-				<td class="reportRowSection">T0316</td>
-				<td class="reportRowSection">Total</td>
+				<th class="reportRowSection">T0316</th>
+				<th class="reportRowSection">T0316</th>
+				<th class="reportRowSection">T0316</th>
+				<th class="reportRowSection">Total</th>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Desktop</td>
+				<td class="">Desktop</td>
 				<td id="marketStudent1" class="reportRowSection">{{totalDesktopMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalDesktopMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalDesktopMap.kentL5Student}}</td>
-				<td class="reportRowSection">{{totalDesktopMap.total}}</td>
+				<td class="reportRowSection">{{totalDesktopMap.totalByStudent}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Laptop</td>
+				<td class="">Laptop</td>
 				<td id="marketStudent2" class="reportRowSection">{{totalLaptopMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalLaptopMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalLaptopMap.kentL5Student}}</td>
-				<td class="reportRowSection">{{totalLaptopMap.total}}</td>
+				<td class="reportRowSection">{{totalLaptopMap.totalByStudent}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Apple iMac</td>
+				<td class="">Apple iMac</td>
 				<td id="marketStudent3" class="reportRowSection">{{totalMacMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalMacMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalMacMap.kentL5Student}}</td>
-				<td class="reportRowSection">{{totalMacMap.total}}</td>
+				<td class="reportRowSection">{{totalMacMap.totalByStudent}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Tablet</td>
+				<td class="">Tablet</td>
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Total</td>
+				<td class="">Total</td>
 				<td class="reportRowSection">{{totalComputerMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL1Student}}</td>
 				<td class="reportRowSection">{{totalComputerMap.kentL5Student}}</td>
@@ -167,23 +200,23 @@
 		<br/>
 		<table style="border: none solid grey">
 			<tr>
-				<th rowspan="2" class="reportRowH1">Classroom, Library & Student Lounge</th>
-				<th colspan="2" class="reportRowH2">Market</th>
-				<th colspan="2" class="reportRowH2">Kent Lv1</th>
-				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+				<th rowspan="2" class="">Classroom, Library & Student Lounge</th>
+				<th colspan="2" class="reportRowSection">Market</th>
+				<th colspan="2" class="reportRowSection">Kent Lv1</th>
+				<th colspan="2" class="reportRowSection">Kent Lv5</th>
 				<th></th>
 			</tr>
 			<tr>
-				<td class="reportRowSection">Lecture/Staff</td>
-				<td class="reportRowSection">Student</td>
-				<td class="reportRowSection">Lecture/Staff</td>
-				<td class="reportRowSection">Student</td>
-				<td class="reportRowSection">Lecture/Staff</td>
-				<td class="reportRowSection">Student</td>
-				<td class="reportRowSection">Total</td>
+				<th class="reportRowSection">Lecture/Staff</th>
+				<th class="reportRowSection">Student</th>
+				<th class="reportRowSection">Lecture/Staff</th>
+				<th class="reportRowSection">Student</th>
+				<th class="reportRowSection">Lecture/Staff</th>
+				<th class="reportRowSection">Student</th>
+				<th class="reportRowSection">Total</th>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Tv</td>
+				<td class="">Tv</td>
 				<td class="reportRowSection">{{totalTvMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalTvMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalTvMap.kentL1Staff}}</td>
@@ -193,7 +226,7 @@
 				<td class="reportRowSection">{{totalTvMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Bar Code Reader</td>
+				<td class="">Bar Code Reader</td>
 				<td class="reportRowSection">{{totalBarcodeMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalBarcodeMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalBarcodeMap.kentL1Staff}}</td>
@@ -203,7 +236,7 @@
 				<td class="reportRowSection">{{totalBarcodeMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Data Projector</td>
+				<td class="">Data Projector</td>
 				<td class="reportRowSection">{{totalProjectorMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalProjectorMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalProjectorMap.kentL1Staff}}</td>
@@ -213,7 +246,7 @@
 				<td class="reportRowSection">{{totalProjectorMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Microwave</td>
+				<td class="">Microwave</td>
 				<td class="reportRowSection">{{totalMicrowaveMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalMicrowaveMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalMicrowaveMap.kentL1Staff}}</td>
@@ -226,23 +259,23 @@
 		<br/>
 		<table style="border: none solid grey">
 			<tr>
-				<th rowspan="2" class="reportRowH1">Office</th>
-				<th colspan="2" class="reportRowH2">Market</th>
-				<th colspan="2" class="reportRowH2">Kent Lv1</th>
-				<th colspan="2" class="reportRowH2">Kent Lv5</th>
+				<th rowspan="2" class="">Office</th>
+				<th colspan="2" class="reportRowSection">Market</th>
+				<th colspan="2" class="reportRowSection">Kent Lv1</th>
+				<th colspan="2" class="reportRowSection">Kent Lv5</th>
 				<th></th>
 			</tr>
 			<tr>
-				<td class="reportRowSection">Lecture/Staff</td>
-				<td class="reportRowSection">Student</td>
-				<td class="reportRowSection">Lecture/Staff</td>
-				<td class="reportRowSection">Student</td>
-				<td class="reportRowSection">Lecture/Staff</td>
-				<td class="reportRowSection">Student</td>
-				<td class="reportRowSection">Total</td>
+				<th class="reportRowSection">Lecture/Staff</th>
+				<th class="reportRowSection">Student</th>
+				<th class="reportRowSection">Lecture/Staff</th>
+				<th class="reportRowSection">Student</th>
+				<th class="reportRowSection">Lecture/Staff</th>
+				<th class="reportRowSection">Student</th>
+				<th class="reportRowSection">Total</th>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Telephone</td>
+				<td class="">Telephone</td>
 				<td class="reportRowSection">{{totalTelephoneMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalTelephoneMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalTelephoneMap.kentL1Staff}}</td>
@@ -252,7 +285,7 @@
 				<td class="reportRowSection">{{totalTelephoneMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Printer</td>
+				<td class="">Printer</td>
 				<td class="reportRowSection">{{totalPrinterMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalPrinterMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalPrinterMap.kentL1Staff}}</td>
@@ -262,7 +295,7 @@
 				<td class="reportRowSection">{{totalPrinterMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Shreder</td>
+				<td class="">Shreder</td>
 				<td class="reportRowSection">{{totalShrederMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalShrederMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalShrederMap.kentL1Staff}}</td>
@@ -272,7 +305,7 @@
 				<td class="reportRowSection">{{totalShrederMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Laminator</td>
+				<td class="">Laminator</td>
 				<td class="reportRowSection">{{totalLaminatorMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalLaminatorMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalLaminatorMap.kentL1Staff}}</td>
@@ -282,7 +315,7 @@
 				<td class="reportRowSection">{{totalLaminatorMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">Fax</td>
+				<td class="">Fax</td>
 				<td class="reportRowSection">{{totalFaxMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalFaxMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalFaxMap.kentL1Staff}}</td>
@@ -292,7 +325,7 @@
 				<td class="reportRowSection">{{totalFaxMap.total}}</td>
 			</tr>
 			<tr>
-				<td class="reportRowH1">EFTPOS Machine</td>
+				<td class="">EFTPOS Machine</td>
 				<td class="reportRowSection">{{totalEFTPOSMap.marketStaff}}</td>
 				<td class="reportRowSection">{{totalEFTPOSMap.marketStudent}}</td>
 				<td class="reportRowSection">{{totalEFTPOSMap.kentL1Staff}}</td>
@@ -301,8 +334,8 @@
 				<td class="reportRowSection">{{totalEFTPOSMap.kentL5Student}}</td>
 				<td class="reportRowSection">{{totalEFTPOSMap.total}}</td>
 			</tr>
-						<tr>
-				<td class="reportRowH1">DSLR Camera</td>
+			<tr>
+				<td class="">DSLR Camera</td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
 				<td class="reportRowSection"></td>
@@ -319,6 +352,8 @@ var app = angular.module("myComputerList", []);
 app.controller("myCtrl", function($scope) {
 	$scope.desktops = ${desktops};
 	$scope.today = new Date().toDateString();
+	$scope.enrolledStudent = 1703;
+	$scope.totalStudentComSummary = ${totalStudentComSummary};
 	
 	$scope.totalDesktopMap = ${totalDesktopMap};
 	$scope.totalEtcMap = ${totalEtcMap};
@@ -375,7 +410,9 @@ function lastEdit() {
 	var x = document.lastModified;
 	document.getElementById("updateDate").innerHTML = x;
 }
-
+$(document).ready(function() {
+	console.log("Hi");
+});
 </script>
 </body>
 </html>

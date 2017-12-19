@@ -7,6 +7,7 @@ import com.dongyeop.okcomputer.dto.KoiMaterial;
 
 public interface MaterialReport {
 	HashMap<String, Integer> generateStandardReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao);
+	HashMap<String, Integer> generateStandardReportMapByType(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao, String type);
 	HashMap<String, Integer> generateSnapshotReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao);
 	HashMap<String, Integer> selectTotalDesktopReport();
 	HashMap<String, Integer> selectTotalLatptopReport();
@@ -24,6 +25,7 @@ public interface MaterialReport {
 	int selectComputerTotalMarketStudent();
 	int selectComputerTotalKentL1Student();
 	int selectComputerTotalKentL5Student();
+	HashMap<String, Integer> calcurateAllStudentCompuersSummary(); 
 	boolean makeBackupJsonFile();
 	HashMap<String, Integer> generateComputerTotalMap();
 }

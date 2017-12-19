@@ -29,9 +29,12 @@ public class MaterialReportImple implements MaterialReport {
 		map.put("kentL5Staff",  dao.selectTotalKentL5Staff());
 		map.put("kentL5Student", dao.selectTotalKentL5Student());
 		map.put("total", dao.getListTotal());
+		map.put("totalByStudent", dao.getListTotalByStudent());
+		map.put("totalByStaff", dao.getListTotalByStaff());
 		return map;
 	}
-	
+
+	@Override
 	public HashMap<String, Integer> generateStandardReportMapByType(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao, String type) {
 		map.put("marketStaff", daoMaterialEtc.selectTotalMarketStaffByType(type));
 		map.put("marketStudent", daoMaterialEtc.selectTotalMarketStudentByType(type));
@@ -168,6 +171,26 @@ public class MaterialReportImple implements MaterialReport {
 		total += daoMaterialMac.selectTotalKentL5Student();
 		return total;
 	}
+	
+	
+	@Override
+	public HashMap<String, Integer> calcurateAllStudentCompuersSummary() {
+		HashMap<String, Integer> studentSummaryMap = new HashMap<String, Integer>();
+		int total = 0;
+		int ratio = 0;
+		int noOfStd = 1703;
+		
+		total += daoMaterialDesktop.getListTotalByStudent();
+		total += daoMaterialLaptop.getListTotalByStudent();
+		total += daoMaterialMac.getListTotalByStudent();
+		
+		ratio = noOfStd / total;
+		studentSummaryMap.put("total", total);
+		studentSummaryMap.put("ratio", ratio);
+		studentSummaryMap.put("noOfStd", noOfStd);
+		return studentSummaryMap;
+	}
+	
 	
 	@Override
 	public HashMap<String, Integer> generateComputerTotalMap() {
