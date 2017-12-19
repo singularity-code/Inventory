@@ -16,6 +16,7 @@ public class MaterialReportImple implements MaterialReport {
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialEtcIt;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialPrinter;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialTelephone;
+	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialTv;
 	
 	HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 
@@ -29,6 +30,17 @@ public class MaterialReportImple implements MaterialReport {
 		map.put("kentL5Student", dao.selectTotalKentL5Student());
 		map.put("total", dao.getListTotal());
 		return map;
+	}
+	
+	public HashMap<String, Integer> generateStandardReportMapByType(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao, String type) {
+		map.put("marketStaff", daoMaterialEtc.selectTotalMarketStaffByType(type));
+		map.put("marketStudent", daoMaterialEtc.selectTotalMarketStudentByType(type));
+		map.put("kentL1Staff", daoMaterialEtc.selectTotalKentL1StaffByType(type));
+		map.put("kentL1Student", daoMaterialEtc.selectTotalKentL1StudentByType(type));
+		map.put("kentL5Staff",  daoMaterialEtc.selectTotalKentL5StaffByType(type));
+		map.put("kentL5Student", daoMaterialEtc.selectTotalKentL5StudentByType(type));
+		map.put("total", daoMaterialEtc.getListTotalByType(type));
+		return resultMap;
 	}
 	
 	@Override
@@ -78,7 +90,13 @@ public class MaterialReportImple implements MaterialReport {
 		generateStandardReportMap(resultMap, daoMaterialPrinter);
 		return resultMap;
 	}
-
+	
+	@Override
+	public HashMap<String, Integer> selectTotalTvReport() {
+		generateStandardReportMap(resultMap, daoMaterialTv);
+		return resultMap;
+	}
+	
 	@Override
 	public boolean makeBackupJsonFile() {
 		daoMaterialDesktop.makeBackupJsonFile();
@@ -98,5 +116,74 @@ public class MaterialReportImple implements MaterialReport {
 		return map;
 	}
 
+	@Override
+	public int selectComputerTotalMarketStaff() {
+		int total = 0;
+		total += daoMaterialDesktop.selectTotalMarketStaff();
+		total += daoMaterialLaptop.selectTotalMarketStaff();
+		total += daoMaterialMac.selectTotalMarketStaff();
+		return total;
+	}
 
+	@Override
+	public int selectComputerTotalKentL1Staff() {
+		int total = 0;
+		total += daoMaterialDesktop.selectTotalKentL1Staff();
+		total += daoMaterialLaptop.selectTotalKentL1Staff();
+		total += daoMaterialMac.selectTotalKentL1Staff();
+		return total;
+	}
+
+	@Override
+	public int selectComputerTotalKentL5Staff() {
+		int total = 0;
+		total += daoMaterialDesktop.selectTotalKentL5Staff();
+		total += daoMaterialLaptop.selectTotalKentL5Staff();
+		total += daoMaterialMac.selectTotalKentL5Staff();
+		return total;
+	}
+	@Override
+	public int selectComputerTotalMarketStudent() {
+		int total = 0;
+		total += daoMaterialDesktop.selectTotalMarketStudent();
+		total += daoMaterialLaptop.selectTotalMarketStudent();
+		total += daoMaterialMac.selectTotalMarketStudent();
+		return total;
+	}
+
+	@Override
+	public int selectComputerTotalKentL1Student() {
+		int total = 0;
+		total += daoMaterialDesktop.selectTotalKentL1Student();
+		total += daoMaterialLaptop.selectTotalKentL1Student();
+		total += daoMaterialMac.selectTotalKentL1Student();
+		return total;
+	}
+
+	@Override
+	public int selectComputerTotalKentL5Student() {
+		int total = 0;
+		total += daoMaterialDesktop.selectTotalKentL5Student();
+		total += daoMaterialLaptop.selectTotalKentL5Student();
+		total += daoMaterialMac.selectTotalKentL5Student();
+		return total;
+	}
+	
+	@Override
+	public HashMap<String, Integer> generateComputerTotalMap() {
+		HashMap<String, Integer> computerTotalMap = new HashMap<String, Integer>();
+		computerTotalMap.put("marketStaff", selectComputerTotalMarketStaff());
+		computerTotalMap.put("kentL1Staff", selectComputerTotalKentL1Staff());
+		computerTotalMap.put("kentL5Staff", selectComputerTotalKentL5Staff());
+		computerTotalMap.put("marketStudent", selectComputerTotalMarketStudent());
+		computerTotalMap.put("kentL1Student", selectComputerTotalKentL1Student());
+		computerTotalMap.put("kentL5Student", selectComputerTotalKentL5Student());
+		return computerTotalMap;
+	}
+
+	@Override
+	public HashMap<String, Integer> selectEtcReportByType(String type) {
+		generateStandardReportMapByType(resultMap, daoMaterialDesktop, type);
+		return resultMap;
+	}
 }

@@ -57,6 +57,15 @@ public class StockManagementController {
 		model.addAttribute("totalMonitorMap", toJson(reportService.selectTotalMonitorReport()));
 		model.addAttribute("totalPrinterMap", toJson(reportService.selectTotalPrinterReport()));
 		model.addAttribute("totalTelephoneMap", toJson(reportService.selectTotalTelephoneReport()));
+		model.addAttribute("totalTvMap", toJson(reportService.selectTotalTvReport()));
+		model.addAttribute("totalComputerMap", toJson(reportService.generateComputerTotalMap()));
+		model.addAttribute("totalBarcodeMap", toJson(reportService.selectEtcReportByType("Bar Code Reader")));
+		model.addAttribute("totalProjectorMap", toJson(reportService.selectEtcReportByType("Projector")));
+		model.addAttribute("totalMicrowaveMap", toJson(reportService.selectEtcReportByType("Microwave")));
+		model.addAttribute("totalShrederMap", toJson(reportService.selectEtcReportByType("Shreder")));
+		model.addAttribute("totalLaminatorMap", toJson(reportService.selectEtcReportByType("Laminator")));
+		model.addAttribute("totalFaxMap", toJson(reportService.selectEtcReportByType("Fax")));
+		model.addAttribute("totalEFTPOSMap", toJson(reportService.selectEtcReportByType("EFTPOS Machine")));
 		System.out.println("JSON Loading Complete");
 		return "index";
 	}

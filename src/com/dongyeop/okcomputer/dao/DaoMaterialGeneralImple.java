@@ -241,7 +241,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalMarketStudent() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
+			if(obj.getCampus().equalsIgnoreCase("market") && !obj.isStaffUser()) {
 				total += 1;
 			}
 		}
@@ -261,7 +261,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalKentL1Student() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStaffUser())  {
+			if(obj.getCampus().equalsIgnoreCase("kent l1") && !obj.isStaffUser())  {
 				total += 1;
 			}
 		}
@@ -281,7 +281,89 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	public int selectTotalKentL5Student() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStaffUser())  {
+			if(obj.getCampus().equalsIgnoreCase("kent l5") && !obj.isStaffUser())  {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int  selectTotalMarketStaffByType(String type) {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.getType().equals(type)) {
+				if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
+					total += 1;
+				}
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalMarketStudentByType(String type) {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.getType().equals(type)) {
+				if(obj.getCampus().equalsIgnoreCase("market") && !obj.isStaffUser()) {
+					total += 1;
+				}
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL1StaffByType(String type) {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.getType().equals(type)) {
+				if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStaffUser()) {
+					total += 1;
+				}
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL1StudentByType(String type) {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.getType().equals(type)) {
+				if(obj.getCampus().equalsIgnoreCase("kent l1") && !obj.isStaffUser())  {
+					total += 1;
+				}
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL5StaffByType(String type) {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.getType().equals(type)) {
+				if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStaffUser())  {
+					total += 1;
+				}
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL5StudentByType(String type) {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.getType().equals(type)) {
+				if(obj.getCampus().equalsIgnoreCase("kent l5") && !obj.isStaffUser())  {
+					total += 1;
+				}
+			}
+		}
+		return total;
+	}
+	@Override
+	public int getListTotalByType(String type) {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(obj.getType().equals(type)) {
 				total += 1;
 			}
 		}
@@ -309,4 +391,5 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		}
 		return total;
 	}
+
 }

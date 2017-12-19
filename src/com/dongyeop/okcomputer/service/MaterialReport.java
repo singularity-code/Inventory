@@ -16,5 +16,14 @@ public interface MaterialReport {
 	HashMap<String, Integer> selectTotalTelephoneReport();
 	HashMap<String, Integer> selectTotalItEtcReport();
 	HashMap<String, Integer> selectTotalEtcReport();
+	HashMap<String, Integer> selectTotalTvReport();
+	HashMap<String, Integer> selectEtcReportByType(String type);
+	int selectComputerTotalMarketStaff();
+	int selectComputerTotalKentL1Staff();
+	int selectComputerTotalKentL5Staff();
+	int selectComputerTotalMarketStudent();
+	int selectComputerTotalKentL1Student();
+	int selectComputerTotalKentL5Student();
 	boolean makeBackupJsonFile();
+	HashMap<String, Integer> generateComputerTotalMap();
 }
