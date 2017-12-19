@@ -33,8 +33,8 @@
 	}
 	
 	th {
-		text-align: left;
-		background-color: #20B2AA;
+		text-align: center;
+		background-color: #555;
  		color: white;
 	}
 	.reportRowSection {
