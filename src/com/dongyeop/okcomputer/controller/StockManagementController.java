@@ -410,9 +410,10 @@ public class StockManagementController {
 		return "list_etc";
 	}
 	@RequestMapping("/makeBackupJsonFile")
-	public String makeBackupJsonFile(Model model) throws ParseException {
+	public String makeBackupJsonFile(Model model) throws ParseException, IOException {
 		reportService.makeBackupJsonFile();
-		return "index";
+		model.addAttribute("desktopSnap", toJson(reportService.selectTotalDesktopReportSnap("19122017")));
+		return "report_snapshots";
 	}
 
 	/**

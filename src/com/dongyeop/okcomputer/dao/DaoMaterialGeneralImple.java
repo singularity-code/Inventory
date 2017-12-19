@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1, T2>{
+	String className = this.getClass().getSimpleName();
+	String filename = className.substring(11);
 	protected String DAO_OBJECT_JSONFILE_PATH = null;
 	protected String DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = null;
 	protected JSONParser parser = new JSONParser();
@@ -34,7 +36,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 			objectList = (new Gson()).fromJson(arrStd, new TypeToken<List<KoiMaterial>>() {
 			}.getType());
 
-			System.out.println("Computer List :" + objectList.size());
+			System.out.println("List :" + objectList.size());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -97,6 +99,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	}
 	protected List<KoiMaterial> readSnapshot(String path) throws ParseException {
 		try {
+			System.out.println("Path: " + path);
 			Object obj = parser.parse(new FileReader(path));
 			String arrStd = obj.toString();
 
@@ -403,7 +406,6 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		try {
 			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		for(KoiMaterial obj : snapshotList) {
@@ -414,5 +416,130 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		}
 		return total;
 	}
+	@Override
+	public int selectTotalMarketStaffSnap(String date) {
+		int total = 0;
+		String className = this.getClass().getSimpleName();
+		String filename = className.substring(11);
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonBackupPathWithoutDate() + date + "\\" + filename + ".json";
+		try {
+			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		for(KoiMaterial obj : snapshotList) {
+			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalMarketStudentSnap(String date) {
+		int total = 0;
+		String className = this.getClass().getSimpleName();
+		String filename = className.substring(11);
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonBackupPathWithoutDate() + date + "\\" + filename + ".json";
+		try {
+			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		for(KoiMaterial obj : snapshotList) {
+			if(obj.getCampus().equalsIgnoreCase("market") && !obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL1StaffSnap(String date) {
+		int total = 0;
+		String className = this.getClass().getSimpleName();
+		String filename = className.substring(11);
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonBackupPathWithoutDate() + date + "\\" + filename + ".json";
+		try {
+			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		for(KoiMaterial obj : snapshotList) {
+			if(obj.getCampus().equalsIgnoreCase("ken l1") && obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL1StudentSnap(String date) {
+		int total = 0;
+		String className = this.getClass().getSimpleName();
+		String filename = className.substring(11);
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonBackupPathWithoutDate() + date + "\\" + filename + ".json";
+		try {
+			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		for(KoiMaterial obj : snapshotList) {
+			if(obj.getCampus().equalsIgnoreCase("ken l1") && !obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int selectTotalKentL5StaffSnap(String date) {
+		int total = 0;
+		String className = this.getClass().getSimpleName();
+		String filename = className.substring(11);
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonBackupPathWithoutDate() + date + "\\" + filename + ".json";
+		try {
+			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		for(KoiMaterial obj : snapshotList) {
+			if(obj.getCampus().equalsIgnoreCase("ken l5") && obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+
+	@Override
+	public int selectTotalKentL5StudentSnap(String date) {
+		int total = 0;
+		String className = this.getClass().getSimpleName();
+		String filename = className.substring(11);
+		DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = ApplicationType.getJsonBackupPathWithoutDate() + date + "\\" + filename + ".json";
+		try {
+			snapshotList = readSnapshot(DAO_OBJECT_JSONFILE_SNAPSHOT_PATH);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		for(KoiMaterial obj : snapshotList) {
+			if(obj.getCampus().equalsIgnoreCase("ken l5") && !obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	@Override
+	public int getListTotalSnap(String date) {
+		return 0;
+	}
+	
+	@Override
+	public int getListTotalByStudentSnap(String date) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getListTotalByStaffSnap(String date) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

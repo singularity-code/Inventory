@@ -67,16 +67,17 @@
 	</div>
 </div>
 <div style="width: 85%;" class="center" >
-	<div style="float: left; margin: auto; width:40%">
+	<div style="float: left; margin: auto; width:32%">
 		<div style="text-align: left;">
 			<h3>Computer Usage Ratio</h3>
+			* This is not included Tablet PC
 		</div>
 		<table>
 			<tr>
 				<th>Trimester</th>
-				<td>Enrolled Students</td>
-				<td>Students Computers</td>
-				<td>Ratio</td>
+				<th>Enrolled Students</th>
+				<th>Students Computers</th>
+				<th>Ratio</th>
 			</tr>
 			<tr>
 				<td>0217</td>
@@ -88,7 +89,7 @@
 				<td>0317</td>
 				<td>{{totalStudentComSummary.noOfStd}}</td>
 				<td>{{totalStudentComSummary.total}}</td>
-				<td style="width: 80px;">{{totalStudentComSummary.ratio}} %</td>
+				<td style="width: 100px;">{{totalStudentComSummary.ratio}}</td>
 			</tr>
 		</table>
 	</div>

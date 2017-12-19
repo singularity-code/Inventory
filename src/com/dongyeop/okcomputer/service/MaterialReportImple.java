@@ -1,13 +1,18 @@
 package com.dongyeop.okcomputer.service;
 
+import java.io.IOException;
 import java.util.HashMap;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dongyeop.okcomputer.dao.DaoMaterialInterface;
 import com.dongyeop.okcomputer.dto.KoiMaterial;
+import com.dongyeop.okcomputer.engine.WrightEngine;
 
 public class MaterialReportImple implements MaterialReport {
+	private WrightEngine writeEngine = new WrightEngine();
+	
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialDesktop;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialLaptop;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialMac;
@@ -19,6 +24,7 @@ public class MaterialReportImple implements MaterialReport {
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialTv;
 	
 	HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
+	HashMap<String, Integer> snapshotMap = new HashMap<String, Integer>();
 
 	@Override
 	public HashMap<String, Integer> generateStandardReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao) {
@@ -31,6 +37,18 @@ public class MaterialReportImple implements MaterialReport {
 		map.put("total", dao.getListTotal());
 		map.put("totalByStudent", dao.getListTotalByStudent());
 		map.put("totalByStaff", dao.getListTotalByStaff());
+		return map;
+	}
+	
+	public HashMap<String, Integer> generateSnapshotReportMap(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao, String date) {
+		map.put("marketStaff", dao.selectTotalMarketStaffSnap(date));
+		map.put("marketStudent", dao.selectTotalMarketStudentSnap(date));
+		map.put("kentL1Staff", dao.selectTotalKentL1StaffSnap(date));
+		map.put("kentL1Student", dao.selectTotalKentL1StudentSnap(date));
+		map.put("kentL5Staff",  dao.selectTotalKentL5StaffSnap(date));
+		map.put("kentL5Student", dao.selectTotalKentL5StudentSnap(date));
+		map.put("totalByStudent", dao.getListTotalByStudentSnap(date));
+		map.put("totalByStaff", dao.getListTotalByStaffSnap(date));
 		return map;
 	}
 
@@ -50,6 +68,12 @@ public class MaterialReportImple implements MaterialReport {
 	public HashMap<String, Integer> selectTotalDesktopReport() {
 		generateStandardReportMap(resultMap, daoMaterialDesktop);
 		return resultMap;
+	}
+	
+	@Override
+	public HashMap<String, Integer> selectTotalDesktopReportSnap(String date) {
+		generateSnapshotReportMap(snapshotMap, daoMaterialDesktop, date);
+		return snapshotMap;
 	}
 
 	@Override
@@ -209,4 +233,10 @@ public class MaterialReportImple implements MaterialReport {
 		generateStandardReportMapByType(resultMap, daoMaterialDesktop, type);
 		return resultMap;
 	}
+	
+	@Override
+	public HashMap<String, Object> getAllsnapshots() throws ParseException, IOException {
+		return writeEngine.readSnapshots();
+	}
+
 }

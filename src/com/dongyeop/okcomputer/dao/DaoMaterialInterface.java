@@ -22,6 +22,7 @@ public interface DaoMaterialInterface<T1, T2> {
 	 int getListTotalByStaff();
 	boolean makeBackupJsonFile();
 	int selectTotalMarketStaffByDate(String date);
+	
 	int selectTotalMarketStaffByType(String type);
 	int selectTotalMarketStudentByType(String type);
 	int selectTotalKentL1StaffByType(String type);
@@ -29,4 +30,14 @@ public interface DaoMaterialInterface<T1, T2> {
 	int selectTotalKentL5StaffByType(String type);
 	int selectTotalKentL5StudentByType(String type);
 	int getListTotalByType(String type);
+	
+	int selectTotalMarketStaffSnap(String date);
+	int selectTotalMarketStudentSnap(String date);
+	int selectTotalKentL1StaffSnap(String date);
+	int selectTotalKentL1StudentSnap(String date);
+	int selectTotalKentL5StaffSnap(String date);
+	int getListTotalSnap(String date);
+	int selectTotalKentL5StudentSnap(String date);
+	int getListTotalByStudentSnap(String date);
+	int getListTotalByStaffSnap(String date);
 }
