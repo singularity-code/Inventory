@@ -6,13 +6,12 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<%--<script src="https://www.w3schools.com/lib/w3.js"></script>--%>
 <%--<link href="<c:url value='/resources/css/basic.css?v=3'/>" rel="stylesheet">--%>
-<%--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--%>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KOI Inventory v0.3</title>
 <style>
 	body {
@@ -52,22 +51,24 @@
 <body  ng-app="myComputerList" ng-controller="myCtrl">
 <!-- Tab Menu -->
 <!-- Navbar (sit on top) -->
-<div class="center">
-	<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
-	<h3 style="text-align: center">INVENTORY</h3>
-	<div class="" style="text-align: center">
-		<a href="./list_desktop">Desktop</a>
-		<a href="./list_laptop">Laptop</a>
-		<a href="./list_monitor">Monitor</a>
-		<a href="./list_mac">Mac</a>
-		<a href="./list_telephone">Telephone</a>
-		<a href="./list_printer">Printer</a>
-		<a href="./list_itEtc">IT ETC</a>
-		<a href="./list_etc">ETC</a>
+<div class=""w3-container">
+	<div class="center">
+		<img class="" src='resources/img/koi_logo.png' style="width:100px;height:80px;" align="middle">
+		<h3 style="text-align: center">INVENTORY</h3>
+		<div class="" style="text-align: center">
+			<a href="./list_desktop">Desktop</a>
+			<a href="./list_laptop">Laptop</a>
+			<a href="./list_monitor">Monitor</a>
+			<a href="./list_mac">Mac</a>
+			<a href="./list_telephone">Telephone</a>
+			<a href="./list_printer">Printer</a>
+			<a href="./list_itEtc">IT ETC</a>
+			<a href="./list_etc">ETC</a>
+		</div>
 	</div>
 </div>
-<div style="width: 85%;" class="center" >
-	<div style="float: left; margin: auto; width:32%">
+<div style="width: 85%;" class="w3-row-padding center" >
+	<div class="w3-third" style="float: left; margin: auto; width:32%" >
 		<div style="text-align: left;">
 			<h3>Computer Usage Ratio</h3>
 			* This is not included Tablet PC
@@ -93,7 +94,7 @@
 			</tr>
 		</table>
 	</div>
-	<div style="float: right; margin: auto; width:60%">
+	<div class="w3-third" tyle="float: right; margin: auto; width:60%">
 		<div style="text-align: right;">
 			<h3>{{today}}</h3><a href="./makeBackupJsonFile">Backup</a>
 		</div>
