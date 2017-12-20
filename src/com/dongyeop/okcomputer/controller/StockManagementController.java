@@ -67,7 +67,7 @@ public class StockManagementController {
 		model.addAttribute("totalEFTPOSMap", toJson(reportService.selectEtcReportByType("EFTPOS Machine")));
 		model.addAttribute("totalStudentComSummary", toJson(reportService.calcurateAllStudentCompuersSummary()));
 		System.out.println("JSON Loading Complete");
-		return "index";
+		return "index_rwd";
 	}
 
 	@RequestMapping("/create_view")
