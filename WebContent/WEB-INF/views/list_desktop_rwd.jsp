@@ -106,18 +106,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<h5>DESKTOP</h5>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
-				<td><b>Barcode</b></td>
-				<td><b>Idx</b></td>
-				<td><b>S/N</b></td>
-				<td><b>ID</b></td>
-				<td><b>Type</b></td>
-				<td><b>Brand</b></td>
-				<td><b>Previous</b></td>
-				<td><b>Location</b></td>
-				<td><b>Campus</b></td>
-				<td><b>User</b></td>
-				<td><b>Comment</b></td>
-				<td><b>Last Update</b></td>
+				<td style="width: 170px;"><b>Barcode</b></td>
+				<td style="width: 50px;"><b>Idx</b></td>
+				<td style="width: 100px;"><b>S/N</b></td>
+				<td style="width: 100px;"><b>ID</b></td>
+				<td style="width: 100px;"><b>Type</b></td>
+				<td style="width: 100px;"><b>Brand</b></td>
+				<td style="width: 150px;"><b>Previous</b></td>
+				<td style="width: 150px;"><b>Location</b></td>
+				<td style="width: 150px;"><b>Campus</b></td>
+				<td style="width: 150px;"><b>User</b></td>
+				<td></td>
 				<td></td>
 			</tr>
 		</table>
@@ -133,12 +132,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<td style="width: 150px;">{{obj.location}}</td>
 				<td style="width: 150px;">{{obj.campus}}</td>
 				<td style="width: 150px;">{{obj.user}}</td>
-				<td style="width: 150px;">{{obj.comment}}</td>
-				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
 				<td style="width: 150px;">
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
 					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a>
 				</td>
+			</tr>
+			<tr>
+				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
+				<td style="width: 300px;">{{obj.comment}}</td>
 			</tr>
 		</table>
 	  </div>

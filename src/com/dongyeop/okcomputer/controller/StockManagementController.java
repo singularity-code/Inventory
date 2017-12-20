@@ -139,32 +139,32 @@ public class StockManagementController {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createDesktop(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getDesktopList()));
-			return new ModelAndView("list_desktop");
+			return new ModelAndView("list_desktop_rwd");
 		} else if (type.equals("Laptop")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createLaptop(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getLaptopList()));
-			return new ModelAndView("list_laptop");
+			return new ModelAndView("list_laptop_rwd");
 		} else if (type.equals("Monitor")) {
 			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createMonitor(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getMonitorList()));
-			return new ModelAndView("list_monitor");
+			return new ModelAndView("list_monitor_rwd");
 		} else if (type.equals("iMac")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createMac("list_mac");
 			model.addAttribute("objects", toJson(materialService.getMacList()));
-			return new ModelAndView(redirectUrl);
+			return new ModelAndView("list_mac_rwd");
 		} else if (type.equals("Telephone")) {
 			koiMaterial = new Telephone(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createTelephone(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
-			return new ModelAndView("list_telephone");
+			return new ModelAndView("list_telephone_rwd");
 		} else if (type.equals("Printer")) {
 			koiMaterial = new Printer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createPrinter(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getPrinterList()));
-			return new ModelAndView("list_printer");
+			return new ModelAndView("list_printer_rwd");
 		} 
 		return new ModelAndView(redirectUrl);
 	}
@@ -274,32 +274,32 @@ public class StockManagementController {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateDesktop(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getDesktopList()));
-			return new ModelAndView("list_desktop");
+			return new ModelAndView("list_desktop_rwd");
 		} else if (type.equals("Laptop")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateLaptop(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getLaptopList()));
-			return new ModelAndView("list_laptop");
+			return new ModelAndView("list_laptop_rwd");
 		} else if (type.equals("Monitor")) {
 			koiMaterial = new Monitor(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateMonitor(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getMonitorList()));
-			return new ModelAndView("list_monitor");
+			return new ModelAndView("list_monitor_rwd");
 		} else if (type.equals("iMac")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateMac(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getMacList()));
-			return new ModelAndView(redirectUrl);
+			return new ModelAndView("list_mac_rwd");
 		} else if (type.equals("Telephone")) {
 			koiMaterial = new Telephone(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateTelephone(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
-			return new ModelAndView("list_telephone");
+			return new ModelAndView("list_telephone_rwd");
 		} else if (type.equals("Printer")) {
 			koiMaterial = new Printer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updatePrinter(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getPrinterList()));
-			return new ModelAndView("list_printer");
+			return new ModelAndView("list_printer_rwd");
 		} 
 		return new ModelAndView(redirectUrl);
 	}
@@ -313,27 +313,27 @@ public class StockManagementController {
 		if (type.equals("Desktop")) {
 			materialService.deleteDesktop(id);
 			model.addAttribute("objects", toJson(materialService.getDesktopList()));
-			return new ModelAndView("list_desktop");
+			return new ModelAndView("list_desktop_rwd");
 		} else if (type.equals("Laptop")) {
 			materialService.deleteLaptop(id);
 			model.addAttribute("objects", toJson(materialService.getLaptopList()));
-			return new ModelAndView("list_laptop");
+			return new ModelAndView("list_laptop_rwd");
 		} else if (type.equals("Monitor")) {
 			materialService.deleteMonitor(id);
 			model.addAttribute("objects", toJson(materialService.getMonitorList()));
-			return new ModelAndView("list_monitor");
+			return new ModelAndView("list_monitor_rwd");
 		} else if (type.equals("iMac")) {
 			materialService.deleteMac(id);
 			model.addAttribute("objects", toJson(materialService.getMacList()));
-			return new ModelAndView("list_mac");
+			return new ModelAndView("list_mac_rwd");
 		} else if (type.equals("Telephone")) {
 			materialService.deleteTelephone(id);
 			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
-			return new ModelAndView("list_telephone");
+			return new ModelAndView("list_telephone_rwd");
 		} else if (type.equals("Printer")) {
 			materialService.deletePrinter(id);
 			model.addAttribute("objects", toJson(materialService.getPrinterList()));
-			return new ModelAndView("list_printer");
+			return new ModelAndView("list_printer_rwd");
 		}
 		return new ModelAndView(redirectUrl);
 	}
