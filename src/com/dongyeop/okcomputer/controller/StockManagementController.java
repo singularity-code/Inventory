@@ -368,45 +368,45 @@ public class StockManagementController {
 	@RequestMapping("/list_desktop")
 	public String listDesktop(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getDesktopList()));
-		return "list_desktop";
+		return "list_desktop_rwd";
 	}
 	
 	@RequestMapping("/list_laptop")
 	public String listLaptop(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getLaptopList()));
-		return "list_laptop";
+		return "list_laptop_rwd";
 	}
 	
 	@RequestMapping("/list_monitor")
 	public String listMonitor(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getMonitorList()));
-		return "list_monitor";
+		return "list_monitor_rwd";
 	}
 	
 	@RequestMapping("/list_mac")
 	public String listMac(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getMacList()));
-		return "list_mac";
+		return "list_mac_rwd";
 	}
 	@RequestMapping("/list_telephone")
 	public String listTelephone(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getTelephoneList()));
-		return "list_telephone";
+		return "list_telephone_rwd";
 	}
 	@RequestMapping("/list_printer")
 	public String listPrinter(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getPrinterList()));
-		return "list_printer";
+		return "list_printer_rwd";
 	}
 	@RequestMapping("/list_itEtc")
 	public String listItEtc(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getEtcItList()));
-		return "list_itEtc";
+		return "list_itEtc_rwd";
 	}
 	@RequestMapping("/list_etc")
 	public String listEtc(Model model) throws ParseException {
 		model.addAttribute("objects", toJson(materialService.getEtcList()));
-		return "list_etc";
+		return "list_etc_rwd";
 	}
 	@RequestMapping("/makeBackupJsonFile")
 	public String makeBackupJsonFile(Model model) throws ParseException, IOException {

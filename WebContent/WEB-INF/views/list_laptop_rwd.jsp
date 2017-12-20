@@ -26,9 +26,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</div>
 	 <div class="w3-col s8 w3-bar">
 	  <span>Hi, <strong>Michael</strong></span><br>
-<!--       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
 	</div>
   </div>
   <hr>
@@ -66,7 +63,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button>
 			<button ng-click="setTab('create-koiMaterial')" style="width: 100px; height: 40px;">Create</button>
 			<a href="./" class="button_back"><i class="fa fa-reply fa-fw"></i></a>
-			<h3>Total : {{filtered.length}} Desktop</h3>
+			<h3>Total : {{filtered.length}}</h3>
 		</div>
 	</div>
 	  <div ng-show="isSet('create-koiMaterial')">
@@ -103,7 +100,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		</div>
 	</div>
 	  <div class="w3-container">
-		<h5>DESKTOP</h5>
+		<h5>LAPTOP</h5>
 	   <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
 				<td style="width: 170px;"><b>Barcode</b></td>
