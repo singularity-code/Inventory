@@ -66,7 +66,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button>
 			<button ng-click="setTab('create-koiMaterial')" style="width: 100px; height: 40px;">Create</button>
 			<a href="./" class="button_back"><i class="fa fa-reply fa-fw"></i></a>
-			<h3>Total : {{filtered.length}} Desktop</h3>
+			<h3>Total : {{filtered.length}}</h3>
 		</div>
 	</div>
 	  <div ng-show="isSet('create-koiMaterial')">
@@ -102,22 +102,22 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<pre>koiMaterial_draft = {{koiMaterial | json}}</pre>
 		</div>
 	</div>
-	  <div class="w3-container">
+	<div class="w3-container">
 		<h5>DESKTOP</h5>
-	   <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
-				<td style="width: 170px;"><b>Barcode</b></td>
-				<td style="width: 50px;"><b>Idx</b></td>
-				<td style="width: 100px;"><b>S/N</b></td>
-				<td style="width: 100px;"><b>ID</b></td>
-				<td style="width: 100px;"><b>Type</b></td>
-				<td style="width: 100px;"><b>Brand</b></td>
-				<td style="width: 150px;"><b>Previous</b></td>
-				<td style="width: 150px;"><b>Location</b></td>
-				<td style="width: 150px;"><b>Campus</b></td>
-				<td style="width: 150px;"><b>User</b></td>
-				<td style="width: 150px;"><b>Comment</b></td>
-				<td style="width: 150px;"><b>Last Update</b></td>
+				<td><b>Barcode</b></td>
+				<td><b>Idx</b></td>
+				<td><b>S/N</b></td>
+				<td><b>ID</b></td>
+				<td><b>Type</b></td>
+				<td><b>Brand</b></td>
+				<td><b>Previous</b></td>
+				<td><b>Location</b></td>
+				<td><b>Campus</b></td>
+				<td><b>User</b></td>
+				<td><b>Comment</b></td>
+				<td><b>Last Update</b></td>
 				<td></td>
 			</tr>
 		</table>
