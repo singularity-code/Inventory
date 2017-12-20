@@ -15,20 +15,20 @@ import com.dongyeop.profile.ApplicationType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1, T2>{
+public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoMaterialInterface<T1, T2>{
 	String className = this.getClass().getSimpleName();
 	String filename = className.substring(11);
 	protected String DAO_OBJECT_JSONFILE_PATH = null;
 	protected String DAO_OBJECT_JSONFILE_SNAPSHOT_PATH = null;
 	protected JSONParser parser = new JSONParser();
-	protected List<KoiMaterial> objectList = null;
-	protected List<KoiMaterial> snapshotList = null;
-	protected List<KoiMaterial> storeRoomList = new ArrayList<>();
+	protected List<T1> objectList = null;
+	protected List<T1> snapshotList = null;
+	protected List<T1> storeRoomList = new ArrayList<>();
 
 	public DaoMaterialGeneralImple() {
 
 	}
-	protected List<KoiMaterial> readJson(String path) throws ParseException {
+	protected List<T1> readJson(String path) throws ParseException {
 		try {
 			Object obj = parser.parse(new FileReader(path));
 			String arrStd = obj.toString();
@@ -97,7 +97,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		System.out.print("Json OBJ : " + json);
 		return true;
 	}
-	protected List<KoiMaterial> readSnapshot(String path) throws ParseException {
+	protected List<T1> readSnapshot(String path) throws ParseException {
 		try {
 			System.out.println("Path: " + path);
 			Object obj = parser.parse(new FileReader(path));
@@ -138,7 +138,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 	@Override
 	public boolean delete(T2 s) throws ParseException {
 		System.out.println("DAO ID : " + s);
-		KoiMaterial foundObj = null;
+		T1 foundObj = null;
 		for (int i = 0; i < objectList.size(); i++) {
 			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
 				foundObj = objectList.get(i);
@@ -155,7 +155,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 
 	@Override
 	public boolean create(T1 object) {
-		boolean b = objectList.add((KoiMaterial) object);
+		boolean b = objectList.add((T1) object);
 		return b ? writeJson() : false;
 	}
 
@@ -168,7 +168,7 @@ public class DaoMaterialGeneralImple<T1, T2> implements DaoMaterialInterface<T1,
 		for (int i = 0; i < objectList.size(); i++) {
 			if (((KoiMaterial) object).getId().equals(objectList.get(i).getId())) {
 				objectList.remove(i);
-				b = objectList.add((KoiMaterial) object);
+				b = objectList.add((T1) object);
 				break;
 			}
 		}

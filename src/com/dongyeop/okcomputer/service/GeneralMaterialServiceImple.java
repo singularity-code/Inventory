@@ -28,7 +28,6 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	//OLD
 	@Autowired private DaoMaterialInterface<KoiMaterial, String>  daoMaterialComputer;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String>  daoMaterialTv;
-	@Autowired private DaoMaterialInterface<KoiMaterial, String>  daoMaterialGarage;
 	
 	@Autowired private DaoComputerInterface daoComputer;
 	

@@ -2,9 +2,10 @@ package com.dongyeop.okcomputer.dao;
 
 import org.json.simple.parser.ParseException;
 
+import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.profile.ApplicationType;
 
-public class DaoMaterialMacImple<T1, T2> extends DaoMaterialGeneralImple<T1, T2>{
+public class DaoMaterialMacImple<T1 extends KoiMaterial, T2> extends DaoMaterialGeneralImple<T1, T2>{
 
 	public DaoMaterialMacImple() {
 		super();

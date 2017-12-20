@@ -20,7 +20,6 @@ import com.dongyeop.okcomputer.dto.Computer;
 import com.dongyeop.okcomputer.dto.Monitor;
 import com.dongyeop.okcomputer.dto.Printer;
 import com.dongyeop.okcomputer.dto.Telephone;
-import com.dongyeop.okcomputer.dto.Tv;
 import com.dongyeop.okcomputer.service.MaterialReport;
 import com.dongyeop.okcomputer.service.MaterialServiceInterface;
 

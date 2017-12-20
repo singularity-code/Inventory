@@ -1,8 +1,8 @@
 package com.dongyeop.okcomputer.dao;
 
-import org.json.simple.parser.ParseException;
-
 import java.util.List;
+
+import org.json.simple.parser.ParseException;
 
 public interface DaoMaterialInterface<T1, T2> {
 	T1 getMaterial(T2 s) throws ParseException;
