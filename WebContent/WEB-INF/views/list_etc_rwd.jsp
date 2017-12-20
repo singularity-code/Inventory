@@ -14,21 +14,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-  <span class="w3-bar-item w3-right">KOI Inventory v0.4</span>
+	<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+	<span class="w3-bar-item w3-right">KOI Inventory v0.4</span>
 </div>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
-	  <div class="w3-col s4">
+	<div class="w3-container w3-row">
+	<div class="w3-col s4">
 	  <img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle">
 	</div>
 	 <div class="w3-col s8 w3-bar">
-	  <span>Hi, <strong>Michael</strong></span><br>
-<!--       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
+		 <span>Hi, <strong>Michael</strong></span><br>
 	</div>
   </div>
   <hr>
@@ -66,7 +63,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button>
 			<button ng-click="setTab('create-koiMaterial')" style="width: 100px; height: 40px;">Create</button>
 			<a href="./" class="button_back"><i class="fa fa-reply fa-fw"></i></a>
-			<h3>Total : {{filtered.length}} Desktop</h3>
+			<h3>Total : {{filtered.length}}</h3>
 		</div>
 	</div>
 	  <div ng-show="isSet('create-koiMaterial')">
@@ -103,7 +100,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		</div>
 	</div>
 	  <div class="w3-container">
-		<h5>DESKTOP</h5>
+		  <h5>ETC</h5>
 	   <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
 				<td style="width: 170px;"><b>Barcode</b></td>
