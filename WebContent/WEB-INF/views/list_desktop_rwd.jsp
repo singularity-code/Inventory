@@ -129,19 +129,19 @@ input[type=text]:focus {
 			<pre>koiMaterial_draft = {{koiMaterial | json}}</pre>
 		</div>
 		<div class="w3-container">
-		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
 				<th>Barcode</th>
-				<th>Idx</th>
-				<th>S/N</th>
-				<th>ID</th>
-				<th>Type</th>
-				<th>Brand</th>
-				<th>Previous</th>
-				<th>Location</th>
-				<th>Campus</th>
-				<th>User</th>
-				<th>Update Date</th>
+				<th onclick="sortTable(1)">Idx</th>
+				<th onclick="sortTable(2)">S/N</th>
+				<th onclick="sortTable(3)">ID</th>
+				<th onclick="sortTable(4)">Type</th>
+				<th onclick="sortTable(5)">Brand</th>
+				<th onclick="sortTable(6)">Previous</th>
+				<th onclick="sortTable(7)">Location</th>
+				<th onclick="sortTable(8)">Campus</th>
+				<th onclick="sortTable(9)">User</th>
+				<th onclick="sortTable(10)">Update Date</th>
 				<th>Comment</th>
 			</tr>
 			<tr ng-repeat="obj in list | filter:$ctrl.query as filtered ">
@@ -282,10 +282,60 @@ function w3_close() {
 	mySidebar.style.display = "none";
 	overlayBg.style.display = "none";
 }
-$(document).ready(function() {
-	console.log("Hi");
-});
-
+function sortTable(n) {
+	var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	table = document.getElementById("mainTable");
+	switching = true;
+	//Set the sorting direction to ascending:
+	dir = "asc"; 
+	/*Make a loop that will continue until
+	no switching has been done:*/
+		while (switching) {
+		//start by saying: no switching is done:
+			switching = false;
+			rows = table.getElementsByTagName("TR");
+			/*Loop through all table rows (except the
+			first, which contains table headers):*/
+			for (i = 1; i < (rows.length - 1); i++) {
+			//start by saying there should be no switching:
+			shouldSwitch = false;
+			/*Get the two elements you want to compare,
+			  one from current row and one from the next:*/
+			x = rows[i].getElementsByTagName("TD")[n];
+			y = rows[i + 1].getElementsByTagName("TD")[n];
+			/*check if the two rows should switch place,
+			based on the direction, asc or desc:*/
+			if (dir == "asc") {
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+				//if so, mark as a switch and break the loop:
+				shouldSwitch= true;
+				break;
+				}
+			} else if (dir == "desc") {
+				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+				//if so, mark as a switch and break the loop:
+				shouldSwitch= true;
+				break;
+				}
+			}
+			}
+			if (shouldSwitch) {
+			/*If a switch has been marked, make the switch
+			and mark that a switch has been done:*/
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+			//Each time a switch is done, increase this count by 1:
+			switchcount ++;	
+			} else {
+			/*If no switching has been done AND the direction is "asc",
+			set the direction to "desc" and run the while loop again.*/
+			if (switchcount == 0 && dir == "asc") {
+				dir = "desc";
+				switching = true;
+			}
+			}
+		}
+	}
 </script>
 
 </body>
