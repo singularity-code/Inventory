@@ -88,7 +88,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	</div>
 	<div class="w3-quarter">
 		<div class="w3-container w3-teal w3-padding-16">
-			<div class="w3-left"><i class="fa fa-bar-chart w3-xxxlarge"></i></div>
+			<div class="w3-left"><i class="fa fa-line-chart w3-xxxlarge"></i></div>
 			<div class="w3-right">
 				<h3>{{totalStudentComSummary.ratio}}</h3>
 			</div>
@@ -102,17 +102,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	<div class="w3-row-padding" style="margin:0 -16px">
 	<div class="w3-threequarter">
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-			<tr>
-				<th rowspan="2"><i class="fa fa-laptop w3-text-red w3-large"></i>Computers (Lecture/Staff)</th>
+			<tr><h4><i class="fa fa-desktop w3-text-red w3-xlarge"></i> Computers (Lecture/Staff)</h4>
+				<th></th>
 				<th style="text-align: center;">Market</th>
 				<th style="text-align: center;">Kent Lv1</th>
 				<th style="text-align: center;">Kent Lv5</th>
-				<th></th>
-			</tr>
-			<tr>
-				<th style="text-align: center;">T0316</th>
-				<th style="text-align: center;">T0316</th>
-				<th style="text-align: center;"">T0316</th>
 				<th style="text-align: center;">Total</th>
 			</tr>
 			<tr>
@@ -153,17 +147,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 		</table>
 		<br>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-			<tr>
-				<th rowspan="2" class=""><i class="fa fa-laptop w3-text-red w3-large"></i>Computers (Students)</th>
+			<tr><h4><i class="fa fa-laptop w3-text-blue w3-xlarge"></i> Computers (Students)</h4>
+				<th></th>
 				<th style="text-align: center;">Market</th>
 				<th style="text-align: center;">Kent Lv1</th>
 				<th style="text-align: center;">Kent Lv5</th>
-				<th></th>
-			</tr>
-			<tr>
-				<th style="text-align: center;">T0316</th>
-				<th style="text-align: center;">T0316</th>
-				<th style="text-align: center;">T0316</th>
 				<th style="text-align: center;">Total</th>
 			</tr>
 			<tr>
@@ -177,7 +165,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 				<td class="">Laptop</td>
 				<td style="text-align: center;"id="marketStudent2" >{{totalLaptopMap.marketStudent}}</td>
 				<td style="text-align: center;">{{totalLaptopMap.kentL1Student}}</td>
-				<tdstyle="text-align: center;" >{{totalLaptopMap.kentL5Student}}</td>
+				<td style="text-align: center;" >{{totalLaptopMap.kentL5Student}}</td>
 				<td style="text-align: center;">{{totalLaptopMap.totalByStudent}}</td>
 			</tr>
 			<tr>
@@ -204,14 +192,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 		</table>
 		<br/>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-			<tr>
-				<th rowspan="2" class="">Classroom, Library & Student Lounge</th>
+			<tr><h4><i class="fa fa-graduation-cap w3-text-green w3-xlarge"></i> Classroom, Library & Student Lounge</h4>
+				<th></th>
 				<th style="text-align: center;"colspan="2" >Market</th>
 				<th style="text-align: center;"colspan="2" >Kent Lv1</th>
 				<th style="text-align: center;"colspan="2" >Kent Lv5</th>
 				<th></th>
 			</tr>
 			<tr>
+				<th></th>
 				<th style="text-align: center;">Lecture/Staff</th>
 				<th style="text-align: center;">Student</th>
 				<th style="text-align: center;">Lecture/Staff</th>
@@ -263,14 +252,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 		</table>
 		<br/>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-			<tr>
-				<th rowspan="2" class="">Office</th>
+			<tr><h4><i class="fa fa-group w3-text-purple w3-xlarge"></i> Office</h4>
+				<th>Office</th>
 				<th style="text-align: center;" colspan="2" >Market</th>
 				<th style="text-align: center;" colspan="2" >Kent Lv1</th>
 				<th style="text-align: center;" colspan="2" >Kent Lv5</th>
 				<th></th>
 			</tr>
 			<tr>
+				<th></th>
 				<th style="text-align: center;">Lecture/Staff</th>
 				<th style="text-align: center;">Student</th>
 				<th style="text-align: center;">Lecture/Staff</th>
@@ -354,23 +344,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	</div>
 </div>
 <hr>
-
-<div class="w3-container">
-	<h5>Recent Comments</h5>
-	<div class="w3-row">
-	<div class="w3-col m2 text-center">
-<!--         <img class="w3-circle" src="/w3images/avatar3.png" style="width:96px;height:96px"> -->
-	</div>
-	<div class="w3-col m10 w3-container">
-		<h4>Chris <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span></h4>
-		<p>Hi Michael, hope this guy do your job properly :)</p><br>
-	</div>
-	</div>
-</div>
-<br>
 <!-- Footer -->
 <footer class="w3-container w3-padding-16 w3-light-grey">
-	<p>Powered by Raspberry Pi, Java, Spring Framework, Angular1.6, <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	<p>Powered by Raspberry Pi, Java, Spring Framework <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 
 <!-- End page content -->
@@ -461,10 +437,6 @@ function w3_close() {
 	mySidebar.style.display = "none";
 	overlayBg.style.display = "none";
 }
-$(document).ready(function() {
-	console.log("Hi");
-});
-
 </script>
 
 </body>
