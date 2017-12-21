@@ -19,7 +19,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </div>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
 	<div class="w3-container w3-row">
 		<div class="w3-col s4">
 			<a href="./"><img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle"></a>
@@ -55,7 +55,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main" style="margin-left:200px;margin-top:43px;">
 
 <div class="w3-panel">
 	<div class="w3-row-padding" style="margin:0 -16px">
@@ -110,40 +110,37 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	<div class="w3-container">
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
-				<td style="width: 170px;"><b>Barcode</b></td>
-				<td style="width: 50px;"><b>Idx</b></td>
-				<td style="width: 100px;"><b>S/N</b></td>
-				<td style="width: 100px;"><b>ID</b></td>
-				<td style="width: 100px;"><b>Type</b></td>
-				<td style="width: 100px;"><b>Brand</b></td>
-				<td style="width: 150px;"><b>Previous</b></td>
-				<td style="width: 150px;"><b>Location</b></td>
-				<td style="width: 150px;"><b>Campus</b></td>
-				<td style="width: 150px;"><b>User</b></td>
-				<td></td>
-				<td></td>
+				<th>Barcode</th>
+				<th>Idx</th>
+				<th style="width: 100px;">S/N</th>
+				<th style="width: 100px;">ID</th>
+				<th>Type</th>
+				<th>Brand</th>
+				<th>Previous</th>
+				<th>Location</th>
+				<th>Campus</th>
+				<th>User</th>
+				<th>Update Date</th>
+				<th>Comment</th>
 			</tr>
-		</table>
-		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" ng-repeat="obj in list | filter:$ctrl.query as filtered ">
-			<tr id="">
-				<td style="width: 170px;"><a href="https://www.barcodesinc.com/generator/"><img src="https://www.barcodesinc.com/generator/image.php?code={{obj.id}}&style=197&type=C128B&width=154&height=50&xres=1&font=3" alt="the barcode printer: free barcode generator" border="0"></a></td>
-				<td style="width: 50px;">{{obj.index}}</td>
-				<td style="width: 100px;">{{obj.sn}}</td>
-				<td style="width: 100px;">{{obj.id}}</td>
-				<td style="width: 100px;">{{obj.type}}</td>
-				<td style="width: 100px;">{{obj.brand}}</td>
-				<td style="width: 150px;">{{obj.previous}}</td>
-				<td style="width: 150px;">{{obj.location}}</td>
-				<td style="width: 150px;">{{obj.campus}}</td>
-				<td style="width: 150px;">{{obj.user}}</td>
-				<td style="width: 150px;">
+			<tr ng-repeat="obj in list | filter:$ctrl.query as filtered ">
+				<td style="width: 180px;"><a href="https://www.barcodesinc.com/generator/"><img src="https://www.barcodesinc.com/generator/image.php?code={{obj.id}}&style=197&type=C128B&width=154&height=50&xres=1&font=3" alt="the barcode printer: free barcode generator" border="0"></a></td>
+				<td>{{obj.index}}</td>
+				<td>{{obj.sn}}</td>
+				<td>{{obj.id}}</td>
+				<td>{{obj.type}}</td>
+				<td>{{obj.brand}}</td>
+				<td>{{obj.previous}}</td>
+				<td>{{obj.location}}</td>
+				<td>{{obj.campus}}</td>
+				<td>{{obj.user}}</td>
+				<td id="updateDate">{{obj.updatedate}}</td>
+				<td>{{obj.comment}}</td>
+				<td>
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
 					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a>
 				</td>
-			</tr>
-			<tr>
-				<td id="updateDate" style="width: 250px;">{{obj.updatedate}}</td>
-				<td style="width: 300px;">{{obj.comment}}</td>
+				<td>
 			</tr>
 		</table>
 		</div>
@@ -213,16 +210,25 @@ app.controller("myCtrl", function($scope) {
 	};
 
 	$scope.reset();
-
+	
 	$scope.nextId = function(type, user) {
+		var length = $scope.list.length;
+		var nextNum = length + 1;
 		if(type === 'staffDesktop') {
-			i = $scope.desktops.length + 1;
-			return "HD-10" + i;
+			if(length < 100) {
+				return "GE-100" + nextNum;
+			} else {
+				return "GE-10" + nextNum;
+			}
 		} else if (type == 'studentDesktop') {
-			i = $scope.desktops.length + 1;
-			return "HD-20" + i;
+			if(length < 100) {
+				return "GE-100" + nextNum;
+			} else {
+				return "GE-10" + nextNum;
+			}
 		}
 	}
+	
 	
 	$scope.nextIndex = function() {
 		return $scope.desktops.length + 1;
