@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	.reportRowSection {
@@ -18,7 +19,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
 <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>Menu</button>
-<span class="w3-bar-item w3-right">KOI Inventory v0.4</span>
+<span class="w3-bar-item w3-right">KOI Inventory v0.5</span>
 </div>
 
 <!-- Sidebar/menu -->
@@ -62,7 +63,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 
 <!-- Header -->
 <header class="w3-container" style="padding-top:22px">
-	<h5>CAPEX Report {{today}}</h5>
+	<h3>CAPEX Report</h3>
+	<h5>{{today}}</h5>
 </header>
 
 <div class="w3-row-padding w3-margin-bottom">
@@ -355,7 +357,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 var app = angular.module("myComputerList", []);
 app.controller("myCtrl", function($scope) {
 	$scope.desktops = ${desktops};
-	$scope.today = new Date().toDateString();
+	$scope.today = new Date().toUTCString();
 	$scope.enrolledStudent = 1703;
 	$scope.totalStudentComSummary = ${totalStudentComSummary};
 	
