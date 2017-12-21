@@ -5,6 +5,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.parser.ParseException;
@@ -68,6 +70,12 @@ public class StockManagementController {
 		model.addAttribute("totalStudentComSummary", toJson(reportService.calcurateAllStudentCompuersSummary()));
 		System.out.println("JSON Loading Complete");
 		return "index_rwd";
+	}
+	
+	@RequestMapping("/list_all")
+	public String listAll(Model model) throws ParseException {
+		model.addAttribute("objects", toJson(materialService.getAllList()));
+		return "list_all_rwd";
 	}
 
 	@RequestMapping("/create_view")

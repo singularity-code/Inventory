@@ -64,13 +64,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<div align="left" style="margin-bottom: 15px; margin-top: 25px;">
 			<table>
 				<tr>
-					<td><i class="fa fa-desktop w3-xxlarge"></i></td>
-					<td><h3	>Total - {{filtered.length}}</h3></td>
-					<td><h5>DESKTOP</h5></td>
+					<td><i class="fa fa-database w3-xxlarge"></i></td>
+					<td><h3	>Total : {{list.length}}</h3></td>
+					<td><h3>Found : {{filtered.length}}</h3></td>
 				</tr>
 			</table>
 			<input type="search" id="search" placeholder="Enter Keyword..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
-			<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 			<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button>
 			<button ng-click="setTab('create-koiMaterial')" style="width: 100px; height: 40px;">Create</button>
 		</div>

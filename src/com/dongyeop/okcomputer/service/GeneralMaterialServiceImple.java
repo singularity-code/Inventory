@@ -1,5 +1,7 @@
 package com.dongyeop.okcomputer.service;
 
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.json.simple.parser.ParseException;
@@ -13,8 +15,10 @@ import com.dongyeop.okcomputer.dto.Monitor;
 import com.dongyeop.okcomputer.dto.Printer;
 import com.dongyeop.okcomputer.dto.Telephone;
 import com.dongyeop.okcomputer.dto.Tv;
+import com.dongyeop.okcomputer.engine.WrightEngine;
 
 public class GeneralMaterialServiceImple implements MaterialServiceInterface<Object, String> {
+	private WrightEngine writeEngine = new WrightEngine();
 	//NEW
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialDesktop;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialLaptop;
@@ -166,6 +170,20 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		System.out.println("SERVICE SIZE of ETC IT : " + koiMaterials.size());
 		return koiMaterials;
 	}
+	
+	@Override
+	public Object getAllList() throws ParseException {
+		LinkedList<Object> allMaterials = new LinkedList<Object>();
+		allMaterials.addAll(daoMaterialDesktop.getAllMaterials());
+		allMaterials.addAll(daoMaterialLaptop.getAllMaterials());
+		allMaterials.addAll(daoMaterialMonitor.getAllMaterials());
+		allMaterials.addAll(daoMaterialPrinter.getAllMaterials());
+		allMaterials.addAll(daoMaterialTelephone.getAllMaterials());
+		allMaterials.addAll(daoMaterialMac.getAllMaterials());
+		allMaterials.addAll(daoMaterialEtcIt.getAllMaterials());
+		allMaterials.addAll(daoMaterialEtc.getAllMaterials());
+		return allMaterials;
+	}
 
 	@Override
 	public boolean createDesktop(Object o) {
@@ -291,5 +309,11 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean updatePrinter(Object o) throws ParseException {
 		return daoMaterialPrinter.update((KoiMaterial) o);
+	}
+
+	@Override
+	public boolean readAllJsonFiles(String path) throws ParseException, IOException {
+		writeEngine.readAllJsonFiles(path);
+		return false;
 	}
 }

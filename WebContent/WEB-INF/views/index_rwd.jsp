@@ -25,11 +25,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
 <div class="w3-container w3-row">
 	<div class="w3-col s4">
-	<img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle">
+	<a href="./"><img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle"></a>
 	</div>
 	 <div class="w3-col s8 w3-bar">
 	<span>Hi, <strong>Michael</strong></span><br>
-<!--     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+		 <!--     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
 	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
 	</div>
@@ -39,14 +39,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	<h5>Inventory</h5>
 </div>
 <div class="w3-bar-block">
-	<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>� Close Menu</a>
+	<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>Close Menu</a>
+	<a href="./list_all" class="w3-bar-item w3-button w3-padding"><i class="fa fa-database fa-fw"></i>All</a><br>
 	<a href="./list_desktop" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-desktop fa-fw"></i>Desktop</a>
 	<a href="./list_laptop" class="w3-bar-item w3-button w3-padding"><i class="fa fa-laptop fa-fw"></i>Laptop</a>
 	<a href="./list_monitor" class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>Monitor</a>
 	<a href="./list_printer" class="w3-bar-item w3-button w3-padding"><i class="fa fa-print fa-fw"></i>Printer</a>
 	<a href="./list_mac" class="w3-bar-item w3-button w3-padding"><i class="fa fa-desktop fa-fw"></i>Mac</a>
 	<a href="./list_telephone" class="w3-bar-item w3-button w3-padding"><i class="fa fa-fax fa-fw"></i>Telephone</a>
-	<a href="./list_itEtc" class="w3-bar-item w3-button w3-padding"><i class="fa fa-database fa-fw"></i>IT ETC</a>
+	<a href="./list_itEtc" class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>IT ETC</a>
 	<a href="./list_etc" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cubes fa-fw"></i>ETC</a>
 	<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Settings</a><br><br>
 </div>
@@ -61,56 +62,45 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 
 <!-- Header -->
 <header class="w3-container" style="padding-top:22px">
-	<h5><b><i class="fa fa-dashboard"></i>Trimester 0317</b></h5>
+	<h5>CAPEX Report {{today}}</h5>
 </header>
 
 <div class="w3-row-padding w3-margin-bottom">
 	<div class="w3-quarter">
-	<div class="w3-container w3-red w3-padding-16">
-		<div class="w3-left"><i class="fa fa-desktop w3-xxxlarge"></i></div>
-		<div class="w3-right">
-		<h3>{{totalDesktopMap.total}}</h3>
+		<div class="w3-container w3-red w3-padding-16">
+			<div class="w3-left"><i class="fa fa-desktop w3-xxxlarge"></i></div>
+			<div class="w3-right">
+			<h3>{{totalDesktopMap.total}}</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4>Desktops</h4>
 		</div>
-		<div class="w3-clear"></div>
-		<h4>Desktops</h4>
-	</div>
 	</div>
 	<div class="w3-quarter">
-	<div class="w3-container w3-blue w3-padding-16">
-		<div class="w3-left"><i class="fa fa-laptop w3-xxxlarge"></i></div>
-		<div class="w3-right">
-		<h3>{{totalLaptopMap.total}}</h3>
+		<div class="w3-container w3-blue w3-padding-16">
+			<div class="w3-left"><i class="fa fa-laptop w3-xxxlarge"></i></div>
+			<div class="w3-right">
+			<h3>{{totalLaptopMap.total}}</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4>Laptops</h4>
 		</div>
-		<div class="w3-clear"></div>
-		<h4>Laptops</h4>
-	</div>
 	</div>
 	<div class="w3-quarter">
-	<div class="w3-container w3-teal w3-padding-16">
-		<div class="w3-left"><i class="fa fa-bar-chart w3-xxxlarge"></i></div>
-		<div class="w3-right">
-			<h3>{{totalStudentComSummary.ratio}}</h3>
+		<div class="w3-container w3-teal w3-padding-16">
+			<div class="w3-left"><i class="fa fa-bar-chart w3-xxxlarge"></i></div>
+			<div class="w3-right">
+				<h3>{{totalStudentComSummary.ratio}}</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4>Ratio</h4>
 		</div>
-		<div class="w3-clear"></div>
-		<h4>Ratio</h4>
-	</div>
-	</div>
-	<div class="w3-quarter">
-	<div class="w3-container w3-orange w3-text-white w3-padding-16">
-		<div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-		<div class="w3-right">
-		<h3>{{totalStudentComSummary.noOfStd}}</h3>
-		</div>
-		<div class="w3-clear"></div>
-		<h4>Students</h4>
-	</div>
 	</div>
 </div>
 
 <div class="w3-panel">
 	<div class="w3-row-padding" style="margin:0 -16px">
 	<div class="w3-threequarter">
-		<h5>CAPEX Report {{today}}</h5>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
 				<th rowspan="2"><i class="fa fa-laptop w3-text-red w3-large"></i>Computers (Lecture/Staff)</th>
@@ -161,7 +151,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 				<td style="text-align: center;">-</td>
 			</tr>
 		</table>
-		<br/>
+		<br>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
 				<th rowspan="2" class=""><i class="fa fa-laptop w3-text-red w3-large"></i>Computers (Students)</th>

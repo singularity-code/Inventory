@@ -1,5 +1,7 @@
 package com.dongyeop.okcomputer.service;
 
+import java.io.IOException;
+
 import org.json.simple.parser.ParseException;
 
 public interface MaterialServiceInterface<T1, T2> {
@@ -13,6 +15,7 @@ public interface MaterialServiceInterface<T1, T2> {
 	T1 getEtcList() throws ParseException;
 	T1 getEtcItList() throws ParseException;
 	T1 getTelephoneList() throws ParseException;
+	T1 getAllList() throws ParseException;
 	
 	//Old
 	T1 getComputerList() throws ParseException;
@@ -68,4 +71,6 @@ public interface MaterialServiceInterface<T1, T2> {
 	
 	//Swap
 	boolean swap(T1 prev, T1 next) throws ParseException;
+	
+	boolean readAllJsonFiles(String path) throws ParseException, IOException;
 }

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -20,6 +21,42 @@ public class WrightEngine {
 	protected JSONParser parser = new JSONParser();
 	
 	public WrightEngine() {
+	}
+	public HashMap<String, List<?>> readAllJsonFiles(String path) throws ParseException, IOException {
+//		String path = "C:\\testdata\\materials\\snapshot\\19122017\\";
+		File folder = new File(path);
+		File[] listOfFiles = folder.listFiles();
+		HashMap<String, List<?>> allJsonFilesMap = new HashMap<String, List<?>>();
+		
+		for (File file : listOfFiles) {
+			if (file.isFile()) {
+				System.out.println(file.getName());
+				try {
+					String fileName = file.getName();
+					int idx = fileName.indexOf("Imple");
+					String keyName = fileName.substring(0, idx);
+					
+					List<KoiMaterial> objectList = null;
+					Object obj = parser.parse(new FileReader(path + fileName));
+					String arrStd = obj.toString();
+					objectList = (new Gson()).fromJson(arrStd, new TypeToken<List<KoiMaterial>>() {
+					}.getType());
+					allJsonFilesMap.put(keyName, objectList);
+				}catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		for (Entry<String, List<?>> e : allJsonFilesMap.entrySet()) {
+			//to get key
+			System.out.println("Key: " + e.getKey());
+			//and to get value
+			System.out.println("Value: " + e.getValue());
+		}
+		System.out.println("Snapshots Loaded");
+		return allJsonFilesMap;
 	}
 
 	public HashMap<String, Object> readSnapshots() throws ParseException, IOException {
@@ -49,11 +86,10 @@ public class WrightEngine {
 			}
 		}
 		for (Map.Entry<String, Object> e : snapthosMap.entrySet()) {
-		    //to get key
-		    System.out.println("Key: " + e.getKey());
-		    //and to get value
-		    System.out.println("Value: " + e.getValue());
-		    
+			//to get key
+			System.out.println("Key: " + e.getKey());
+			//and to get value
+			System.out.println("Value: " + e.getValue());
 		}
 		System.out.println("Snapshots Loaded");
 		return snapthosMap;
