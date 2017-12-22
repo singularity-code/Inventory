@@ -51,6 +51,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	<a href="./list_itEtc" class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>IT ETC</a>
 	<a href="./list_etc" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cubes fa-fw"></i>ETC</a>
 	<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Settings</a><br><br>
+	<a href="./barcodes" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Barcodes</a><br><br>
 </div>
 </nav>
 

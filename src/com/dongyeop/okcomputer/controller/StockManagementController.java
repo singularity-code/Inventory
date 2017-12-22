@@ -455,6 +455,11 @@ public class StockManagementController {
 		model.addAttribute("desktopSnap", toJson(reportService.selectTotalDesktopReportSnap("19122017")));
 		return "report_snapshots";
 	}
+	@RequestMapping("/barcodes")
+	public String barcodes(Model model) throws ParseException, IOException {
+		model.addAttribute("objects", toJson(materialService.getLaptopList()));
+		return "barcodes";
+	}
 
 	/**
 	 * Serializes a Java object to a Json string.
