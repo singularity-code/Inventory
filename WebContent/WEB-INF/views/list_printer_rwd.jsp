@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<spring:url value="/resources/js/koiInventory.js" var="inverntoryJS" />
+<script type="text/javascript" src="${inverntoryJS}"></script>
+
 <style>
 html,body,h1,h2,h3,h4,h5 {
 	font-family: "Raleway", sans-serif
@@ -79,7 +82,7 @@ input[type=text]:focus {
 		<div align="left" style="margin-bottom: 15px; margin-top: 25px;">
 			<table>
 				<tr>
-					<td><i class="fa fa-desktop w3-xxlarge"></i></td>
+					<td><i class="fa fa-print w3-xxlarge"></i></td>
 					<td><h3	>PRINTER : {{filtered.length}}</h3></td>
 				</tr>
 			</table>
@@ -87,6 +90,7 @@ input[type=text]:focus {
 			<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 			<button class="button_small" onclick="clearSearch()" style="width: 100px; height: 40px;">Clear</button>
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
+			<button id="btnExport" onclick="exportToExcel()">TO EXCEL</button>
 		</div>
 	</div>
 		<div id="toggleTarget" style="display: none;">
@@ -143,6 +147,8 @@ input[type=text]:focus {
 				<th onclick="sortTable(9)">User</th>
 				<th onclick="sortTable(10)">Update Date</th>
 				<th>Comment</th>
+				<th/>
+				<th/>
 			</tr>
 			<tr ng-repeat="obj in list | filter:$ctrl.query as filtered ">
 				<td style="width: 180px;"><a href="https://www.barcodesinc.com/generator/"><img src="https://www.barcodesinc.com/generator/image.php?code={{obj.id}}&style=197&type=C128B&width=154&height=50&xres=1&font=3" alt="the barcode printer: free barcode generator" border="0"></a></td>
@@ -282,9 +288,7 @@ function w3_close() {
 	mySidebar.style.display = "none";
 	overlayBg.style.display = "none";
 }
-$(document).ready(function() {
-	console.log("Hi");
-});
+
 function sortTable(n) {
 	var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 	table = document.getElementById("mainTable");
@@ -339,7 +343,32 @@ function sortTable(n) {
 			}
 		}
 	}
-</script>
+function exportToExcel() {
+	var htmls = "";
+	var uri = 'data:application/vnd.ms-excel;base64,';
+	var template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'; 
+	var base64 = function(s) {
+		return window.btoa(unescape(encodeURIComponent(s)))
+	};
 
+	var format = function(s, c) {
+		return s.replace(/{(\w+)}/g, function(m, p) {
+			return c[p];
+		})
+	};
+
+	htmls =  $('#mainTable').prop('outerHTML');
+
+	var ctx = {
+		worksheet : 'Worksheet',
+		table : htmls
+	}
+
+	var link = document.createElement("a");
+	link.download = "export.xls";
+	link.href = uri + base64(format(template, ctx));
+	link.click();
+}
+</script>
 </body>
 </html>

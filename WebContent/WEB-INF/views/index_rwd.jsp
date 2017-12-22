@@ -103,9 +103,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 <div class="w3-panel">
 	<div class="w3-row-padding" style="margin:0 -16px">
 	<div class="w3-threequarter">
-		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr><h4><i class="fa fa-desktop w3-text-red w3-xlarge"></i> Computers (Lecture/Staff)</h4>
-				<th></th>
+				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
 				<th style="text-align: center;">Market</th>
 				<th style="text-align: center;">Kent Lv1</th>
 				<th style="text-align: center;">Kent Lv5</th>
@@ -150,7 +150,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 		<br>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr><h4><i class="fa fa-laptop w3-text-blue w3-xlarge"></i> Computers (Students)</h4>
-				<th></th>
+				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
 				<th style="text-align: center;">Market</th>
 				<th style="text-align: center;">Kent Lv1</th>
 				<th style="text-align: center;">Kent Lv5</th>
@@ -195,7 +195,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 		<br/>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr><h4><i class="fa fa-graduation-cap w3-text-green w3-xlarge"></i> Classroom, Library & Student Lounge</h4>
-				<th></th>
+				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
 				<th style="text-align: center;"colspan="2" >Market</th>
 				<th style="text-align: center;"colspan="2" >Kent Lv1</th>
 				<th style="text-align: center;"colspan="2" >Kent Lv5</th>
@@ -262,7 +262,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 				<th></th>
 			</tr>
 			<tr>
-				<th></th>
+				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
 				<th style="text-align: center;">Lecture/Staff</th>
 				<th style="text-align: center;">Student</th>
 				<th style="text-align: center;">Lecture/Staff</th>
@@ -438,6 +438,32 @@ function w3_open() {
 function w3_close() {
 	mySidebar.style.display = "none";
 	overlayBg.style.display = "none";
+}
+function exportToExcel() {
+	var htmls = "";
+	var uri = 'data:application/vnd.ms-excel;base64,';
+	var template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'; 
+	var base64 = function(s) {
+		return window.btoa(unescape(encodeURIComponent(s)))
+	};
+
+	var format = function(s, c) {
+		return s.replace(/{(\w+)}/g, function(m, p) {
+			return c[p];
+		})
+	};
+
+	htmls =  $('#mainTable').prop('outerHTML');
+
+	var ctx = {
+		worksheet : 'Worksheet',
+		table : htmls
+	}
+
+	var link = document.createElement("a");
+	link.download = "export.xls";
+	link.href = uri + base64(format(template, ctx));
+	link.click();
 }
 </script>
 
