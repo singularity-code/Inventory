@@ -165,7 +165,7 @@ input[type=text]:focus {
 				<td>
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
 					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a>
-					<button class="deleteBtn" style="width: 100px; height: 40px;">DEL</button>
+					<a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Toggle</a>
 				</td>
 				<td>
 			</tr>
@@ -371,7 +371,7 @@ function exportToExcel() {
 }
 $( document ).ready(function() {
 	console.log( "ready!" );
-	$(".deleteBtn").click(function () {
+	$(".toggleDelBtn").click(function () {
 		var id = this.closest('tr').id;
 		var element = document.getElementById(id);
 		console.log(id);

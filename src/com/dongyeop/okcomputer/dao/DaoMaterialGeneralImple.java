@@ -152,6 +152,23 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		writeJsonStoreRoom();
 		return writeJson();
 	}
+	
+	@Override
+	public boolean toggleDelete(T2 s) throws ParseException {
+		System.out.println("DAO ID : " + s);
+		T1 foundObj = null;
+		for (int i = 0; i < objectList.size(); i++) {
+			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
+				foundObj = objectList.get(i);
+				foundObj.setStatus("Not Using");
+				foundObj.setUser("Not Using");
+				System.out.println("DELETE : " + foundObj.getId().toString());
+			}
+		}
+		System.out.println("JSON PATH ON DELETE : " + DAO_OBJECT_JSONFILE_PATH);
+		writeJsonStoreRoom();
+		return writeJson();
+	}
 
 	@Override
 	public boolean create(T1 object) {

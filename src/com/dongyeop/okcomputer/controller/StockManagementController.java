@@ -344,6 +344,41 @@ public class StockManagementController {
 		return new ModelAndView(redirectUrl);
 	}
 	
+	@RequestMapping("/toggleDelete")
+	public ModelAndView toggleDelete(Model model, 
+			@RequestHeader(value = "referer", required = false) final String referer, 
+			@RequestParam("type") String type, 
+			@RequestParam("id") String id) throws ParseException {
+		String url = referer.replace("http://localhost:8080/OK_COMPUTER/", "");
+		System.out.println("Re: " + url);
+		if (type.equals("Desktop")) {
+			materialService.deleteDesktop(id);
+			model.addAttribute("objects", toJson(materialService.getDesktopList()));
+			return new ModelAndView("list_desktop_rwd");
+		} else if (type.equals("Laptop")) {
+			materialService.deleteLaptop(id);
+			model.addAttribute("objects", toJson(materialService.getLaptopList()));
+			return new ModelAndView("list_laptop_rwd");
+		} else if (type.equals("Monitor")) {
+			materialService.deleteMonitor(id);
+			model.addAttribute("objects", toJson(materialService.getMonitorList()));
+			return new ModelAndView("list_monitor_rwd");
+		} else if (type.equals("iMac")) {
+			materialService.deleteMac(id);
+			model.addAttribute("objects", toJson(materialService.getMacList()));
+			return new ModelAndView("list_mac_rwd");
+		} else if (type.equals("Telephone")) {
+			materialService.deleteTelephone(id);
+			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+			return new ModelAndView("list_telephone_rwd");
+		} else if (type.equals("Printer")) {
+			materialService.toggleDeletePrinter(id);
+			model.addAttribute("objects", toJson(materialService.getPrinterList()));
+			return new ModelAndView("list_printer_rwd");
+		}
+		return new ModelAndView(redirectUrl);
+	}
+	
 	@RequestMapping("/delete_computer")
 	public ModelAndView deleteComputer(Model model, @RequestParam("id") String id) throws ParseException {
 		materialService.deleteComputer(id);

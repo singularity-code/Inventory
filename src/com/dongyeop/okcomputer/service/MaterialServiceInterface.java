@@ -39,6 +39,7 @@ public interface MaterialServiceInterface<T1, T2> {
 	boolean deleteMac(T2 s) throws ParseException;
 	boolean deletePrinter(T2 s) throws ParseException;
 	boolean deleteTelephone(T2 s) throws ParseException;
+	boolean toggleDeletePrinter(String id) throws ParseException;
 	
 	//Old
 	boolean deleteComputer(T2 s) throws ParseException;

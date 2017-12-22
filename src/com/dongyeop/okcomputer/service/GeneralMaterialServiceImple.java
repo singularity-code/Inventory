@@ -255,7 +255,11 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	public boolean deleteTelephone(String id) throws ParseException {
 		return daoMaterialTelephone.delete(id);
 	}
-
+	
+	@Override
+	public boolean toggleDeletePrinter(String id) throws ParseException {
+		return daoMaterialPrinter.toggleDelete(id);
+	}
 	@Override
 	public Object getDesktop(String id) throws ParseException {
 		return daoMaterialDesktop.getMaterial(id);
