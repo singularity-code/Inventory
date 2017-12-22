@@ -148,7 +148,8 @@ input[type=text]:focus {
 				<th onclick="sortTable(7)">Location</th>
 				<th onclick="sortTable(8)">Campus</th>
 				<th onclick="sortTable(9)">User</th>
-				<th onclick="sortTable(10)">Update Date</th>
+				<th onclick="sortTable(10)">Status</th>
+				<th onclick="sortTable(11)">Update Date</th>
 				<th>Comment</th>
 				<th/>
 				<th/>
@@ -164,6 +165,7 @@ input[type=text]:focus {
 				<td>{{obj.location}}</td>
 				<td>{{obj.campus}}</td>
 				<td>{{obj.user}}</td>
+				<td>{{obj.status}}</td>
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
 				<td>
