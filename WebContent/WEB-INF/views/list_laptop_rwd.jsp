@@ -65,8 +65,6 @@ input[type=text]:focus {
 	<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Settings</a><br><br>
 	</div>
 </nav>
-
-
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
@@ -79,7 +77,7 @@ input[type=text]:focus {
 		<div align="left" style="margin-bottom: 15px; margin-top: 25px;">
 			<table>
 				<tr>
-					<td><i class="fa fa-desktop w3-xxlarge"></i></td>
+					<td><i class="fa fa-laptop w3-xxlarge"></i></td>
 					<td><h3	>LAPTOP : {{filtered.length}}</h3></td>
 				</tr>
 			</table>
@@ -87,7 +85,7 @@ input[type=text]:focus {
 			<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 			<button class="button_small" onclick="clearSearch()" style="width: 100px; height: 40px;">Clear</button>
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
-			<button id="btnExport" onclick="exportToExcel()">TO EXCEL</button>
+			<button id="btnExport" onclick="exportToExcel()" style="width: 100px; height: 40px;">TO EXCEL</button>
 		</div>
 	</div>
 		<div id="toggleTarget" style="display: none;">
