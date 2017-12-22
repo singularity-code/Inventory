@@ -31,6 +31,10 @@ table, tr, td {
 input[type=text]:focus {
 	border: 3px solid #555;
 }
+.NOT_IN_USE {
+	text-decoration: line-through;
+	color: red;
+}
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
@@ -149,7 +153,7 @@ input[type=text]:focus {
 				<th/>
 				<th/>
 			</tr>
-			<tr class="row" id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered ">
+			<tr class={{obj.status}} id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered " >
 				<td style="width: 180px;"><a href="https://www.barcodesinc.com/generator/"><img src="https://www.barcodesinc.com/generator/image.php?code={{obj.id}}&style=197&type=C128B&width=154&height=50&xres=1&font=3" alt="the barcode printer: free barcode generator" border="0"></a></td>
 				<td>{{obj.index}}</td>
 				<td>{{obj.sn}}</td>

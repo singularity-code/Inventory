@@ -160,7 +160,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		for (int i = 0; i < objectList.size(); i++) {
 			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
 				foundObj = objectList.get(i);
-				foundObj.setStatus("Not Using");
+				foundObj.setStatus("NOT_IN_USE");
 				foundObj.setUser("Not Using");
 				System.out.println("DELETE : " + foundObj.getId().toString());
 			}
