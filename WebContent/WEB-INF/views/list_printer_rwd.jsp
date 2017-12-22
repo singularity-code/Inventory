@@ -90,6 +90,7 @@ input[type=text]:focus {
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
 			<button id="btnExport" onclick="exportToExcel()" style="width: 100px; height: 40px;">TO EXCEL</button>
 		</div>
+		<p id="broken" style="">Test</p>
 	</div>
 		<div id="toggleTarget" style="display: none;">
 			<div>
@@ -148,7 +149,7 @@ input[type=text]:focus {
 				<th/>
 				<th/>
 			</tr>
-			<tr ng-repeat="obj in list | filter:$ctrl.query as filtered ">
+			<tr class="row" id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered ">
 				<td style="width: 180px;"><a href="https://www.barcodesinc.com/generator/"><img src="https://www.barcodesinc.com/generator/image.php?code={{obj.id}}&style=197&type=C128B&width=154&height=50&xres=1&font=3" alt="the barcode printer: free barcode generator" border="0"></a></td>
 				<td>{{obj.index}}</td>
 				<td>{{obj.sn}}</td>
@@ -164,6 +165,7 @@ input[type=text]:focus {
 				<td>
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
 					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a>
+					<button class="deleteBtn" style="width: 100px; height: 40px;">DEL</button>
 				</td>
 				<td>
 			</tr>
@@ -367,6 +369,16 @@ function exportToExcel() {
 	link.href = uri + base64(format(template, ctx));
 	link.click();
 }
+$( document ).ready(function() {
+	console.log( "ready!" );
+	$(".deleteBtn").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		console.log(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "red";
+	});
+});
 </script>
 </body>
 </html>
