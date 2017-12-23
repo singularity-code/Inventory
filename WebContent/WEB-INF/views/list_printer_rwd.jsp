@@ -92,7 +92,6 @@ input[type=text]:focus {
 			<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 			<button class="button_small" onclick="clearSearch()" style="width: 100px; height: 40px;">Clear</button>
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
-			<button id="btnExport" onclick="exportToExcel()" style="width: 100px; height: 40px;">TO EXCEL</button>
 		</div>
 		<p id="broken" style="">Test</p>
 	</div>
@@ -151,7 +150,7 @@ input[type=text]:focus {
 				<th onclick="sortTable(11)">Update Date</th>
 				<th>Comment</th>
 				<th/>
-				<th/>
+				<th><button id="btnExport" onclick="exportToExcel()" style="width: 120px; height: 28px;"><i class="fa fa-file-excel-o fa-fw"></i> Export</button></th>
 			</tr>
 			<tr class={{obj.status}} id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered " >
 				<td>{{obj.index}}</td>

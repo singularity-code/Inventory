@@ -89,7 +89,6 @@ input[type=text]:focus {
 			<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 			<button class="button_small" onclick="clearSearch()" style="width: 100px; height: 40px;">Clear</button>
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
-			<button id="btnExport" onclick="exportToExcel()" style="width: 100px; height: 40px;">TO EXCEL</button>
 		</div>
 	</div>
 		<div id="toggleTarget" style="display: none;">
@@ -150,6 +149,8 @@ input[type=text]:focus {
 				<th onclick="sortTable(10)">Status</th>
 				<th onclick="sortTable(10)">Update Date</th>
 				<th>Comment</th>
+				<th/>
+				<th><button id="btnExport" onclick="exportToExcel()" style="width: 120px; height: 28px;"><i class="fa fa-file-excel-o fa-fw"></i> Export</button></th>
 			</tr>
 			<tr class={{obj.status}} id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered ">
 				<td>{{obj.index}}</td>
@@ -164,12 +165,8 @@ input[type=text]:focus {
 				<td>{{obj.status}}</td>
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
-				<td>
-					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
-				<!-- 	<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a> -->
-					<a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a>
-				</td>
-				<td>
+				<td><a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a></td>
+				<td><a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a></td>
 			</tr>
 		</table>
 		</div>

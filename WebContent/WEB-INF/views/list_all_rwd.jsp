@@ -77,7 +77,6 @@ table, tr, td {
 			<input type="search" id="search" placeholder="Enter Keyword..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
 			<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button>
 			<button ng-click="setTab('create-koiMaterial')" style="width: 100px; height: 40px;">Create</button>
-			<button id="btnExport" onclick="exportToExcel()" style="width: 100px; height: 40px;">TO EXCEL</button>
 		</div>
 	</div>
 	<div ng-show="isSet('create-koiMaterial')">
@@ -117,8 +116,8 @@ table, tr, td {
 		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
 				<th onclick="sortTable(1)">Idx</th>
-				<th onclick="sortTable(2)">S/N</th>
-				<th onclick="sortTable(3)">ID</th>
+				<th width="80px" onclick="sortTable(2)">S/N</th>
+				<th width="100px onclick="sortTable(3)">ID</th>
 				<th onclick="sortTable(4)">Type</th>
 				<th onclick="sortTable(5)">Brand</th>
 				<th onclick="sortTable(6)">Previous</th>
@@ -128,6 +127,8 @@ table, tr, td {
 				<th onclick="sortTable(10)">Status</th>
 				<th onclick="sortTable(10)">Update Date</th>
 				<th>Comment</th>
+				<th/>
+				<th><button id="btnExport" onclick="exportToExcel()" style="width: 120px; height: 28px;"><i class="fa fa-file-excel-o fa-fw"></i> Export</button></th>
 			</tr>
 			<tr class={{obj.status}} id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered ">
 				<td>{{obj.index}}</td>
@@ -142,12 +143,8 @@ table, tr, td {
 				<td>{{obj.status}}</td>
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
-				<td>
-					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
-					<!-- <a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a> -->
-					<a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a>
-				</td>
-				<td>
+				<td><a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a></td>
+				<td><a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a></td>
 			</tr>
 		</table>
 		</div>
