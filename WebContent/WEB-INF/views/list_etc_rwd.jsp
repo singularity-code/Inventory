@@ -134,7 +134,6 @@ input[type=text]:focus {
 		<div class="w3-container">
 		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
-				<th>Barcode</th>
 				<th onclick="sortTable(1)">Idx</th>
 				<th onclick="sortTable(2)">S/N</th>
 				<th onclick="sortTable(3)">ID</th>
@@ -148,7 +147,6 @@ input[type=text]:focus {
 				<th>Comment</th>
 			</tr>
 			<tr ng-repeat="obj in list | filter:$ctrl.query as filtered ">
-				<td style="width: 180px;"><a href="https://www.barcodesinc.com/generator/"><img src="https://www.barcodesinc.com/generator/image.php?code={{obj.id}}&style=197&type=C128B&width=154&height=50&xres=1&font=3" alt="the barcode printer: free barcode generator" border="0"></a></td>
 				<td>{{obj.index}}</td>
 				<td>{{obj.sn}}</td>
 				<td>{{obj.id}}</td>
