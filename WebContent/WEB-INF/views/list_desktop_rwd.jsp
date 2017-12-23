@@ -32,6 +32,9 @@ input[type=text]:focus {
 	text-decoration: line-through;
 	color: red;
 }
+.OK {
+	color: green;
+}
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
