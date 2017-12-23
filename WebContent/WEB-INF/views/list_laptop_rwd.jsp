@@ -28,6 +28,10 @@ table, tr, td {
 input[type=text]:focus {
 	border: 3px solid #555;
 }
+.NOT_IN_USE {
+	text-decoration: line-through;
+	color: red;
+}
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
@@ -139,10 +143,11 @@ input[type=text]:focus {
 				<th onclick="sortTable(7)">Location</th>
 				<th onclick="sortTable(8)">Campus</th>
 				<th onclick="sortTable(9)">User</th>
+				<th onclick="sortTable(10)">Status</th>
 				<th onclick="sortTable(10)">Update Date</th>
 				<th>Comment</th>
 			</tr>
-			<tr ng-repeat="obj in list | filter:$ctrl.query as filtered ">
+			<tr class={{obj.status}} id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered ">
 				<td>{{obj.index}}</td>
 				<td>{{obj.sn}}</td>
 				<td>{{obj.id}}</td>
@@ -152,11 +157,13 @@ input[type=text]:focus {
 				<td>{{obj.location}}</td>
 				<td>{{obj.campus}}</td>
 				<td>{{obj.user}}</td>
+				<td>{{obj.status}}</td>
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
 				<td>
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
-					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a>
+				<!-- 	<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a> -->
+					<a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a>
 				</td>
 				<td>
 			</tr>
@@ -359,6 +366,14 @@ function exportToExcel() {
 	link.href = uri + base64(format(template, ctx));
 	link.click();
 }
+$( document ).ready(function() {
+	$(".toggleDelBtn").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "red";
+	});
+});
 </script>
 
 </body>

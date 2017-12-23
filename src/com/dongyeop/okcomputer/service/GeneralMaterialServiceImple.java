@@ -260,6 +260,32 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	public boolean toggleDeletePrinter(String id) throws ParseException {
 		return daoMaterialPrinter.toggleDelete(id);
 	}
+	
+	@Override
+	public boolean toggleDeleteDesktop(String id) throws ParseException {
+		return daoMaterialDesktop.toggleDelete(id);
+	}
+
+	@Override
+	public boolean toggleDeleteLaptop(String id) throws ParseException {
+		return daoMaterialLaptop.toggleDelete(id);
+	}
+
+	@Override
+	public boolean toggleDeleteMonitor(String id) throws ParseException {
+		return daoMaterialMonitor.toggleDelete(id);
+	}
+
+	@Override
+	public boolean toggleDeleteMac(String id) throws ParseException {
+		return daoMaterialMac.toggleDelete(id);
+	}
+
+	@Override
+	public boolean toggleDeleteTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.toggleDelete(id);
+	}
+	
 	@Override
 	public Object getDesktop(String id) throws ParseException {
 		return daoMaterialDesktop.getMaterial(id);
@@ -320,4 +346,6 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		writeEngine.readAllJsonFiles(path);
 		return false;
 	}
+
+
 }

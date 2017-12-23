@@ -352,23 +352,23 @@ public class StockManagementController {
 		String url = referer.replace("http://localhost:8080/OK_COMPUTER/", "");
 		System.out.println("Re: " + url);
 		if (type.equals("Desktop")) {
-			materialService.deleteDesktop(id);
+			materialService.toggleDeleteDesktop(id);
 			model.addAttribute("objects", toJson(materialService.getDesktopList()));
 			return new ModelAndView("list_desktop_rwd");
 		} else if (type.equals("Laptop")) {
-			materialService.deleteLaptop(id);
+			materialService.toggleDeleteLaptop(id);
 			model.addAttribute("objects", toJson(materialService.getLaptopList()));
 			return new ModelAndView("list_laptop_rwd");
 		} else if (type.equals("Monitor")) {
-			materialService.deleteMonitor(id);
+			materialService.toggleDeleteMonitor(id);
 			model.addAttribute("objects", toJson(materialService.getMonitorList()));
 			return new ModelAndView("list_monitor_rwd");
 		} else if (type.equals("iMac")) {
-			materialService.deleteMac(id);
+			materialService.toggleDeleteMac(id);
 			model.addAttribute("objects", toJson(materialService.getMacList()));
 			return new ModelAndView("list_mac_rwd");
 		} else if (type.equals("Telephone")) {
-			materialService.deleteTelephone(id);
+			materialService.toggleDeleteTelephone(id);
 			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
 			return new ModelAndView("list_telephone_rwd");
 		} else if (type.equals("Printer")) {

@@ -9,6 +9,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+table, tr, td {
+	text-align: center;
+}
+.NOT_IN_USE {
+	text-decoration: line-through;
+	color: red;
+}
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
@@ -37,8 +44,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</div>
 	<div class="w3-bar-block">
 	<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>Close Menu</a>
-	<a href="./list_all" class="w3-bar-item w3-button w3-padding"><i class="fa fa-database fa-fw"></i>All</a><br>
-	<a href="./list_desktop" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-desktop fa-fw"></i>Desktop</a>
+	<a href="./list_all" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-database fa-fw"></i>All</a><br>
+	<a href="./list_desktop" class="w3-bar-item w3-button w3-padding"><i class="fa fa-desktop fa-fw"></i>Desktop</a>
 	<a href="./list_laptop" class="w3-bar-item w3-button w3-padding"><i class="fa fa-laptop fa-fw"></i>Laptop</a>
 	<a href="./list_monitor" class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>Monitor</a>
 	<a href="./list_printer" class="w3-bar-item w3-button w3-padding"><i class="fa fa-print fa-fw"></i>Printer</a>
@@ -118,10 +125,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<th onclick="sortTable(7)">Location</th>
 				<th onclick="sortTable(8)">Campus</th>
 				<th onclick="sortTable(9)">User</th>
+				<th onclick="sortTable(10)">Status</th>
 				<th onclick="sortTable(10)">Update Date</th>
 				<th>Comment</th>
 			</tr>
-			<tr ng-repeat="obj in list | filter:$ctrl.query as filtered ">
+			<tr class={{obj.status}} id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered ">
 				<td>{{obj.index}}</td>
 				<td>{{obj.sn}}</td>
 				<td>{{obj.id}}</td>
@@ -131,11 +139,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<td>{{obj.location}}</td>
 				<td>{{obj.campus}}</td>
 				<td>{{obj.user}}</td>
+				<td>{{obj.status}}</td>
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
 				<td>
 					<a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a>
-					<a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a>
+					<!-- <a href="./deleteKoiMaterial?id={{obj.id}}&type={{obj.type}}" onclick="return delConfirm();" class="w3-right">Remove</a> -->
+					<a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a>
 				</td>
 				<td>
 			</tr>
@@ -345,6 +355,14 @@ function exportToExcel() {
 	link.href = uri + base64(format(template, ctx));
 	link.click();
 }
+$( document ).ready(function() {
+	$(".toggleDelBtn").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "red";
+	});
+});
 </script>
 
 </body>
