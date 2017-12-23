@@ -166,7 +166,7 @@ input[type=text]:focus {
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
 				<td><a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a></td>
-				<td><a href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a></td>
+				<td><a type="checkbox" href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a></td>
 			</tr>
 		</table>
 		</div>

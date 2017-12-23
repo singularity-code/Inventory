@@ -160,12 +160,21 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		for (int i = 0; i < objectList.size(); i++) {
 			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
 				foundObj = objectList.get(i);
-				foundObj.setStatus("NOT_IN_USE");
-				foundObj.setUser("Not Using");
-				System.out.println("DELETE : " + foundObj.getId().toString());
+				if(foundObj.getStatus() == null) {
+					foundObj.setStatus("OK");
+					foundObj.setUser("Unknown");
+				}
+				if(!foundObj.getStatus().equals("NOT_IN_USE")) {
+					foundObj.setStatus("NOT_IN_USE");
+					foundObj.setUser("Not Using");
+					System.out.println("DELETE : " + foundObj.getId().toString());
+				} else {
+					foundObj.setStatus("OK");
+					foundObj.setUser("Unknown");
+				}
 			}
 		}
-		System.out.println("JSON PATH ON DELETE : " + DAO_OBJECT_JSONFILE_PATH);
+		System.out.println("JSON PATH ON UPDATE : " + DAO_OBJECT_JSONFILE_PATH);
 		writeJsonStoreRoom();
 		return writeJson();
 	}
