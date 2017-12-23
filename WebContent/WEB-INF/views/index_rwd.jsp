@@ -103,10 +103,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 
 <div class="w3-panel">
 	<div class="w3-row-padding" style="margin:0 -16px">
-	<div class="w3-threequarter">
-		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+	<div id="mainTable" class="w3-threequarter">
+		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr><h4><i class="fa fa-desktop w3-text-red w3-xlarge"></i> Computers (Lecture/Staff)</h4>
-				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
+				<th><button id="btnExport" onclick="exportToExcel()"><i class="fa fa-file-excel-o fa-fw"></i>Export</button></th>
 				<th style="text-align: center;">Market</th>
 				<th style="text-align: center;">Kent Lv1</th>
 				<th style="text-align: center;">Kent Lv5</th>
@@ -147,11 +147,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 				<td style="text-align: center;">{{totalComputerMap.kentL5Staff}}</td>
 				<td style="text-align: center;">-</td>
 			</tr>
-		</table>
 		<br>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr><h4><i class="fa fa-laptop w3-text-blue w3-xlarge"></i> Computers (Students)</h4>
-				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
+				<th></th>
 				<th style="text-align: center;">Market</th>
 				<th style="text-align: center;">Kent Lv1</th>
 				<th style="text-align: center;">Kent Lv5</th>
@@ -196,7 +195,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 		<br/>
 		<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr><h4><i class="fa fa-graduation-cap w3-text-green w3-xlarge"></i> Classroom, Library & Student Lounge</h4>
-				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
+				<th></th>
 				<th style="text-align: center;"colspan="2" >Market</th>
 				<th style="text-align: center;"colspan="2" >Kent Lv1</th>
 				<th style="text-align: center;"colspan="2" >Kent Lv5</th>
@@ -263,7 +262,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 				<th></th>
 			</tr>
 			<tr>
-				<th><button id="btnExport" onclick="exportToExcel()">TO EXCEL</button></th>
+				<th></th>
 				<th style="text-align: center;">Lecture/Staff</th>
 				<th style="text-align: center;">Student</th>
 				<th style="text-align: center;">Lecture/Staff</th>

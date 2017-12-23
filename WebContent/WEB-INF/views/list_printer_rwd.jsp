@@ -93,7 +93,6 @@ input[type=text]:focus {
 			<button class="button_small" onclick="clearSearch()" style="width: 100px; height: 40px;">Clear</button>
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
 		</div>
-		<p id="broken" style="">Test</p>
 	</div>
 		<div id="toggleTarget" style="display: none;">
 			<div>
