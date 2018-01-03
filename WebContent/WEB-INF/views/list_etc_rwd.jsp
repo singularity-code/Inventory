@@ -32,6 +32,9 @@ input[type=text]:focus {
 	text-decoration: line-through;
 	color: red;
 }
+.OK {
+	color: green;
+}
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
@@ -46,9 +49,6 @@ input[type=text]:focus {
 	<div class="w3-container w3-row">
 		<div class="w3-col s4">
 		<a href="./"><img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle"></a>
-	</div>
-	 <div class="w3-col s8 w3-bar">
-		<span>Hi, <strong>Michael</strong></span><br>
 	</div>
 	</div>
 	<hr>

@@ -13,6 +13,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	.reportRowSection {
 		text-align: center;
 	}
+.NOT_IN_USE {
+	text-decoration: line-through;
+	color: red;
+}
+.OK {
+	color: green;
+}
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
