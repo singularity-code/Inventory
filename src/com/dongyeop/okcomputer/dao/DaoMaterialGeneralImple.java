@@ -166,11 +166,11 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 				}
 				if(!foundObj.getStatus().equals("NOT_IN_USE")) {
 					foundObj.setStatus("NOT_IN_USE");
-					foundObj.setUser("Not Using");
+					//foundObj.setUser("Not Using");
 					System.out.println("DELETE : " + foundObj.getId().toString());
 				} else {
 					foundObj.setStatus("OK");
-					foundObj.setUser("None");
+					//foundObj.setUser("None");
 				}
 			}
 		}

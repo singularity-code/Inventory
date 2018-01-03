@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>KOI Inventory v0.4</title>
+<title>KOI Inventory</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,7 +19,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
 <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>Menu</button>
-<span class="w3-bar-item w3-right">KOI Inventory v0.5</span>
+<span class="w3-bar-item w3-right">KOI Inventory</span>
 </div>
 
 <!-- Sidebar/menu -->
@@ -27,12 +27,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 <div class="w3-container w3-row">
 	<div class="w3-col s4">
 	<a href="./"><img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle"></a>
-	</div>
-	 <div class="w3-col s8 w3-bar">
-	<span>Hi, <strong>Michael</strong></span><br>
-		 <!--     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-	  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
 	</div>
 </div>
 <hr>
