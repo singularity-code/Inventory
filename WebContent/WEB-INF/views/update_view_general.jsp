@@ -40,7 +40,7 @@
 		Status  <input type="text" id="status" name="status" value="${koiMaterial.status}">
 		Comment <input type="text" id="comment" name="comment" value="${koiMaterial.comment}">
 		<p align="center">
-			<a href="./" class="button_back">Back</a>
+			<a href="javascript:history.back()" class="button_back">Back</a>
 			<input class="button_mid" type="button" ng-click="reset()" value="Reset"/>
 			<input class="button_mid" type="submit" ng-click="updateGeneral(koiMaterial)" value="Apply"/>
 		</p>

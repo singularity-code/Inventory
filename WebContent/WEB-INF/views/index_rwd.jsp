@@ -30,7 +30,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 </div>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
 <div class="w3-container w3-row">
 	<div class="w3-col s4">
 	<a href="./"><img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle"></a>
@@ -61,7 +61,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main" style="margin-left:200px;margin-top:43px;">
 
 <!-- Header -->
 <header class="w3-container" style="padding-top:22px">
