@@ -33,7 +33,7 @@ input[type=text]:focus {
 	color: red;
 }
 .OK {
-	color: green;
+	color: #4169E1;
 }
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
@@ -182,7 +182,7 @@ app.controller("myCtrl", function($scope) {
 	$scope.status = ["Brand New", "Good", "Not Good", "Malfunction", "Broken", "Not Using"]
 	$scope.campus = ["Market", "Kent"];
 	$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
-						 "Student Canteen", "Lecture Office", "IT Office", "Library", "Libarray PrintBay", "Quiet Room",
+						 "Student Canteen", "Lecture Office", "IT Office", "Library", "Libarray PrintBay", "Quiet Room", "Server Room",
 						 "Server Room", "IT Store Room", "Marketing Store Room",
 						 "M101&102","M103", "M104", "M105", "M106", "M107", "M108",
 						 "K101&102", "K103", "K105", "K106"];
