@@ -28,12 +28,27 @@ table, tr, td {
 input[type=text]:focus {
 	border: 3px solid #555;
 }
-.NOT_IN_USE {
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.NOT_USING {
+	text-decoration: line-through;
+	color: orange;
+}
+.OK {
+	font-weight: bold;
+	color: #4169E1;
+}
+.BROKEN {
 	text-decoration: line-through;
 	color: red;
 }
-.OK {
-	color: #4169E1;
+.DISCARD {
+	text-decoration: line-through;
+	color: grey;
 }
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
@@ -143,8 +158,11 @@ input[type=text]:focus {
 				<th onclick="sortTable(8)">Campus</th>
 				<th onclick="sortTable(9)">User</th>
 				<th onclick="sortTable(10)">Status</th>
-				<th onclick="sortTable(10)">Update Date</th>
+				<th onclick="sortTable(11)">Update Date</th>
 				<th>Comment</th>
+				<th/>
+				<th/>
+				<th/>
 				<th/>
 				<th><button id="btnExport" onclick="exportToExcel()" style="width: 120px; height: 28px;"><i class="fa fa-file-excel-o fa-fw"></i> Export</button></th>
 			</tr>
@@ -162,7 +180,10 @@ input[type=text]:focus {
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
 				<td><a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a></td>
-				<td><a type="checkbox" href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a></td>
+				<td><a type="checkbox" href="./chgStatToOk?id={{obj.id}}&type={{obj.type}}" class="chgStatToOkBtn" style="width: 50px; height: 25px;"><i class="fa fa-check fa-fw"></i></a></td>
+				<td><a type="checkbox" href="./chgStatToNotUsing?id={{obj.id}}&type={{obj.type}}" class="chgStatToNotUsing" style="width: 50px; height: 25px;"><i class="fa fa-close fa-fw"></i></a></td>
+				<td><a type="checkbox" href="./chgStatToBroken?id={{obj.id}}&type={{obj.type}}" class="chgStatToBrokenBtn" style="width: 50px; height: 25px;"><i class="fa fa-wrench fa-fw"></i></a></td>
+				<td><a type="checkbox" href="./chgStatToDiscard?id={{obj.id}}&type={{obj.type}}" class="chgStatToDiscardBtn" style="width: 50px; height: 25px;"><i class="fa fa-trash-o fa-fw"></i></a></td>
 			</tr>
 		</table>
 		</div>
@@ -364,11 +385,28 @@ function exportToExcel() {
 	link.click();
 }
 $( document ).ready(function() {
-	$(".toggleDelBtn").click(function () {
+	$(".chgStatToOk").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.color = "#4169E1";
+	});
+	$(".chgStatToNotUsing").click(function () {
 		var id = this.closest('tr').id;
 		var element = document.getElementById(id);
 		element.style.setProperty("text-decoration", "line-through");
 		element.style.color = "red";
+	});
+	$(".chgStatToBrokenBtn").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "orange";
+	});
+	$(".chgStatToDiscardBtn").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "grey";
 	});
 });
 </script>

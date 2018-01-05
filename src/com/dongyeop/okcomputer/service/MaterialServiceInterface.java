@@ -40,13 +40,31 @@ public interface MaterialServiceInterface<T1, T2> {
 	boolean deletePrinter(T2 s) throws ParseException;
 	boolean deleteTelephone(T2 s) throws ParseException;
 	
-	boolean toggleDeleteDesktop(T2 s) throws ParseException;
-	boolean toggleDeleteLaptop(T2 s) throws ParseException;
-	boolean toggleDeleteMonitor(T2 s) throws ParseException;
-	boolean toggleDeleteMac(T2 s) throws ParseException;
-	boolean toggleDeleteTelephone(T2 s) throws ParseException;
-	boolean toggleDeletePrinter(T2 s) throws ParseException;
+	boolean chgStatToOkDesktop(T2 s) throws ParseException;
+	boolean chgStatToOkLaptop(T2 s) throws ParseException;
+	boolean chgStatToOkMonitor(T2 s) throws ParseException;
+	boolean chgStatToOkTelephone(T2 s) throws ParseException;
+	boolean chgStatToOkPrinter(T2 s) throws ParseException;
 	
+	boolean chgStatToNotUsingDesktop(T2 s) throws ParseException;
+	boolean chgStatToNotUsingLaptop(T2 s) throws ParseException;
+	boolean chgStatToNotUsingMonitor(T2 s) throws ParseException;
+	boolean chgStatToNotUsingTelephone(T2 s) throws ParseException;
+	boolean chgStatToNotUsingPrinter(T2 s) throws ParseException;
+	
+	//Change to broken
+	boolean chgStatToBrokenDesktop(T2 s) throws ParseException;
+	boolean chgStatToBrokenLaptop(T2 s) throws ParseException;
+	boolean chgStatToBrokenMonitor(T2 s) throws ParseException;
+	boolean chgStatToBrokenTelephone(T2 s) throws ParseException;
+	boolean chgStatToBrokenPrinter(T2 s) throws ParseException;
+
+	//Change to discard
+	boolean chgStatToDiscardDesktop(T2 s) throws ParseException;
+	boolean chgStatToDiscardLaptop(T2 s) throws ParseException;
+	boolean chgStatToDiscardMonitor(T2 s) throws ParseException;
+	boolean chgStatToDiscardTelephone(T2 s) throws ParseException;
+	boolean chgStatToDiscardPrinter(T2 s) throws ParseException;
 	
 	//Old
 	boolean deleteComputer(T2 s) throws ParseException;

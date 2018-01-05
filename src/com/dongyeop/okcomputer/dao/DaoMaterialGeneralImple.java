@@ -154,24 +154,63 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	}
 	
 	@Override
-	public boolean toggleDelete(T2 s) throws ParseException {
+	public boolean chgStatToOk(T2 s) throws ParseException {
+		T1 foundObj = null;
+		for (int i = 0; i < objectList.size(); i++) {
+			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
+				foundObj = objectList.get(i);
+				foundObj.setStatus("OK");
+				foundObj.setUser("None");
+				foundObj.setUpdatedate(foundObj.generateDate());
+			}
+		}
+		System.out.println("JSON PATH ON UPDATE : " + DAO_OBJECT_JSONFILE_PATH);
+		writeJsonStoreRoom();
+		return writeJson();
+	}
+	
+	@Override
+	public boolean chgStatToNotUsing(T2 s) throws ParseException {
 		System.out.println("DAO ID : " + s);
 		T1 foundObj = null;
 		for (int i = 0; i < objectList.size(); i++) {
 			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
 				foundObj = objectList.get(i);
-				if(foundObj.getStatus() == null) {
-					foundObj.setStatus("OK");
-					foundObj.setUser("None");
-				}
-				if(!foundObj.getStatus().equals("NOT_IN_USE")) {
-					foundObj.setStatus("NOT_IN_USE");
-					//foundObj.setUser("Not Using");
-					System.out.println("DELETE : " + foundObj.getId().toString());
-				} else {
-					foundObj.setStatus("OK");
-					//foundObj.setUser("None");
-				}
+				foundObj.setStatus("NOT_USING");
+				foundObj.setUser("None");
+				foundObj.setUpdatedate(foundObj.generateDate());
+			}
+		}
+		System.out.println("JSON PATH ON UPDATE : " + DAO_OBJECT_JSONFILE_PATH);
+		writeJsonStoreRoom();
+		return writeJson();
+	}
+	
+	@Override
+	public boolean chgStatToBroken(T2 s) throws ParseException {
+		T1 foundObj = null;
+		for (int i = 0; i < objectList.size(); i++) {
+			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
+				foundObj = objectList.get(i);
+				foundObj.setStatus("BROKEN");
+				foundObj.setUser("None");
+				foundObj.setUpdatedate(foundObj.generateDate());
+			}
+		}
+		System.out.println("JSON PATH ON UPDATE : " + DAO_OBJECT_JSONFILE_PATH);
+		writeJsonStoreRoom();
+		return writeJson();
+	}
+	
+	@Override
+	public boolean chgStatToDiscard(T2 s) throws ParseException {
+		T1 foundObj = null;
+		for (int i = 0; i < objectList.size(); i++) {
+			if (((String) s).equalsIgnoreCase(objectList.get(i).getId())) {
+				foundObj = objectList.get(i);
+				foundObj.setStatus("DISCARD");
+				foundObj.setUser("None");
+				foundObj.setUpdatedate(foundObj.generateDate());
 			}
 		}
 		System.out.println("JSON PATH ON UPDATE : " + DAO_OBJECT_JSONFILE_PATH);
@@ -566,6 +605,4 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
 }

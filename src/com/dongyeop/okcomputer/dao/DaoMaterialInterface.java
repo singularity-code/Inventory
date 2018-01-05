@@ -22,7 +22,12 @@ public interface DaoMaterialInterface<T1, T2> {
 	 int getListTotalByStaff();
 	boolean makeBackupJsonFile();
 	int selectTotalMarketStaffByDate(String date);
-	boolean toggleDelete(T2 s) throws ParseException;
+	
+	// Change Status
+	boolean chgStatToOk(T2 s) throws ParseException;
+	boolean chgStatToNotUsing(T2 s) throws ParseException;
+	boolean chgStatToBroken(T2 s) throws ParseException;
+	boolean chgStatToDiscard(T2 s) throws ParseException;
 	
 	int selectTotalMarketStaffByType(String type);
 	int selectTotalMarketStudentByType(String type);

@@ -255,35 +255,54 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	public boolean deleteTelephone(String id) throws ParseException {
 		return daoMaterialTelephone.delete(id);
 	}
+	@Override
+	public boolean chgStatToOkDesktop(String id) throws ParseException {
+		return daoMaterialDesktop.chgStatToOk(id);
+	}
+
+	@Override
+	public boolean chgStatToOkLaptop(String id) throws ParseException {
+		return daoMaterialLaptop.chgStatToOk(id);
+	}
+
+	@Override
+	public boolean chgStatToOkMonitor(String id) throws ParseException {
+		return daoMaterialMonitor.chgStatToOk(id);
+	}
+
+	@Override
+	public boolean chgStatToOkTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.chgStatToOk(id);
+	}
+
+	@Override
+	public boolean chgStatToOkPrinter(String id) throws ParseException {
+		return daoMaterialPrinter.chgStatToOk(id);
+	}
+
+	@Override
+	public boolean chgStatToNotUsingPrinter(String id) throws ParseException {
+		return daoMaterialPrinter.chgStatToNotUsing(id);
+	}
 	
 	@Override
-	public boolean toggleDeletePrinter(String id) throws ParseException {
-		return daoMaterialPrinter.toggleDelete(id);
-	}
-	
-	@Override
-	public boolean toggleDeleteDesktop(String id) throws ParseException {
-		return daoMaterialDesktop.toggleDelete(id);
+	public boolean chgStatToNotUsingDesktop(String id) throws ParseException {
+		return daoMaterialDesktop.chgStatToNotUsing(id);
 	}
 
 	@Override
-	public boolean toggleDeleteLaptop(String id) throws ParseException {
-		return daoMaterialLaptop.toggleDelete(id);
+	public boolean chgStatToNotUsingLaptop(String id) throws ParseException {
+		return daoMaterialLaptop.chgStatToNotUsing(id);
 	}
 
 	@Override
-	public boolean toggleDeleteMonitor(String id) throws ParseException {
-		return daoMaterialMonitor.toggleDelete(id);
+	public boolean chgStatToNotUsingMonitor(String id) throws ParseException {
+		return daoMaterialMonitor.chgStatToNotUsing(id);
 	}
 
 	@Override
-	public boolean toggleDeleteMac(String id) throws ParseException {
-		return daoMaterialMac.toggleDelete(id);
-	}
-
-	@Override
-	public boolean toggleDeleteTelephone(String id) throws ParseException {
-		return daoMaterialTelephone.toggleDelete(id);
+	public boolean chgStatToNotUsingTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.chgStatToNotUsing(id);
 	}
 	
 	@Override
@@ -347,5 +366,53 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		return false;
 	}
 
+	@Override
+	public boolean chgStatToBrokenDesktop(String id) throws ParseException {
+		return daoMaterialDesktop.chgStatToBroken(id);
+	}
 
+	@Override
+	public boolean chgStatToBrokenLaptop(String id) throws ParseException {
+		return daoMaterialLaptop.chgStatToBroken(id);
+	}
+
+	@Override
+	public boolean chgStatToBrokenMonitor(String id) throws ParseException {
+		return daoMaterialMonitor.chgStatToBroken(id);
+	}
+
+	@Override
+	public boolean chgStatToBrokenTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.chgStatToBroken(id);
+	}
+
+	@Override
+	public boolean chgStatToBrokenPrinter(String id) throws ParseException {
+		return daoMaterialPrinter.chgStatToBroken(id);
+	}
+
+	@Override
+	public boolean chgStatToDiscardDesktop(String id) throws ParseException {
+		return daoMaterialDesktop.chgStatToDiscard(id);
+	}
+
+	@Override
+	public boolean chgStatToDiscardLaptop(String id) throws ParseException {
+		return daoMaterialLaptop.chgStatToDiscard(id);
+	}
+
+	@Override
+	public boolean chgStatToDiscardMonitor(String id) throws ParseException {
+		return daoMaterialLaptop.chgStatToDiscard(id);
+	}
+
+	@Override
+	public boolean chgStatToDiscardTelephone(String id) throws ParseException {
+		return daoMaterialTelephone.chgStatToDiscard(id);
+	}
+
+	@Override
+	public boolean chgStatToDiscardPrinter(String id) throws ParseException {
+		return daoMaterialPrinter.chgStatToDiscard(id);
+	}
 }

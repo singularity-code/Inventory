@@ -344,35 +344,124 @@ public class StockManagementController {
 		return new ModelAndView(redirectUrl);
 	}
 	
-	@RequestMapping("/toggleDelete")
-	public ModelAndView toggleDelete(Model model, 
+	@RequestMapping("/chgStatToOk")
+	public ModelAndView chgStatToOk(Model model, 
 			@RequestHeader(value = "referer", required = false) final String referer, 
 			@RequestParam("type") String type, 
 			@RequestParam("id") String id) throws ParseException {
 		String url = referer.replace("http://localhost:8080/OK_COMPUTER/", "");
 		System.out.println("Re: " + url);
 		if (type.equals("Desktop")) {
-			materialService.toggleDeleteDesktop(id);
+			materialService.chgStatToOkDesktop(id);
 			model.addAttribute("objects", toJson(materialService.getDesktopList()));
 			return new ModelAndView("list_desktop_rwd");
 		} else if (type.equals("Laptop")) {
-			materialService.toggleDeleteLaptop(id);
+			materialService.chgStatToOkLaptop(id);
 			model.addAttribute("objects", toJson(materialService.getLaptopList()));
 			return new ModelAndView("list_laptop_rwd");
 		} else if (type.equals("Monitor")) {
-			materialService.toggleDeleteMonitor(id);
+			materialService.chgStatToOkMonitor(id);
 			model.addAttribute("objects", toJson(materialService.getMonitorList()));
 			return new ModelAndView("list_monitor_rwd");
-		} else if (type.equals("iMac")) {
-			materialService.toggleDeleteMac(id);
-			model.addAttribute("objects", toJson(materialService.getMacList()));
-			return new ModelAndView("list_mac_rwd");
 		} else if (type.equals("Telephone")) {
-			materialService.toggleDeleteTelephone(id);
+			materialService.chgStatToOkTelephone(id);
 			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
 			return new ModelAndView("list_telephone_rwd");
 		} else if (type.equals("Printer")) {
-			materialService.toggleDeletePrinter(id);
+			materialService.chgStatToOkPrinter(id);
+			model.addAttribute("objects", toJson(materialService.getPrinterList()));
+			return new ModelAndView("list_printer_rwd");
+		}
+		return new ModelAndView(redirectUrl);
+	}
+	
+	@RequestMapping("/chgStatToNotUsing")
+	public ModelAndView chgStatToNotUsing(Model model, 
+			@RequestHeader(value = "referer", required = false) final String referer, 
+			@RequestParam("type") String type, 
+			@RequestParam("id") String id) throws ParseException {
+		String url = referer.replace("http://localhost:8080/OK_COMPUTER/", "");
+		System.out.println("Re: " + url);
+		if (type.equals("Desktop")) {
+			materialService.chgStatToNotUsingDesktop(id);
+			model.addAttribute("objects", toJson(materialService.getDesktopList()));
+			return new ModelAndView("list_desktop_rwd");
+		} else if (type.equals("Laptop")) {
+			materialService.chgStatToNotUsingLaptop(id);
+			model.addAttribute("objects", toJson(materialService.getLaptopList()));
+			return new ModelAndView("list_laptop_rwd");
+		} else if (type.equals("Monitor")) {
+			materialService.chgStatToNotUsingMonitor(id);
+			model.addAttribute("objects", toJson(materialService.getMonitorList()));
+			return new ModelAndView("list_monitor_rwd");
+		} else if (type.equals("Telephone")) {
+			materialService.chgStatToNotUsingTelephone(id);
+			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+			return new ModelAndView("list_telephone_rwd");
+		} else if (type.equals("Printer")) {
+			materialService.chgStatToNotUsingPrinter(id);
+			model.addAttribute("objects", toJson(materialService.getPrinterList()));
+			return new ModelAndView("list_printer_rwd");
+		}
+		return new ModelAndView(redirectUrl);
+	}
+	
+	@RequestMapping("/chgStatToBroken")
+	public ModelAndView chgStatToBroken(Model model, 
+			@RequestHeader(value = "referer", required = false) final String referer, 
+			@RequestParam("type") String type, 
+			@RequestParam("id") String id) throws ParseException {
+		String url = referer.replace("http://localhost:8080/OK_COMPUTER/", "");
+		System.out.println("Re: " + url);
+		if (type.equals("Desktop")) {
+			materialService.chgStatToBrokenDesktop(id);
+			model.addAttribute("objects", toJson(materialService.getDesktopList()));
+			return new ModelAndView("list_desktop_rwd");
+		} else if (type.equals("Laptop")) {
+			materialService.chgStatToBrokenLaptop(id);
+			model.addAttribute("objects", toJson(materialService.getLaptopList()));
+			return new ModelAndView("list_laptop_rwd");
+		} else if (type.equals("Monitor")) {
+			materialService.chgStatToBrokenMonitor(id);
+			model.addAttribute("objects", toJson(materialService.getMonitorList()));
+			return new ModelAndView("list_monitor_rwd");
+		} else if (type.equals("Telephone")) {
+			materialService.chgStatToBrokenTelephone(id);
+			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+			return new ModelAndView("list_telephone_rwd");
+		} else if (type.equals("Printer")) {
+			materialService.chgStatToBrokenPrinter(id);
+			model.addAttribute("objects", toJson(materialService.getPrinterList()));
+			return new ModelAndView("list_printer_rwd");
+		}
+		return new ModelAndView(redirectUrl);
+	}
+	
+	@RequestMapping("/chgStatToDiscard")
+	public ModelAndView chgStatToDiscard(Model model, 
+			@RequestHeader(value = "referer", required = false) final String referer, 
+			@RequestParam("type") String type, 
+			@RequestParam("id") String id) throws ParseException {
+		String url = referer.replace("http://localhost:8080/OK_COMPUTER/", "");
+		System.out.println("Re: " + url);
+		if (type.equals("Desktop")) {
+			materialService.chgStatToDiscardDesktop(id);
+			model.addAttribute("objects", toJson(materialService.getDesktopList()));
+			return new ModelAndView("list_desktop_rwd");
+		} else if (type.equals("Laptop")) {
+			materialService.chgStatToDiscardLaptop(id);
+			model.addAttribute("objects", toJson(materialService.getLaptopList()));
+			return new ModelAndView("list_laptop_rwd");
+		} else if (type.equals("Monitor")) {
+			materialService.chgStatToDiscardMonitor(id);
+			model.addAttribute("objects", toJson(materialService.getMonitorList()));
+			return new ModelAndView("list_monitor_rwd");
+		} else if (type.equals("Telephone")) {
+			materialService.chgStatToDiscardTelephone(id);
+			model.addAttribute("objects", toJson(materialService.getTelephoneList()));
+			return new ModelAndView("list_telephone_rwd");
+		} else if (type.equals("Printer")) {
+			materialService.chgStatToDiscardPrinter(id);
 			model.addAttribute("objects", toJson(materialService.getPrinterList()));
 			return new ModelAndView("list_printer_rwd");
 		}

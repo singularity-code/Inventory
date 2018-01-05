@@ -92,6 +92,7 @@
 			</tr>
 			<tr>
 				<td>Status</td>
+				<td><select class="simple-form" id="status" name="status" ><option ng-repeat="x in status">{{x}}</option></select></td>
 				<td><input class="simple-form" type="text" id="status" name="status" value="${koiMaterial.status}"></td>
 			</tr>
 			<tr>
@@ -115,8 +116,9 @@
 		$scope.location = ["Office", "Office(Accounting)", "Office(Admission)", "Office(Academic)", "Reception", "Office(Marketing)", "Board Room", "Ricard Office", "Print Bay",
 			"Student Canteen", "Student Lounge", "Staff Kitchen","Lecture Office", "IT Office", "Server Room", "CR101", "CR102", "CR103", "CR104", "CR105", "CR106", "CR107", "CR108", "CR501", 
 			"CR502", "CR503", "CR504", "CR505"];
-		$scope.brand = ["Apple", "Acer", "Dell", "Hp", "Lenovo", "Samsung", "Sony", "LG", "Toshiba", "Panasonic", "TEAC", "Mitel",
+		$scope.brand = ["Apple", "Acer", "Dell", "Hp", "Lenovo", "LENOVO", "Samsung", "Sony", "LG", "Toshiba", "Panasonic", "TEAC", "Mitel",
 			"TP-Link","Netgear","CISCO", "Smeg","Omga","Royal Severeign","Westing"];
+		$scope.status = ["OK", "NOT_IN_USE", "BROKEN", "DISCARD"];
 
 		$scope.update = function (koiMaterial) {
 			$scope.master = angular.copy(koiMaterial);

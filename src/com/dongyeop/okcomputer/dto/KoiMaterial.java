@@ -166,7 +166,7 @@ public class KoiMaterial implements Material{
 	}
 
 	public String generateDate() {
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date now = Calendar.getInstance().getTime();
 		return dateFormat.format(now);
 	}
