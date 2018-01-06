@@ -42,6 +42,10 @@ input[type=text]:focus {
 	font-weight: bold;
 	color: #4169E1;
 }
+.NEW {
+	font-weight: bold;
+	color: #4169E1;
+}
 .BROKEN {
 	text-decoration: line-through;
 	color: red;
@@ -120,10 +124,7 @@ input[type=text]:focus {
 					<option value="" disabled selected >Type</option>
 					<option ng-repeat="x in type">{{x}}</option>
 				</select>
-				<select class="simple-form" ng-model="koiMaterial.status" name="status" required>
-					<option value="" disabled selected >Status</option>
-					<option ng-repeat="x in status">{{x}}</option>
-				</select>
+				<input class="simple-form" type="text"  name="status" readonly="readonly" value="NEW"/>
 				<select class="simple-form" ng-model="koiMaterial.campus" name="campus" required>
 					<option value="" disabled selected >Campus</option>
 					<option ng-repeat="x in campus">{{x}}</option>
@@ -205,13 +206,13 @@ app.controller("myCtrl", function($scope) {
 	
 	$scope.status = ["Brand New", "Good", "Not Good", "Malfunction", "Broken", "Not Using"]
 	$scope.campus = ["Market", "Kent"];
-	$scope.type = ["Switch", "Router", "Server", "Tablet", "Shreder", "Speaker", "Mouse", "Keyboard"];
+	$scope.type = ["Switch", "Router", "Server"];
 	$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
 						 "Student Canteen", "Lecture Office", "IT Office", "Library", "Libarray PrintBay", "Quiet Room",
 						 "Server Room", "IT Store Room", "Marketing Store Room",
 						 "M101&102","M103", "M104", "M105", "M106", "M107", "M108",
 						 "K101&102", "K103", "K105", "K106"];
-	$scope.brand = ["APPLE", "ACER", "DELL", "HP", "LENOVO", "SAMSUNG", "SONY","LG", "TOSHIBA"];
+	$scope.brand = ["CISCO", "APPLE", "ACER", "DELL", "HP", "LENOVO", "SAMSUNG", "SONY","LG", "TOSHIBA"];
 
 	$scope.update = function(computer) {
 		$scope.master = angular.copy(computer);

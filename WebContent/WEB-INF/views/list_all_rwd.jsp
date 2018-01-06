@@ -41,6 +41,10 @@ input[type=text]:focus {
 	font-weight: bold;
 	color: #4169E1;
 }
+.NEW {
+	font-weight: bold;
+	color: #4169E1;
+}
 .BROKEN {
 	text-decoration: line-through;
 	color: red;

@@ -42,6 +42,10 @@ input[type=text]:focus {
 	font-weight: bold;
 	color: #4169E1;
 }
+.NEW {
+	font-weight: bold;
+	color: #4169E1;
+}
 .BROKEN {
 	text-decoration: line-through;
 	color: red;
@@ -113,6 +117,10 @@ input[type=text]:focus {
 				<input class="simple-form" type="text" name="index" readonly="readonly" value={{nextIndex()}}>
 				<input class="simple-form" type="text" name="id" readonly="readonly" value={{nextId('staffDesktop')}}>
 				<input class="simple-form" type="text" name="type" readonly="readonly" value="Desktop">
+				<select class="simple-form" required>
+					<option>Staff</option>
+					<option>Student</option>
+				</select>
 				<input class="simple-form" type="text" placeholder="Name" ng-model="koiMaterial.name" name="name" required/>
 				<input class="simple-form" type="text" placeholder="User" ng-model="koiMaterial.user" name="user" required/>
 				<p>

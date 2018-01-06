@@ -42,6 +42,10 @@ input[type=text]:focus {
 	font-weight: bold;
 	color: #4169E1;
 }
+.NEW {
+	font-weight: bold;
+	color: #4169E1;
+}
 .BROKEN {
 	text-decoration: line-through;
 	color: red;
@@ -120,10 +124,7 @@ input[type=text]:focus {
 					<option value="" disabled selected >Type</option>
 					<option ng-repeat="x in type">{{x}}</option>
 				</select>
-				<select class="simple-form" ng-model="koiMaterial.status" name="status" required>
-					<option value="" disabled selected >Status</option>
-					<option ng-repeat="x in status">{{x}}</option>
-				</select>
+				<input class="simple-form" type="text"  name="status" readonly="readonly" value="NEW"/>
 				<select class="simple-form" ng-model="koiMaterial.campus" name="campus" required>
 					<option value="" disabled selected >Campus</option>
 					<option ng-repeat="x in campus">{{x}}</option>
