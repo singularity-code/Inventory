@@ -420,7 +420,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			if(obj.getType().equals(type)) {
-				if(obj.getCampus().equalsIgnoreCase("kent l5") && !obj.isStaffUser())  {
+				if(obj.getCampus().equalsIgnoreCase("kent l5") && !obj.isStaffUser() && obj.getStatus().equals("OK"))  {
 					total += 1;
 				}
 			}

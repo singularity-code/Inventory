@@ -174,8 +174,9 @@ public class KoiMaterial implements Material{
 	public boolean isStaffUser() {
 		if (getUserType().equals("1")) {
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 	
 	public String getUserType() {
