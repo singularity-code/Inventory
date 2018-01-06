@@ -116,10 +116,7 @@ input[type=text]:focus {
 				<input class="simple-form" type="text" placeholder="Name" ng-model="koiMaterial.name" name="name" required/>
 				<input class="simple-form" type="text" placeholder="User" ng-model="koiMaterial.user" name="user" required/>
 				<p>
-				<select class="simple-form" ng-model="koiMaterial.status" name="status" required>
-					<option value="" disabled selected >Status</option>
-					<option ng-repeat="x in status">{{x}}</option>
-				</select>
+				<input class="simple-form" type="text"  name="status" readonly="readonly" value="NEW"/>
 				<select class="simple-form" ng-model="koiMaterial.campus" name="campus" required>
 					<option value="" disabled selected >Campus</option>
 					<option ng-repeat="x in campus">{{x}}</option>
@@ -147,6 +144,7 @@ input[type=text]:focus {
 		<div class="w3-container">
 		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
+				<th>
 				<th onclick="sortTable(1)">Idx</th>
 				<th width="80px" onclick="sortTable(2)">S/N</th>
 				<th width="100px" onclick="sortTable(3)">ID</th>
@@ -159,13 +157,14 @@ input[type=text]:focus {
 				<th onclick="sortTable(10)">Status</th>
 				<th onclick="sortTable(11)">Update Date</th>
 				<th>Comment</th>
-				<th/>
-				<th/>
-				<th/>
-				<th/>
+				<th>
+				<th>
+				<th>
+				<th>
 				<th><button id="btnExport" onclick="exportToExcel()" style="width: 120px; height: 28px;"><i class="fa fa-file-excel-o fa-fw"></i> Export</button></th>
 			</tr>
 			<tr class={{obj.status}} id={{obj.id}} ng-repeat="obj in list | filter:$ctrl.query as filtered ">
+				<td><i class="fa fa-desktop w3-large"></i></td>
 				<td>{{obj.index}}</td>
 				<td>{{obj.sn}}</td>
 				<td>{{obj.id}}</td>
@@ -191,7 +190,7 @@ input[type=text]:focus {
 	<hr>
 	<!-- Footer -->
 	<footer class="w3-container w3-padding-16 w3-light-grey">
-	<p>Powered by Raspberry Pi, Java, Spring Framework <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	<p>Powered by Raspberry Pi</p>
 	</footer>
 </div>
 <script>
@@ -202,10 +201,8 @@ app.controller("myCtrl", function($scope) {
 	$scope.status = ["Brand New", "Good", "Not Good", "Malfunction", "Broken", "Not Using"]
 	$scope.campus = ["Market", "Kent"];
 	$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
-						 "Student Canteen", "Lecture Office", "IT Office", "Library", "Libarray PrintBay", "Quiet Room", "Server Room",
-						 "Server Room", "IT Store Room", "Marketing Store Room",
-						 "M101&102","M103", "M104", "M105", "M106", "M107", "M108",
-						 "K101&102", "K103", "K105", "K106"];
+						 "Student Canteen", "Lecture Office", "IT Office", "Library", "Library PrintBay", "Quiet Room", "Server Room",
+						 "IT Store Room", "Marketing Store Room", "M101&102","M103", "M104", "M105", "M106", "M107", "M108", "K101&102", "K103", "K105", "K106"];
 	$scope.brand = ["APPLE", "ACER", "DELL", "HP", "LENOVO", "SAMSUNG", "SONY","LG", "TOSHIBA"];
 
 	$scope.update = function(computer) {

@@ -28,12 +28,27 @@ table, tr, td {
 input[type=text]:focus {
 	border: 3px solid #555;
 }
-.NOT_IN_USE {
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.NOT_USING {
+	text-decoration: line-through;
+	color: orange;
+}
+.OK {
+	font-weight: bold;
+	color: #4169E1;
+}
+.BROKEN {
 	text-decoration: line-through;
 	color: red;
 }
-.OK {
-	color: green;
+.DISCARD {
+	text-decoration: line-through;
+	color: grey;
 }
 </style>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
@@ -132,6 +147,7 @@ input[type=text]:focus {
 		<div class="w3-container">
 		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
+				<th>
 				<th onclick="sortTable(1)">Idx</th>
 				<th onclick="sortTable(2)">S/N</th>
 				<th onclick="sortTable(3)">ID</th>
@@ -144,10 +160,14 @@ input[type=text]:focus {
 				<th onclick="sortTable(10)">Status</th>
 				<th onclick="sortTable(10)">Update Date</th>
 				<th>Comment</th>
-				<th/>
+				<th>
+				<th>
+				<th>
+				<th>
 				<th><button id="btnExport" onclick="exportToExcel()" style="width: 120px; height: 28px;"><i class="fa fa-file-excel-o fa-fw"></i> Export</button></th>
 			</tr>
 			<tr class={{obj.status}} id={{obj.id}}  ng-repeat="obj in list | filter:$ctrl.query as filtered ">
+				<td><i class="fa fa-fax w3-large"></i></td>
 				<td>{{obj.index}}</td>
 				<td>{{obj.sn}}</td>
 				<td>{{obj.id}}</td>
@@ -161,7 +181,10 @@ input[type=text]:focus {
 				<td id="updateDate">{{obj.updatedate}}</td>
 				<td>{{obj.comment}}</td>
 				<td><a href="./update_view_KoiMaterial?id={{obj.id}}&type={{obj.type}}">Edit</a></td>
-				<td><a type="checkbox" href="./toggleDelete?id={{obj.id}}&type={{obj.type}}" class="toggleDelBtn" style="width: 50px; height: 20px;">Mark</a></td>
+				<td><a type="checkbox" href="./chgStatToOk?id={{obj.id}}&type={{obj.type}}" class="chgStatToOkBtn" style="width: 50px; height: 25px;"><i class="fa fa-check fa-fw"></i></a></td>
+				<td><a type="checkbox" href="./chgStatToNotUsing?id={{obj.id}}&type={{obj.type}}" class="chgStatToNotUsing" style="width: 50px; height: 25px;"><i class="fa fa-close fa-fw"></i></a></td>
+				<td><a type="checkbox" href="./chgStatToBroken?id={{obj.id}}&type={{obj.type}}" class="chgStatToBrokenBtn" style="width: 50px; height: 25px;"><i class="fa fa-wrench fa-fw"></i></a></td>
+				<td><a type="checkbox" href="./chgStatToDiscard?id={{obj.id}}&type={{obj.type}}" class="chgStatToDiscardBtn" style="width: 50px; height: 25px;"><i class="fa fa-trash-o fa-fw"></i></a></td>
 			</tr>
 		</table>
 		</div>
