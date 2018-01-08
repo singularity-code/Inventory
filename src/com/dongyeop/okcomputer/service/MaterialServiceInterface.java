@@ -27,6 +27,11 @@ public interface MaterialServiceInterface<T1, T2> {
 	boolean createMac(T1 o);
 	boolean createPrinter(T1 o);
 	boolean createTelephone(T1 o);
+	boolean createRouter(T1 o);
+	boolean createSwitch(T1 o);
+	boolean createTablet(T1 o);
+	boolean createSpeaker(T1 o);
+	boolean createServer(T1 o);
 	
 	//Old
 	boolean createComputer(T1 o);
@@ -79,6 +84,8 @@ public interface MaterialServiceInterface<T1, T2> {
 	T1 getPrinter(T2 s) throws ParseException;
 	T1 getTelephone(T2 s) throws ParseException;
 	
+	T1 getEtcItItem(T2 s) throws ParseException;
+	
 	//Old
 	T1 getComputer(T2 s) throws ParseException;
 	T1 getTv(T2 s) throws ParseException;
@@ -90,6 +97,7 @@ public interface MaterialServiceInterface<T1, T2> {
 	boolean updateMac(T1 o) throws ParseException;
 	boolean updatePrinter(T1 o) throws ParseException;
 	boolean updateTelephone(T1 o) throws ParseException;
+	boolean updateEtcItItem(T1 o) throws ParseException;
 	
 	//Old
 	boolean updateComputer(T1 o) throws ParseException;
@@ -99,4 +107,5 @@ public interface MaterialServiceInterface<T1, T2> {
 	boolean swap(T1 prev, T1 next) throws ParseException;
 	
 	boolean readAllJsonFiles(String path) throws ParseException, IOException;
+
 }

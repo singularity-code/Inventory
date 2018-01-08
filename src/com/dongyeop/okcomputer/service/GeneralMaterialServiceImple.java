@@ -13,6 +13,11 @@ import com.dongyeop.okcomputer.dto.Computer;
 import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.okcomputer.dto.Monitor;
 import com.dongyeop.okcomputer.dto.Printer;
+import com.dongyeop.okcomputer.dto.Router;
+import com.dongyeop.okcomputer.dto.Server;
+import com.dongyeop.okcomputer.dto.Speaker;
+import com.dongyeop.okcomputer.dto.Switch;
+import com.dongyeop.okcomputer.dto.Tablet;
 import com.dongyeop.okcomputer.dto.Telephone;
 import com.dongyeop.okcomputer.dto.Tv;
 import com.dongyeop.okcomputer.engine.WrightEngine;
@@ -73,9 +78,55 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public boolean createTelephone(Object object) {
 		if(object instanceof Telephone) {
-			daoMaterialTelephone.create((KoiMaterial) object);
+			return daoMaterialTelephone.create((KoiMaterial) object);
+		} else {
+			return false;
 		}
-		return false;
+	}
+	
+	@Override
+	public boolean createRouter(Object object) {
+		if(object instanceof Router) {
+			return daoMaterialEtcIt.create((KoiMaterial) object);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean createSwitch(Object object) {
+		if(object instanceof Switch) {
+			return daoMaterialEtcIt.create((KoiMaterial) object);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean createTablet(Object object) {
+		if(object instanceof Tablet) {
+			return daoMaterialEtcIt.create((KoiMaterial) object);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean createSpeaker(Object object) {
+		if(object instanceof Speaker) {
+			return daoMaterialEtcIt.create((KoiMaterial) object);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean createServer(Object object) {
+		if(object instanceof Server) {
+			return daoMaterialEtcIt.create((KoiMaterial) object);
+		} else {
+			return false;
+		}
 	}
 
 	public boolean deleteComputer(String id) throws ParseException {
@@ -336,6 +387,11 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	}
 
 	@Override
+	public Object getEtcItItem(String id) throws ParseException {
+		return daoMaterialEtcIt.getMaterial(id);
+	}
+	
+	@Override
 	public boolean updateDesktop(Object o) throws ParseException {
 		return daoMaterialDesktop.update((KoiMaterial) o);
 	}
@@ -360,6 +416,11 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		return daoMaterialPrinter.update((KoiMaterial) o);
 	}
 
+	@Override
+	public boolean updateEtcItItem(Object o) throws ParseException {
+		return daoMaterialEtcIt.update((KoiMaterial) o);
+	}
+	
 	@Override
 	public boolean readAllJsonFiles(String path) throws ParseException, IOException {
 		writeEngine.readAllJsonFiles(path);
@@ -415,4 +476,5 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	public boolean chgStatToDiscardPrinter(String id) throws ParseException {
 		return daoMaterialPrinter.chgStatToDiscard(id);
 	}
+
 }

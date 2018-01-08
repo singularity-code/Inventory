@@ -205,7 +205,7 @@ app.controller("myCtrl", function($scope) {
 	
 	$scope.status = ["Brand New", "Good", "Not Good", "Malfunction", "Broken", "Not Using"]
 	$scope.campus = ["Market", "Kent"];
-	$scope.type = ["Switch", "Router", "Server"];
+	$scope.type = ["Switch", "Router", "Server", "Speaker", "Tablet"];
 	$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
 						 "Student Canteen", "Lecture Office", "IT Office", "Library", "Libarray PrintBay", "Quiet Room",
 						 "Server Room", "IT Store Room", "Marketing Store Room",

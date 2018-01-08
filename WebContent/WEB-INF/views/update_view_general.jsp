@@ -92,7 +92,6 @@
 			</tr>
 			<tr>
 				<td>Status</td>
-				<td><select class="simple-form" id="status" name="status" ><option ng-repeat="x in status">{{x}}</option></select></td>
 				<td><input class="simple-form" type="text" id="status" name="status" value="${koiMaterial.status}"></td>
 			</tr>
 			<tr>

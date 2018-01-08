@@ -19,6 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dongyeop.okcomputer.dto.Computer;
 import com.dongyeop.okcomputer.dto.Monitor;
 import com.dongyeop.okcomputer.dto.Printer;
+import com.dongyeop.okcomputer.dto.Router;
+import com.dongyeop.okcomputer.dto.Server;
+import com.dongyeop.okcomputer.dto.Speaker;
+import com.dongyeop.okcomputer.dto.Switch;
+import com.dongyeop.okcomputer.dto.Tablet;
 import com.dongyeop.okcomputer.dto.Telephone;
 import com.dongyeop.okcomputer.service.MaterialReport;
 import com.dongyeop.okcomputer.service.MaterialServiceInterface;
@@ -158,11 +163,6 @@ public class StockManagementController {
 			materialService.createMonitor(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getMonitorList()));
 			return new ModelAndView("list_monitor_rwd");
-		} else if (type.equals("iMac")) {
-			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
-			materialService.createMac("list_mac");
-			model.addAttribute("objects", toJson(materialService.getMacList()));
-			return new ModelAndView("list_mac_rwd");
 		} else if (type.equals("Telephone")) {
 			koiMaterial = new Telephone(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
 			materialService.createTelephone(koiMaterial);
@@ -173,6 +173,31 @@ public class StockManagementController {
 			materialService.createPrinter(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getPrinterList()));
 			return new ModelAndView("list_printer_rwd");
+		} else if (type.equals("Switch")) {
+			koiMaterial = new Switch(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createSwitch(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Router")) {
+			koiMaterial = new Router(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createRouter(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Speaker")) {
+			koiMaterial = new Speaker(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createSpeaker(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Tablet")) {
+			koiMaterial = new Tablet(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createTablet(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Server")) {
+			koiMaterial = new Server(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createServer(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
 		} 
 		return new ModelAndView(redirectUrl);
 	}
@@ -210,6 +235,26 @@ public class StockManagementController {
 		} else if (type.equals("Printer")) {
 			System.out.println("UPDATE TARGET : " + materialService.getPrinter(id));
 			koiMaterial = materialService.getPrinter(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("Switch")) {
+			koiMaterial = materialService.getEtcItItem(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("Router")) {
+			koiMaterial = materialService.getEtcItItem(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("Speaker")) {
+			koiMaterial = materialService.getEtcItItem(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("Tablet")) {
+			koiMaterial = materialService.getEtcItItem(id);
+			model.addAttribute("koiMaterial", koiMaterial);
+			return "update_view_general";
+		} else if (type.equals("Server")) {
+			koiMaterial = materialService.getEtcItItem(id);
 			model.addAttribute("koiMaterial", koiMaterial);
 			return "update_view_general";
 		} 
@@ -277,7 +322,6 @@ public class StockManagementController {
 		Date now = Calendar.getInstance().getTime();
 		String today = dateFormat.format(now);
 		Object koiMaterial = null;
-		System.out.println("UPDATE HIT!!!!");
 		if (type.equals("Desktop")) {
 			koiMaterial = new Computer(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateDesktop(koiMaterial);
@@ -308,6 +352,31 @@ public class StockManagementController {
 			materialService.updatePrinter(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getPrinterList()));
 			return new ModelAndView("list_printer_rwd");
+		} else if (type.equals("Switch")) {
+			koiMaterial = new Switch(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateEtcItItem(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Router")) {
+			koiMaterial = new Router(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateEtcItItem(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Speaker")) {
+			koiMaterial = new Speaker(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateEtcItItem(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Tablet")) {
+			koiMaterial = new Tablet(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateEtcItItem(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("Server")) {
+			koiMaterial = new Server(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateEtcItItem(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
 		} 
 		return new ModelAndView(redirectUrl);
 	}
