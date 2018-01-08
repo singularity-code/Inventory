@@ -359,7 +359,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int  selectTotalMarketStaffByType(String type) {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getType().equals(type)) {
+			if(obj.getType().equalsIgnoreCase(type)) {
 				if(obj.getCampus().equalsIgnoreCase("market") && obj.isStaffUser()) {
 					total += 1;
 				}
@@ -371,7 +371,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalMarketStudentByType(String type) {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getType().equals(type)) {
+			if(obj.getType().equalsIgnoreCase(type)) {
 				if(obj.getCampus().equalsIgnoreCase("market") && !obj.isStaffUser()) {
 					total += 1;
 				}
@@ -383,7 +383,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalKentL1StaffByType(String type) {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getType().equals(type)) {
+			if(obj.getType().equalsIgnoreCase(type)) {
 				if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStaffUser()) {
 					total += 1;
 				}
@@ -395,7 +395,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalKentL1StudentByType(String type) {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getType().equals(type)) {
+			if(obj.getType().equalsIgnoreCase(type)) {
 				if(obj.getCampus().equalsIgnoreCase("kent l1") && !obj.isStaffUser())  {
 					total += 1;
 				}
@@ -407,7 +407,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalKentL5StaffByType(String type) {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getType().equals(type)) {
+			if(obj.getType().equalsIgnoreCase(type)) {
 				if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStaffUser())  {
 					total += 1;
 				}
@@ -419,8 +419,8 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalKentL5StudentByType(String type) {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getType().equals(type)) {
-				if(obj.getCampus().equalsIgnoreCase("kent l5") && !obj.isStaffUser() && obj.getStatus().equals("OK"))  {
+			if(obj.getType().equalsIgnoreCase(type)) {
+				if(obj.getCampus().equalsIgnoreCase("kent l5") && !obj.isStaffUser())  {
 					total += 1;
 				}
 			}
@@ -431,7 +431,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int getListTotalByType(String type) {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getType().equals(type)) {
+			if(obj.getType().equalsIgnoreCase(type)) {
 				total += 1;
 			}
 		}

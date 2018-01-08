@@ -152,7 +152,6 @@ input[type=text]:focus {
 		<div class="w3-container">
 		<table id="mainTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 			<tr>
-				<th>
 				<th onclick="sortTable(1)">Idx</th>
 				<th width="80px" onclick="sortTable(2)">S/N</th>
 				<th width="120px" onclick="sortTable(3)">ID</th>

@@ -2,6 +2,8 @@ package com.dongyeop.okcomputer.service;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,6 @@ public class MaterialReportImple implements MaterialReport {
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialTelephone;
 	@Autowired private DaoMaterialInterface<KoiMaterial, String> daoMaterialTv;
 	
-	HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 	HashMap<String, Integer> snapshotMap = new HashMap<String, Integer>();
 
 	@Override
@@ -53,7 +54,7 @@ public class MaterialReportImple implements MaterialReport {
 	}
 
 	@Override
-	public HashMap<String, Integer> generateStandardReportMapByType(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao, String type) {
+	public HashMap<String, Integer> generateStandardReportMapEtcByType(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao, String type) {
 		map.put("marketStaff", daoMaterialEtc.selectTotalMarketStaffByType(type));
 		map.put("marketStudent", daoMaterialEtc.selectTotalMarketStudentByType(type));
 		map.put("kentL1Staff", daoMaterialEtc.selectTotalKentL1StaffByType(type));
@@ -61,65 +62,87 @@ public class MaterialReportImple implements MaterialReport {
 		map.put("kentL5Staff",  daoMaterialEtc.selectTotalKentL5StaffByType(type));
 		map.put("kentL5Student", daoMaterialEtc.selectTotalKentL5StudentByType(type));
 		map.put("total", daoMaterialEtc.getListTotalByType(type));
-		return resultMap;
+		return map;
+	}
+	
+	@Override
+	public HashMap<String, Integer> generateStandardReportMapEtcItByType(HashMap<String, Integer> map, DaoMaterialInterface<KoiMaterial, String> dao, String type) {
+		map.put("marketStaff", daoMaterialEtcIt.selectTotalMarketStaffByType(type));
+		map.put("marketStudent", daoMaterialEtcIt.selectTotalMarketStudentByType(type));
+		map.put("kentL1Staff", daoMaterialEtcIt.selectTotalKentL1StaffByType(type));
+		map.put("kentL1Student", daoMaterialEtcIt.selectTotalKentL1StudentByType(type));
+		map.put("kentL5Staff",  daoMaterialEtcIt.selectTotalKentL5StaffByType(type));
+		map.put("kentL5Student", daoMaterialEtcIt.selectTotalKentL5StudentByType(type));
+		map.put("total", daoMaterialEtcIt.getListTotalByType(type));
+		return map;
 	}
 	
 	@Override
 	public HashMap<String, Integer> selectTotalDesktopReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialDesktop);
 		return resultMap;
 	}
 	
 	@Override
 	public HashMap<String, Integer> selectTotalDesktopReportSnap(String date) {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateSnapshotReportMap(snapshotMap, daoMaterialDesktop, date);
 		return snapshotMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalLatptopReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialLaptop);
 		return resultMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalMonitorReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialMonitor);
 		return resultMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalMacReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialMac);
 		return resultMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalTelephoneReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialTelephone);
 		return resultMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalItEtcReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialEtcIt);
 		return resultMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalEtcReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialEtc);
 		return resultMap;
 	}
 
 	@Override
 	public HashMap<String, Integer> selectTotalPrinterReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialPrinter);
 		return resultMap;
 	}
 	
 	@Override
 	public HashMap<String, Integer> selectTotalTvReport() {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
 		generateStandardReportMap(resultMap, daoMaterialTv);
 		return resultMap;
 	}
@@ -231,7 +254,14 @@ public class MaterialReportImple implements MaterialReport {
 
 	@Override
 	public HashMap<String, Integer> selectEtcReportByType(String type) {
-		generateStandardReportMapByType(resultMap, daoMaterialDesktop, type);
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
+		generateStandardReportMapEtcByType(resultMap, daoMaterialEtc, type);
+		return resultMap;
+	}
+	
+	public HashMap<String, Integer> selectEtcItReportByType(String type) {
+		HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
+		generateStandardReportMapEtcItByType(resultMap, daoMaterialEtcIt, type);
 		return resultMap;
 	}
 	
@@ -240,4 +270,12 @@ public class MaterialReportImple implements MaterialReport {
 		return writeEngine.readSnapshots();
 	}
 
+	public static void printMap(Map map) {
+		Iterator it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry)it.next();
+			System.out.println(pair.getKey() + " = " + pair.getValue());
+			it.remove(); // avoids a ConcurrentModificationException
+		}
+	}
 }

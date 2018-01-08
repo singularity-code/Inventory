@@ -135,10 +135,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 			</tr>
 			<tr>
 				<td class="">Tablet</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td style="text-align: center;">{{totalTabletMap.marketStaff}}</td>
+				<td style="text-align: center;">{{totalTabletMap.kentL1Staff}}</td>
+				<td style="text-align: center;">{{totalTabletMap.kentL5Staff}}</td>
+				<td style="text-align: center;">{{totalTabletMap.total}}</td>
 			</tr>
 			<tr>
 				<td class="">Total</td>
@@ -176,13 +176,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 				<td style="text-align: center;">{{totalMacMap.kentL1Student}}</td>
 				<td style="text-align: center;">{{totalMacMap.kentL5Student}}</td>
 				<td style="text-align: center;">{{totalMacMap.totalByStudent}}</td>
-			</tr>
-			<tr>
-				<td class="">Tablet</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
 			</tr>
 			<tr>
 				<td class="">Total</td>
@@ -333,13 +326,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 			</tr>
 			<tr>
 				<td class="">DSLR Camera</td>
-				<td ></td>
-				<td ></td>
-				<td ></td>
-				<td ></td>
-				<td ></td>
-				<td ></td>
-				<td ></td>
+				<td style="text-align: center;">{{totalDSLRMap.marketStaff}}</td>
+				<td style="text-align: center;">{{totalDSLRMap.marketStudent}}</td>
+				<td style="text-align: center;">{{totalDSLRMap.kentL1Staff}}</td>
+				<td style="text-align: center;">{{totalDSLRMap.kentL1Student}}</td>
+				<td style="text-align: center;">{{totalDSLRMap.kentL5Staff}}</td>
+				<td style="text-align: center;">{{totalDSLRMap.kentL5Student}}</td>
+				<td style="text-align: center;">{{totalDSLRMap.total}}</td>
 			</tr>
 		</table>
 	</div>
@@ -371,6 +364,8 @@ app.controller("myCtrl", function($scope) {
 	$scope.totalTelephoneMap = ${totalTelephoneMap};
 	$scope.totalTvMap = ${totalTvMap};
 	$scope.totalComputerMap = ${totalComputerMap};
+	$scope.totalDSLRMap = ${totalDSLRMap};
+	$scope.totalTabletMap = ${totalTabletMap};
 	
 	//ETC
 	$scope.totalBarcodeMap = ${totalBarcodeMap};
