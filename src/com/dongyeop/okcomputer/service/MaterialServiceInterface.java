@@ -98,8 +98,9 @@ public interface MaterialServiceInterface<T1, T2> {
 	boolean updateMac(T1 o) throws ParseException;
 	boolean updatePrinter(T1 o) throws ParseException;
 	boolean updateTelephone(T1 o) throws ParseException;
-	boolean updateEtcItItem(T1 o) throws ParseException;
 	
+	boolean updateEtcItItem(T1 o) throws ParseException;
+	boolean updateEtcItem(T1 o) throws ParseException;
 	//Old
 	boolean updateComputer(T1 o) throws ParseException;
 	boolean updateTv(T1 o) throws ParseException;

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dongyeop.okcomputer.dto.Computer;
+import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.okcomputer.dto.Monitor;
 import com.dongyeop.okcomputer.dto.Printer;
 import com.dongyeop.okcomputer.dto.Router;
@@ -348,12 +349,16 @@ public class StockManagementController {
 				|| type.equalsIgnoreCase("Speaker")
 				|| type.equalsIgnoreCase("Tablet")
 				|| type.equalsIgnoreCase("Server")) {
-			koiMaterial = new Switch(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			koiMaterial = new KoiMaterial(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
 			materialService.updateEtcItItem(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getEtcItList()));
 			return new ModelAndView("list_itEtc_rwd");
-		} 
-		return new ModelAndView(redirectUrl);
+		} else {
+			koiMaterial = new KoiMaterial(index, sn, id, name, type, brand, user, previous, campus, location, today, status, comment);
+			materialService.updateEtcItem(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcList()));
+			return new ModelAndView("list_etc_rwd");
+		}
 	}
 	@RequestMapping("/deleteKoiMaterial")
 	public ModelAndView deleteKoiMaterial(Model model, 

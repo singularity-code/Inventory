@@ -427,6 +427,11 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	}
 	
 	@Override
+	public boolean updateEtcItem(Object o) throws ParseException {
+		return daoMaterialEtc.update((KoiMaterial) o);
+	}
+
+	@Override
 	public boolean readAllJsonFiles(String path) throws ParseException, IOException {
 		writeEngine.readAllJsonFiles(path);
 		return false;
@@ -481,5 +486,4 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	public boolean chgStatToDiscardPrinter(String id) throws ParseException {
 		return daoMaterialPrinter.chgStatToDiscard(id);
 	}
-
 }
