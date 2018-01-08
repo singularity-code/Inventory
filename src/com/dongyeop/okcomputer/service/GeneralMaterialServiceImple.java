@@ -390,6 +390,11 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	public Object getEtcItItem(String id) throws ParseException {
 		return daoMaterialEtcIt.getMaterial(id);
 	}
+
+	@Override
+	public Object getEtcItem(String id) throws ParseException {
+		return daoMaterialEtc.getMaterial(id);
+	}
 	
 	@Override
 	public boolean updateDesktop(Object o) throws ParseException {

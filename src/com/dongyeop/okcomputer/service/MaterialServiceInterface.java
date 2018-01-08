@@ -85,6 +85,7 @@ public interface MaterialServiceInterface<T1, T2> {
 	T1 getTelephone(T2 s) throws ParseException;
 	
 	T1 getEtcItItem(T2 s) throws ParseException;
+	T1 getEtcItem(T2 s) throws ParseException;
 	
 	//Old
 	T1 getComputer(T2 s) throws ParseException;
