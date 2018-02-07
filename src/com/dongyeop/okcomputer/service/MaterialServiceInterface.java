@@ -8,6 +8,7 @@ public interface MaterialServiceInterface<T1, T2> {
 	 Object getZabbixList();
 
 	T1 getDesktopList() throws ParseException;
+	Object getDesktopListByCampus(String campus) throws ParseException;
 	T1 getLaptopList() throws ParseException;
 	T1 getMonitorList() throws ParseException;
 	T1 getMacList() throws ParseException;

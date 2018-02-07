@@ -7,6 +7,10 @@ import org.json.simple.parser.ParseException;
 public interface DaoMaterialInterface<T1, T2> {
 	T1 getMaterial(T2 s) throws ParseException;
 	List<?> getAllMaterials() throws ParseException;
+	
+	// This function is not using as Sorting Table in HTML
+	List<?> getAllMaterialsByCampus(String campus) throws ParseException;
+	
 	boolean delete(T2 s) throws ParseException;
 	boolean create(T1 o);
 	boolean update(T1 o) throws ParseException;

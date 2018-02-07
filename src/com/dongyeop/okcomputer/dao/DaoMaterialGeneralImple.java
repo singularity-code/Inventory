@@ -24,6 +24,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	protected List<T1> objectList = null;
 	protected List<T1> snapshotList = null;
 	protected List<T1> storeRoomList = new ArrayList<>();
+	private List<T1> selectedList;
 
 	public DaoMaterialGeneralImple() {
 
@@ -133,6 +134,17 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	@Override
 	public List<?> getAllMaterials() throws ParseException {
 		return objectList;
+	}
+	
+	@Override
+	public List<?> getAllMaterialsByCampus(String campus) throws ParseException {
+		List<T1> list = new ArrayList<T1>();
+		for (int i = 0; i < objectList.size(); i++) {
+			if (((String) campus).equalsIgnoreCase(objectList.get(i).getCampus())) {
+				list.add(objectList.get(i));
+			}
+		}
+		return list;
 	}
 
 	@Override

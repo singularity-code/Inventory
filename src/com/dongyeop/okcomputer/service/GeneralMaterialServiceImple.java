@@ -179,6 +179,12 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 		System.out.println("SERVICE SIZE of Computers : " + desktops.size());
 		return desktops;
 	}
+	
+	@Override
+	public Object getDesktopListByCampus(String campus) throws ParseException {
+		List<?> desktops = daoMaterialDesktop.getAllMaterialsByCampus(campus);
+		return desktops;
+	}
 
 	@Override
 	public Object getLaptopList() throws ParseException {
