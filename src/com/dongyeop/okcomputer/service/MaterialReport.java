@@ -32,6 +32,7 @@ public interface MaterialReport {
 	int selectComputerTotalMarketStudent();
 	int selectComputerTotalKentL1Student();
 	int selectComputerTotalKentL5Student();
+	int getListTotalAvailableComputers();
 	
 	HashMap<String, Object> calcurateAllStudentCompuersSummary(); 
 	boolean makeBackupJsonFile();

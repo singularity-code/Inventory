@@ -240,7 +240,6 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	/* TODO: Use map instead of an object */
 	@Override
 	public boolean update(T1 object) throws ParseException {
-		objectList = readJson(DAO_OBJECT_JSONFILE_PATH);
 		boolean b = false;
 		for (int i = 0; i < objectList.size(); i++) {
 			if (((KoiMaterial) object).getId().equals(objectList.get(i).getId())) {
@@ -470,6 +469,17 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			if(obj.isStaffUser()) {
+				total += 1;
+			}
+		}
+		return total;
+	}
+	
+	@Override
+	public int getListTotalAvailable() {
+		int total = 0;
+		for (KoiMaterial obj : objectList) {
+			if(obj.getStatus().equalsIgnoreCase("OK") || obj.getStatus().equalsIgnoreCase("NEW")) {
 				total += 1;
 			}
 		}

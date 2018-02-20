@@ -99,6 +99,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 			<h4>Ratio</h4>
 		</div>
 	</div>
+	<div class="w3-quarter">
+		<div class="w3-container w3-cyan w3-padding-16">
+			<div class="w3-left"><i class="fa fa-desktop w3-xxxlarge"></i></div>
+			<div class="w3-right">
+				<h3>{{totalAvailableComputers}}</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4>Available PCs</h4>
+		</div>
+	</div>
 </div>
 
 <div class="w3-panel">
@@ -353,6 +363,7 @@ app.controller("myCtrl", function($scope) {
 	$scope.today = new Date().toUTCString();
 	$scope.enrolledStudent = 1703;
 	$scope.totalStudentComSummary = ${totalStudentComSummary};
+	$scope.totalAvailableComputers = ${totalAvailableComputers};
 	
 	$scope.totalDesktopMap = ${totalDesktopMap};
 	$scope.totalEtcMap = ${totalEtcMap};

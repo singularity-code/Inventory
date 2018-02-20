@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.dongyeop.okcomputer.dto.KoiMaterial;
 import com.dongyeop.okcomputer.service.GeneralMaterialServiceImple;

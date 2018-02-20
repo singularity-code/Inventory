@@ -219,6 +219,13 @@ public class MaterialReportImple implements MaterialReport {
 		return total;
 	}
 	
+	@Override
+	public int getListTotalAvailableComputers() {
+		int total = 0;
+		total += daoMaterialDesktop.getListTotalAvailable();
+		total += daoMaterialLaptop.getListTotalAvailable();
+		return total;
+	}
 	
 	@Override
 	public HashMap<String, Object> calcurateAllStudentCompuersSummary() {
