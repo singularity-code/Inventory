@@ -76,6 +76,7 @@ public class StockManagementController {
 		model.addAttribute("totalStudentComSummary", toJson(reportService.calcurateAllStudentCompuersSummary()));
 		
 		model.addAttribute("totalAvailableComputers", toJson(reportService.getListTotalAvailableComputers()));
+		model.addAttribute("duplicatedId", reportService.selectDuplicatedId());
 		return "index_rwd";
 	}
 	
@@ -361,6 +362,8 @@ public class StockManagementController {
 			return new ModelAndView("list_etc_rwd");
 		}
 	}
+	
+	
 	@RequestMapping("/deleteKoiMaterial")
 	public ModelAndView deleteKoiMaterial(Model model, 
 			@RequestHeader(value = "referer", required = false) final String referer, 

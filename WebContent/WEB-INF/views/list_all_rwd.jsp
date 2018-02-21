@@ -69,7 +69,6 @@ input[type=text]:focus {
 			<a href="./"><img class="" src='resources/img/koi_logo.png' style="width:50px;height:40px;" align="middle"></a>
 	</div>
 	 <div class="w3-col s8 w3-bar">
-		<span>Hi, <strong>Michael</strong></span><br>
 <!--			 <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
 		<a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 		<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
@@ -111,6 +110,10 @@ input[type=text]:focus {
 				</tr>
 			</table>
 			<input type="search" id="search" placeholder="Enter Keyword..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
+			<select id="selectCampus" style="width: 200px; height: 40px;" onchange=selectCampus()>
+				<option>Market</option>
+				<option>Kent</option>
+			</select>
 			<button class="button_small" onclick="myFunction()" style="width: 100px; height: 40px;">Clear</button>
 			<button ng-click="setTab('create-koiMaterial')" style="width: 100px; height: 40px;">Create</button>
 		</div>
@@ -298,6 +301,23 @@ app.controller("myCtrl", function($scope) {
 		return $scope.tab === tabNum;
 	};
 });
+function selectCampus() {
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("selectCampus");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("mainTable");
+	tr = table.getElementsByTagName("tr");
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[8];
+		if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+					tr[i].style.display = "none";
+			}
+		}
+	}
+}
 
 function myFunction() {
 	document.getElementById("search").value = "";

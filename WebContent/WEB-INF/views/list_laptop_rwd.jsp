@@ -104,6 +104,10 @@ input[type=text]:focus {
 				</tr>
 			</table>
 			<input type="search" id="search" placeholder="Enter Keyword..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
+			<select id="selectCampus" style="width: 200px; height: 40px;" onchange=selectCampus()>
+				<option>Market</option>
+				<option>Kent</option>
+			</select>
 			<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 			<button class="button_small" onclick="clearSearch()" style="width: 100px; height: 40px;">Clear</button>
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
@@ -151,7 +155,7 @@ input[type=text]:focus {
 				<th>
 				<th onclick="sortTable(1)">Idx</th>
 				<th onclick="sortTable(2)">S/N</th>
-				<th onclick="sortTable(3)">ID</th>
+				<th onclick="sortTable(3)" style="width: 100px";>ID</th>
 				<th onclick="sortTable(4)">Type</th>
 				<th onclick="sortTable(5)">Brand</th>
 				<th onclick="sortTable(6)">Previous</th>
@@ -159,7 +163,7 @@ input[type=text]:focus {
 				<th onclick="sortTable(8)">Campus</th>
 				<th onclick="sortTable(9)">User</th>
 				<th onclick="sortTable(10)">Status</th>
-				<th onclick="sortTable(10)">Update Date</th>
+				<th onclick="sortTable(11)">Update Date</th>
 				<th>Comment</th>
 				<th>
 				<th>
@@ -257,6 +261,23 @@ app.controller("myCtrl", function($scope) {
 		return $scope.tab === tabNum;
 	};
 });
+function selectCampus() {
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("selectCampus");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("mainTable");
+	tr = table.getElementsByTagName("tr");
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[8];
+		if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+					tr[i].style.display = "none";
+			}
+		}
+	}
+}
 
 function toggle() {
 	var x = document.getElementById("toggleTarget");

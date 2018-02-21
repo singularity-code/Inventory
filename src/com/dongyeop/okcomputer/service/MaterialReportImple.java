@@ -285,4 +285,18 @@ public class MaterialReportImple implements MaterialReport {
 			it.remove(); // avoids a ConcurrentModificationException
 		}
 	}
+
+	@Override
+	public int selectDuplicatedId() {
+		int total = 0;
+		total += daoMaterialDesktop.selectDuplicatedId();
+		total += daoMaterialEtc.selectDuplicatedId();
+		total += daoMaterialEtcIt.selectDuplicatedId();
+		total += daoMaterialLaptop.selectDuplicatedId();
+		total += daoMaterialMonitor.selectDuplicatedId();
+		total += daoMaterialPrinter.selectDuplicatedId();
+		total += daoMaterialTelephone.selectDuplicatedId();
+		total += daoMaterialTv.selectDuplicatedId();
+		return total;
+	}
 }

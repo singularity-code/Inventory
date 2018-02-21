@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.json.simple.parser.JSONParser;
@@ -626,5 +627,15 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int getListTotalByStaffSnap(String date) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public int selectDuplicatedId() {
+		int total = 0;
+		for(KoiMaterial obj : objectList) {
+			if(!obj.getIndex().equalsIgnoreCase(obj.getIndex()) && obj.getId().equalsIgnoreCase(obj.getId())) {
+				total ++;
+			}
+		}
+		return total;
 	}
 }

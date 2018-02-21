@@ -189,7 +189,7 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	@Override
 	public Object getLaptopList() throws ParseException {
 		List<?> laptops = daoMaterialLaptop.getAllMaterials();
-		System.out.println("SERVICE SIZE of Laptopss : " + laptops.size());
+		System.out.println("SERVICE SIZE of Laptops : " + laptops.size());
 		return laptops;
 	}
 

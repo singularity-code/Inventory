@@ -34,6 +34,9 @@ public interface MaterialReport {
 	int selectComputerTotalKentL5Student();
 	int getListTotalAvailableComputers();
 	
+	//System Report
+	int selectDuplicatedId();
+	
 	HashMap<String, Object> calcurateAllStudentCompuersSummary(); 
 	boolean makeBackupJsonFile();
 	HashMap<String, Integer> generateComputerTotalMap();

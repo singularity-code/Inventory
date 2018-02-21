@@ -104,7 +104,7 @@ input[type=text]:focus {
 				</tr>
 			</table>
 			<input type="search" id="search" placeholder="Enter Keyword..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
-			<select id="mybox" style="width: 200px; height: 40px;" onchange=selectCampus()>
+			<select id="selectCampus" style="width: 200px; height: 40px;" onchange=selectCampus()>
 				<option>Market</option>
 				<option>Kent</option>
 			</select>
@@ -265,23 +265,23 @@ app.controller("myCtrl", function($scope) {
 });
 
 function selectCampus() {
-	  var input, filter, table, tr, td, i;
-	  input = document.getElementById("mybox");
-	  filter = input.value.toUpperCase();
-	  table = document.getElementById("mainTable");
-	  tr = table.getElementsByTagName("tr");
-	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[8];
-	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
-	      } else {
-	        tr[i].style.display = "none";
-	      }
-	    }       
-	  }
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("selectCampus");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("mainTable");
+	tr = table.getElementsByTagName("tr");
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[8];
+		if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+					tr[i].style.display = "none";
+			}
+		}
 	}
-	
+}
+
 function toggle() {
 	var x = document.getElementById("toggleTarget");
 	if (x.style.display === "none") {

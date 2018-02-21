@@ -34,6 +34,7 @@ public interface DaoMaterialInterface<T1, T2> {
 	boolean chgStatToBroken(T2 s) throws ParseException;
 	boolean chgStatToDiscard(T2 s) throws ParseException;
 	
+	// Report
 	int selectTotalMarketStaffByType(String type);
 	int selectTotalMarketStudentByType(String type);
 	int selectTotalKentL1StaffByType(String type);
@@ -51,4 +52,7 @@ public interface DaoMaterialInterface<T1, T2> {
 	int selectTotalKentL5StudentSnap(String date);
 	int getListTotalByStudentSnap(String date);
 	int getListTotalByStaffSnap(String date);
+	
+	// System Report
+	int selectDuplicatedId();
 }

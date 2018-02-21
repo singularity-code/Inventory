@@ -104,6 +104,10 @@ input[type=text]:focus {
 				</tr>
 			</table>
 			<input type="search" id="search" placeholder="Enter Keyword..." style="width: 400px; height: 40px;" ng-model="$ctrl.query"/>
+			<select id="selectCampus" style="width: 200px; height: 40px;" onchange=selectCampus()>
+				<option>Market</option>
+				<option>Kent</option>
+			</select>
 			<button class="button_small" ng-click="setTab(1)" style="width: 100px; height: 40px;">Search</button>
 			<button class="button_small" onclick="clearSearch()" style="width: 100px; height: 40px;">Clear</button>
 			<button onclick="toggle()" style="width: 100px; height: 40px;">Create</button>
@@ -259,7 +263,23 @@ app.controller("myCtrl", function($scope) {
 		return $scope.tab === tabNum;
 	};
 });
-
+function selectCampus() {
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("selectCampus");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("mainTable");
+	tr = table.getElementsByTagName("tr");
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[7];
+		if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+					tr[i].style.display = "none";
+			}
+		}
+	}
+}
 function toggle() {
 	var x = document.getElementById("toggleTarget");
 	if (x.style.display === "none") {
