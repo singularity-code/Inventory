@@ -1,12 +1,11 @@
 package com.dongyeop.test;
 
 import org.junit.Test;
-
 import static org.junit.Assert.assertTrue;
 
-public class UnitTest {
+public class TestClassTest {
 	@Test
-	public void test() {
-		assertTrue(true);
+	public void test1() {
+		assertTrue(false);
 	}
 }

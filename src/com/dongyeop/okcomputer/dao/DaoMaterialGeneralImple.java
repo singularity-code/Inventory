@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.json.simple.parser.JSONParser;
@@ -25,7 +24,6 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	protected List<T1> objectList = null;
 	protected List<T1> snapshotList = null;
 	protected List<T1> storeRoomList = new ArrayList<>();
-	private List<T1> selectedList;
 
 	public DaoMaterialGeneralImple() {
 
