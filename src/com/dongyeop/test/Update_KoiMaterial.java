@@ -17,18 +17,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class Update_KoiMaterial {
-	private String index = "0";
-	private String sn = "H-Test";
-	private String id = "Test Name";
-	private String type = "Desktop";
-	private String brand = "No Brand";
-	private String name = "Test";
-	private String previous = "None";
-	private String user = "Test user";
-	private String campus = "Market";
-	private String location = "Test Location";
-	private String status = "New";
-	private String comment = "No comment";
+	/*
+	 * private String index = "0"; private String sn = "H-Test"; private String id = "Test Name"; private String type = "Desktop"; private String brand = "No Brand"; private String name = "Test"; private String previous = "None"; private String user = "Test user"; private String campus = "Market"; private String location = "Test Location"; private String status = "New"; private String comment = "No comment";
+	 */
 
 	private JSONParser parser = new JSONParser();
 	private List<?> objectList = null;
@@ -36,7 +27,6 @@ public class Update_KoiMaterial {
 
 	@Before
 	public void before_01() {
-		user = "Test user";
 	}
 
 	@Test
