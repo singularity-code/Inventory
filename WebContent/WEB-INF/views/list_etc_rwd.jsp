@@ -212,12 +212,13 @@ app.controller("myCtrl", function($scope) {
 	$scope.type = ["Projector", "Microwave", "TV", "Advertisement Board", "Fan", "Barcode Reader", "Refridgerator", "Laminator", "Board Alarm Sensor",
 					"MIC", "Music Player", "Wine Refrigerator", "Mobile Phone", "EFTPOS Machine", "Monitor Stand", "FAX", "DSLR", "Fiber Optical Cable",
 					"Air Conditioner", "CCTV", "Hand Dryer", "Coffee Machine"];
-	$scope.location = ["Accounting", "Admission", "Academic", "Reception", "Marketing", "Board Room", "Ricard Office", "Print Bay",
-						 "Student Canteen", "Lecture Office", "IT Office", "Library", "Libarray PrintBay", "Quiet Room",
-						 "Server Room", "IT Store Room", "Marketing Store Room",
-						 "M101&102","M103", "M104", "M105", "M106", "M107", "M108",
-						 "K101&102", "K103", "K105", "K106"];
-	$scope.brand = ["APPLE", "ACER", "DELL", "HP", "LENOVO", "SAMSUNG", "SONY","LG", "TOSHIBA"];
+	$scope.location = ["Office", "Office(Accounting)", "Office(Admission)", "Office(Academic)", "Reception", "Office(Marketing)", "Board Room", "Ricard Office", "Print Bay",
+		"Student Canteen", "Student Lounge", "Staff Kitchen","Lecture Office", "IT Office", "Server Room", "Marketing Store Room",
+		"CR101&102", "CR101", "CR102", "CR103", "CR104", "CR105", "CR106", "CR107", "CR108", 
+		"CR501", "CR502", "CR503", "CR504", "CR505", "CR506"];
+	
+	$scope.brand = ["APPLE", "ACER", "DELL", "HP", "LENOVO", "SAMSUNG", "SONY", "LG", "TOSHIBA", "PANASONC", "TEAC", "MITEL",
+		"TP-LINK","NETGEAR","CISCO", "SMEG","OMEGA","Royal Severeign","WESTING"];
 
 	$scope.update = function(computer) {
 		$scope.master = angular.copy(computer);

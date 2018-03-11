@@ -6,12 +6,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ApplicationType {
-	public static final ApplicationProfile applicationProfile = ApplicationProfile.LOCAL;
-//	public static final ApplicationProfile applicationProfile = ApplicationProfile.TEST_SERVER;
+//	public static final ApplicationProfile applicationProfile = ApplicationProfile.LOCAL;
+	public static final ApplicationProfile applicationProfile = ApplicationProfile.TEST_SERVER;
 	
 	public static String getJsonFilePath() {
 		if(applicationProfile == ApplicationProfile.LOCAL)
-			 return "C:\\testdata\\materials\\"; 
+			 return "/Users/chris/Desktop/testdata/materials/"; 
 		else return "/home/pi/Desktop/testdata/";
 	}
 	
@@ -19,7 +19,7 @@ public class ApplicationType {
 		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 		Date today = new Date();
 		
-		File backupDirectory = new File("C:\\testdata\\materials\\snapshot\\" + dateFormat.format(today));
+		File backupDirectory = new File("/Users/chris/Desktop/testdata/materials/" + dateFormat.format(today));
 		if(!backupDirectory.exists()) {
 			backupDirectory.mkdir();
 		}
@@ -31,7 +31,7 @@ public class ApplicationType {
 	
 	public static String getJsonBackupPathWithoutDate() {
 		if(applicationProfile == ApplicationProfile.LOCAL)
-			 return "C:\\testdata\\materials\\snapshot\\"; 
+			 return "/Users/chris/Desktop/testdata/materials/snapshot/"; 
 		else return "/home/pi/Desktop/testdata/snapshot/";
 	}
 }
