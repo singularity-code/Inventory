@@ -319,7 +319,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalMarketStudent() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getCampus().equalsIgnoreCase("market") && !obj.isStaffUser()) {
+			if(obj.getCampus().equalsIgnoreCase("market") && obj.isStudentUser()) {
 				total += 1;
 			}
 		}
@@ -339,7 +339,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalKentL1Student() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getCampus().equalsIgnoreCase("kent l1") && !obj.isStaffUser())  {
+			if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStudentUser())  {
 				total += 1;
 			}
 		}
@@ -359,7 +359,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 	public int selectTotalKentL5Student() {
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
-			if(obj.getCampus().equalsIgnoreCase("kent l5") && !obj.isStaffUser())  {
+			if(obj.getCampus().equalsIgnoreCase("kent l5") && obj.isStudentUser())  {
 				total += 1;
 			}
 		}
@@ -382,7 +382,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			if(obj.getType().equalsIgnoreCase(type)) {
-				if(obj.getCampus().equalsIgnoreCase("market") && !obj.isStaffUser()) {
+				if(obj.getCampus().equalsIgnoreCase("market") && obj.isStudentUser()) {
 					total += 1;
 				}
 			}
@@ -406,7 +406,7 @@ public class DaoMaterialGeneralImple<T1 extends KoiMaterial, T2> implements DaoM
 		int total = 0;
 		for(KoiMaterial obj : objectList) {
 			if(obj.getType().equalsIgnoreCase(type)) {
-				if(obj.getCampus().equalsIgnoreCase("kent l1") && !obj.isStaffUser())  {
+				if(obj.getCampus().equalsIgnoreCase("kent l1") && obj.isStudentUser())  {
 					total += 1;
 				}
 			}

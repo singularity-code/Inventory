@@ -179,6 +179,14 @@ public class KoiMaterial implements Material{
 		}
 	}
 	
+	public boolean isStudentUser() {
+		if (getUserType().equals("2")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public String getUserType() {
 		return this.getId().substring(3, 4);
 	}

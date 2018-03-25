@@ -21,6 +21,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 	color: green;
 }
 </style>
+<head>
+	<spring:url value="/resources/js/main.js" var="mainJs" />
+	<script src="${mainJs}"></script>
+</head>
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
 <!-- Top container -->
@@ -193,13 +197,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 				<td style="text-align: center;" >{{totalLaptopMap.kentL5Student}}</td>
 				<td style="text-align: center;">{{totalLaptopMap.totalByStudent}}</td>
 			</tr>
+			<!--  
 			<tr>
 				<td class="">Apple iMac</td>
 				<td style="text-align: center;"id="marketStudent3" >{{totalMacMap.marketStudent}}</td>
 				<td style="text-align: center;">{{totalMacMap.kentL1Student}}</td>
 				<td style="text-align: center;">{{totalMacMap.kentL5Student}}</td>
 				<td style="text-align: center;">{{totalMacMap.totalByStudent}}</td>
-			</tr>
+			</tr>-->
 			<tr>
 				<td class="">Total</td>
 				<td style="text-align: center;">{{totalComputerMap.marketStudent}}</td>
@@ -364,7 +369,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif}
 <hr>
 <!-- Footer -->
 <footer class="w3-container w3-padding-16 w3-light-grey">
-	<p>Powered by Raspberry Pi, Java, Spring Framework <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	<p>Powered by Raspberry Pi</p>
 </footer>
 
 <!-- End page content -->

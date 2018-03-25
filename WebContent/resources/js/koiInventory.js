@@ -1,4 +1,87 @@
-<script type="text/javascript">
+function selectCampus() {
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("selectCampus");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("mainTable");
+	tr = table.getElementsByTagName("tr");
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[8];
+		if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+					tr[i].style.display = "none";
+			}
+		}
+	}
+}
+
+function selectUser() {
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("selectUser");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("mainTable");
+	tr = table.getElementsByTagName("tr");
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[9];
+		if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+					tr[i].style.display = "none";
+			}
+		}
+	}
+}
+
+function toggle() {
+	var x = document.getElementById("toggleTarget");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+
+function clearSearch() {
+	document.getElementById("search").value = "";
+}
+function delConfirm() {
+	console.log(confirm("Are you sure to deleteComputer?"));
+	return $.confirm("Are you sure?");
+}
+
+function lastEdit() {
+	var x = document.lastModified;
+	document.getElementById("updateDate").innerHTML = x;
+}
+
+function markBroken() {
+	stockId.style.opacity = "1.0";
+}
+
+//Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+//Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+//Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+	if (mySidebar.style.display === 'block') {
+		mySidebar.style.display = 'none';
+		overlayBg.style.display = "none";
+	} else {
+		mySidebar.style.display = 'block';
+		overlayBg.style.display = "block";
+	}
+}
+
+//Close the sidebar with the close button
+function w3_close() {
+	mySidebar.style.display = "none";
+	overlayBg.style.display = "none";
+}
 function sortTable(n) {
 	var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 	table = document.getElementById("mainTable");
@@ -74,10 +157,33 @@ function exportToExcel() {
 		table : htmls
 	}
 
-
 	var link = document.createElement("a");
 	link.download = "export.xls";
 	link.href = uri + base64(format(template, ctx));
 	link.click();
 }
-</script>
+$( document ).ready(function() {
+	$(".chgStatToOk").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.color = "#4169E1";
+	});
+	$(".chgStatToNotUsing").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "red";
+	});
+	$(".chgStatToBrokenBtn").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "orange";
+	});
+	$(".chgStatToDiscardBtn").click(function () {
+		var id = this.closest('tr').id;
+		var element = document.getElementById(id);
+		element.style.setProperty("text-decoration", "line-through");
+		element.style.color = "grey";
+	});
+});

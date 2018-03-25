@@ -7,53 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<style>
-html,body,h1,h2,h3,h4,h5 {
-	font-family: "Raleway", sans-serif
-}
-table, tr, td {
-	text-align: center;
-}
-.simple-form {
-	width: 60%;
-	padding: 6px 10px;
-	margin: 4px 0;
-	box-sizing: border-box;
-	border: 3px solid #ccc;
-	-webkit-transition: 0.5s;
-	transition: 0.5s;
-	outline: none;
-}
-input[type=text]:focus {
-	border: 3px solid #555;
-}
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-.NOT_USING {
-	text-decoration: line-through;
-	color: orange;
-}
-.OK {
-	font-weight: bold;
-	color: #4169E1;
-}
-.NEW {
-	font-weight: bold;
-	color: #4169E1;
-}
-.BROKEN {
-	text-decoration: line-through;
-	color: red;
-}
-.DISCARD {
-	text-decoration: line-through;
-	color: grey;
-}
-</style>
+<link href="${pageContext.request.contextPath}/resources/koiInventory.js" type="text/javascript" >
+<link href="${pageContext.request.contextPath}/resources/css/basic.css" rel="stylesheet" >
+
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
 
 <!-- Top container -->
@@ -212,7 +168,7 @@ input[type=text]:focus {
 	</div>
 	<!-- Footer -->
 	<footer class="w3-container w3-padding-16 w3-light-grey">
-	<p>Powered by Raspberry Pi, Java, Spring Framework, Angular1.6, <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	<p>Powered by Raspberry Pi</p>
 	</footer>
 
 	<!-- End page content -->

@@ -232,7 +232,7 @@ public class MaterialReportImple implements MaterialReport {
 		HashMap<String, Object> studentSummaryMap = new HashMap<String, Object>();
 		float total = 0;
 		float result = 0;
-		float noOfStd = 1703;
+		float noOfStd = 2258;
 
 		total += daoMaterialDesktop.getListTotalByStudent();
 		total += daoMaterialLaptop.getListTotalByStudent();
