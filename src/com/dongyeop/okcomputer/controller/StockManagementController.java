@@ -594,10 +594,13 @@ public class StockManagementController {
 		return "list_etc_rwd";
 	}
 	@RequestMapping("/makeBackupJsonFile")
-	public String makeBackupJsonFile(Model model) throws ParseException, IOException {
+	public ModelAndView makeBackupJsonFile(Model model) throws ParseException, IOException {
 		reportService.makeBackupJsonFile();
-		model.addAttribute("desktopSnap", toJson(reportService.selectTotalDesktopReportSnap("19122017")));
-		return "report_snapshots";
+		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+		Date now = Calendar.getInstance().getTime();
+		String today = dateFormat.format(now);
+		//model.addAttribute("desktopSnap", toJson(reportService.selectTotalDesktopReportSnap(today)));
+		return new ModelAndView(redirectUrl);
 	}
 	@RequestMapping("/barcodes")
 	public String barcodes(Model model) throws ParseException, IOException {

@@ -40,7 +40,6 @@
 	<a href="./list_telephone" class="w3-bar-item w3-button w3-padding"><i class="fa fa-fax fa-fw"></i>Telephone</a>
 	<a href="./list_itEtc" class="w3-bar-item w3-button w3-padding"><i class="fa fa-database fa-fw"></i>IT ETC</a>
 	<a href="./list_etc" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-cubes fa-fw"></i>ETC</a>
-	<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Settings</a><br><br>
 	</div>
 </nav>
 <!-- Overlay effect when opening sidebar on small screens -->
