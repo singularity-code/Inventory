@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ApplicationType {
-	public static final ApplicationProfile applicationProfile = ApplicationProfile.LOCAL;
-//	public static final ApplicationProfile applicationProfile = ApplicationProfile.TEST_SERVER;
+//	public static final ApplicationProfile applicationProfile = ApplicationProfile.LOCAL;
+	public static final ApplicationProfile applicationProfile = ApplicationProfile.TEST_SERVER;
 	
 	public static String getJsonFilePath() {
 		if(applicationProfile == ApplicationProfile.LOCAL)
@@ -19,14 +19,21 @@ public class ApplicationType {
 		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 		Date today = new Date();
 		
-		File backupDirectory = new File("/Users/chris/Desktop/Inventory/" + dateFormat.format(today));
-		if(!backupDirectory.exists()) {
-			backupDirectory.mkdir();
-		}
 		if(applicationProfile == ApplicationProfile.LOCAL) {
-			return backupDirectory + "/";
+			File backupDirectory = new File("/Users/chris/Desktop/Inventory/" + dateFormat.format(today) + "/");
+			String backupDirectoryLocalName = backupDirectory.toString();
+			if(!backupDirectory.exists()) {
+				backupDirectory.mkdir();
+			}
+			return backupDirectoryLocalName;
+		} else {
+			File backupDirectoryPi = new File("/home/pi/Desktop/testdata/snapshot/" + dateFormat.format(today) + "/");
+			String backupDirectoryPiName = backupDirectoryPi.toString();
+			if(!backupDirectoryPi.exists()) {
+				backupDirectoryPi.mkdir();
+			}
+			return backupDirectoryPiName;
 		}
-		return "home/pi/Desktop/testdata/";
 	}
 	
 	public static String getJsonBackupPathWithoutDate() {
