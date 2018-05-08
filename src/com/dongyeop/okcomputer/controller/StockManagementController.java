@@ -598,7 +598,7 @@ public class StockManagementController {
 		reportService.makeBackupJsonFile();
 		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 		Date now = Calendar.getInstance().getTime();
-		String today = dateFormat.format(now);
+		@SuppressWarnings("unused") String today = dateFormat.format(now);
 		//model.addAttribute("desktopSnap", toJson(reportService.selectTotalDesktopReportSnap(today)));
 		return new ModelAndView(redirectUrl);
 	}
