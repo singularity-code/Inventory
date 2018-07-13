@@ -128,6 +128,15 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean createUPS(Object object) {
+		if(object instanceof Server) {
+			return daoMaterialEtcIt.create((KoiMaterial) object);
+		} else {
+			return false;
+		}
+	}
 
 	public boolean deleteComputer(String id) throws ParseException {
 		return daoMaterialComputer.delete(id);
@@ -492,4 +501,5 @@ public class GeneralMaterialServiceImple implements MaterialServiceInterface<Obj
 	public boolean chgStatToDiscardPrinter(String id) throws ParseException {
 		return daoMaterialPrinter.chgStatToDiscard(id);
 	}
+
 }

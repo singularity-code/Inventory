@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/koiInventory.js" type="text/javascript" >
+<script src="${pageContext.request.contextPath}/resources/js/koiInventory.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/basic.css" rel="stylesheet" >
 
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
@@ -170,14 +170,14 @@ app.controller("myCtrl", function($scope) {
 	
 	$scope.status = ["Brand New", "Good", "Not Good", "Malfunction", "Broken", "Not Using"]
 	$scope.campus = ["Market", "Kent"];
-	$scope.type = ["Switch", "Router", "Server", "Speaker", "Tablet PC"];
+	$scope.type = ["Switch", "Router", "Server", "Speaker", "Tablet PC", "UPS"];
 	$scope.location = ["Office", "Office(Accounting)", "Office(Admission)", "Office(Academic)", "Reception", "Office(Marketing)", "Board Room", "Ricard Office", "Print Bay",
 		"Student Canteen", "Student Lounge", "Staff Kitchen","Lecture Office", "IT Office", "Server Room", "Marketing Store Room",
 		"CR101&102", "CR101", "CR102", "CR103", "CR104", "CR105", "CR106", "CR107", "CR108", 
 		"CR501", "CR502", "CR503", "CR504", "CR505", "CR506"];
 	
 	$scope.brand = ["APPLE", "ACER", "DELL", "HP", "LENOVO", "SAMSUNG", "SONY", "LG", "TOSHIBA", "PANASONC", "TEAC", "MITEL",
-		"TP-LINK","NETGEAR","CISCO", "SMEG","OMEGA","Royal Severeign","WESTING"];
+		"TP-LINK","NETGEAR","CISCO", "SMEG","OMEGA","Royal Severeign","WESTING", "BDC", "Unknown"];
 
 	$scope.update = function(computer) {
 		$scope.master = angular.copy(computer);

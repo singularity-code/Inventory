@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <spring:url value="/resources/js/koiInventory.js" var="inverntoryJS" />
 <script type="text/javascript" src="${inverntoryJS}"></script>
-<link href="${pageContext.request.contextPath}/resources/koiInventory.js" type="text/javascript" >
+<script src="${pageContext.request.contextPath}/resources/js/koiInventory.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/basic.css" rel="stylesheet" >
 
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">

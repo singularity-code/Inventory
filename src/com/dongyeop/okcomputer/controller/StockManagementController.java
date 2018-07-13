@@ -201,7 +201,13 @@ public class StockManagementController {
 			materialService.createServer(koiMaterial);
 			model.addAttribute("objects", toJson(materialService.getEtcItList()));
 			return new ModelAndView("list_itEtc_rwd");
+		} else if (type.equals("UPS")) {
+			koiMaterial = new Server(index, sn, id, name, type, brand, user, previous_new, campus, location, today, status, comment);
+			materialService.createServer(koiMaterial);
+			model.addAttribute("objects", toJson(materialService.getEtcItList()));
+			return new ModelAndView("list_itEtc_rwd");
 		} 
+		
 		return new ModelAndView(redirectUrl);
 	}
 

@@ -33,6 +33,7 @@ public interface MaterialServiceInterface<T1, T2> {
 	boolean createTablet(T1 o);
 	boolean createSpeaker(T1 o);
 	boolean createServer(T1 o);
+	boolean createUPS(T1 o);
 	
 	//Old
 	boolean createComputer(T1 o);

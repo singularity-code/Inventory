@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/koiInventory.js" type="text/javascript" >
+<script src="${pageContext.request.contextPath}/resources/js/koiInventory.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/basic.css" rel="stylesheet" >
 
 <body class="w3-light-grey" ng-app="myComputerList" ng-controller="myCtrl">
