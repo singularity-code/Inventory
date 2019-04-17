@@ -18,13 +18,13 @@
 	<mvc:resources mapping="/resources/**" location="/resources/"/>
 	
 	<bean id="daoMaterialComputer"
-		  class="com.dongyeop.okcomputer.dao.DaoMaterialComputerImple">
+		  class="com.inventory.dao.DaoMaterialComputerImple">
 	</bean>
 	<bean id="daoMaterialTv"
-		  class="com.dongyeop.okcomputer.dao.DaoMaterialTvImple">
+		  class="com.inventory.dao.DaoMaterialTvImple">
 	</bean>
 	<bean id="daoMaterialTelephone"
-		  class="com.dongyeop.okcomputer.dao.DaoMaterialTelephoneImple">
+		  class="com.inventory.dao.DaoMaterialTelephoneImple">
 	</bean>
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,7 +38,7 @@
 	<mvc:annotation-driven />
     
 	<bean id="materialService"
-		  class="com.dongyeop.okcomputer.service.GeneralMaterialServiceImple">
+		  class="com.inventory.service.GeneralMaterialServiceImple">
 	</bean>
 
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
@@ -49,31 +49,31 @@
 	</bean>
 
 	
-	<bean id="daoComputer" class="com.dongyeop.okcomputer.dao_database.DaoComputerImple"></bean>
+	<bean id="daoComputer" class="com.inventory.dao_database.DaoComputerImple"></bean>
 	<bean id="reportService"
-		class="com.dongyeop.okcomputer.service.MaterialReportImple">
+		class="com.inventory.service.MaterialReportImple">
 	</bean>
 	
 	<bean id="daoMaterialPrinter"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialPrinterImple">
+		class="com.inventory.dao.DaoMaterialPrinterImple">
 	</bean>
 	
 	<bean id="daoMaterialDesktop"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialDesktopImple">
+		class="com.inventory.dao.DaoMaterialDesktopImple">
 	</bean>
 	<bean id="daoMaterialLaptop"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialLaptopImple">
+		class="com.inventory.dao.DaoMaterialLaptopImple">
 	</bean>
 	<bean id="daoMaterialMac"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialMacImple">
+		class="com.inventory.dao.DaoMaterialMacImple">
 	</bean>
 	<bean id="daoMaterialMonitor"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialMonitorImple">
+		class="com.inventory.dao.DaoMaterialMonitorImple">
 	</bean>
 	<bean id="daoMaterialEtc"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialEtcImple">
+		class="com.inventory.dao.DaoMaterialEtcImple">
 	</bean>
 	<bean id="daoMaterialEtcIt"
-		class="com.dongyeop.okcomputer.dao.DaoMaterialEtcItImple">
+		class="com.inventory.dao.DaoMaterialEtcItImple">
 	</bean>
 </beans>
